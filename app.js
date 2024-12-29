@@ -45,13 +45,11 @@ const sessionConfig = {
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
 };
-// Updated CSP configuration
 const frameSrcUrls = [
   "https://js.stripe.com/",
   "https://www.sandbox.paypal.com/",
   "https://www.facebook.com/",
   "https://my.spline.design/"
-  
 ];
 
 const scriptSrcUrls = [
@@ -63,7 +61,7 @@ const scriptSrcUrls = [
   "https://unpkg.com/@splinetool/viewer@1.9.48/build/spline-viewer.js",
   "https://unpkg.com/@splinetool/viewer@1.9.48/build/process.js",
   "https://api.tiles.mapbox.com/",
-    "https://api.mapbox.com/",
+  "https://api.mapbox.com/",
 ];
 
 const styleSrcUrls = [
@@ -73,7 +71,7 @@ const styleSrcUrls = [
   "https://cdnjs.cloudflare.com/",
   "https://kit-free.fontawesome.com/",
   "https://api.mapbox.com/",
-    "https://api.tiles.mapbox.com/",
+  "https://api.tiles.mapbox.com/",
 ];
 
 const connectSrcUrls = [
@@ -83,9 +81,9 @@ const connectSrcUrls = [
   "https://ka-f.fontawesome.com/",
   "https://fonts.gstatic.com/",
   "https://api.mapbox.com/",
-    "https://a.tiles.mapbox.com/",
-    "https://b.tiles.mapbox.com/",
-    "https://events.mapbox.com/",
+  "https://a.tiles.mapbox.com/",
+  "https://b.tiles.mapbox.com/",
+  "https://events.mapbox.com/",
 ];
 
 const imgSrcUrls = [
@@ -97,10 +95,15 @@ const imgSrcUrls = [
 ];
 
 const fontSrcUrls = [
-  "https://fonts.gstatic.com/", // Google Fonts
+  "https://fonts.gstatic.com/",
   "https://cdnjs.cloudflare.com/",
   "https://cdn.jsdelivr.net/",
   "https://ka-f.fontawesome.com/"
+];
+
+const mediaSrcUrls = [
+  "'self'",
+  "https://res.cloudinary.com/" // Allow media from Cloudinary
 ];
 
 app.use(
@@ -118,11 +121,12 @@ app.use(
       objectSrc: [],
       imgSrc: ["'self'", "blob:", "data:", ...imgSrcUrls],
       fontSrc: ["'self'", ...fontSrcUrls],
-      mediaSrc: ["'self'"],
+      mediaSrc: [...mediaSrcUrls],
       "script-src-attr": ["'unsafe-inline'"], 
     },
   })
 );
+
 // Set EJS as the view engine
 app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
