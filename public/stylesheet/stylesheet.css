@@ -180,18 +180,14 @@ button {
   align-items: center;
   width: 97%;
   height: 120px;
-  background: transparent;
   padding: 10px 0;
   border-radius: 20px;
   background: linear-gradient(
-    to bottom,
     rgba(255, 0, 127, 0) 0%,
-    rgba(255, 0, 127, 0.25) 40%,
-    rgba(255, 0, 127, 0.7) 70%,
-    rgba(255, 0, 127, 0.9) 100%
+    rgba(255, 0, 127, 0.9) 30%,
+    rgba(255, 0, 127, 0) 100%
   );
 }
-
 
 
 .logos-container {
@@ -202,25 +198,28 @@ button {
   white-space: nowrap;
   animation: 35s slide infinite linear;
 }
-
 .customer-icon {
   font-size: 5rem;
   color: #101010;
   opacity: 0.85;
   margin: 0 100px;
   transition: transform 0.3s ease, opacity 0.3s ease;
-  animation: glow-animation 10s linear infinite; /* Add glow animation */
+  animation: icon-glow-animation 10s linear infinite; /* Updated animation */
 }
-@keyframes glow-animation {
+
+@keyframes icon-glow-animation {
   0%, 20%, 80%, 100% {
-    filter: brightness(1); /* No extra brightness */
-    box-shadow: none; /* No shadow */
+    filter: brightness(1); /* Normal brightness */
+    text-shadow: none; /* No glow */
   }
   50% {
-    filter: brightness(2); /* Increase brightness */
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); /* White glow effect */
+    filter: brightness(2); /* Brighter icon */
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), /* Glow effect */
+                 0 0 30px rgba(255, 255, 255, 0.6),
+                 0 0 45px rgba(255, 0, 127, 0.7); /* Adding brand color */
   }
 }
+
 
 .customer-icon:hover {
   transform: scale(1.2);
@@ -659,74 +658,64 @@ button {
 }
 
 
+
 /* Project gallery */
 .project-gallery {
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
-  height: 100vh;
+  height: auto;
   overflow: hidden;
+  background-color: #111; /* Dark background for contrast */
+  padding: 20px;
+  gap: 20px;
   position: relative;
-}
-
-.project-gallery::before,
-.project-gallery::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 10%;
-  z-index: 10;
-  pointer-events: none;
-}
-
-.project-gallery::before {
-  top: 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 1), transparent);
-}
-
-.project-gallery::after {
-  bottom: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 1), transparent);
 }
 
 .gallery-column {
   flex: 1;
-  position: relative;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.scroll-content {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
-  animation: infinite-scroll 35s linear infinite;
-}
-
-.gallery-column:hover .scroll-content {
-  animation-play-state: paused; /* Pause animation only on the hovered column */
+  gap: 15px;
+  transition: transform 0.3s ease; /* Uniform zoom transition */
 }
 
 .gallery-column img {
   width: 100%;
   height: auto;
   object-fit: cover;
+  filter: grayscale(100%); /* Black and white effect */
+  transition: filter 0.3s ease, transform 0.3s ease;
+  border-radius: 10px; /* Subtle rounded corners */
 }
 
-/* Continuous scrolling keyframe */
-@keyframes infinite-scroll {
-  from {
-    transform: translateY(0);
+/* Hover effect for all images */
+.gallery-column img:hover {
+  filter: grayscale(0%); /* Reveal true color on hover */
+}
+
+.project-gallery:hover {
+  transform: scale(1.05); /* Uniform zoom for all images */
+}
+/* Varying sizes for images */
+img.small {
+  height: 150px;
+}
+
+img.medium {
+  height: 250px;
+}
+
+img.large {
+  height: 350px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .gallery-column img {
+    height: auto; /* Adjust image sizes for smaller screens */
   }
-  to {
-    transform: translateY(-50%);
-  }
 }
-
-.column-2 .scroll-content,
-.column-4 .scroll-content {
-  animation-direction: reverse; /* Reverse direction for columns 2 and 4 */
-}
-
 
 #aboutus {
   background-color: #101010;
@@ -751,6 +740,7 @@ button {
   width: 100%;
   height: 100vh;
   font-family: 'Nunito', sans-serif;
+  margin-bottom: 5rem;
   }
   
 

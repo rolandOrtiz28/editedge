@@ -6,7 +6,7 @@
     width: 100%; /* Full width */
     background-color: #101010; /* Match the body background */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    z-index: 2;
+    z-index: 1050;
 }
 
 .navbar-brand {
@@ -25,21 +25,26 @@
    
 }
 
-/* Dropdown fix */
 .dropdown-menu {
-    display: block;
-    position: absolute; /* Align below the dropdown trigger */
+    display: none; /* Hide by default */
+    position: absolute;
     top: 100%;
     left: 0;
     width: 600px;
     background-color: #222;
-    border: 5px solid rgba(255, 255, 255); 
+    border: 5px solid rgba(255, 255, 255, 0.2);
     padding: 20px;
-    border-radius: 8px !important;
-    overflow: hidden; 
-    max-height: none;
+    border-radius: 20px !important;
+    z-index: 4;
+    opacity: 0; /* Start with opacity 0 for smooth transitions */
+    transition: opacity 0.9s ease-in !important; /* Add transition for a smooth fade-in */
+    z-index: 1051 !important; 
 }
 
+.dropdown-menu.show {
+    display: block; /* Bootstrap will toggle this class */
+    opacity: 1; /* Show with full opacity */
+}
 /* Grid layout for dropdown items */
 .grid-container {
     display: grid;

@@ -62,6 +62,7 @@ const scriptSrcUrls = [
   "https://unpkg.com/@splinetool/viewer@1.9.48/build/process.js",
   "https://api.tiles.mapbox.com/",
   "https://api.mapbox.com/",
+  "https://code.jquery.com/" // Added this line
 ];
 
 const styleSrcUrls = [
@@ -126,6 +127,7 @@ app.use(
     },
   })
 );
+
 
 // Set EJS as the view engine
 app.engine('ejs', ejsMate);

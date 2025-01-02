@@ -1,146 +1,77 @@
-
+// Combine path animations into one function
 gsap.registerPlugin(ScrollTrigger);
 
-document.querySelectorAll(".connector-path-ce").forEach((path) => {
-  const length = path.getTotalLength(); // Get the full length of the path
+function animatePath(selector, delay = 0) {
+  document.querySelectorAll(selector).forEach((path) => {
+    const length = path.getTotalLength();
 
-  // Set initial stroke properties for continuous stroke (no dash pattern)
-  path.style.strokeDasharray = length; // Set dash array to full path length
-  path.style.strokeDashoffset = -length; // Start the stroke from the right (off-screen)
+    path.style.strokeDasharray = length;
+    path.style.strokeDashoffset = -length;
 
-  // Animate the stroke to reveal it from right to left
-  gsap.to(path, {
-    strokeDashoffset: 0, // Animate from right to left, revealing the stroke
-    duration: 1.5, // Duration of the reveal animation
-    ease: "power2.inOut", // Smooth easing for animation
-    scrollTrigger: {
-      trigger: path.closest(".infographic-row"), // Trigger on scroll when this row enters the viewport
-      start: "top 80%", // Trigger the animation when 80% of the section is in view
-      toggleActions: "restart pause resume none", // Scroll-triggered animation behavior
-      
-    },
+    gsap.to(path, {
+      strokeDashoffset: 0,
+      duration: 1.5,
+      ease: "power2.inOut",
+      delay: delay,
+      scrollTrigger: {
+        trigger: path.closest(".infographic-row"),
+        start: "top 80%",
+        end: "bottom 20%",
+        scrub: 0.5, // Reduced scrub intensity
+      },
+    });
   });
-});
+}
 
+animatePath(".connector-path-ce");
+animatePath(".connector-path-td", 1);
+animatePath(".connector-path-ae", 2);
+
+// Optimize infographic item animations
 gsap.registerPlugin(ScrollTrigger);
 
-document.querySelectorAll(".connector-path-td").forEach((path) => {
-  const length = path.getTotalLength(); // Get the full length of the path
-
-  // Set initial stroke properties for continuous stroke (no dash pattern)
-  path.style.strokeDasharray = length; // Set dash array to full path length
-  path.style.strokeDashoffset = -length; // Start the stroke from the right (off-screen)
-
-  // Animate the stroke to reveal it from right to left
-  gsap.to(path, {
-    strokeDashoffset: 0, // Animate from right to left, revealing the stroke
-    duration: 1.5, // Duration of the reveal animation
-    ease: "power2.inOut", // Smooth easing for animation
-    delay: 1,
-    scrollTrigger: {
-      trigger: path.closest(".infographic-row"), // Trigger on scroll when this row enters the viewport
-      start: "top 80%", // Trigger the animation when 80% of the section is in view
-      toggleActions: "restart pause resume none", // Scroll-triggered animation behavior
-    },
-  });
-});
-
-
-gsap.registerPlugin(ScrollTrigger);
-
-document.querySelectorAll(".connector-path-ae").forEach((path) => {
-  const length = path.getTotalLength(); // Get the full length of the path
-
-  // Set initial stroke properties for continuous stroke (no dash pattern)
-  path.style.strokeDasharray = length; // Set dash array to full path length
-  path.style.strokeDashoffset = length; // Start the stroke from the right (off-screen)
-
-  // Animate the stroke to reveal it from right to left
-  gsap.to(path, {
-    strokeDashoffset: 0, // Animate from right to left, revealing the stroke
-    duration: 1.5, // Duration of the reveal animation
-    ease: "power2.inOut", // Smooth easing for animation
-    delay: 2,
-    scrollTrigger: {
-      trigger: path.closest(".infographic-row"), // Trigger on scroll when this row enters the viewport
-      start: "top 80%", // Trigger the animation when 80% of the section is in view
-      toggleActions: "restart pause resume none", // Scroll-triggered animation behavior
-      
-    },
-  });
-});
-
-
-
-// Slide-up animation for each infographic item
-gsap.registerPlugin(ScrollTrigger);
-
-document.querySelectorAll(".infographic-item").forEach((item, index) => {
+gsap.utils.toArray(".infographic-item").forEach((item, index) => {
   gsap.from(item, {
-    y: 50, // Start slightly below the original position
-    opacity: 0, // Start fully transparent
-    duration: 1, // Duration of the animation
-    ease: "power2.out", // Smooth easing
-    delay: index * 1, // Stagger effect for sequential animations
+    y: 50,
+    opacity: 0,
+    duration: 0.8, // Shorter duration
+    ease: "power2.out",
     scrollTrigger: {
-      trigger: item.closest(".infographic-row"), // Trigger animation when the row enters the viewport
-      start: "top 80%", // Start animation when 80% of the row is visible
-      toggleActions: "restart pause resume none", // Scroll-triggered animation behavior
+      trigger: item.closest(".infographic-row"),
+      start: "top 80%",
+      end: "top 50%",
+      scrub: 0.5, // Reduced scrub intensity
     },
   });
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  const animatedText = document.querySelector(".animated-text");
+gsap.to(".project-gallery", {
+  scale: 0.8, // Zoom in effect
+  scrollTrigger: {
+    trigger: ".project-gallery",
+    start: "top 80%",
+    end: "bottom 20%",
+    scrub: true, // Smooth zoom effect on scroll
+  },
+});
 
-  // Start with erasing "Adequacy"
-  animatedText.style.animation = "erasing 2s steps(9, end) forwards";
-
-  // Replace with "Excellence" after erasing
-  setTimeout(() => {
-    animatedText.textContent = "Excellence";
-    animatedText.style.animation = "typing 2s steps(9, end) forwards";
-  }, 2000); // Wait for the erasing animation to complete
+gsap.to(".project-gallery", {
+  scale: 1, // Zoom out effect
+  scrollTrigger: {
+    trigger: ".project-gallery",
+    start: "bottom 80%",
+    end: "top 20%",
+    scrub: true,
+  },
 });
 
 
-document.addEventListener("DOMContentLoaded", function () {
-  const gallery = document.querySelector(".project-gallery");
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          // Section is in view, start the animation
-          gallery.classList.remove("paused");
-          document.querySelectorAll(".scroll-content").forEach((el) => {
-            el.style.animationPlayState = "running";
-          });
-        } else {
-          // Section is out of view, pause the animation
-          gallery.classList.add("paused");
-          document.querySelectorAll(".scroll-content").forEach((el) => {
-            el.style.animationPlayState = "paused";
-          });
-        }
-      });
-    },
-    { threshold: 0.2 } // Trigger when 20% of the section is visible
-  );
-
-  observer.observe(gallery);
-});
-
-
-mapboxgl.accessToken = 'pk.eyJ1Ijoicm9sYW5kMjgiLCJhIjoiY201NmxhMGZ6MHNxcDJrc2c4NnNvd25weSJ9.FW6t7CihNZT10Af4V_sw-g';
+// Improved map loading performance
+mapboxgl.accessToken = "pk.eyJ1Ijoicm9sYW5kMjgiLCJhIjoiY201NmxhMGZ6MHNxcDJrc2c4NnNvd25weSJ9.FW6t7CihNZT10Af4V_sw-g";
 const map = new mapboxgl.Map({
-    container: 'map',
-    // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
-    style: 'mapbox://styles/mapbox/satellite-streets-v12',
-    center: [125.00149725399824, 11.214530716578475],
-    zoom: 15
+  container: "map",
+  style: "mapbox://styles/mapbox/satellite-streets-v12",
+  center: [125.00149725399824, 11.214530716578475],
+  zoom: 15,
 });
-
-
-const marker1 = new mapboxgl.Marker()
-    .setLngLat([125.00149725399824, 11.214530716578475])
-    .addTo(map);
+const marker1 = new mapboxgl.Marker().setLngLat([125.00149725399824, 11.214530716578475]).addTo(map);
