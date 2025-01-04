@@ -15,21 +15,36 @@
     transform: translate(-50%, 0);
     font-size: 400px;
     font-weight: bold;
-    color: rgba(255, 255, 255, 0.05); /* Dimmed base color */
+    color: transparent; /* Text color should be transparent */
     white-space: nowrap;
     z-index: 1;
     pointer-events: none;
     overflow: hidden;
     line-height: 1;
     height: 50%;
-    clip-path: inset(10% 0 0 0);
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 10%, transparent 80%);
-    background-repeat: no-repeat;
-    background-size: 150px 150px; /* Size of the light effect */
-    background-position: -1000px -1000px; /* Initially out of view */
-    mix-blend-mode: screen; /* Blend the light effect with the text */
-    transition: background-position 0.1s ease; /* Smooth light movement */
+    background: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.6) 50%,
+        rgba(255, 255, 255, 0.1) 100%
+    );
+    background-clip: text; /* Clips the gradient to the text */
+    -webkit-background-clip: text; /* Safari compatibility */
+    animation: light-sweep 10s infinite; /* Add sweep animation */
+    background-size: 200%; /* Extend the gradient for smooth sweeping */
 }
+
+/* Keyframes for sweeping motion */
+@keyframes light-sweep {
+    0% {
+        background-position: 200% 0; /* Start the gradient off to the right */
+    }
+    100% {
+        background-position: -200% 0; /* Move the gradient across to the left */
+    }
+}
+
+
 
 
 

@@ -13,6 +13,11 @@ const MongoDBStore = require("connect-mongo");
 // const Subscriber = require('./model/Subscriber');
 
 
+// Routes
+const serviceRoute = require('./routes/services');
+
+
+
 // SECURITY
 const helmet = require('helmet')
 const Joi = require('joi');
@@ -234,6 +239,8 @@ app.post('/send', catchAsync(async (req, res) => {
 
   res.json({ message: "Thank you for your message! We'll get back to you faster than a cat chasing a laser pointer!" });
 }));
+
+app.use('/', serviceRoute)
 
 const port = process.env.PORT || 3000;
 const server = app.listen(port, '0.0.0.0', () => {

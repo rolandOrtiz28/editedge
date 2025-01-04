@@ -116,9 +116,32 @@ gsap.utils.toArray(".services-container .glass").forEach((box, index) => {
     scrollTrigger: {
       trigger: "#services", // Trigger animation when #services section comes into view
       start: "top 80%", // Start when the section is 80% visible
-      end: "bottom 50%", // Start when the section is 80% visible
-      scrub:true
+      end: "center 20%", // Start when the section is 80% visible
+      scrub:true,
     },
+  });
+});
+
+// Hover effect: Align boxes neatly
+const servicesContainer = document.querySelector(".services-container");
+servicesContainer.addEventListener("mouseenter", () => {
+  gsap.to(".services-container .glass", {
+    x: (i) => i * 200 - 300, // Distribute horizontally with proper spacing
+    y: 0, // Align vertically
+    rotation: 0, // Reset rotation
+    duration: 0.5,
+    ease: "power2.out",
+  });
+});
+
+// Reset random formation on hover out
+servicesContainer.addEventListener("mouseleave", () => {
+  gsap.to(".services-container .glass", {
+    x: 0, // Reset horizontal position
+    y: 0, // Reset vertical position
+    rotation: gsap.utils.random(-15, 15), // Random tilt
+    duration: 0.5,
+    ease: "power2.out",
   });
 });
 

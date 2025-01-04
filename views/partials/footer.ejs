@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="/stylesheet/footer.css">
 
-<footer class="custom-footer">
+<footer class="custom-footer mt-4">
     <div class="container">
         <!-- Background Text -->
         <div class="footer-bg-text">
@@ -48,12 +48,3 @@
 </footer>
 
 
-<script>
-   document.addEventListener("mousemove", (e) => {
-    const text = document.querySelector(".footer-bg-text");
-    const rect = text.getBoundingClientRect();
-    const x = e.clientX - rect.left; // Cursor X relative to the text
-    const y = e.clientY - rect.top;  // Cursor Y relative to the text
-    text.style.backgroundPosition = `${x}px ${y}px`; // Move the light to the cursor's position
-  });
-  </script>
