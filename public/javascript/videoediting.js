@@ -63,3 +63,22 @@ gsap.utils.toArray(".process-step").forEach((step, index) => {
     }
   );
 });
+gsap.utils.toArray(".card").forEach((step, index) => {
+  gsap.fromTo(
+    step,
+    { opacity: 0, y: 50 }, // Start hidden and slightly below
+    {
+      opacity: 1, // Fade in
+      y: 0, // Move to original position
+      duration:5, // Animation duration
+      ease: "power2.out", // Smooth easing
+      delay: index * 0.7, // Stagger the animation
+      scrollTrigger: {
+        trigger: ".process-section", // Trigger for the entire section
+        start: "top 80%", // Start when 80% of section is visible
+        toggleActions: "play none none none", // Trigger only once
+      },
+    }
+  );
+});
+

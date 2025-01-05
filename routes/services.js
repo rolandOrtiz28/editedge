@@ -7,5 +7,11 @@ router.get('/videoediting', (req, res) => {
 })
 
 
+router.get('/3dart', (req, res) => {
+    res.render('services/3dart');
+
+})
+
+
 
 module.exports = router;

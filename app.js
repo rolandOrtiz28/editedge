@@ -50,11 +50,13 @@ const sessionConfig = {
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
 };
+
 const frameSrcUrls = [
   "https://js.stripe.com/",
   "https://www.sandbox.paypal.com/",
   "https://www.facebook.com/",
-  "https://my.spline.design/"
+  "https://my.spline.design/",
+  "https://drive.google.com/",
 ];
 
 const scriptSrcUrls = [
@@ -109,7 +111,11 @@ const fontSrcUrls = [
 
 const mediaSrcUrls = [
   "'self'",
-  "https://res.cloudinary.com/" // Allow media from Cloudinary
+  "https://res.cloudinary.com/",
+  "https://drive.google.com/", // Allow media from Google Drive
+  "https://www.google.com/",
+  "https://www.dropbox.com/",
+
 ];
 
 app.use(
