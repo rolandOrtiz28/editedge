@@ -33,11 +33,15 @@
   
   .video-links {
     position: absolute;
-    bottom: 15px;
+    bottom: 50%;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
-    z-index: 2;
+    z-index: 4;
+    cursor: pointer;
+  }
+  .video-links span{
+    color: white;
   }
   
   .video-link {
@@ -45,6 +49,8 @@
     font-weight: 500;
     text-decoration: none;
     padding: 0 10px;
+    z-index: 4;
+    cursor: pointer;
   }
   
   .video-link:hover {
