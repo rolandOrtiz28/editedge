@@ -106,44 +106,6 @@ document.querySelectorAll(".gallery-content").forEach((content) => {
   });
 });
 
-gsap.utils.toArray(".services-container .glass").forEach((box, index) => {
-  gsap.from(box, {
-    y: -200, // Start position above the viewport
-    opacity: 0, // Start fully transparent
-    duration: 1, // Duration of the drop animation
-    ease: "bounce.out", // Bounce effect for the drop
-    delay: index * 0.2, // Stagger the animations for each box
-    scrollTrigger: {
-      trigger: "#services", // Trigger animation when #services section comes into view
-      start: "top 80%", // Start when the section is 80% visible
-      end: "center 20%", // Start when the section is 80% visible
-      scrub:true,
-    },
-  });
-});
-
-// Hover effect: Align boxes neatly
-const servicesContainer = document.querySelector(".services-container");
-servicesContainer.addEventListener("mouseenter", () => {
-  gsap.to(".services-container .glass", {
-    x: (i) => i * 200 - 300, // Distribute horizontally with proper spacing
-    y: 0, // Align vertically
-    rotation: 0, // Reset rotation
-    duration: 0.5,
-    ease: "power2.out",
-  });
-});
-
-// Reset random formation on hover out
-servicesContainer.addEventListener("mouseleave", () => {
-  gsap.to(".services-container .glass", {
-    x: 0, // Reset horizontal position
-    y: 0, // Reset vertical position
-    rotation: gsap.utils.random(-15, 15), // Random tilt
-    duration: 0.5,
-    ease: "power2.out",
-  });
-});
 
 // Improved map loading performance
 mapboxgl.accessToken = "pk.eyJ1Ijoicm9sYW5kMjgiLCJhIjoiY201NmxhMGZ6MHNxcDJrc2c4NnNvd25weSJ9.FW6t7CihNZT10Af4V_sw-g";
@@ -154,3 +116,38 @@ const map = new mapboxgl.Map({
   zoom: 15,
 });
 const marker1 = new mapboxgl.Marker().setLngLat([125.00149725399824, 11.214530716578475]).addTo(map);
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const columns = document.querySelectorAll(".review-column");
+
+  columns.forEach((column, columnIndex) => {
+    const wrapper = column.querySelector(".reviews-wrapper");
+    const reviews = Array.from(wrapper.children);
+    const reviewHeight = reviews[0].offsetHeight + 20; // Add spacing
+    let index = 0;
+
+    // Clone first and last reviews for seamless looping
+    const firstClone = reviews[0].cloneNode(true);
+    const lastClone = reviews[reviews.length - 1].cloneNode(true);
+    wrapper.appendChild(firstClone);
+    wrapper.insertBefore(lastClone, reviews[0]);
+
+    wrapper.style.transform = `translateY(-${reviewHeight}px)`; // Adjust for initial position
+
+    setInterval(() => {
+      index++;
+      wrapper.style.transition = "transform 0.8s ease";
+      wrapper.style.transform = `translateY(-${(index + 1) * reviewHeight}px)`;
+
+      // Reset to seamless loop
+      if (index >= reviews.length) {
+        setTimeout(() => {
+          wrapper.style.transition = "none";
+          wrapper.style.transform = `translateY(-${reviewHeight}px)`;
+          index = 0;
+        }, 800);
+      }
+    }, 7000 + columnIndex * 500); // Add staggered delay per column
+  });
+});

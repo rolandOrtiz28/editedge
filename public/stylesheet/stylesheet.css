@@ -66,12 +66,13 @@ height: 95vh;
 }
 
 .responsive-video {
-  width: 200%;
+  width:230%;
   height: auto;
-  max-width: 150%;
+  max-width: 550%;
   object-fit: cover;
   z-index: -2; /* Moves the video further back */
   position: relative;
+  left: -15%;
   opacity: 0.9;
 }
 
@@ -179,7 +180,7 @@ button {
   justify-content: center;
   align-items: center;
   width: 97%;
-  height: 120px;
+  height: 70px;
   padding: 10px 0;
   border-radius: 20px;
   background: linear-gradient(
@@ -976,4 +977,84 @@ border-radius: 20px;
       100% {
         transform: rotate(360deg);
       }
+    }
+
+
+    #reviews {
+      padding: 2rem;
+      background-color: #101010;
+      color: white;
+      text-align: center;
+      height: 50vh;
+    }
+
+    /* Styling for the "Why" heading */
+.what-our {
+  font-size: 10rem; /* Make "Why" larger */
+  font-weight: 700;
+  line-height: 1.2; /* Adjust line height for proper spacing */
+  color: white;
+  position: relative; /* Needed for the absolute positioning of the child element */
+}
+
+/* Styling for the "Choose us" text */
+.client {
+  position: absolute;
+  top: 7%;
+  left: 55%;
+  font-size: 4rem; /* Smaller size for "Choose us" */
+  font-weight: 500; /* Slightly lighter font weight */
+  color: white;
+}
+
+  
+    .reviews-container {
+      display: grid;
+      justify-content: center;
+      align-items: center;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+      overflow: hidden;
+    
+      height: 80%;
+    }
+  
+    .review-column {
+      position: relative;
+      overflow: hidden;
+      height: 220px; /* Adjust for review height + spacing */
+    }
+  
+    .reviews-wrapper {
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.8s ease;
+    }
+  
+    .review {
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: #101010;
+      border-radius: 10px;
+      padding: 1rem;
+      border-top: 2px solid rgb(255, 255, 255, 0.4);
+      border-left: 2px solid rgb(255, 255, 255, 0.4);
+      border-right: 2px solid rgb(255, 255, 255, 0.4);
+      margin-bottom: 20px; /* Spacing between reviews */
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+  
+    .review p {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+  
+    .review span {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
     }

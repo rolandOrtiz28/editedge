@@ -12,6 +12,17 @@ router.get('/3dart', (req, res) => {
 
 })
 
+router.get('/GraphicDesign', (req, res) => {
+    res.render('services/graphicdesign');
+
+})
+
+
+router.get('/WebDevelopment', (req, res) => {
+    res.render('services/webdevelopment');
+
+})
+
 
 
 module.exports = router;
