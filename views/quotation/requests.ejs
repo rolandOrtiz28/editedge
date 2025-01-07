@@ -1,0 +1,33 @@
+<% layout('/layouts/boilerplate') -%>
+<div class="container">
+<h1>All Quotation Requests</h1>
+
+<% if (quotations.length > 0) { %>
+    <table class="table table-dark table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">Date Submitted</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% quotations.forEach((q) => { %>
+                <tr>
+                    <td><%= q.fullName %></td>
+                    <td><%= q.emailAddress %></td>
+                    <td><%= q.phoneNumber %></td>
+                    <td><%= new Date(q.submissionDate).toLocaleDateString() %></td>
+                    <td>
+                        <a href="/quotation/requests/<%= q._id %>" class="btn btn-primary btn-sm">View Details</a>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+<% } else { %>
+    <p>No quotation requests found.</p>
+<% } %>
+</div>

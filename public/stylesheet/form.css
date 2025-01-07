@@ -1,0 +1,238 @@
+.section {
+    position: relative;
+    min-height: 100vh; /* Changed from height to min-height */
+    padding-top: 80px; /* Add padding to prevent overlap with the navbar */
+    padding-bottom: 80px; /* Add padding to prevent overlap with the footer */
+}
+
+.section .section-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px; /* Add padding for better alignment */
+}
+#booking {
+	font-family: 'PT Sans', sans-serif;
+	background-image: url('../img/background.jpg');
+	background-size: cover;
+	background-position: center;
+}
+
+.quotation-form {
+	background: rgba(0, 0, 0, 0.7);
+	padding: 40px;
+	border-radius: 6px;
+    height: auto;
+}
+
+.quotation-form .form-group {
+	position: relative;
+	margin-bottom: 20px;
+}
+
+.quotation-form .form-control {
+	background-color: #fff;
+	height: 50px;
+	color: #191a1e;
+	border: none;
+	font-size: 16px;
+	font-weight: 400;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	border-radius: 40px;
+	padding: 0px 25px;
+}
+
+.quotation-form .form-control::-webkit-input-placeholder {
+	color: rgba(82, 82, 84, 0.4);
+}
+
+.quotation-form .form-control:-ms-input-placeholder {
+	color: rgba(82, 82, 84, 0.4);
+}
+
+.quotation-form .form-control::placeholder {
+	color: rgba(82, 82, 84, 0.4);
+}
+
+.quotation-form input[type="date"].form-control:invalid {
+	color: rgba(82, 82, 84, 0.4);
+}
+
+.quotation-form select.form-control {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+.quotation-form select.form-control+.select-arrow {
+	position: absolute;
+	right: 10px;
+	bottom: 6px;
+	width: 32px;
+	line-height: 32px;
+	height: 32px;
+	text-align: center;
+	pointer-events: none;
+	color: rgba(0, 0, 0, 0.3);
+	font-size: 14px;
+}
+
+.quotation-form select.form-control+.select-arrow:after {
+	content: '\279C';
+	display: block;
+	-webkit-transform: rotate(90deg);
+	transform: rotate(90deg);
+}
+
+.quotation-form .form-label {
+	display: block;
+	margin-left: 20px;
+	margin-bottom: 5px;
+	font-weight: 400;
+	text-transform: uppercase;
+	line-height: 24px;
+	height: 24px;
+	font-size: 12px;
+	color: #fff;
+}
+
+.quotation-form .form-checkbox input {
+	position: absolute !important;
+	margin-left: -9999px !important;
+	visibility: hidden !important;
+}
+
+.quotation-form .form-checkbox label {
+	position: relative;
+	padding-top: 4px;
+	padding-left: 30px;
+	font-weight: 400;
+	color: #fff;
+}
+
+.quotation-form .form-checkbox label+label {
+	margin-left: 15px;
+}
+
+.quotation-form .form-checkbox input+span {
+	position: absolute;
+	left: 2px;
+	top: 4px;
+	width: 20px;
+	height: 20px;
+	background: #fff;
+	border-radius: 50%;
+}
+
+.quotation-form .form-checkbox input+span:after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 0px;
+	height: 0px;
+	border-radius: 50%;
+	background-color: #FF007F;
+	-webkit-transition: 0.2s all;
+	transition: 0.2s all;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+.quotation-form .form-checkbox input:not(:checked)+span:after {
+	opacity: 0;
+}
+
+.quotation-form .form-checkbox input:checked+span:after {
+	opacity: 1;
+	width: 10px;
+	height: 10px;
+}
+
+.quotation-form .form-btn {
+	margin-top: 27px;
+}
+
+.quotation-form .submit-btn {
+	color: #fff;
+	background-color: #FF007F;
+	font-weight: 400;
+	height: 50px;
+	font-size: 14px;
+	border: none;
+	width: 100%;
+	border-radius: 40px;
+	text-transform: uppercase;
+	-webkit-transition: 0.2s all;
+	transition: 0.2s all;
+}
+
+.quotation-form .submit-btn:hover,
+.quotation-form .submit-btn:focus {
+	opacity: 0.9;
+}
+
+.quotation-form textarea.form-control {
+    border-radius: 0 !important; /* Forcefully remove border radius */
+    height: 120px; /* Adjust height if needed */
+}
+
+
+.form-group input[type="date"] {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px; /* Adjust as needed */
+}
+
+.input-group .form-control,
+.input-group .form-select {
+    border-radius: 5px; /* Adjust as needed */
+}
+
+.input-group .form-select {
+    border-right: none; /* Remove extra border between dropdown and input */
+}
+
+.input-group .form-control {
+    border-left: none; /* Seamless integration with dropdown */
+    width: 100px;
+}
+
+
+/* Attachments input */
+.attachment-input {
+    border-radius: 10px !important; /* Keeps the rounded border */
+    background-color: transparent; /* Removes the white background */
+    color: #000000; /* Ensures text is visible on a dark background */
+    border: 1px solid #fff; /* Adds a subtle white border */
+    display: flex;
+    padding: 10px !important;
+    justify-content: center;
+}
+
+.attachment-input::-webkit-file-upload-button {
+    background-color: transparent; /* Removes white background on the file upload button */
+    color: #000000; /* Ensures the button text is visible */
+    border: 1px solid #000000; /* Adds a white border to the button */
+    border-radius: 10px; /* Matches the input's border radius */
+    padding: 5px 10px; /* Adds padding for better appearance */
+    margin-left:0.5rem;
+}
+
+.attachment-input::-ms-browse {
+    background-color: transparent; /* Removes white background on the file upload button */
+    color: #fff; /* Ensures the button text is visible */
+    border: 1px solid #fff; /* Adds a white border to the button */
+    border-radius: 10px !important; /* Matches the input's border radius */
+    padding: 5px 10px; /* Adds padding for better appearance */
+}
+
+/* Preferred Communication Method select */
+.communication-select {
+    width: 300px;
+    border-radius: 10px !important; /* Keeps the rounded border */
+    background-color: transparent; /* Removes the white background */
+    color: #fff; /* Ensures text is visible on a dark background */
+    border: 1px solid #fff; /* Adds a subtle white border */
+}

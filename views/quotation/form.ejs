@@ -1,0 +1,221 @@
+<% layout('/layouts/boilerplate') -%>
+<link rel="stylesheet" href="/stylesheet/form.css">
+<div id="quotation" class="section mb-5">
+    <div class="section-center">
+        <div class="container">
+            <div class="row">
+                <div class="quotation-form">
+                    <form action="/quotation/submit" method="POST" enctype="multipart/form-data">
+                        <!-- Client Information -->
+                        <h3 class="form-header">Client Information</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="form-label">Full Name</span>
+                                    <input class="form-control" type="text" name="fullName" placeholder="Your full name" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="form-label">Company Name (Optional)</span>
+                                    <input class="form-control" type="text" name="companyName" placeholder="Your company name (if applicable)">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="form-label">Email Address</span>
+                                    <input class="form-control" type="email" name="emailAddress" placeholder="Your email" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="form-label">Phone Number</span>
+                                    <input class="form-control" type="tel" name="phoneNumber" placeholder="Your phone number" required>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <!-- Project Details -->
+                        <h3 class="form-header">Project Details</h3>
+                        <div class="form-group">
+                            <span class="form-label">Service Type</span>
+                            <div class="form-checkbox">
+                                <label for="video-editing">
+                                    <input type="checkbox" id="video-editing" name="serviceType" value="video-editing">
+                                    <span></span>Video Editing
+                                </label>
+                                <label for="3d-art">
+                                    <input type="checkbox" id="3d-art" name="serviceType" value="3d-art">
+                                    <span></span>3D Art
+                                </label>
+                                <label for="graphic-design">
+                                    <input type="checkbox" id="graphic-design" name="serviceType" value="graphic-design">
+                                    <span></span>Graphic Design
+                                </label>
+                                <label for="web-development">
+                                    <input type="checkbox" id="web-development" name="serviceType" value="web-development">
+                                    <span></span>Web Development
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <span class="form-label">Project Description</span>
+                            <textarea class="form-control" rows="4" name="projectDescription" placeholder="Brief explanation of the project and goals" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <span class="form-label">Specific Requirements (Optional)</span>
+                            <textarea class="form-control" rows="3" name="specificRequirements" placeholder="Any particular features or styles"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <span class="form-label">Estimated Duration (Optional)</span>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <span class="form-label">From</span>
+                                        <input class="form-control" type="date" name="estimatedDurationFrom" placeholder="Start date">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <span class="form-label">To</span>
+                                        <input class="form-control" type="date" name="estimatedDurationTo" placeholder="End date">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <!-- Budget -->
+                        <h3 class="form-header">Budget</h3>
+                        <div class="form-group">
+                            <span class="form-label">Estimated Budget Range (Optional)</span>
+                            <div class="input-group">
+                                <select class="form-select" id="currency" name="currency" style="max-width: 100px; border-radius: 0;">
+                                    <option value="USD" selected>$ USD</option>
+                                    <option value="EUR">€ EUR</option>
+                                    <option value="GBP">£ GBP</option>
+                                    <option value="JPY">¥ JPY</option>
+                                    <option value="INR">₹ INR</option>
+                                    <option value="AUD">$ AUD</option>
+                                    <option value="CAD">$ CAD</option>
+                                    <option value="CNY">¥ CNY</option>
+                                    <option value="CHF">₣ CHF</option>
+                                    <option value="KRW">₩ KRW</option>
+                                </select>
+                                <input
+                                    class="form-control"
+                                    type="text"
+                                    name="budget"
+                                    id="budget-input"
+                                    placeholder="Enter budget"
+                                    style="max-width: 150px; border-radius: 0;"
+                                    aria-label="Budget"
+                                />
+                            </div>
+                        </div>
+                    
+                        <!-- Deliverables -->
+                        <h3 class="form-header">Deliverables</h3>
+                        <div class="form-group">
+                            <span class="form-label">Type of Deliverables</span>
+                            <div class="form-checkbox">
+                                <label for="videos">
+                                    <input type="checkbox" id="videos" name="deliverables" value="videos">
+                                    <span></span>Videos
+                                </label>
+                                <label for="website-files">
+                                    <input type="checkbox" id="website-files" name="deliverables" value="website-files">
+                                    <span></span>Website Files
+                                </label>
+                                <label for="design-files">
+                                    <input type="checkbox" id="design-files" name="deliverables" value="design-files">
+                                    <span></span>Design Files
+                                </label>
+                                <label for="3d-models">
+                                    <input type="checkbox" id="3d-models" name="deliverables" value="3d-models">
+                                    <span></span>3D Models
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <span class="form-label">Format/Specifications (Optional)</span>
+                            <textarea class="form-control" rows="3" name="formatSpecifications" placeholder="File formats, resolution, or other details"></textarea>
+                        </div>
+                    
+                        <!-- Additional Information -->
+                        <h3 class="form-header">Additional Information</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="form-label">Attachments (Optional)</span>
+                                    <input class="form-control attachment-input" type="file" name="attachment">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="form-label">Preferred Communication Method (Optional)</span>
+                                    <select class="form-select" name="preferredCommunicationMethod" size="3" aria-label="size 3 select example">
+                                        <option value="email" selected>Email</option>
+                                        <option value="zoom">Zoom</option>
+                                        <option value="discord">Discord</option>
+                                        <option value="slack">Slack</option>
+                                        <option value="skype">Skype</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <!-- Submission Details -->
+                        <h3 class="form-header">Submission Details</h3>
+                        <div class="form-group">
+                            <span class="form-label">Submission Date</span>
+                            <input class="form-control" type="date" name="submissionDate" placeholder="Submission" style="max-width: 300px;">
+                        </div>
+                    
+                        <!-- Submit Button -->
+                        <div class="form-btn">
+                            <button class="submit-btn">Request Quotation</button>
+                        </div>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    // JavaScript to dynamically update the symbol in the input field
+    const currencySelect = document.getElementById("currency");
+    const budgetInput = document.getElementById("budget-input");
+
+    // Currency symbols mapping
+    const currencySymbols = {
+        USD: "$",
+        EUR: "€",
+        GBP: "£",
+        JPY: "¥",
+        INR: "₹",
+        AUD: "$",
+        CAD: "$",
+        CNY: "¥",
+        CHF: "₣",
+        KRW: "₩",
+    };
+
+    // Update input placeholder with the selected currency symbol
+    currencySelect.addEventListener("change", function () {
+        const selectedCurrency = currencySelect.value;
+        const symbol = currencySymbols[selectedCurrency] || "";
+        budgetInput.placeholder = `${symbol} Enter budget`;
+    });
+
+    // Initialize the placeholder on page load
+    document.addEventListener("DOMContentLoaded", () => {
+        const initialCurrency = currencySelect.value;
+        const initialSymbol = currencySymbols[initialCurrency] || "";
+        budgetInput.placeholder = `${initialSymbol} Enter budget`;
+    });
+</script>

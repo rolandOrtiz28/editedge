@@ -1,0 +1,54 @@
+<% layout('/layouts/boilerplate') -%>
+<div class="container" style="margin-bottom:120px">
+    <div class="card shadow-lg p-4 border-0" style="background-color: #1a1a1a; color: white;">
+        <div class="text-center">
+            <h1 class="mb-4 text-uppercase" style="color: #FF007F;">Quotation Request Details</h1>
+        </div>
+
+        <!-- Client Information -->
+        <h3 class="mt-4" style="color: #FF007F;">Client Information</h3>
+        <hr style="border-color: #FF007F;">
+        <p><strong>Full Name:</strong> <%= quotation.fullName %></p>
+        <p><strong>Company Name:</strong> <%= quotation.companyName || 'N/A' %></p>
+        <p><strong>Email:</strong> <a href="mailto:<%= quotation.emailAddress %>" style="color: #FF007F;"><%= quotation.emailAddress %></a></p>
+        <p><strong>Phone Number:</strong> <%= quotation.phoneNumber %></p>
+
+        <!-- Project Details -->
+        <h3 class="mt-4" style="color: #FF007F;">Project Details</h3>
+        <hr style="border-color: #FF007F;">
+        <p><strong>Service Type:</strong> <%= quotation.serviceType.join(', ') %></p>
+        <p><strong>Project Description:</strong> <%= quotation.projectDescription %></p>
+        <p><strong>Specific Requirements:</strong> <%= quotation.specificRequirements || 'N/A' %></p>
+        <p><strong>Estimated Duration:</strong>
+            <%= quotation.estimatedDurationFrom ? new Date(quotation.estimatedDurationFrom).toLocaleDateString() : 'N/A' %>
+            to
+            <%= quotation.estimatedDurationTo ? new Date(quotation.estimatedDurationTo).toLocaleDateString() : 'N/A' %>
+        </p>
+
+        <!-- Budget -->
+        <h3 class="mt-4" style="color: #FF007F;">Budget</h3>
+        <hr style="border-color: #FF007F;">
+        <p><strong>Estimated Budget:</strong> <%= quotation.currency %> <%= quotation.budget %></p>
+
+        <!-- Deliverables -->
+        <h3 class="mt-4" style="color: #FF007F;">Deliverables</h3>
+        <hr style="border-color: #FF007F;">
+        <p><strong>Type:</strong> <%= quotation.deliverables.join(', ') %></p>
+        <p><strong>Specifications:</strong> <%= quotation.formatSpecifications || 'N/A' %></p>
+
+        <!-- Additional Information -->
+        <h3 class="mt-4" style="color: #FF007F;">Additional Information</h3>
+        <hr style="border-color: #FF007F;">
+        <p><strong>Preferred Communication:</strong> <%= quotation.preferredCommunicationMethod %></p>
+        <p><strong>Submission Date:</strong> <%= new Date(quotation.submissionDate).toLocaleDateString() %></p>
+
+        <% if (quotation.attachmentUrl) { %>
+            <p><strong>Attachment:</strong> <a href="<%= quotation.attachmentUrl %>" target="_blank" style="color: #FF007F;">View File</a></p>
+        <% } %>
+
+        <!-- Action Buttons -->
+        <div class="mt-4 text-center">
+            <a href="/quotation/requests" class="btn btn-outline-light btn-sm">Back to All Requests</a>
+        </div>
+    </div>
+</div>

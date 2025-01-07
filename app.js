@@ -15,6 +15,7 @@ const MongoDBStore = require("connect-mongo");
 
 // Routes
 const serviceRoute = require('./routes/services');
+const quoteRoute = require('./routes/quotation');
 
 
 
@@ -247,6 +248,7 @@ app.post('/send', catchAsync(async (req, res) => {
 }));
 
 app.use('/', serviceRoute)
+app.use('/', quoteRoute)
 
 const port = process.env.PORT || 3000;
 const server = app.listen(port, '0.0.0.0', () => {
