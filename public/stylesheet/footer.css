@@ -130,3 +130,76 @@
     font-size: 14px;
     color: #666666;
 }
+
+
+@media (max-width: 1629px) {
+    .custom-footer {
+
+        border: 2px solid red;
+        z-index: 4;
+   opacity: 1;
+   height: 40vh;
+   display: flex;
+   align-items: end;
+   justify-content: center;
+    }
+
+    .footer-bg-text {
+        font-size: 250px; /* Reduce the font size for this screen size */
+        bottom: 90%; /* Position the text so only half is visible */
+        transform: translate(-50%, 50%); /* Adjust vertical alignment */
+        height: 50%; /* Ensure only half the text height is visible */
+        overflow: hidden !important; /* Hide the bottom half of the text */
+        z-index: -4 !important;
+    }
+    .footer-logo{
+        width: 70px;
+    }
+
+    .tagline {
+        font-size: 13px;
+        
+    }
+    
+   
+    .footer-links a {
+      
+        font-size: 10px;
+    }
+
+    .social-icon {
+        font-size: 13px;
+     
+    }
+    .legal-notices{
+        font-size: 10px !important;
+    }
+}
+
+  
+  /* Adjust for screens smaller than 1422px */
+  @media (max-width: 1422px) {
+    
+  }
+  
+  /* Adjust for screens smaller than 1300px */
+  @media (max-width: 1300px) {
+   
+  }
+  
+  /* Adjust for screens smaller than 1200px */
+  @media (max-width: 1200px) {
+    
+  }
+  
+  /* Adjust for screens smaller than 992px */
+  @media (max-width: 992px) {
+   
+  }
+  
+  
+  /* Adjust for screens smaller than 768px */
+  @media (max-width: 768px) {
+   
+  }
+  
