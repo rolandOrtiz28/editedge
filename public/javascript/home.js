@@ -1,31 +1,43 @@
-// Combine path animations into one function
-gsap.registerPlugin(ScrollTrigger);
-
 function animatePath(selector, delay = 0) {
-  document.querySelectorAll(selector).forEach((path) => {
-    const length = path.getTotalLength();
+  if (window.innerWidth > 768) { // Only animate on screens larger than 768px
+    document.querySelectorAll(selector).forEach((path) => {
+      const length = path.getTotalLength();
 
-    path.style.strokeDasharray = length;
-    path.style.strokeDashoffset = -length;
+      path.style.strokeDasharray = length;
+      path.style.strokeDashoffset = -length;
 
-    gsap.to(path, {
-      strokeDashoffset: 0,
-      duration: 1.5,
-      ease: "power2.inOut",
-      delay: delay,
-      scrollTrigger: {
-        trigger: path.closest(".infographic-row"),
-        start: "top 80%",
-        end: "bottom 20%",
-        scrub: 0.5, // Reduced scrub intensity
-      },
+      gsap.to(path, {
+        strokeDashoffset: 0,
+        duration: 1.5,
+        ease: "power2.inOut",
+        delay: delay,
+        scrollTrigger: {
+          trigger: path.closest(".infographic-row"),
+          start: "top 80%",
+          end: "bottom 20%",
+          scrub: 0.5, // Reduced scrub intensity
+        },
+      });
     });
-  });
+  } else {
+    // Remove lines entirely for mobile
+    document.querySelectorAll(selector).forEach((path) => {
+      path.style.display = "none";
+    });
+  }
 }
 
 animatePath(".connector-path-ce");
 animatePath(".connector-path-td", 1);
 animatePath(".connector-path-ae", 2);
+
+// Reapply animation on window resize
+window.addEventListener("resize", () => {
+  animatePath(".connector-path-ce");
+  animatePath(".connector-path-td", 1);
+  animatePath(".connector-path-ae", 2);
+});
+
 
 // Optimize infographic item animations
 gsap.registerPlugin(ScrollTrigger);

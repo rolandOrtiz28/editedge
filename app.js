@@ -58,6 +58,7 @@ const frameSrcUrls = [
   "https://www.facebook.com/",
   "https://my.spline.design/",
   "https://drive.google.com/",
+  "https://accounts.google.com/",
 ];
 
 const scriptSrcUrls = [
