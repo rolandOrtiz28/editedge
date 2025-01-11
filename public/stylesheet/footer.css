@@ -1,11 +1,12 @@
 .custom-footer {
-    position: relative; /* Ensure the footer is positioned correctly */
-    z-index: 2; /* Footer content stays above the background text */
+    position: relative;
+    z-index: 2;
     background-color: #181818;
     color: #cccccc;
     padding: 40px 0;
     font-family: 'Arial', sans-serif;
-
+   
+    height: auto; /* Let content define the height */
 }
 
 .footer-bg-text {
@@ -13,7 +14,7 @@
     bottom: 100%;
     left: 50%;
     transform: translate(-50%, 0);
-    font-size: 400px;
+    font-size: 350px;
     font-weight: bold;
     color: transparent; /* Text color should be transparent */
     white-space: nowrap;
@@ -48,14 +49,12 @@
 
 
 
-
 .footer-content {
-    position: relative; /* Ensure it stays on top of the background text */
-    z-index: 3; /* Higher than the background text */
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    z-index: 3; /* Above the background text */
 }
 
 .footer-left, .footer-center, .footer-right {
@@ -131,50 +130,35 @@
     color: #666666;
 }
 
-
 @media (max-width: 1629px) {
     .custom-footer {
-
-        border: 2px solid red;
-        z-index: 4;
-   opacity: 1;
-   height: 40vh;
-   display: flex;
-   align-items: end;
-   justify-content: center;
+        padding: 40px 20px; /* Adjust padding for smaller screens */
+        min-height: auto; /* Allow content to define height */
     }
 
     .footer-bg-text {
-        font-size: 250px; /* Reduce the font size for this screen size */
-        bottom: 90%; /* Position the text so only half is visible */
-        transform: translate(-50%, 50%); /* Adjust vertical alignment */
-        height: 50%; /* Ensure only half the text height is visible */
-        overflow: hidden !important; /* Hide the bottom half of the text */
-        z-index: -4 !important;
+        font-size: 250px; /* Scale down for smaller screens */
+        top: -40%;
+        height: 40%;
     }
-    .footer-logo{
-        width: 70px;
+
+    .footer-logo {
+        width: 100px; /* Ensure logo scales proportionally */
     }
 
     .tagline {
-        font-size: 13px;
-        
+        font-size: 14px; /* Adjust text size */
     }
-    
-   
+
     .footer-links a {
-      
-        font-size: 10px;
+        font-size: 12px; /* Adjust link font size */
     }
 
     .social-icon {
-        font-size: 13px;
-     
-    }
-    .legal-notices{
-        font-size: 10px !important;
+        font-size: 16px; /* Adjust icon size */
     }
 }
+
 
   
   /* Adjust for screens smaller than 1422px */
@@ -200,6 +184,28 @@
   
   /* Adjust for screens smaller than 768px */
   @media (max-width: 768px) {
-   
-  }
-  
+    .custom-footer {
+        padding: 20px; /* Reduce padding for smaller screens */
+        min-height: auto; /* Allow the height to adjust based on content */
+        display: flex;
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center elements */
+    }
+
+    .footer-bg-text {
+        font-size: 80px; /* Scale down the background text */
+        top: -16%; /* Push the background text up for partial visibility */
+        left: 50%;
+        
+        height: 16%; /* Ensure the text appears partially */
+        overflow: hidden; /* Prevent overflow */
+    }
+
+    .tagline {
+        font-size: 10px; /* Adjust text size */
+    }
+
+    .footer-logo {
+        width: 40px; /* Ensure logo scales proportionally */
+    }
+}

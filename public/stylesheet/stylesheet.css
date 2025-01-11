@@ -650,10 +650,11 @@ width: 100%;
 /* Responsive adjustments for 'Why Choose Us' section */
 @media (max-width: 1629px) {
   #whychooseus .why {
-    font-size: 10rem !important;
+    font-size: 8rem;
   }
   #whychooseus .choose-us {
-    font-size: 3rem !important;
+    font-size:2.5rem;
+    left: 10%;
   }
   #whychooseus .subtitle, #whychooseus .infographic-item h3 {
     font-size: 1rem;
@@ -698,7 +699,7 @@ padding-right: 10rem;
 
 @media (max-width: 1300px) {
   #whychooseus h1.why {
-    font-size: 6rem;
+    font-size: 8rem;
   }
   #whychooseus .choose-us {
     font-size: 2rem;
@@ -716,8 +717,12 @@ padding-right: 10rem;
 }
 
 @media (max-width: 1200px) {
+  #whychooseus{
+
+    margin-bottom: 0;
+  }
   #whychooseus h1.why {
-    font-size: 5rem;
+    font-size: 7.5rem;
 
   }
   #whychooseus .choose-us {
@@ -737,7 +742,7 @@ padding-right: 10rem;
 
 @media (max-width: 992px) {
   #whychooseus h1.why {
-    font-size: 4rem;
+    font-size: 7.3rem;
   }
   #whychooseus .choose-us {
     font-size: 1.5rem;
@@ -756,23 +761,31 @@ padding-right: 10rem;
 }
 @media (max-width: 768px) {
   #whychooseus {
-    padding-bottom: 0; 
-    border: 2px solid red;
+    padding: 2rem 0 !important; 
+
+    display: flex;
+    align-items: start;
+    height: 100vh;
   }
 
   #whychooseus .why {
-    font-size: 5rem;
-    margin-bottom: 1rem;
+    font-size: 7rem;
+    margin:0 0 1rem 1rem;
+
   }
 
   #whychooseus .choose-us {
     font-size: 2rem;
     top: 80%;
-    left: 3%;
+    left: 5%;
+    
   }
 
   #whychooseus .subtitle, #whychooseus .infographic-item h3 {
     font-size: 1rem;
+    width: 75% !important;
+    text-align: start;
+   
   }
 
   #whychooseus .infographic-item p {
@@ -788,6 +801,13 @@ padding-right: 10rem;
     width: 150px; /* Reduced size for smaller screens */
     height: 30px;
    
+  }
+
+  .ce p{
+    width: 100% !important;
+  }
+  .ees p{
+    width: 100% !important;
   }
 
   
@@ -809,7 +829,7 @@ padding-right: 10rem;
     height: auto;
   }
 .infographic{
-  gap: 30px;
+  gap: 10px;
 }
 
 .center-items .info-content{
@@ -861,32 +881,8 @@ padding-right:0;
   }
 }
 
-@media (max-width: 576px) {
-  #whychooseus h1.why {
-    font-size: 3.5rem;
-  }
 
-  #whychooseus .choose-us {
-    font-size: 1rem;
-  }
 
-  #whychooseus .subtitle, #whychooseus .infographic-item h3 {
-    font-size: 1rem;
-  }
-
-  #whychooseus .infographic-item p {
-    font-size: 0.6rem;
-  }
-
-  .circle-bg img {
-    width: 70%;
-    height: auto;
-  }
-
-  .infographic-row {
-    gap: 0 !important; /* Slightly reduce spacing on very small screens */
-  }
-}
 
 
 /* SERVICES */
@@ -1022,7 +1018,6 @@ padding-right:0;
 /* Adjust for screens smaller than 768px */
 @media (max-width: 768px) {
   #services{
-    border: 2px solid blue;
     display: flex;
     align-items: start;
     height: 50vh;
@@ -1454,7 +1449,7 @@ border-radius: 20px;
 @media (max-width: 768px) {
   #contact{
    margin-bottom: 5rem;
-    border: 2px solid red;
+   
     padding: 5rem 0;
   }
   .connect{
