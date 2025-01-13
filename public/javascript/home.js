@@ -95,7 +95,7 @@ gsap.utils.toArray(".infographic-item").forEach((item, index) => {
     },
   });
 });
-
+// GSAP animations for gallery
 gsap.utils.toArray(".gallery-column img").forEach((img) => {
   gsap.fromTo(
     img,
@@ -109,7 +109,6 @@ gsap.utils.toArray(".gallery-column img").forEach((img) => {
         trigger: img,
         start: "top 90%",
         toggleActions: "play none none none",
-       
       },
     }
   );
@@ -136,25 +135,17 @@ gsap.to(".project-gallery", {
   },
 });
 
+// Pause scrolling on hover
 document.querySelectorAll(".gallery-column").forEach((column) => {
   column.addEventListener("mouseenter", () => {
-    column.style.animationPlayState = "paused"; // Pause animation
+    column.style.animationPlayState = "paused";
   });
 
   column.addEventListener("mouseleave", () => {
-    column.style.animationPlayState = "running"; // Resume animation
+    column.style.animationPlayState = "running";
   });
 });
 
-// JavaScript to reset scrolling animation
-document.querySelectorAll(".gallery-content").forEach((content) => {
-  content.addEventListener("animationiteration", () => {
-    content.style.animation = "none";
-    requestAnimationFrame(() => {
-      content.style.animation = "";
-    });
-  });
-});
 
 
 // Improved map loading performance
