@@ -32,26 +32,26 @@
   }
   
   .video-links {
-    position: absolute;
-    bottom: 50%;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    z-index: 4;
-    cursor: pointer;
-  }
-  .video-links span{
-    color: white;
-  }
-  
-  .video-link {
-    color: white;
-    font-weight: 500;
-    text-decoration: none;
-    padding: 0 10px;
-    z-index: 4;
-    cursor: pointer;
-  }
+    position: relative;
+    top:0;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        z-index: 4; /* Increase z-index to make it appear above the navbar */
+        cursor: pointer;
+    }
+      .video-links span{
+        color: white;
+      }
+      
+      .video-link {
+        color: white;
+        font-weight: 500;
+        text-decoration: none;
+        padding: 0 10px;
+        z-index: 4; /* Match the increased z-index */
+        cursor: pointer;
+    }
   
   .video-link:hover {
     color: #ff007f; /* Highlight color on hover */
@@ -298,8 +298,8 @@ padding: 2rem;
   text-align: center;
 }
 
-/* Video Examples Section */
-.video-examples-section {
+/* Image Examples Section */
+.image-examples-section {
   padding: 2rem 1rem;
   background-color: #101010; /* Matches the page background */
 }
@@ -313,56 +313,44 @@ padding: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width:100px; /* Set consistent width */
-  margin: .5rem; /* Add margin around each card for spacing */
- 
-  transform: scale(0.8); /* Smaller size by default */
-  transition: all 0.3s ease-in-out; /* Fallback animation */
+  width: 100%; /* Adjust width for consistent layout */
+  margin: 0.5rem; /* Add margin for spacing */
+  transform: scale(0.95); /* Default size slightly reduced */
+  transition: all 0.3s ease-in-out; /* Smooth hover effect */
 }
 
-.project-card iframe {
+.project-card:hover {
+  transform: scale(1); /* Slight zoom on hover */
+}
+
+.project-image {
   width: 100%;
-  aspect-ratio: 9 / 16; /* Ensures consistent vertical video ratio */
-  border-radius: 12px 12px 0 0; /* Round top corners */
-  border: none; /* Remove iframe border */
-  background: #000; /* Placeholder color for better appearance */
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px 12px 0 0; /* Rounded top corners */
 }
 
-.video-card img, 
-.video-card video {
-    width: 100%;      /* Make thumbnails fill the card width */
-    height: auto;     /* Maintain aspect ratio */
-    object-fit: cover; /* Ensure thumbnails cover the entire container */
-    border-radius: 8px; /* Optional: keep the same border radius as the card */
-}
-
-.project-card .card-body {
+.card-body {
   text-align: center;
   color: white;
   padding: 1rem;
 }
 
-.project-card .card-title {
+.card-title {
   font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
 }
 
-.project-card .card-text {
+.card-text {
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.8);
 }
 
-/* Responsive Design for Cards */
-@media (min-width: 768px) {
-  .project-card {
-    width: 340px; /* Slightly larger width for desktop */
-  }
+.card-title a{
+  color:#ff007f ;
 }
 
-.row-cols-md-3 {
-  justify-content: center; /* Centers the cards horizontally */
-}
 
 
 h2 {
@@ -388,4 +376,120 @@ h2 {
   100% {
     background-position: -200% 0; /* Move the gradient off-screen to the left */
   }
+}
+
+/* Adjust for screens smaller than 1629px */
+@media (max-width: 1629px) {
+ 
+}
+
+/* Adjust for screens smaller than 1422px */
+@media (max-width: 1422px) {
+  
+}
+
+/* Adjust for screens smaller than 1300px */
+@media (max-width: 1300px) {
+ 
+}
+
+/* Adjust for screens smaller than 1200px */
+@media (max-width: 1200px) {
+  
+}
+
+/* Adjust for screens smaller than 992px */
+@media (max-width: 992px) {
+ 
+}
+
+
+/* Adjust for screens smaller than 768px */
+@media (max-width: 768px) {
+  
+  .process-title, .Web-Example-Title{
+    font-size: 1.9rem;
+  }
+  .text{
+    font-size: 1.4rem;
+  }
+
+
+  .introduction .lead{
+    font-size: 0.8rem;
+  }
+
+  .video-links{
+    margin-bottom: 1.5rem;
+  }
+
+  .image-container .floating-image{
+    width: 300px;
+  }
+
+
+  .horizontal-line{
+top: 50px;
+    height: 2px;
+  }
+
+
+  .process-steps {
+    justify-content: center;
+    gap: 1rem;
+    padding: 0 1rem;
+ 
+  }
+  .step-number {
+
+    font-size: 1rem;
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+  }
+  /* Process Steps */
+  .process-steps {
+
+    gap: 1rem;
+ 
+  }
+  .step-line {
+    width: 2px;
+    height: 2rem; /* Length of the line */
+ 
+  }
+  .step-icon {
+    width: 50px;
+    height: 50px;
+  
+  }
+  .podium {
+    width: 50px;
+    height: 20px;
+   
+  }
+  .step-description {
+    font-size: 0.5rem;
+    
+  }
+  
+    .project-card {
+      width: 300px;
+      transform: scale(2); /* Reset any unnecessary scaling */
+     margin-left: 1.5rem;
+     border-radius: 0%;
+    }
+  
+    .project-card .card-text{
+      display: none;
+    }
+    
+    .project-card .card-title{
+font-size: .3rem;
+    }
+
+    .project-image{
+      border-radius: 0%;
+    }
+ 
 }

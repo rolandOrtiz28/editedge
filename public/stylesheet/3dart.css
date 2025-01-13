@@ -32,26 +32,26 @@
   }
   
   .video-links {
-    position: absolute;
-    bottom: 50%;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    z-index: 4;
-    cursor: pointer;
-  }
-  .video-links span{
-    color: white;
-  }
-  
-  .video-link {
-    color: white;
-    font-weight: 500;
-    text-decoration: none;
-    padding: 0 10px;
-    z-index: 4;
-    cursor: pointer;
-  }
+    position: relative;
+    top:0;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        z-index: 4; /* Increase z-index to make it appear above the navbar */
+        cursor: pointer;
+    }
+      .video-links span{
+        color: white;
+      }
+      
+      .video-link {
+        color: white;
+        font-weight: 500;
+        text-decoration: none;
+        padding: 0 10px;
+        z-index: 4; /* Match the increased z-index */
+        cursor: pointer;
+    }
   
   .video-link:hover {
     color: #ff007f; /* Highlight color on hover */
@@ -388,4 +388,115 @@ h2 {
   100% {
     background-position: -200% 0; /* Move the gradient off-screen to the left */
   }
+}
+
+
+/* Adjust for screens smaller than 1629px */
+@media (max-width: 1629px) {
+ 
+}
+
+/* Adjust for screens smaller than 1422px */
+@media (max-width: 1422px) {
+  
+}
+
+/* Adjust for screens smaller than 1300px */
+@media (max-width: 1300px) {
+ 
+}
+
+/* Adjust for screens smaller than 1200px */
+@media (max-width: 1200px) {
+  
+}
+
+/* Adjust for screens smaller than 992px */
+@media (max-width: 992px) {
+ 
+}
+
+
+/* Adjust for screens smaller than 768px */
+@media (max-width: 768px) {
+  
+  .text, .process-title, .Art-Example-Title{
+    font-size: 2rem;
+  }
+
+
+  .introduction .lead{
+    font-size: 1rem;
+  }
+
+  .video-links{
+    margin-bottom: 1.5rem;
+  }
+
+  .image-container .floating-image{
+    width: 300px;
+  }
+
+
+  .horizontal-line{
+    top: 50px;
+        height: 2px;
+      }
+
+  .process-steps {
+    justify-content: center;
+    gap: 1rem;
+    padding: 0 1rem;
+ 
+  }
+  
+ 
+  
+  .step-number {
+
+    font-size: 1rem;
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+  }
+  
+ 
+  
+  /* Process Steps */
+  .process-steps {
+
+    gap: 1rem;
+ 
+  }
+  
+
+  .step-line {
+    width: 2px;
+    height: 2rem; /* Length of the line */
+ 
+  }
+  
+  /* Step Icon */
+  .step-icon {
+    width: 50px;
+    height: 50px;
+  
+  }
+  
+
+  
+
+  .podium {
+    width: 50px;
+    height: 20px;
+   
+  }
+  
+  /* Step Description */
+  .step-description {
+    font-size: 0.5rem;
+    
+  }
+  
+ 
 }
