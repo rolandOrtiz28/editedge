@@ -32,61 +32,18 @@
     <!-- Particles.js -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 
+    <link rel="stylesheet" href="/stylesheet/boilerplate.css">
     <!-- Custom CSS -->
-    <style>
-        body {
-            font-family: 'Nunito', sans-serif;
-            background: #101010 !important;
-            color: #fff;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-        }
-
-        html, body {
-            height: 100%;
-            overflow-x: hidden;
-            scrollbar-width: none; /* Hide scrollbar in Firefox */
-        }
-
-        body {
-    -ms-overflow-style: none; /* Hide scrollbar in IE and Edge */
-}
-
-body::-webkit-scrollbar {
-    display: none; /* Hide scrollbar in Chrome, Safari, and Edge */
-}
-
-        #particles-js {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-
-        header {
-            position: fixed; /* Make the header fixed */
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1050; /* Ensure it's on top of other content */
-        }
-
-        main {
-            margin-top: 70px; /* Add margin to offset the fixed navbar */
-        }
-
-        footer {
-            margin-top: 50px;
-        }
-    </style>
+  
 </head>
 <body>
     <!-- Particles Background -->
     <div id="particles-js"></div>
-
+    <div id="loader" class="loader">
+        <img src="/images/logo.png" alt="Loading..." class="loader-logo" />
+      </div>
+      
+      
     <!-- Header -->
     <header>
         <%- include('../partials/navbar') %>
@@ -96,7 +53,7 @@ body::-webkit-scrollbar {
     <main class="container-fluid">
         <%- include('../partials/flash') %>
         <%- body %>
-    </main>
+    </main id="content" style="visibility: hidden; opacity: 0; transition: opacity 0.5s ease;">
 
     <!-- Footer -->
     <footer>
@@ -109,24 +66,9 @@ body::-webkit-scrollbar {
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/00e4d50ddc.js" crossorigin="anonymous"></script>
 
-    <!-- Particles.js Configuration -->
-    <script>
-        particlesJS("particles-js", {
-            particles: {
-                number: { value: 160, density: { enable: true, value_area: 800 } },
-                color: { value: "#ffffff" },
-                shape: { type: "circle" },
-                opacity: { value: 0.2, random: true },
-                size: { value: 3, random: true },
-                line_linked: { enable: false },
-                move: { enable: true, speed: 1, direction: "none", random: true, out_mode: "out" }
-            },
-            interactivity: {
-                events: { onhover: { enable: true, mode: "bubble" }, onclick: { enable: true, mode: "repulse" } },
-                modes: { bubble: { distance: 250, duration: 2 }, repulse: { distance: 400 } }
-            },
-            retina_detect: true
-        });
-    </script>
+
+   
+
+    <script src="/javascript/boilerplate.js"></script>
 </body>
 </html>

@@ -175,42 +175,10 @@ const contactSchema = Joi.object({
 
 
   app.get('/', (req, res) => {
-    
-    res.render('home/home');
+
+    res.render('home/home', { currentRoute: '/' });
 });
 
-app.post('/subs', catchAsync(async (req, res) => {
-    // Validate the email against the schema
-    const { error } = subscriptionSchema.validate(req.body);
-    
-    if (error) {
-      // Return an error message if validation fails
-      req.flash('error', 'Please provide a valid email address.');
-      return res.redirect('/');
-    }
-  
-    // Sanitize the email input
-    const email = req.body.email.trim();
-  
-    // Check if the email is already subscribed
-    const existingEmail = await Subscriber.findOne({ email });
-    if (existingEmail) {
-      req.flash('success', 'You are already subscribed!');
-      return res.redirect('/');
-    }
-  
-    // Save the new subscriber
-    const subscriber = new Subscriber({ email });
-    await subscriber.save();
-  
-    req.flash('success', 'Thank you for subscribing!');
-    res.redirect('/');
-  }));
-
-app.get('/subscribers', catchAsync(async (req, res) => {
-    const subscribers = await Subscriber.find({});
-    res.render('subscribers/list', { subscribers });
-}));
 
 app.post('/send', catchAsync(async (req, res) => {
   // Validate the request data against the schema
@@ -245,7 +213,8 @@ app.post('/send', catchAsync(async (req, res) => {
 
   await transporter.sendMail(mailOptions);
 
-  res.json({ message: "Thank you for your message! We'll get back to you faster than a cat chasing a laser pointer!" });
+  req.flash('success', 'Thank you for your message! We\'ll get back to you very soon.');
+  res.redirect('/');
 }));
 
 app.use('/', serviceRoute)

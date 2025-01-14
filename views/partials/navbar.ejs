@@ -28,12 +28,13 @@
 
     <!-- Navbar Links -->
     <div class="collapse navbar-collapse" id="navbarNav">
+      <% if (currentRoute === '/') { %> <!-- Render links only on home page -->
       <ul class="navbar-nav mx-auto">
         <li class="nav-item">
-          <a class="nav-link text-secondary" href="#">Our Work</a>
+          <a class="nav-link text-secondary" href="#partners">Partners</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-secondary" href="#">What We Offer</a>
+          <a class="nav-link text-secondary" href="#whychooseus">About</a>
         </li>
         <li class="nav-item dropdown">
           <a
@@ -72,10 +73,10 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-secondary" href="#">Reach Out</a>
+          <a class="nav-link text-secondary" href="#contact">Reach Out</a>
         </li>
       </ul>
-
+      <% } %>
       <!-- Get a Quote Button -->
       <button type="button" class="qoute-button ms-auto mb-2">
         <div class="qoute-button-top"><a href="/quotation">Get A Qoute</a></div>

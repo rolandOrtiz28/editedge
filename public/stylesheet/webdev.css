@@ -169,7 +169,7 @@
   /* Process Section */
 .process-section {
   color: white;
-  height: 50vh;
+  height: 70vh;
 padding: 2rem;
 }
 
@@ -302,54 +302,64 @@ padding: 2rem;
 .image-examples-section {
   padding: 2rem 1rem;
   background-color: #101010; /* Matches the page background */
-}
-
-.project-card {
-  background-color: #181818;
-  border-radius: 12px;
-  border: none;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  width: 100%; /* Adjust width for consistent layout */
-  margin: 0.5rem; /* Add margin for spacing */
-  transform: scale(0.95); /* Default size slightly reduced */
-  transition: all 0.3s ease-in-out; /* Smooth hover effect */
+}
+/* Set a consistent width and height for the cards */
+.custom-card {
+  width: 16rem; /* Reduce the width */
+  height: 24rem; /* Ensure uniform height */
+  background-color: #181818;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out;
 }
 
-.project-card:hover {
-  transform: scale(1); /* Slight zoom on hover */
+
+
+.custom-card:hover {
+  transform: scale(1.05); /* Slight zoom on hover */
 }
 
-.project-image {
-  width: 100%;
-  height: auto;
+/* Card Image */
+.card-img-top {
+  height: 9rem; /* Adjust height for consistent appearance */
   object-fit: cover;
-  border-radius: 12px 12px 0 0; /* Rounded top corners */
+  border-radius: 0.25rem 0.25rem 0 0;
 }
 
-.card-body {
-  text-align: center;
-  color: white;
-  padding: 1rem;
-}
-
+/* Text and Buttons */
 .card-title {
-  font-size: 1.2rem;
+  color: white;
+  font-size: 1.1rem;
   font-weight: bold;
-  margin-bottom: 0.5rem;
 }
 
 .card-text {
-  font-size: 1rem;
   color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  overflow: hidden; /* Ensures no overflow */
+  text-overflow: ellipsis; /* Adds "..." at the end */
+  display: -webkit-box; /* Use WebKit box model */
+ 
+  -webkit-box-orient: vertical; /* Define the box orientation */
 }
 
-.card-title a{
-  color:#ff007f ;
+
+
+.btn-primary {
+  background-color: #ff007f;
+  border: none;
 }
+
+.btn-primary:hover {
+  background-color: #ff4c99;
+  color: white;
+}
+
 
 
 
@@ -380,7 +390,9 @@ h2 {
 
 /* Adjust for screens smaller than 1629px */
 @media (max-width: 1629px) {
- 
+  .text{
+    font-size: 3rem;
+  }
 }
 
 /* Adjust for screens smaller than 1422px */
@@ -427,7 +439,9 @@ h2 {
     width: 300px;
   }
 
-
+  .process-section{
+    height: 50vh;
+  }
   .horizontal-line{
 top: 50px;
     height: 2px;

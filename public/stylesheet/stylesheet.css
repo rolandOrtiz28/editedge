@@ -3,17 +3,11 @@
 #main{
 width: 100vw;
 height: 95vh;
-
 }
 
-/* h1 {
-  font-size: 5rem;
-  font-weight: 700;
-  color: white;
-  display: flex; 
-  flex-wrap: nowrap;
-  align-items: center;
-} */
+section {
+  scroll-margin-top: 60px !important; /* Adjust this value to match your navbar height */
+}
 
 #main h2 {
   position: relative;
@@ -345,10 +339,11 @@ width: 100%;
   border-top: 2px solid rgba(255, 255, 255, 0.418);
   border-radius: 20px;
   overflow: hidden;
+  scroll-margin-top: 1000px !important;
 }
 
 .customer-logos-header h3 {
-  font-size: 2rem;
+  font-size: 6rem;
   color: #fff;
   margin-bottom: 10px;
 }
@@ -360,15 +355,16 @@ width: 100%;
 }
 
 /* Individual Customer Logos */
-.customer-icon {
-  font-size: 4rem; /* Maintain consistent logo size */
-  color: rgba(255, 255, 255, 0.8);
+.logos-grid img {
+  width: 15rem; /* Maintain consistent logo size */
+  filter: grayscale(90%);
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .customer-icon:hover {
   transform: scale(1.2);
   opacity: 1;
+  filter: grayscale(0);
 }
 
 /* Spotlight Effect */
@@ -508,7 +504,7 @@ width: 100%;
 
 /* Circular Background for Icons */
 .circle-bg {
-  background-color: #ff0080;
+  background-color: rgb(255, 0, 128);
   width: 250px;
   height: 100px;
   border-radius: 50%;
@@ -1056,7 +1052,197 @@ padding-right:0;
   }
 }
 
+/* our team section */
+.our-team-section {
+  background-color: #101010;
+  color: white;
+  padding: 50px 20px;
+  border-top: 2px solid rgba(255, 255, 255, 0.418);
+  border-radius: 20px;
+}
 
+
+.section-title {
+  font-size: 6rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.team-cards {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px; /* Space between the cards */
+  margin: 40px 0;
+}
+
+.cards {
+  --background: linear-gradient(to left, rgba(255, 0, 127, 0.5) 70%, rgba(255, 255, 255, 0.6) 100%);
+  width: 320px; /* Card width */
+  height: 420px; /* Card height */
+  padding: 5px;
+  border-radius: 1rem;
+  overflow: visible;
+  background: var(--background); /* Fallback background */
+  position: relative; /* Required for pseudo-element positioning */
+  z-index: 1;
+  transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cards::after {
+  position: absolute;
+  content: "";
+  top: 20px;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  transform: scale(0.9);
+  filter: blur(25px);
+  background: #FF007F;
+  background: var(--background);
+  transition: opacity .5s;
+ }
+
+.cards-info {
+  --color: #181818;
+  background: var(--color);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 0.7rem;
+  text-align: center;
+  position: relative; /* Ensure correct stacking order */
+  z-index: 2; /* Ensure it's above the `::after` */
+}
+
+
+
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 1.5rem;
+}
+
+.card-image {
+  width: 200px; /* Larger image */
+  height: 200px; /* Maintain aspect ratio */
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+  transition: transform 1s ease-in-out;
+}
+
+.cards .name {
+  font-size: 1.1rem; /* Increase font size */
+  font-weight: bold;
+  margin: 0;
+}
+
+
+.cards .position {
+  font-size: 0.9rem; /* Slightly larger position text */
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+.cards .description {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  display: none;
+  margin-top: 10px;
+}
+
+/* Shared styles for name, position, and description */
+.cards .name,
+.cards .position,
+.cards .description {
+
+  transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out;
+}
+
+.cards .name,
+.cards .position {
+  opacity: 1;
+  visibility: visible;
+}
+
+.cards .description {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Hover Effects */
+.cards:hover {
+  transform: scale(1.05);
+}
+
+.cards:hover .card-image {
+  transform: scale(.8);
+}
+
+.cards:hover .description {
+display: block;
+  color: #FF007F;
+  opacity: 1; /* Fade in */
+  visibility: visible; /* Make it visible after fading */
+}
+
+
+
+.cards:hover::after {
+  opacity: 0;
+ }
+ 
+
+@media (max-width: 768px) {
+  
+
+  .team-cards {
+    flex-direction: column;
+    gap: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cards {
+    width: 70%;
+    height: 100%;
+    max-width: 300px;
+    margin-top: 1rem;
+  }
+  .card-image{
+    width: 100px; /* Larger image */
+  height: 100px; /* Maintain aspect ratio */
+  margin-top: 1rem;
+  }
+
+  .cards:hover .description{
+    font-size: 10px;
+  }
+}
+
+
+ 
 
 /* Project gallery */
 .project-gallery {
@@ -1479,7 +1665,7 @@ border-radius: 20px;
     .review {
       height: 200px;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       justify-content: center;
       align-items: center;
       text-align: center;
@@ -1491,6 +1677,20 @@ border-radius: 20px;
       border-right: 2px solid rgb(255, 255, 255, 0.4);
       margin-bottom: 20px; /* Spacing between reviews */
       box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .review-image {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 15px;
+    }
+    
+    .review-content {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
     }
   
     .review p {
@@ -1552,9 +1752,19 @@ border-radius: 20px;
     height: 60%;
   }
   .review p{
-    font-size: .6rem;
+    font-size: .4rem;
   }
   .review span{
-    font-size: .6rem;
+    font-size: .3rem;
+  }
+
+  .review img{
+    width: 30px;
+    height: 30px;
+    margin-bottom: 1rem;
+  }
+  .review{
+    flex-direction: column;
+    width: 100px;
   }
 }

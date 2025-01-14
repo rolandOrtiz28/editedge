@@ -168,7 +168,7 @@
   /* Process Section */
 .process-section {
   color: white;
-  height: 50vh;
+  height: 70vh;
 padding: 2rem;
 }
 
@@ -392,7 +392,9 @@ h2 {
 
 /* Adjust for screens smaller than 1629px */
 @media (max-width: 1629px) {
- 
+  .text{
+    font-size: 3rem;
+  }
 }
 
 /* Adjust for screens smaller than 1422px */
@@ -425,35 +427,25 @@ h2 {
   .text{
     font-size: 1.5rem;
   }
-
-
   .introduction .lead{
     font-size: .8rem;
   }
-
   .video-links{
     margin-bottom: 1.5rem;
   }
-
   .image-container .floating-image{
     width: 300px;
   }
-
   .horizontal-line{
     top: 50px;
         height: 2px;
       }
-
-
   .process-steps {
     justify-content: center;
     gap: 1rem;
     padding: 0 1rem;
  
   }
-  
- 
-  
   .step-number {
 
     font-size: 1rem;
@@ -461,16 +453,13 @@ h2 {
     height: 2rem;
     line-height: 2rem;
   }
-  
- 
-  
+
   /* Process Steps */
   .process-steps {
 
     gap: 1rem;
  
   }
-  
 
   .step-line {
     width: 2px;
@@ -485,7 +474,9 @@ h2 {
   
   }
   
-
+  .process-section{
+    height: 50vh;
+  }
   
 
   .podium {

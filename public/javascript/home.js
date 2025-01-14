@@ -192,3 +192,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 7000 + columnIndex * 500); // Add staggered delay per column
   });
 }); 
+

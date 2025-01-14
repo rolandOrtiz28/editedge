@@ -169,8 +169,9 @@ top:0;
   /* Process Section */
 .process-section {
   color: white;
-  height: 50vh;
+  height: 70vh;
 padding: 2rem;
+
 }
 
 
@@ -247,6 +248,7 @@ padding: 2rem;
   margin-top: 2rem;
   position: relative;
   z-index: 1;
+
 }
 
 /* Other Styles... (unchanged) */
@@ -300,6 +302,7 @@ padding: 2rem;
 
 /* Video Examples Section */
 .video-examples-section {
+ 
   padding: 2rem 1rem;
   background-color: #101010; /* Matches the page background */
 }
@@ -389,7 +392,9 @@ h2 {
 
 /* Adjust for screens smaller than 1629px */
 @media (max-width: 1629px) {
- 
+  .text{
+    font-size: 3rem;
+  }
 }
 
 /* Adjust for screens smaller than 1422px */
@@ -446,7 +451,9 @@ h2 {
     padding: 0 1rem;
  
   }
-  
+  .process-section{
+    height: 50vh;
+  } 
   
   .step-number {
 

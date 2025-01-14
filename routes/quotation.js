@@ -8,7 +8,7 @@ const upload = multer({ storage }); // Initialize Multer with Cloudinary storage
 
 // Render the quotation form
 router.get('/quotation', (req, res) => {
-    res.render('quotation/form');
+    res.render('quotation/form', { currentRoute: '/quotation' });
 });
 
 // Handle form submission
@@ -72,7 +72,7 @@ router.get('/quotation/requests', async (req, res) => {
     } catch (err) {
         console.error(err);
         req.flash('error', 'Failed to fetch quotation requests.');
-        res.redirect('/');
+        res.redirect('/', { currentRoute: '/quotation/requests' });
     }
 });
 
@@ -91,7 +91,7 @@ router.get('/quotation/requests/:id', async (req, res) => {
     } catch (err) {
         console.error(err);
         req.flash('error', 'Failed to fetch the quotation.');
-        res.redirect('/quotation/requests');
+        res.redirect('/quotation/requests', { currentRoute: '/quotation/requests/:id' });
     }
 });
 

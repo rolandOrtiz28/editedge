@@ -109,15 +109,23 @@
     gap: 15px;
 }
 
+.footer-right .social-icons {
+    display: flex;
+    justify-content: center; /* Align icons in the center horizontally */
+    gap: 20px; /* Add spacing between icons */
+    margin-top: 10px;
+}
+
 .social-icon {
-    font-size: 18px;
+    font-size: 50px; /* Increase icon size */
     color: #cccccc;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .social-icon:hover {
-    color: #ffffff;
+    color: #FF007F;
+    transform: scale(1.2); /* Slightly enlarge the icon on hover */
 }
 
 .footer-bottom {
@@ -155,7 +163,7 @@
     }
 
     .social-icon {
-        font-size: 16px; /* Adjust icon size */
+        font-size: 25px; /* Adjust icon size */
     }
 }
 

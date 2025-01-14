@@ -1,12 +1,12 @@
-<% if (success && success.length) {%>
-    <div class="alert alert-success alert-dismissible fade show border-0" role="alert">
+<% if (success && success.length) { %>
+    <div class="alert alert-success alert-dismissible fade show border-0" role="alert" style="position: relative; margin-top: 7rem !important; z-index: 1203;">
         <%= success %>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="position: absolute; top: -20px; right: 10px;"></button>
     </div>
-    <% } %>
-        <% if (error && error.length) {%>
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <%= error %>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            <% } %>
+<% } %>
+<% if (error && error.length) { %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" style="position: relative; margin-top: 2rem;">
+        <%= error %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="position: absolute; top: -20px; right: 10px;"></button>
+    </div>
+<% } %>
