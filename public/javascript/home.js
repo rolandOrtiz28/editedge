@@ -96,6 +96,7 @@ gsap.utils.toArray(".infographic-item").forEach((item, index) => {
   });
 });
 // GSAP animations for gallery
+// Smooth fade-in and zoom for individual gallery images
 gsap.utils.toArray(".gallery-column img").forEach((img) => {
   gsap.fromTo(
     img,
@@ -103,37 +104,35 @@ gsap.utils.toArray(".gallery-column img").forEach((img) => {
     {
       opacity: 1,
       scale: 1,
-      duration: 1,
-      ease: "power2.out",
+      duration: 1.2, // Increased duration for smoother animation
+      ease: "power1.out", // Smoother easing
       scrollTrigger: {
         trigger: img,
         start: "top 90%",
+        end: "top 60%", // Added an end trigger for better control
         toggleActions: "play none none none",
       },
     }
   );
 });
 
-// Smooth zoom for the entire project gallery
-gsap.to(".project-gallery", {
-  scale: 0.8,
-  scrollTrigger: {
-    trigger: ".project-gallery",
-    start: "top 80%",
-    end: "bottom 20%",
-    scrub: true,
-  },
-});
+// Unified smooth zoom for the entire project gallery
+gsap.fromTo(
+  ".project-gallery",
+  { scale: 0.8 }, // Start zoomed-out state
+  {
+    scale: 1, // Zoom back to normal
+    duration: 2, // Gradual zoom over longer duration
+    ease: "power1.inOut", // Smooth easing in both directions
+    scrollTrigger: {
+      trigger: ".project-gallery",
+      start: "top 80%",
+      end: "bottom 20%",
+      scrub: true, // Enable scrub for scroll-synced zoom
+    },
+  }
+);
 
-gsap.to(".project-gallery", {
-  scale: 1,
-  scrollTrigger: {
-    trigger: ".project-gallery",
-    start: "bottom 80%",
-    end: "top 20%",
-    scrub: true,
-  },
-});
 
 // Pause scrolling on hover
 document.querySelectorAll(".gallery-column").forEach((column) => {
@@ -192,4 +191,226 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 7000 + columnIndex * 500); // Add staggered delay per column
   });
 }); 
+
+gsap.registerPlugin(ScrollTrigger);
+
+// Animate logos with scrub enabled
+gsap.fromTo(
+  ".logos-grid img",
+  {
+    opacity: 0,
+    scale: 0.8,
+  },
+  {
+    opacity: 1,
+    scale: 1,
+    stagger: 0.3,
+    duration: 1,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: ".customer-logos-section",
+      start: "top 90%", // Adjust trigger point for better visibility
+      end: "bottom 60%",
+      scrub: true, // Enable scrub for smooth scrolling
+     
+    },
+  }
+);
+gsap.fromTo(
+  ".customer-logos-header",
+  {
+    opacity: 0,
+    scale: 0.8,
+  },
+  {
+    opacity: 1,
+    scale: 1,
+    stagger: 0.3,
+    duration: 1,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: ".customer-logos-section",
+      start: "top 90%", // Adjust trigger point for better visibility
+      end: "bottom 60%",
+      scrub: true, // Enable scrub for smooth scrolling
+    
+    },
+  }
+);
+
+// Whychooseus
+gsap.fromTo(
+  ".whychooseus-section .caption",
+  {
+    opacity: 0,
+    scale: 0.8,
+  },
+  {
+    opacity: 1,
+    scale: 1,
+    stagger: 0.3,
+    duration: 0.8,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: ".whychooseus-section",
+      start: "top 90%", // Adjust trigger point for better visibility
+      end: "bottom 60%",
+      scrub: true, // Enable scrub for smooth scrolling
+     
+    },
+  }
+);
+gsap.fromTo(
+  ".whychooseus-section .caption",
+  {
+    opacity: 0,
+    scale: 0.8,
+  },
+  {
+    opacity: 1,
+    scale: 1,
+    stagger: 0.3,
+    duration: 0.8,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: ".whychooseus-section",
+      start: "top 90%", // Adjust trigger point for better visibility
+      end: "bottom 60%",
+      scrub: true, // Enable scrub for smooth scrolling
+    
+    },
+  }
+);
+
+// offersection
+gsap.fromTo(
+  ".services-section .caption2",
+  {
+    opacity: 0,
+    scale: 0.8,
+  },
+  {
+    opacity: 1,
+    scale: 1,
+    stagger: 0.3,
+    duration: 0.8,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: ".services-section",
+      start: "top 90%", // Adjust trigger point for better visibility
+      end: "bottom 60%",
+      scrub: true, // Enable scrub for smooth scrolling
+     
+    },
+  }
+);
+gsap.fromTo(
+  ".services-section .caption2",
+  {
+    opacity: 0,
+    scale: 0.8,
+  },
+  {
+    opacity: 1,
+    scale: 1,
+    stagger: 0.3,
+    duration: 0.8,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: ".services-section",
+      start: "top 90%", // Adjust trigger point for better visibility
+      end: "bottom 60%",
+      scrub: true, // Enable scrub for smooth scrolling
+    
+    },
+  }
+);
+
+
+gsap.from(".team-cards .cards", {
+  y: 50,
+  opacity: 0,
+  stagger: 0.3,
+  duration: 1,
+  ease: "power2.out",
+  scrollTrigger: {
+    trigger: ".our-team-section",
+    start: "top 80%",
+    end: "bottom 20%",
+    scrub: true, // Enable scrub for smooth scrolling animation
+  },
+});
+
+gsap.from(".services-container .glass", {
+  y: 50,
+  opacity: 0,
+  stagger: 0.3,
+  duration: 1,
+  ease: "power2.out",
+  scrollTrigger: {
+    trigger: ".glass",
+    start: "top 80%",
+    end: "top 50%",
+    scrub: true, // Enable scrub for smooth scrolling animation
+  },
+});
+
+gsap.from(".our-team-section .our-team-caption", {
+  y: 50,
+  opacity: 0,
+  stagger: 0.3,
+  duration: 1,
+  ease: "power2.out",
+  scrollTrigger: {
+    trigger: ".our-team-section",
+    start: "top 80%",
+    end: "top 50%",
+    scrub: true, // Enable scrub for smooth scrolling animation
+  },
+});
+
+
+// offersection
+gsap.fromTo(
+  ".project-gallery",
+  {
+    opacity: 0,
+    
+  },
+  {
+    opacity: 1,
+    
+    stagger: 0.3,
+    duration: 0.8,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: ".project-gallery",
+      start: "top 90%", // Adjust trigger point for better visibility
+      end: "bottom 60%",
+      scrub: true, // Enable scrub for smooth scrolling
+     
+    },
+  }
+);
+gsap.fromTo(
+  ".project-gallery",
+  {
+    opacity: 0,
+    
+  },
+  {
+    opacity: 1,
+    
+    stagger: 0.3,
+    duration: 0.8,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: ".project-gallery",
+      start: "top 90%", // Adjust trigger point for better visibility
+      end: "bottom 60%",
+      scrub: true, // Enable scrub for smooth scrolling
+    
+    },
+  }
+);
 

@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   particlesJS("particles-js", {
     particles: {
         number: { value: 160, density: { enable: true, value_area: 800 } },
-        color: { value: "#ffffff" },
+        color: { value: "#C7F464" },
         shape: { type: "circle" },
         opacity: { value: 0.2, random: true },
         size: { value: 3, random: true },
