@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:900&display=swap");
 
+/* MAIN */
 #main{
 width: 100vw;
 height: 95vh;
@@ -64,22 +65,21 @@ section {
   height: auto;
   max-width: 550%;
   object-fit: cover;
-  z-index: -2; /* Moves the video further back */
+  z-index: -2;
   position: relative;
   left: -15%;
   opacity: 1;
 }
 
-
 #canvas {
-  position: fixed; /* Fixed to viewport */
-  top: 50%; /* Center vertically */
-  left: 50%; /* Center horizontally */
-  transform: translate(-50%, -50%); /* Align with the video */
-  width: 70%; /* Match video width */
-  height: auto; /* Maintain aspect ratio */
-  z-index: 5; /* Place it between video and other elements */
-  pointer-events: none; /* Disable interactions with the canvas */
+  position: fixed; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%);
+  width: 70%;
+  height: auto; 
+  z-index: 5; 
+  pointer-events: none;
 }
 .blob1 {
   position: absolute;
@@ -121,117 +121,88 @@ section {
   position: absolute;
 }
 
-
-
-/* Hover Effect: Mimics Keycap Press */
 .button:hover {
-    transform: translateY(2px) scale(0.97); /* Scales down slightly */
+    transform: translateY(2px) scale(0.97); 
     box-shadow: 0px 2px 10px rgba(255, 255, 255, 0.3), 0px 1px 5px rgba(0, 0, 0, 0.4);
 }
 .button:active {
-    transform: translateY(4px) scale(0.95); /* Further scales down on click */
+    transform: translateY(4px) scale(0.95);
     box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.6);
 }
 .inner:hover {
     background: radial-gradient(circle 80px at 50% -10%, #888888, #181b1b);
 }
 
-
-
-
-
-/* Align button and other text properly */
 button {
     margin-top: 20px;
 }
-
-/* Flex alignment */
 .col-lg-6 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start; /* Align text to the left */
+    align-items: flex-start;
 }
-
 .col-lg-6.d-flex {
     justify-content: center;
     align-items: center;
-    height: 100%; /* Ensure it occupies full column height */
+    height: 100%; 
 }
-
-
 .content-layer .row {
-    height: 100%; /* Ensure row height matches the container */
+    height: 100%; 
 }
-
-
-
-
-
-/* Styling for the H1 */
 .text-container {
   display: flex;
-  flex-direction: column; /* Align the lines vertically */
+  flex-direction: column;
   font-size: 5rem;
   font-weight: 700;
   color: white;
 }
-
 .line-1 {
-  display: flex; /* Keep "Creative" and the animated text inline */
-  align-items: start; /* Vertically align the text */
+  display: flex;
+  align-items: start;
 }
-
 .line-2 {
-  font-size: 4rem; /* Slightly smaller for better visual hierarchy */
- 
+  font-size: 4rem; 
 }
-
 .animated-text {
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
-  border-right: 2px solid white; /* Cursor effect */
-  width: 8.5ch; /* Fixed width to prevent layout shifting */
+  border-right: 2px solid white;
+  width: 8.5ch; 
   text-align: left;
   position: relative;
 }
 
-/* Typing Effect */
+
 @keyframes typing {
   from {
     width: 0;
   }
   to {
-    width: 8.5ch; /* Adjust for "Excellence" length */
+    width: 8.5ch;
   }
 }
 
-/* Erasing Effect */
 @keyframes erasing {
   from {
-    width: 8.5ch; /* Matches "Adequacy" */
+    width: 8.5ch; 
   }
   to {
     width: 0;
   }
 }
 
-/* Typing Animation */
 .animated-text.typing {
   animation: typing 2s steps(9, end) forwards;
 }
 
-/* Erasing Animation */
 .animated-text.erasing {
   animation: erasing 2s steps(9, end) forwards;
 }
 
-
- 
-/* Responsive font sizes */
 @media (max-width: 1629px) {
-/* main */
+
   .text-container,.line-2 ,.line-2  {
       font-size: 3rem;
   }
@@ -239,23 +210,19 @@ button {
 font-size: 2rem;
 width: 100%;
 }
-/* why choose us */
 
 }
 @media (max-width: 1422px) {
- /* main */
   .text-container,.line-2  {
       font-size: 3.5rem;
   }
   #main h2{
     font-size: 1.8rem;
   width: 100%;  
-  }
-  /* why choose us */
-    
+  } 
 }
 @media (max-width: 1300px) {
-  /* main */
+
   .text-container,.line-2  {
       font-size: 3.4rem;
   }
@@ -263,11 +230,9 @@ width: 100%;
     font-size: 1.6rem;
   width: 100%;  
   }
-  /* why choose us */
-    
+     
 }
 @media (max-width: 1200px) {
- /* main */
   .text-container,.line-2  {
       font-size: 3.3rem;
   }
@@ -275,12 +240,8 @@ width: 100%;
     font-size: 1.4rem;
   width: 100%;  
   }
-  /* why choose us */
-    
 }
-
 @media (max-width: 992px) {
-  /* main */
   .text-container,.line-2  {
       font-size: 3.2rem;
   }
@@ -288,12 +249,8 @@ width: 100%;
     font-size: 1.2rem;
   width: 100%;  
   }
-  /* why choose us */
-    
 }
-
 @media (max-width: 768px) {
-  /* main */
   .text-container,.line-2  {
       font-size: 3.1rem;
   }
@@ -301,12 +258,8 @@ width: 100%;
     font-size: 1.1rem;
   width: 100%;  
   }
-  /* why choose us */
-    
 }
-
 @media (max-width: 576px) {
-  /* main */
   .text-container,.line-2  {
       font-size: 3rem;
   }
@@ -317,21 +270,18 @@ width: 100%;
   .responsive-video{
     top: -25%;
   }
-  /* why choose us */
-    
 }
 
-/* Four Logos Per Row with Tighter Horizontal Spacing */
-.logos-grid {
-  display: grid;
-  grid-template-columns: repeat(4, auto); /* Automatically adjust column widths */
-  justify-content: center; /* Center-align the grid */
-  column-gap: 100px; /* Reduce horizontal gap between logos */
-  row-gap: 20px; /* Maintain proper vertical spacing */
-  align-items: center; /* Align items vertically */
-}
 
 /* Customer Logos Section */
+.logos-grid {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  justify-content: center; 
+  column-gap: 100px;
+  row-gap: 20px;
+  align-items: center;
+}
 .customer-logos-section {
   position: relative;
   padding: 50px 20px;
@@ -341,35 +291,28 @@ width: 100%;
   overflow: hidden;
   scroll-margin-top: 1000px !important;
 }
-
 .customer-logos-header h3 {
   font-size: 6rem;
   color: #fff;
   margin-bottom: 10px;
 }
-
 .customer-logos-header p {
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: 20px;
 }
-
-/* Individual Customer Logos */
 .logos-grid img {
-  width: 15rem; /* Maintain consistent logo size */
+  width: 15rem; 
   filter: grayscale(90%);
   transition: transform 0.3s ease, opacity 0.3s ease;
   display: block;
-  opacity: 1; /* Ensure they are visible */
+  opacity: 1;
 }
-
 .customer-icon:hover {
   transform: scale(1.2);
   opacity: 1;
   filter: grayscale(0);
 }
-
-/* Spotlight Effect */
 .customer-logos-section::before {
   content: "";
   position: absolute;
@@ -383,36 +326,9 @@ width: 100%;
   z-index: -1;
   pointer-events: none;
 }
-
-
-
-/* Adjust for screens smaller than 1629px */
 @media (max-width: 1629px) {
 
 }
-
-/* Adjust for screens smaller than 1422px */
-@media (max-width: 1422px) {
-  
-}
-
-/* Adjust for screens smaller than 1300px */
-@media (max-width: 1300px) {
- 
-}
-
-/* Adjust for screens smaller than 1200px */
-@media (max-width: 1200px) {
-  
-}
-
-/* Adjust for screens smaller than 992px */
-@media (max-width: 992px) {
- 
-}
-
-
-/* Adjust for screens smaller than 768px */
 @media (max-width: 768px) {
   .logos-grid{
     column-gap: 30px;
@@ -427,87 +343,71 @@ width: 100%;
 
 
 
-/* General Section Styling */
+/*Why Choose us Section */
 #whychooseus { 
-  height: 100vh;
+  height: 80vh;
   padding: 50px 20px;
   background-color: #101010;
   color: white;
-}
 
+}
 .caption {
   margin-bottom: 30px;
 }
 
-
-
-/* Styling for the "Why" heading */
 .why {
-  font-size: 10rem; /* Make "Why" larger */
+  font-size: 10rem;
   font-weight: 700;
-  line-height: 1.2; /* Adjust line height for proper spacing */
+  line-height: 1.2; 
   color: white;
-  position: relative; /* Needed for the absolute positioning of the child element */
+  position: relative; 
 }
 
-/* Styling for the "Choose us" text */
 .choose-us {
-  position: absolute; /* Align relative to "Why" */
-  bottom: -10%; /* Align with the bottom of "Why" */
-  left: 2%; /* Adjust the horizontal alignment */
-  font-size: 3rem; /* Smaller size for "Choose us" */
-  font-weight: 500; /* Slightly lighter font weight */
+  position: absolute;
+  bottom: -10%; 
+  left: 2%; 
+  font-size: 3rem;
+  font-weight: 500;
   color: white;
 }
-
-
 .caption .subtitle {
   font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.8);
   margin-top: 10px;
 }
-
-/* Infographic Layout */
 .infographic {
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 100px;
 }
-
 .infographic-row {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   width:100%;
-
 }
-
 .center-items{
   gap: 0 100px;
 }
-
 .infographic-item {
   display: flex;
   align-items: center;
   text-align: left;
   width: 70%;
 }
-
 .infographic-item h3 {
   color: white;
   font-size: 1.5rem;
   margin-bottom: 10px;
 }
-
 .infographic-item p {
   color: rgba(255, 255, 255, 0.8);
   font-size: 1rem;
   line-height: 1.6;
 }
-
-/* Circular Background for Icons */
 .circle-bg {
   background-color: rgb(255, 0, 128);
   width: 250px;
@@ -518,12 +418,10 @@ width: 100%;
   align-items: center;
   margin-right: 20px;
 }
-
 .circle-bg img {
   width: 150%;
   height: 150%;
 }
-
 .circle-bg-ce {
   background-color: #ff0080;
   width: 230px;
@@ -534,12 +432,10 @@ width: 100%;
   align-items: center;
   margin-right: 20px;
 }
-
 .circle-bg-ce img {
   width: 190%;
   height: 190%;
 }
-
 .circle-bg-td {
   background-color: #ff0080;
   width: 240px;
@@ -551,12 +447,10 @@ width: 100%;
   margin-right: 20px;
   position: relative;
 }
-
 .circle-bg-td img {
   width: 180%;
   height: 180%;
 }
-
 .circle-bg-ae {
   background-color: #ff0080;
   width: 250px;
@@ -568,12 +462,10 @@ width: 100%;
   margin-right: 20px;
   position: relative;
 }
-
 .circle-bg-ae img {
   width: 250%;
   height: 160%;
 }
-
 .circle-bg-ees {
   background-color: #ff0080;
   width: 220px;
@@ -585,32 +477,25 @@ width: 100%;
   margin-right: 20px;
   position: relative;
 }
-
 .circle-bg-ees img {
   width: 170%;
   height: 160%;
 }
- 
-
-/* svg */
 .circle-bg-ce .svg-connector-ce {
   width: 200px;
   height: 265px;
   position: absolute;
-  top: 100%; /* Center vertically */
-  left: -25%; /* Align to the right of the element */
+  top: 100%; 
+  left: -25%;
   transform: translateY(-50%);
 }
-
 .svg-connector-ce .connector-path-ce {
   fill: none;
-  stroke: rgb(255, 0, 127); /* Use your brand color */
+  stroke: rgb(255, 0, 127);
   stroke-width: 8;
   stroke-dasharray: 20, 6;
-  stroke-linecap: round; /* Smooth dashes */
+  stroke-linecap: round; 
 }
-
-
 .circle-bg-td .svg-connector-td {
   width: 300px; 
   height: 100px; 
@@ -619,17 +504,12 @@ width: 100%;
   left: 320%; 
   transform: translateY(-50%) rotate(-180deg);
 }
-
 .svg-connector-td .connector-path-td {
   fill: none; 
   stroke: rgb(255, 0, 179); 
   stroke-width: 6;
   stroke-dasharray: 20, 6; 
 }
-
-
-
-
 .circle-bg-ae .svg-connector-ae {
   width: 300px; 
   height: 150px;
@@ -638,7 +518,6 @@ width: 100%;
   left: 30%; 
   transform: translateY(-50%) rotate(-180deg); 
 }
-
 .svg-connector-ae .connector-path-ae {
   fill: none; 
   stroke: rgb(255, 0, 179); 
@@ -646,9 +525,6 @@ width: 100%;
   stroke-dasharray: 20, 6; 
 }
 
-
-
-/* Responsive adjustments for 'Why Choose Us' section */
 @media (max-width: 1629px) {
   #whychooseus .why {
     font-size: 8rem;
@@ -667,7 +543,6 @@ width: 100%;
     width: 140%;
     height: 140%;
   }
-
   .circle-bg-td .svg-connector-td{
     top: -20%; 
     left: 230%; 
@@ -695,9 +570,7 @@ padding-right: 10rem;
     width: 130%;
     height: 130%;
   }
-  
 }
-
 @media (max-width: 1300px) {
   #whychooseus h1.why {
     font-size: 8rem;
@@ -716,7 +589,6 @@ padding-right: 10rem;
     height: 120%;
   }
 }
-
 @media (max-width: 1200px) {
   #whychooseus{
 
@@ -740,7 +612,6 @@ padding-right: 10rem;
     height: 110%;
   }
 }
-
 @media (max-width: 992px) {
   #whychooseus h1.why {
     font-size: 7.3rem;
@@ -754,7 +625,6 @@ padding-right: 10rem;
   #whychooseus .infographic-item p {
     font-size: 0.7rem;
   }
- 
   .circle-bg img {
     width: 100%;
     height: 100%;
@@ -768,63 +638,46 @@ padding-right: 10rem;
     align-items: start;
     height: 100vh;
   }
-
   #whychooseus .why {
     font-size: 7rem;
     margin:0 0 1rem 1rem;
-
   }
-
   #whychooseus .choose-us {
     font-size: 2rem;
     top: 80%;
     left: 5%;
-    
   }
-
   #whychooseus .subtitle, #whychooseus .infographic-item h3 {
     font-size: 1rem;
     width: 75% !important;
     text-align: start;
-   
   }
-
   #whychooseus .infographic-item p {
     font-size: 0.85rem;
   }
- 
-  
-  /* Adjusting the circle sizes */
   .circle-bg-ce,
   .circle-bg-td,
   .circle-bg-ae,
   .circle-bg-ees {
-    width: 150px; /* Reduced size for smaller screens */
+    width: 150px; 
     height: 30px;
-   
   }
-
   .ce p{
     width: 100% !important;
   }
   .ees p{
     width: 100% !important;
   }
-
-  
   .circle-bg-td img,
   .circle-bg-ae img,
   .circle-bg-ees img {
     width: 220%; /* Ensure image scales proportionally */
     height: auto;
   }
-
   .circle-bg-ce{
     width: 170px; /* Reduced size for smaller screens */
     height:30px;
-   
   }
-
   .circle-bg-ce img{
     width: 320%; /* Ensure image scales proportionally */
     height: auto;
@@ -836,42 +689,34 @@ padding-right: 10rem;
 .center-items .info-content{
 margin-left: 0 !important;
 }
-
-  /* Ensure rows are displayed horizontally */
+ 
   .infographic-row {
-    flex-direction: column; /* Switch layout to horizontal */
-    align-items: center; /* Align items vertically */
-    justify-content: flex-start; /* Align items to the left */
+    flex-direction: column; 
+    align-items: center;
+    justify-content: flex-start; 
   }
-
   .infographic-item.ms-5 {
-    margin-left: 0 !important; /* Remove the left margin applied by ms-5 */
+    margin-left: 0 !important;
   }
-
-  /* Adjust alignment for infographic items */
   .infographic-item {
-    text-align: left; /* Align text to the left */
-    flex-direction: row; /* Keep image and content side-by-side */
-    align-items: center; /* Center items vertically */
+    text-align: left; 
+    flex-direction: row; 
+    align-items: center;
   }
 
   .infographic-item .info-content {
-    width: auto; /* Allow the content to take its natural width */
-    margin-left: 5px; /* Add spacing between the image and content */
+    width: auto; 
+    margin-left: 5px;
   }
-
-  /* Ensure "End-to-End Support" doesn't overlap */
+ 
   .infographic-row:last-child {
-    margin-bottom: 0; /* Prevent unnecessary spacing after the last row */
+    margin-bottom: 0;
   }
-
-  /* Hide SVG connector lines for mobile */
   .svg-connector-ce,
   .svg-connector-td,
   .svg-connector-ae {
     display: none !important;
   }
-
   .circle-bg-td .svg-connector-td{
     top: 0; 
     left: 0; 
@@ -881,8 +726,6 @@ padding-right:0;
 
   }
 }
-
-
 
 
 
@@ -897,15 +740,12 @@ padding-right:0;
   align-items: center;
 
 }
-
-/* From Uiverse.io by codebykay101 */
 .services-container {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .services-container .glass {
   position: relative;
   width: 280px;
@@ -922,14 +762,10 @@ padding-right:0;
   backdrop-filter: blur(10px);
   transform: rotate(calc(var(--r) * 1deg));
 }
-
 .services-container:hover .glass {
   transform: rotate(0deg);
   margin: 0 20px;
 }
-
-
-
 .services-container .glass::before {
   content: attr(data-text);
   position: absolute;
@@ -943,81 +779,62 @@ padding-right:0;
   color: #fff;
   font-size: 1.2rem;
 }
-
-
 .services-container .glass img {
-  width: 150px; /* Adjust size as needed */
+  width: 150px; 
   object-fit: contain;
-  border-radius: 8px; /* Optional: rounds the corners slightly */
+  border-radius: 8px;
 }
-
-
-
-
-/* Styling for the "Why" heading */
 .what {
-  font-size: 10rem; /* Make "Why" larger */
+  font-size: 10rem;
   font-weight: 700;
-  line-height: 1.2; /* Adjust line height for proper spacing */
+  line-height: 1.2;
   color: white;
-  position: relative; /* Needed for the absolute positioning of the child element */
+  position: relative; 
 }
-
-/* Styling for the "Choose us" text */
 .we-offer {
   position: absolute;
   top: -10%;
   left: 5%;
-  font-size: 3rem; /* Smaller size for "Choose us" */
-  font-weight: 500; /* Slightly lighter font weight */
+  font-size: 3rem; 
+  font-weight: 500;
   color: white;
 }
-
-
 .caption2 {
   display: flex;
-  flex-direction: column; /* Arrange heading and paragraph vertically */
-  justify-content: center; /* Center content vertically */
-  align-items: center; /* Center content horizontally */
-  text-align: center; /* Align text in the center */
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center; 
+  text-align: center;
   width: 100%;
-  height: 100%; /* Ensure the caption takes the full available height */
+  height: 100%;
 }
-
 .caption2 .subtitle2 {
   font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.8);
   margin-top: 5px;
-  width: 50%; /* Optional: adjust the width for better alignment */
+  width: 50%; 
   text-align: center;
 }
 
-/* Adjust for screens smaller than 1629px */
 @media (max-width: 1629px) {
 
 }
 
-/* Adjust for screens smaller than 1422px */
-@media (max-width: 1422px) {
-  
+@media (max-width: 1422px) { 
 }
 
-/* Adjust for screens smaller than 1300px */
 @media (max-width: 1300px) {
  
 }
 
-/* Adjust for screens smaller than 1200px */
 @media (max-width: 1200px) {
   
 }
 
-/* Adjust for screens smaller than 992px */
 @media (max-width: 992px) {
  
 }
 
-/* Adjust for screens smaller than 768px */
 @media (max-width: 768px) {
   #services{
     display: flex;
@@ -1040,7 +857,7 @@ padding-right:0;
     margin: 0 5px;
   }
   .services-container .glass::before {
-    font-size: 0.6rem; /* Adjust the font size for the data-text */
+    font-size: 0.6rem;
   }
 
   .what {
@@ -1058,6 +875,8 @@ padding-right:0;
   }
 }
 
+
+
 /* our team section */
 .our-team-section {
   background-color: #101010;
@@ -1065,23 +884,19 @@ padding-right:0;
   padding: 50px 20px;
   border-top: 2px solid rgba(255, 255, 255, 0.418);
   border-radius: 20px;
-  height: 100vh;
+  height: 80vh;
   
 }
-
-
 .section-title {
   font-size: 6rem;
   font-weight: 700;
   margin-bottom: 10px;
 }
-
 .section-subtitle {
   font-size: 1.2rem;
   margin-bottom: 30px;
   color: rgba(255, 255, 255, 0.7);
 }
-
 .team-cards {
   display: flex;
   justify-content: center;
@@ -1089,23 +904,21 @@ padding-right:0;
   gap: 40px; /* Space between the cards */
   margin: 40px 0;
 }
-
 .cards {
   --background: linear-gradient(to left, rgba(255, 0, 127, 0.5) 70%, rgba(255, 255, 255, 0.6) 100%);
-  width: 320px; /* Card width */
-  height: 420px; /* Card height */
+  width: 320px;
+  height: 420px;
   padding: 5px;
   border-radius: 1rem;
   overflow: visible;
-  background: var(--background); /* Fallback background */
-  position: relative; /* Required for pseudo-element positioning */
+  background: var(--background);
+  position: relative;
   z-index: 1;
   transition: transform 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 .cards::after {
   position: absolute;
   content: "";
@@ -1135,13 +948,9 @@ padding-right:0;
   overflow: hidden;
   border-radius: 0.7rem;
   text-align: center;
-  position: relative; /* Ensure correct stacking order */
-  z-index: 2; /* Ensure it's above the `::after` */
+  position: relative;
+  z-index: 2;
 }
-
-
-
-
 .card-content {
   display: flex;
   flex-direction: column;
@@ -1149,37 +958,30 @@ padding-right:0;
   gap: 10px;
   padding: 1.5rem;
 }
-
 .card-image {
-  width: 200px; /* Larger image */
-  height: 200px; /* Maintain aspect ratio */
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 10px;
   transition: transform 1s ease-in-out;
 }
-
 .cards .name {
-  font-size: 1.1rem; /* Increase font size */
+  font-size: 1.1rem; 
   font-weight: bold;
   margin: 0;
 }
-
-
 .cards .position {
-  font-size: 0.9rem; /* Slightly larger position text */
+  font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.8);
   margin: 0;
 }
-
 .cards .description {
   font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.7);
   display: none;
   margin-top: 10px;
 }
-
-/* Shared styles for name, position, and description */
 .cards .name,
 .cards .position,
 .cards .description {
@@ -1197,8 +999,6 @@ padding-right:0;
   opacity: 0;
   visibility: hidden;
 }
-
-/* Hover Effects */
 .cards:hover {
   transform: scale(1.05);
 }
@@ -1206,24 +1006,20 @@ padding-right:0;
 .cards:hover .card-image {
   transform: scale(.8);
 }
-
 .cards:hover .description {
 display: block;
   color: #FF007F;
-  opacity: 1; /* Fade in */
-  visibility: visible; /* Make it visible after fading */
+  opacity: 1; 
+  visibility: visible;
 }
-
-
-
 .cards:hover::after {
   opacity: 0;
  }
  
-
 @media (max-width: 768px) {
-  
-
+  .our-team-section{
+    height: 100vh;
+  }
   .team-cards {
     flex-direction: column;
     gap: 15px;
@@ -1258,8 +1054,8 @@ display: block;
 /* Project gallery */
 .project-gallery {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Four columns */
-  gap: 1rem; /* Add spacing between columns */
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 1rem;
   width: 100%;
   height: 100vh;
   overflow: hidden;
@@ -1280,8 +1076,8 @@ display: block;
 
 .gallery-column img {
   width: 100%;
-  height: auto; /* Maintain aspect ratio */
-  object-fit: cover; /* Ensure the images fill their grid areas */
+  height: auto; 
+  object-fit: cover;
   border-radius: 10px;
   
 }
@@ -1289,8 +1085,11 @@ display: block;
 .gallery-column img:hover {
   filter: grayscale(100%);
 }
-
-
+@media (max-width: 1629px) {
+  .project-gallery{
+    height: 70vh;
+  }
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -1300,22 +1099,176 @@ display: block;
   }
 }
 
+    /* Review Section */
 
+#reviews {
+      padding: 2rem;
+      background-color: #101010;
+      color: white;
+      text-align: center;
+      height: 60vh;
+      
+    }
 
-#aboutus {
-  background-color: #101010;
+.what-our {
+  font-size: 10rem; /* Make "Why" larger */
+  font-weight: 700;
+  line-height: 1.2; /* Adjust line height for proper spacing */
   color: white;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
+  position: relative; /* Needed for the absolute positioning of the child element */
 }
 
-#aboutus video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+/* Styling for the "Choose us" text */
+.client {
+  position: absolute;
+  top: 7%;
+  left: 55%;
+  font-size: 4rem; /* Smaller size for "Choose us" */
+  font-weight: 500; /* Slightly lighter font weight */
+  color: white;
+}
+
+  
+    .reviews-container {
+      display: grid;
+      justify-content: center;
+      align-items: center;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+      overflow: hidden;
+      height: 50%;
+      
+    }
+  
+    .review-column {
+      position: relative;
+      overflow: hidden;
+      height: 220px; /* Adjust for review height + spacing */
+    }
+  
+    .reviews-wrapper {
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.8s ease;
+    }
+  
+    .review {
+      height: 200px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: #101010;
+      border-radius: 10px;
+      padding: 1rem;
+      border-top: 2px solid rgb(255, 255, 255, 0.4);
+      border-left: 2px solid rgb(255, 255, 255, 0.4);
+      border-right: 2px solid rgb(255, 255, 255, 0.4);
+      margin-bottom: 20px; /* Spacing between reviews */
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .review-image {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 15px;
+    }
+    
+    .review-content {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+  
+    .review p {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+  
+    .review span {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    .short-description {
+      font-size: 1rem;
+      color: #666;
+      margin-top: 10px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 60%; /* Adjust the width as needed */
+      text-align: center;
+    }
+
+/* Adjust for screens smaller than 1629px */
+@media (max-width: 1629px) {
+  #reviews{
+    margin-bottom: 30px;
+  }
+}
+
+/* Adjust for screens smaller than 1422px */
+@media (max-width: 1422px) {
+  
+}
+
+/* Adjust for screens smaller than 1300px */
+@media (max-width: 1300px) {
+ 
+}
+
+/* Adjust for screens smaller than 1200px */
+@media (max-width: 1200px) {
+  
+}
+
+/* Adjust for screens smaller than 992px */
+@media (max-width: 992px) {
+ 
+}
+
+
+/* Adjust for screens smaller than 768px */
+@media (max-width: 768px) {
+  #reviews{
+  
+    height: 60vh;
+  }
+  .short-description{
+    font-size:.4 ;
+    width: 100%;
+  }
+  .what-our {
+    font-size:4rem;
+  }
+  .client  {
+    font-size:2rem;
+    top: -4%;
+    left: 58%;
+  }
+  .reviews-container{
+    margin-top: 0;
+    height: 60%;
+  }
+  .review p{
+    font-size: .4rem;
+  }
+  .review span{
+    font-size: .3rem;
+  }
+
+  .review img{
+    width: 30px;
+    height: 30px;
+    margin-bottom: 1rem;
+  }
+  .review{
+    flex-direction: column;
+    width: 100px;
+  }
 }
 
 
@@ -1329,7 +1282,6 @@ display: block;
   
   }
   
- 
   .connect {
     font-size: 8rem; /* Make "Why" larger */
     font-weight: 700;
@@ -1338,7 +1290,7 @@ display: block;
     position: relative; /* Needed for the absolute positioning of the child element */
   }
   
-  /* Styling for the "Choose us" text */
+
   .with-us {
     position: absolute; /* Align relative to "Why" */
     bottom: -10%; /* Align with the bottom of "Why" */
@@ -1347,9 +1299,6 @@ display: block;
     font-weight: 500; /* Slightly lighter font weight */
     color: white;
   }
-
-
-  
   .contact .info {
       border-top: 3px solid #FF007F;
       border-bottom: 3px solid #FF007F;
@@ -1553,38 +1502,37 @@ border-radius: 20px;
       }
     }
 
-    
-
-/* Adjust for screens smaller than 1629px */
 @media (max-width: 1629px) {
  
   .contact .php-email-form textarea{
     height: 150px;
   }
+  .contact .info{
+    height: 550px;
+  }
+
+  .info .maps{
+
+    height: 40%;
+  }
 }
 
-/* Adjust for screens smaller than 1422px */
 @media (max-width: 1422px) {
   
 }
 
-/* Adjust for screens smaller than 1300px */
 @media (max-width: 1300px) {
  
 }
 
-/* Adjust for screens smaller than 1200px */
 @media (max-width: 1200px) {
   
 }
 
-/* Adjust for screens smaller than 992px */
 @media (max-width: 992px) {
  
 }
 
-
-/* Adjust for screens smaller than 768px */
 @media (max-width: 768px) {
   #contact{
    margin-bottom: 5rem;
@@ -1623,179 +1571,5 @@ border-radius: 20px;
   .contact .info{
     height: 250px;
   
-  }
-}
-
-
-    /* Review Section */
-
-    #reviews {
-      padding: 2rem;
-      background-color: #101010;
-      color: white;
-      text-align: center;
-      height: 100vh;
-      
-    }
-
-    /* Styling for the "Why" heading */
-.what-our {
-  font-size: 10rem; /* Make "Why" larger */
-  font-weight: 700;
-  line-height: 1.2; /* Adjust line height for proper spacing */
-  color: white;
-  position: relative; /* Needed for the absolute positioning of the child element */
-}
-
-/* Styling for the "Choose us" text */
-.client {
-  position: absolute;
-  top: 7%;
-  left: 55%;
-  font-size: 4rem; /* Smaller size for "Choose us" */
-  font-weight: 500; /* Slightly lighter font weight */
-  color: white;
-}
-
-  
-    .reviews-container {
-      display: grid;
-      justify-content: center;
-      align-items: center;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-      margin-top: 2rem;
-      overflow: hidden;
-      height: 50%;
-      
-    }
-  
-    .review-column {
-      position: relative;
-      overflow: hidden;
-      height: 220px; /* Adjust for review height + spacing */
-    }
-  
-    .reviews-wrapper {
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.8s ease;
-    }
-  
-    .review {
-      height: 200px;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      background: #101010;
-      border-radius: 10px;
-      padding: 1rem;
-      border-top: 2px solid rgb(255, 255, 255, 0.4);
-      border-left: 2px solid rgb(255, 255, 255, 0.4);
-      border-right: 2px solid rgb(255, 255, 255, 0.4);
-      margin-bottom: 20px; /* Spacing between reviews */
-      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-    }
-
-    .review-image {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-right: 15px;
-    }
-    
-    .review-content {
-      display: flex;
-      flex-direction: column;
-      text-align: left;
-    }
-  
-    .review p {
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-    }
-  
-    .review span {
-      font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.7);
-    }
-    .short-description {
-      font-size: 1rem;
-      color: #666;
-      margin-top: 10px;
-      margin-left: auto;
-      margin-right: auto;
-      width: 60%; /* Adjust the width as needed */
-      text-align: center;
-    }
-
-/* Adjust for screens smaller than 1629px */
-@media (max-width: 1629px) {
-  #reviews{
-    margin-bottom: 60px !important;
-  }
-}
-
-/* Adjust for screens smaller than 1422px */
-@media (max-width: 1422px) {
-  
-}
-
-/* Adjust for screens smaller than 1300px */
-@media (max-width: 1300px) {
- 
-}
-
-/* Adjust for screens smaller than 1200px */
-@media (max-width: 1200px) {
-  
-}
-
-/* Adjust for screens smaller than 992px */
-@media (max-width: 992px) {
- 
-}
-
-
-/* Adjust for screens smaller than 768px */
-@media (max-width: 768px) {
-  #reviews{
-  
-    height: 60vh;
-  }
-  .short-description{
-    font-size:.4 ;
-    width: 100%;
-  }
-  .what-our {
-    font-size:4rem;
-  }
-  .client  {
-    font-size:2rem;
-    top: -4%;
-    left: 58%;
-  }
-  .reviews-container{
-    margin-top: 0;
-    height: 60%;
-  }
-  .review p{
-    font-size: .4rem;
-  }
-  .review span{
-    font-size: .3rem;
-  }
-
-  .review img{
-    width: 30px;
-    height: 30px;
-    margin-bottom: 1rem;
-  }
-  .review{
-    flex-direction: column;
-    width: 100px;
   }
 }

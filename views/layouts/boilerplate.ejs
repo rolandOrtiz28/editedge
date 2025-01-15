@@ -37,13 +37,14 @@
   
 </head>
 <body>
-    <!-- Particles Background -->
-    <div id="particles-js"></div>
     <div id="loader" class="loader">
         <img src="/images/eeloader.gif" alt="Loading..." class="loader-logo" />
       </div>
       
+      <!-- Main Content -->
       <div id="content" style="visibility: hidden; opacity: 0; transition: opacity 0.5s ease;">
+        <!-- Particles Background -->
+        <div id="particles-js"></div>
     <!-- Header -->
     <header>
         <%- include('../partials/navbar') %>
@@ -53,7 +54,7 @@
     <main class="container-fluid">
         <%- include('../partials/flash') %>
         <%- body %>
-    </main id="content" style="visibility: hidden; opacity: 0; transition: opacity 0.5s ease;">
+    </main>
 
     <!-- Footer -->
     <footer>

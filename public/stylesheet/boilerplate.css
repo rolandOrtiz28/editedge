@@ -50,42 +50,43 @@ footer {
 
 /* Loader Styles */
 #loader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #181818; /* Background color */
-    z-index: 10000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #181818; /* Background color */
+  z-index: 10000; /* Ensure loader is above all other elements */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: opacity 0.5s ease, visibility 0.5s ease; /* Smooth fade-out transition */
+}
+
+#loader img.loader-logo {
+  width: 150px; /* Adjust logo size */
+  height: auto;
+  animation: pulse 1.5s infinite; /* Pulsing animation for the logo */
+}
+
+/* Smooth fade-out effect */
+#loader.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Pulse Animation for Logo */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
     opacity: 1;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
   }
-  
-  #loader img.loader-logo {
-    width: 150px; /* Adjust logo size */
-    height: auto;
-    animation: pulse 1.5s infinite;
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
   }
-  
-  /* Smooth fade-out effect */
-  #loader.fade-out {
-    opacity: 0;
-    visibility: hidden;
-  }
-  
-  /* Pulse Animation for Logo */
-  @keyframes pulse {
-    0%, 100% {
-      transform: scale(1);
-      opacity: 1;
-    }
-    50% {
-      transform: scale(1.1);
-      opacity: 0.8;
-    }
-  }
+}
+
   
   
