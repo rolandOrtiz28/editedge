@@ -1,23 +1,24 @@
+
 document.addEventListener("DOMContentLoaded", () => {
-    // Initialize the loader
-    const loader = document.getElementById("loader");
-    const content = document.getElementById("content");
+    // // Initialize the loader
+    // const loader = document.getElementById("loader");
+    // const content = document.getElementById("content");
   
-    // Ensure the loader fades out smoothly after the window is fully loaded
-    window.onload = () => {
-      if (loader) {
-        // Fade out loader
-        loader.classList.add("fade-out");
-        setTimeout(() => {
-          loader.style.display = "none"; // Completely hide the loader after fading out
-          if (content) {
-            // Make content visible after loader disappears
-            content.style.visibility = "visible";
-            content.style.opacity = "1";
-          }
-        }, 1000); // Adjust timeout to match the fade-out animation duration
-      }
-    };
+    // // Ensure the loader fades out smoothly after the window is fully loaded
+    // window.onload = () => {
+    //   if (loader) {
+    //     // Fade out loader
+    //     loader.classList.add("fade-out");
+    //     setTimeout(() => {
+    //       loader.style.display = "none"; // Completely hide the loader after fading out
+    //       if (content) {
+    //         // Make content visible after loader disappears
+    //         content.style.visibility = "visible";
+    //         content.style.opacity = "1";
+    //       }
+    //     }, 1000); // Adjust timeout to match the fade-out animation duration
+    //   }
+    // };
   
     // Initialize Particles.js
     particlesJS("particles-js", {
