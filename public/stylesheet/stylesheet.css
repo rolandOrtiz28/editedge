@@ -417,8 +417,11 @@ width: 100%;
   .logos-grid{
     column-gap: 30px;
   }
-  .customer-icon{
-    font-size:2rem ;
+  .logos-grid .customer-icon{
+    width:7rem ;
+  }
+  .customer-logos-header h3{
+    font-size: 2rem;
   }
 }
 
@@ -426,7 +429,7 @@ width: 100%;
 
 /* General Section Styling */
 #whychooseus { 
-  height: 80vh;
+  height: 100vh;
   padding: 50px 20px;
   background-color: #101010;
   color: white;
@@ -885,8 +888,8 @@ padding-right:0;
 
 /* SERVICES */
 #services {
-  height: 90vh;
-  padding: 20px 20px;
+  height: 100vh;
+  padding: 40px 40px;
   background-color: #101010;
   color: white;
   display: flex;
@@ -984,8 +987,9 @@ padding-right:0;
 .caption2 .subtitle2 {
   font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.8);
-  margin-top: 10px;
-  width: 80%; /* Optional: adjust the width for better alignment */
+  margin-top: 5px;
+  width: 50%; /* Optional: adjust the width for better alignment */
+  text-align: center;
 }
 
 /* Adjust for screens smaller than 1629px */
@@ -1018,7 +1022,7 @@ padding-right:0;
   #services{
     display: flex;
     align-items: start;
-    height: 50vh;
+    height: 60vh;
   }
   .services-container {
     margin: 0;
@@ -1061,6 +1065,8 @@ padding-right:0;
   padding: 50px 20px;
   border-top: 2px solid rgba(255, 255, 255, 0.418);
   border-radius: 20px;
+  height: 100vh;
+  
 }
 
 
@@ -1241,6 +1247,9 @@ display: block;
   .cards:hover .description{
     font-size: 10px;
   }
+  .our-team-caption h2{
+    font-size: 3rem;
+  }
 }
 
 
@@ -1316,10 +1325,11 @@ display: block;
   width: 100%;
   height: 100vh;
   font-family: 'Nunito', sans-serif;
-  margin-bottom: 7rem;
+  margin-bottom: 10rem;
+  
   }
   
-
+ 
   .connect {
     font-size: 8rem; /* Make "Why" larger */
     font-weight: 700;
@@ -1338,9 +1348,7 @@ display: block;
     color: white;
   }
 
-  #map{
-    border-radius: 20px;
-  }
+
   
   .contact .info {
       border-top: 3px solid #FF007F;
@@ -1350,6 +1358,7 @@ display: block;
       /* background: #fff; */
       width: 100%;
       box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.1);
+      height: auto;
     }
     
     .contact .info img {
@@ -1526,6 +1535,13 @@ border-radius: 20px;
     .contact .php-email-form button[type=submit]:hover {
       background: #209dd8;
     }
+
+    .info .maps{
+      width: 100%;
+      height:50%;
+      border-radius: 20px;
+      display: block;
+    }
     
     @keyframes animate-loading {
       0% {
@@ -1541,8 +1557,9 @@ border-radius: 20px;
 
 /* Adjust for screens smaller than 1629px */
 @media (max-width: 1629px) {
-  #contact{
-    margin-bottom: 10rem !important;
+ 
+  .contact .php-email-form textarea{
+    height: 150px;
   }
 }
 
@@ -1604,7 +1621,7 @@ border-radius: 20px;
   }
 
   .contact .info{
-    height: 220px;
+    height: 250px;
   
   }
 }
@@ -1617,7 +1634,8 @@ border-radius: 20px;
       background-color: #101010;
       color: white;
       text-align: center;
-      height: 50vh;
+      height: 100vh;
+      
     }
 
     /* Styling for the "Why" heading */
@@ -1648,8 +1666,8 @@ border-radius: 20px;
       gap: 1rem;
       margin-top: 2rem;
       overflow: hidden;
-    
-      height: 80%;
+      height: 50%;
+      
     }
   
     .review-column {
@@ -1704,8 +1722,15 @@ border-radius: 20px;
       font-size: 0.9rem;
       color: rgba(255, 255, 255, 0.7);
     }
-
- 
+    .short-description {
+      font-size: 1rem;
+      color: #666;
+      margin-top: 10px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 60%; /* Adjust the width as needed */
+      text-align: center;
+    }
 
 /* Adjust for screens smaller than 1629px */
 @media (max-width: 1629px) {
@@ -1739,7 +1764,11 @@ border-radius: 20px;
 @media (max-width: 768px) {
   #reviews{
   
-    height: 40vh;
+    height: 60vh;
+  }
+  .short-description{
+    font-size:.4 ;
+    width: 100%;
   }
   .what-our {
     font-size:4rem;
