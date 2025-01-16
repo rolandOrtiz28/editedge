@@ -340,7 +340,7 @@ width: 100%;
     font-size: 2rem;
   }
 }
-@media (max-width: 368px) {
+@media (max-width: 576px) {
   .customer-logos-section {
     
     height: 50vh;
@@ -739,7 +739,7 @@ padding-right:0;
 
   }
 }
-@media (max-width: 368px) {
+@media (max-width: 576px) {
 
   #whychooseus .infographic-item p {
     font-size: 0.5rem;
@@ -892,7 +892,7 @@ padding-right:0;
     text-align: center;
   }
 }
-@media (max-width: 368px) {
+@media (max-width: 576px) {
 
   .caption2 .subtitle2 {
     font-size: .7rem;
@@ -1075,7 +1075,7 @@ display: block;
   }
 }
 
-@media (max-width: 368px) {
+@media (max-width: 576px) {
  
   .cards{
     height: 50%;
@@ -1333,7 +1333,7 @@ display: block;
 }
 
 
-@media (max-width: 368px) {
+@media (max-width: 576px) {
  
   #reviews .short-description{
     font-size: .8rem;
@@ -1651,7 +1651,7 @@ border-radius: 20px;
   
   }
 }
-@media (max-width: 368px) {
+@media (max-width: 576px) {
  .contact{
   height: 115vh;
  }
