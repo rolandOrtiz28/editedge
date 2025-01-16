@@ -4,35 +4,33 @@ gsap.registerPlugin(ScrollTrigger);
 // Function to animate paths
 function animatePath(selector, delay = 0) {
   const paths = document.querySelectorAll(selector);
-  if (window.innerWidth > 768) {
-    paths.forEach((path) => {
-      const length = path.getTotalLength();
 
-      path.style.strokeDasharray = length;
-      path.style.strokeDashoffset = -length;
+  paths.forEach((path) => {
+    const length = path.getTotalLength();
 
-      gsap.to(path, {
-        strokeDashoffset: 0,
-        duration: 1.5,
-        ease: "power2.inOut",
-        delay: delay,
-        scrollTrigger: {
-          trigger: path.closest(".infographic-row"),
-          start: "top 80%",
-          end: "bottom 20%",
-          scrub: 0.5,
-        },
-      });
+    path.style.strokeDasharray = length;
+    path.style.strokeDashoffset = -length;
+
+    gsap.to(path, {
+      strokeDashoffset: 0,
+      duration: 1.5,
+      ease: "power2.inOut",
+      delay: delay,
+      scrollTrigger: {
+        trigger: path.closest(".infographic-row"),
+        start: "top 80%",
+        end: "bottom 20%",
+        scrub: 0.5,
+      },
     });
-  } else {
-    paths.forEach((path) => {
-      path.style.display = "none";
-    });
-  }
+  });
 }
 
 // Function to initialize animations
 function initializeAnimations() {
+  gsap.killTweensOf("*"); // Clear existing animations
+  ScrollTrigger.getAll().forEach((trigger) => trigger.kill()); // Remove existing ScrollTriggers
+
   animatePath(".connector-path-ce");
   animatePath(".connector-path-td", 1);
   animatePath(".connector-path-ae", 2);
@@ -73,7 +71,7 @@ function initializeAnimations() {
 
   gsap.fromTo(
     ".project-gallery",
-    { scale: 0.8 },
+    { scale: window.innerWidth < 768 ? 0.9 : 0.8 },
     {
       scale: 1,
       duration: 2,

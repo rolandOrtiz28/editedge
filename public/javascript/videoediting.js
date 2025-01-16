@@ -1,9 +1,6 @@
 // Register the GSAP ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
-// Select the description element
-const description = document.querySelector(".description");
-
 // Typewriter effect function
 function typeWriterAnimation(targetElement) {
   const textContent = targetElement.textContent; // Get the full text
@@ -29,13 +26,15 @@ function typeWriterAnimation(targetElement) {
   });
 }
 
-// Call the typewriter function on the description
-typeWriterAnimation(description);
+// Call the typewriter function on the description element
+document.querySelectorAll(".description").forEach((description) => {
+  typeWriterAnimation(description);
+});
 
 // Animate the horizontal line
 gsap.to(".horizontal-line", {
   width: "100%", // Animate width from 0% to 100%
-  duration: 13, // Duration of the animation
+  duration: window.innerWidth < 768 ? 5 : 13, // Shorter duration for smaller screens
   ease: "power2.out", // Smooth easing
   scrollTrigger: {
     trigger: ".process-section", // Trigger when the section is in view
@@ -52,16 +51,23 @@ gsap.utils.toArray(".process-step").forEach((step, index) => {
     {
       opacity: 1, // Fade in
       y: 0, // Move to original position
-      duration: 8, // Animation duration
+      duration: window.innerWidth < 768 ? 4 : 8, // Shorter duration for smaller screens
       ease: "power2.out", // Smooth easing
-      delay: index * 1.5, // Stagger the animation
+      delay: index * (window.innerWidth < 768 ? 0.5 : 1.5), // Adjust stagger for smaller screens
       scrollTrigger: {
-        trigger: ".process-section", // Trigger for the entire section
-        start: "top 80%", // Start when 80% of section is visible
+        trigger: step, // Trigger each step individually
+        start: "top 80%", // Start when 80% of step is visible
         toggleActions: "play none none none", // Trigger only once
       },
     }
   );
 });
 
-
+// Reinitialize animations on resize
+let resizeTimeout;
+window.addEventListener("resize", () => {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(() => {
+    ScrollTrigger.refresh(); // Refresh ScrollTrigger to adapt to new screen size
+  }, 200);
+});

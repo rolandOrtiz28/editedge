@@ -340,6 +340,19 @@ width: 100%;
     font-size: 2rem;
   }
 }
+@media (max-width: 368px) {
+  .customer-logos-section {
+    
+    height: 50vh;
+  }
+  .logos-grid .customer-icon{
+    width:6rem ;
+  }
+  .logos-grid{
+
+    column-gap: 10px;
+  }
+}
 
 
 
@@ -726,7 +739,12 @@ padding-right:0;
 
   }
 }
+@media (max-width: 368px) {
 
+  #whychooseus .infographic-item p {
+    font-size: 0.5rem;
+  }
+}
 
 
 /* SERVICES */
@@ -868,12 +886,21 @@ padding-right:0;
     top:20% ;
     left: 65%;
   }
-  .subtitle2 {
-    font-size: 1rem !important;
-    width: 90% !important;
+ .caption2 .subtitle2 {
+    font-size: 1rem;
+    width: 70%;
     text-align: center;
   }
 }
+@media (max-width: 368px) {
+
+  .caption2 .subtitle2 {
+    font-size: .7rem;
+    width: 70%;
+    text-align: center;
+  }
+}
+
 
 
 
@@ -1047,6 +1074,41 @@ display: block;
     font-size: 3rem;
   }
 }
+
+@media (max-width: 368px) {
+ 
+  .cards{
+    height: 50%;
+    margin-top: 0rem;
+  }
+  .card-image{
+    width: 50px;
+    height: 50px;
+  }
+  .our-team-caption h2{
+    font-size: 2rem;
+  }
+  .cards:hover .description{
+    font-size: 8px;
+  }
+
+  .our-team-caption  .section-subtitle{
+    font-size: .8rem;
+  }
+ .cards-info .name{
+  font-size: .8rem;
+ }
+ .cards-info .position{
+  font-size: .6rem;
+ }
+ .section-subtitle{
+  margin-bottom: 0;
+ }
+ .card-content{
+  gap: 2px;
+ }
+}
+
 
 
  
@@ -1234,11 +1296,10 @@ display: block;
 /* Adjust for screens smaller than 768px */
 @media (max-width: 768px) {
   #reviews{
-  
     height: 60vh;
   }
-  .short-description{
-    font-size:.4 ;
+  #reviews .short-description{
+    font-size:1rem ;
     width: 100%;
   }
   .what-our {
@@ -1269,6 +1330,23 @@ display: block;
     flex-direction: column;
     width: 100px;
   }
+}
+
+
+@media (max-width: 368px) {
+ 
+  #reviews .short-description{
+    font-size: .8rem;
+    width: 100%;
+   
+  }
+
+#reviews .what-our {
+  font-size: 3rem;
+}
+#reviews .client{
+  font-size: 1.5rem;
+}
 }
 
 
@@ -1551,8 +1629,8 @@ border-radius: 20px;
    display: none;
   }
 
-  .subtitle {
-    font-size: .8rem !important;
+  .contact .subtitle {
+    font-size: .8rem;
     text-align: center;
   }
 
@@ -1572,4 +1650,39 @@ border-radius: 20px;
     height: 250px;
   
   }
+}
+@media (max-width: 368px) {
+ .contact{
+  height: 115vh;
+ }
+  .connect{
+    font-size: 3rem;
+  }
+  .with-us{
+    font-size: 1rem;
+    }
+    .contact .subtitle {
+      font-size: .6rem;
+   
+    }
+    .contact .info img{
+      width: 25px;
+      height: 25px;
+    }
+    .contact .info h4{
+      font-size: 12px;
+    }
+    .contact .info p{
+      font-size: 10px;
+    }
+    .contact .info{
+      height: 230px;
+    
+    }
+    .contact .php-email-form textarea{
+      height: 80px;
+    }
+
+    
+    
 }
