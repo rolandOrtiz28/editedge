@@ -337,7 +337,7 @@ width: 100%;
 @media (max-width: 768px) {
   .customer-logos-section {
     height: 50vh;
-    border: 2px solid red;
+  
   }
   .logos-grid{
     column-gap: 30px;
@@ -430,7 +430,7 @@ width: 100%;
   line-height: 1.6;
 }
 .circle-bg {
-  background-color: rgb(255, 0, 128);
+  background-color: #ff0080;
   width: 250px;
   height: 100px;
   border-radius: 50%;
