@@ -3,7 +3,7 @@
 /* MAIN */
 #main{
 width: 100vw;
-height: 95vh;
+height:auto;
 }
 
 section {
@@ -258,6 +258,9 @@ width: 100%;
     font-size: 1.1rem;
   width: 100%;  
   }
+  #main{
+    height: 90vh;
+  }
 }
 @media (max-width: 576px) {
   .text-container,.line-2  {
@@ -290,6 +293,8 @@ width: 100%;
   border-radius: 20px;
   overflow: hidden;
   scroll-margin-top: 1000px !important;
+  height: auto;
+  
 }
 .customer-logos-header h3 {
   font-size: 6rem;
@@ -330,6 +335,10 @@ width: 100%;
 
 }
 @media (max-width: 768px) {
+  .customer-logos-section {
+    height: 50vh;
+    border: 2px solid red;
+  }
   .logos-grid{
     column-gap: 30px;
   }
@@ -342,8 +351,7 @@ width: 100%;
 }
 @media (max-width: 576px) {
   .customer-logos-section {
-    
-    height: 50vh;
+    height: 30vh;
   }
   .logos-grid .customer-icon{
     width:6rem ;
@@ -358,7 +366,7 @@ width: 100%;
 
 /*Why Choose us Section */
 #whychooseus { 
-  height: 80vh;
+  height:auto;
   padding: 50px 20px;
   background-color: #101010;
   color: white;
@@ -649,7 +657,6 @@ padding-right: 10rem;
 
     display: flex;
     align-items: start;
-    height: 100vh;
   }
   #whychooseus .why {
     font-size: 7rem;
@@ -749,7 +756,7 @@ padding-right:0;
 
 /* SERVICES */
 #services {
-  height: 100vh;
+  height:auto;
   padding: 40px 40px;
   background-color: #101010;
   color: white;
@@ -857,7 +864,7 @@ padding-right:0;
   #services{
     display: flex;
     align-items: start;
-    height: 60vh;
+    /* height: 60vh; */
   }
   .services-container {
     margin: 0;
@@ -911,7 +918,7 @@ padding-right:0;
   padding: 50px 20px;
   border-top: 2px solid rgba(255, 255, 255, 0.418);
   border-radius: 20px;
-  height: 80vh;
+  height: auto;
   
 }
 .section-title {
@@ -1044,9 +1051,9 @@ display: block;
  }
  
 @media (max-width: 768px) {
-  .our-team-section{
+  /* .our-team-section{
     height: 100vh;
-  }
+  } */
   .team-cards {
     flex-direction: column;
     gap: 15px;
@@ -1168,7 +1175,7 @@ display: block;
       background-color: #101010;
       color: white;
       text-align: center;
-      height: 60vh;
+      height: auto;
       
     }
 
@@ -1267,9 +1274,7 @@ display: block;
 
 /* Adjust for screens smaller than 1629px */
 @media (max-width: 1629px) {
-  #reviews{
-    margin-bottom: 30px;
-  }
+  
 }
 
 /* Adjust for screens smaller than 1422px */
@@ -1295,9 +1300,9 @@ display: block;
 
 /* Adjust for screens smaller than 768px */
 @media (max-width: 768px) {
-  #reviews{
+  /* #reviews{
     height: 60vh;
-  }
+  } */
   #reviews .short-description{
     font-size:1rem ;
     width: 100%;
@@ -1354,7 +1359,7 @@ display: block;
 
 .contact{
   width: 100%;
-  height: 100vh;
+  height:auto;
   font-family: 'Nunito', sans-serif;
   margin-bottom: 10rem;
   
@@ -1652,9 +1657,9 @@ border-radius: 20px;
   }
 }
 @media (max-width: 576px) {
- .contact{
+ /* .contact{
   height: 115vh;
- }
+ } */
   .connect{
     font-size: 3rem;
   }
