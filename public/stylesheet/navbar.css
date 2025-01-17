@@ -14,11 +14,15 @@
 
 
 .navbar-brand {
-    font-weight: 600;
+    font-weight: 400;
     letter-spacing: 1px;
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
 }
 
+.navbar-brand img{
+  width: 30px;
+  height: 30px;
+}
 .nav-link {
     transition: color 0.3s ease-in-out;
     font-size: 15px;

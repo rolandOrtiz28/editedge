@@ -75,6 +75,6 @@ window.addEventListener("resize", () => {
 
 var myCarousel = document.getElementById('graphicDesignCarousel');
 var carousel = new bootstrap.Carousel(myCarousel, {
-  interval: 3000, // Auto-slide every 3 seconds
+  interval: 5000, // Auto-slide every 3 seconds
   ride: 'carousel'
 });

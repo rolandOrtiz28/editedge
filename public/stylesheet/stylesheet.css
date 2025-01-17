@@ -926,7 +926,7 @@ padding-right:0;
   border-top: 2px solid rgba(255, 255, 255, 0.418);
   border-radius: 20px;
   height: auto;
-  
+ 
 }
 .section-title {
   font-size: 6rem;
@@ -1150,18 +1150,18 @@ padding-right:0;
   height: 100vh;
   overflow: hidden;
   position: relative;
-  margin:8rem 0;
+  margin:13rem 0 3rem 0;
 
 }
 
 .project-gallery::before {
   content: "";
   position: absolute;
-  bottom: 0; /* Start the gradient at the bottom of the section */
+  bottom: -5%; /* Start the gradient at the bottom of the section */
   left: 0;
   width: 100%;
-  height: 200px; /* Adjust height as needed */
-  background: linear-gradient(to top, rgba(16, 16, 16, 0.9) 0%, rgba(16, 16, 16, .1) 100%);
+  height: 80px; /* Adjust height as needed */
+  background: linear-gradient(to top, rgba(16, 16, 16, 1) 0%, rgba(16, 16, 16, 0) 100%);
   pointer-events: none; /* Ensure it doesn't interfere with user interactions */
   z-index: 1; /* Place it above other content */
 }
