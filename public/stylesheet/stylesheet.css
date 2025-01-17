@@ -263,7 +263,7 @@ width: 100%;
 @media (max-width: 576px) {
   #main{
 
-    height: 80vh;
+    height: 90vh;
   }
   .details {
    
@@ -304,6 +304,7 @@ width: 100%;
   border-radius: 20px;
   overflow: hidden;
   scroll-margin-top: 1000px !important;
+  height: auto;
 }
 .customer-logos-header h3 {
   font-size: 6rem;
@@ -356,11 +357,9 @@ width: 100%;
   }
 }
 @media (max-width: 576px) {
-  
-  .customer-logos-section {
-
-    height: 30vh;
-  }
+.customer-logos-section::before{
+  width: 300px;
+}
   .logos-grid .customer-icon{
     width:6rem ;
   }
@@ -1092,8 +1091,8 @@ padding-right:0;
     margin-top: 1rem;
   }
   .card-image{
-    width: 100px; /* Larger image */
-  height: 100px; /* Maintain aspect ratio */
+    width: 100px; 
+  height: 100px; 
   margin-top: 1rem;
   }
 
@@ -1108,12 +1107,13 @@ padding-right:0;
 @media (max-width: 576px) {
  
   .cards{
+    width: 90%;
     height: 50%;
     margin-top: 0rem;
   }
   .card-image{
-    width: 50px;
-    height: 50px;
+    width: 90px;
+    height: 90px;
   }
   .our-team-caption h2{
     font-size: 2rem;
@@ -1134,10 +1134,7 @@ padding-right:0;
   gap: 2px;
  }
 
- .card-image{
-width: 150px;
-height: 150px;
- }
+
 }
 
 
@@ -1366,9 +1363,7 @@ height: 150px;
 
 
 @media (max-width: 576px) {
- #reviews{
-  border: 2px solid red;
- }
+
   #reviews .short-description{
     font-size: .8rem;
     width: 100%;
@@ -1381,6 +1376,11 @@ height: 150px;
 #reviews .client{
   font-size: 1.5rem;
 }
+.reviews-container{
+  
+  height: 50%;
+}
+
 }
 
 
@@ -1686,13 +1686,13 @@ border-radius: 20px;
   }
 }
 @media (max-width: 576px) {
-  
+ 
   .connect{
     font-size: 3rem;
   }
   .with-us{
     font-size: 1rem;
-    left: 35%;
+    left: 40%;
     }
     .contact .subtitle {
       font-size: .6rem;
