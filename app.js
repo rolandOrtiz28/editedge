@@ -101,7 +101,8 @@ const imgSrcUrls = [
   "https://app.spline.design/_assets/_icons/icon_favicon32x32.png",
   "https://cdn.jsdelivr.net/",
   "https://kit-free.fontawesome.com/",
-  "https://cdnjs.cloudflare.com/"
+  "https://cdnjs.cloudflare.com/",
+  "https://res.cloudinary.com/" // Allow Cloudinary images
 ];
 
 const fontSrcUrls = [

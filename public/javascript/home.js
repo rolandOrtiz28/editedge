@@ -56,14 +56,13 @@ function initializeAnimations() {
       },
     });
   });
-
   gsap.utils.toArray(".gallery-column img").forEach((img) => {
     gsap.fromTo(
       img,
-      { opacity: 0, scale: 0.9 },
+      { opacity: 0, scale: 1.1 }, // Start slightly zoomed in
       {
         opacity: 1,
-        scale: 1,
+        scale: 1, // End at the original size
         duration: 1.2,
         ease: "power1.out",
         scrollTrigger: {
@@ -75,22 +74,23 @@ function initializeAnimations() {
       }
     );
   });
-
+  
   gsap.fromTo(
     ".project-gallery",
-    { scale: 0.8 },
+    { scale: 1.6 }, // Start more zoomed in
     {
-      scale: 1,
+      scale: 1.1, // End at the normal size
       duration: 2,
       ease: "power1.inOut",
       scrollTrigger: {
         trigger: ".project-gallery",
         start: "top 80%",
-        end: "bottom 20%",
+        end: "center 20%",
         scrub: true,
       },
     }
   );
+  
 
   gsap.fromTo(
     ".logos-grid img",
