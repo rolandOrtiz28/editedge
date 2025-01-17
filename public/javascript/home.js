@@ -28,9 +28,16 @@ function animatePath(selector, delay = 0) {
 
 // Function to initialize animations
 function initializeAnimations() {
-  gsap.killTweensOf("*"); // Clear existing animations
-  ScrollTrigger.getAll().forEach((trigger) => trigger.kill()); // Remove existing ScrollTriggers
+  // Kill all GSAP animations and ScrollTriggers
+  gsap.killTweensOf("*");
+  ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
 
+  // Check if the screen width is less than 768px (phone size)
+  if (window.innerWidth < 768) {
+    return; // Exit function without initializing animations
+  }
+
+  // Add your GSAP animations here as before
   animatePath(".connector-path-ce");
   animatePath(".connector-path-td", 1);
   animatePath(".connector-path-ae", 2);
@@ -71,7 +78,7 @@ function initializeAnimations() {
 
   gsap.fromTo(
     ".project-gallery",
-    { scale: window.innerWidth < 768 ? 0.9 : 0.8 },
+    { scale: 0.8 },
     {
       scale: 1,
       duration: 2,
