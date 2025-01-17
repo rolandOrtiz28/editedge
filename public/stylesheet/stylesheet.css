@@ -1154,6 +1154,10 @@ padding-right:0;
 
 }
 
+.project-gallery::before{
+  content: '';
+}
+
 .gallery-column {
   position: relative;
   overflow: hidden;
