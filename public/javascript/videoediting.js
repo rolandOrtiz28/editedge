@@ -71,3 +71,10 @@ window.addEventListener("resize", () => {
     ScrollTrigger.refresh(); // Refresh ScrollTrigger to adapt to new screen size
   }, 200);
 });
+
+
+var myCarousel = document.getElementById('graphicDesignCarousel');
+var carousel = new bootstrap.Carousel(myCarousel, {
+  interval: 3000, // Auto-slide every 3 seconds
+  ride: 'carousel'
+});

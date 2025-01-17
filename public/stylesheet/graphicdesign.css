@@ -168,8 +168,9 @@
   /* Process Section */
 .process-section {
   color: white;
-  height: 70vh;
+  height: auto;
 padding: 2rem;
+
 }
 
 
@@ -179,7 +180,7 @@ padding: 2rem;
   margin-bottom: 2rem;
   width: 50%;
   text-align: center;
-  border: 2px solid red;
+  
 }
 
 /* Process Steps */
@@ -297,60 +298,29 @@ padding: 2rem;
   text-align: center;
 }
 
-/* Video Examples Section */
-.video-examples-section {
+.image-carousel-section {
+  background-color: #101010;
   padding: 2rem 1rem;
-  background-color: #101010; /* Matches the page background */
+  height: auto;
+
 }
 
-.project-card {
-  background-color: #181818;
-  border-radius: 12px;
-  border: none;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width:100px; /* Set consistent width */
-  margin: .5rem; /* Add margin around each card for spacing */
- 
-  transform: scale(0.8); /* Smaller size by default */
-  transition: all 0.3s ease-in-out; /* Fallback animation */
+.carousel {
+  max-width: 1200px; /* Adjust carousel width */
+  margin: 0 auto; /* Center the carousel */
 }
 
-.project-card iframe {
-  width: 100%;
-  aspect-ratio: 9 / 16; /* Ensures consistent vertical video ratio */
-  border-radius: 12px 12px 0 0; /* Round top corners */
-  border: none; /* Remove iframe border */
-  background: #000; /* Placeholder color for better appearance */
+.carousel-inner {
+  max-height: 720px; /* Adjust maximum height */
 }
 
-.video-card img, 
-.video-card video {
-    width: 100%;      /* Make thumbnails fill the card width */
-    height: auto;     /* Maintain aspect ratio */
-    object-fit: cover; /* Ensure thumbnails cover the entire container */
-    border-radius: 8px; /* Optional: keep the same border radius as the card */
+.carousel-image {
+  width: 100%; /* Ensure full width of the container */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: contain; /* Scale image proportionally */
+  max-height: 720px; /* Restrict the height */
 }
 
-.project-card .card-body {
-  text-align: center;
-  color: white;
-  padding: 1rem;
-}
-
-.project-card .card-title {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-}
-
-.project-card .card-text {
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.8);
-}
 
 /* Responsive Design for Cards */
 @media (min-width: 768px) {
@@ -414,15 +384,23 @@ h2 {
 
 /* Adjust for screens smaller than 992px */
 @media (max-width: 992px) {
- 
+  .carousel {
+    max-width: 800px; /* Smaller width for medium screens */
+  }
+
+  .carousel-inner {
+    max-height: 600px; /* Adjust height for medium screens */
+  }
 }
 
 
 /* Adjust for screens smaller than 768px */
 @media (max-width: 768px) {
-  
- .process-title, .Graphic-Example-Title{
-    font-size: 1.9rem;
+  .process-title{
+  font-size: 1.3rem;
+  }
+.Graphic-Example-Title{
+    font-size: 1.5rem;
   }
   .text{
     font-size: 1.5rem;
@@ -474,9 +452,7 @@ h2 {
   
   }
   
-  .process-section{
-    height: 50vh;
-  }
+ 
   
 
   .podium {
@@ -491,5 +467,12 @@ h2 {
     
   }
   
- 
+  .carousel {
+    max-width: 100%; /* Full width on small screens */
+  }
+
+  .carousel-inner {
+    max-height: 400px; /* Adjust height for small screens */
+  }
+
 }
