@@ -3,7 +3,7 @@
 /* MAIN */
 #main{
 width: 100%;
-height: 95vh;
+height: auto;
 }
 
 section {
@@ -71,16 +71,7 @@ section {
   opacity: 1;
 }
 
-#canvas {
-  position: fixed; 
-  top: 50%; 
-  left: 50%; 
-  transform: translate(-50%, -50%);
-  width: 70%;
-  height: auto; 
-  z-index: 5; 
-  pointer-events: none;
-}
+
 .blob1 {
   position: absolute;
   width: 70px;
@@ -272,7 +263,7 @@ width: 100%;
 @media (max-width: 576px) {
   #main{
 
-    height: 100vh;
+    height: 80vh;
   }
   .details {
    
@@ -368,7 +359,7 @@ width: 100%;
   
   .customer-logos-section {
 
-    height: 50vh;
+    height: 30vh;
   }
   .logos-grid .customer-icon{
     width:6rem ;
@@ -383,7 +374,7 @@ width: 100%;
 
 /*Why Choose us Section */
 #whychooseus { 
-  height: 80vh;
+  height: auto;
   padding: 50px 20px;
   background-color: #101010;
   color: white;
@@ -569,7 +560,7 @@ width: 100%;
   }
   #whychooseus .choose-us {
     font-size:2.5rem;
-    left: 10%;
+    left: 0%;
   }
   #whychooseus .subtitle, #whychooseus .infographic-item h3 {
     font-size: 1rem;
@@ -670,11 +661,10 @@ padding-right: 10rem;
 }
 @media (max-width: 768px) {
   #whychooseus {
-    padding: 2rem 0 !important; 
-
+    padding: 2rem 0;  
     display: flex;
     align-items: start;
-    height: 100vh;
+
   }
   #whychooseus .why {
     font-size: 7rem;
@@ -774,7 +764,7 @@ padding-right:0;
 
 /* SERVICES */
 #services {
-  height: 100vh;
+  height: auto;
   padding: 40px 40px;
   background-color: #101010;
   color: white;
@@ -882,7 +872,7 @@ padding-right:0;
   #services{
     display: flex;
     align-items: start;
-    height: 60vh;
+
   }
   .services-container {
     margin: 0;
@@ -936,7 +926,7 @@ padding-right:0;
   padding: 50px 20px;
   border-top: 2px solid rgba(255, 255, 255, 0.418);
   border-radius: 20px;
-  height: 80vh;
+  height: auto;
   
 }
 .section-title {
@@ -1086,9 +1076,7 @@ padding-right:0;
  }
  
 @media (max-width: 768px) {
-  .our-team-section{
-    height: 100vh;
-  }
+ 
   .team-cards {
     flex-direction: column;
     gap: 15px;
@@ -1130,10 +1118,6 @@ padding-right:0;
   .our-team-caption h2{
     font-size: 2rem;
   }
-  .cards:hover .description{
-    font-size: 8px;
-  }
-
   .our-team-caption  .section-subtitle{
     font-size: .8rem;
   }
@@ -1148,6 +1132,11 @@ padding-right:0;
  }
  .card-content{
   gap: 2px;
+ }
+
+ .card-image{
+width: 150px;
+height: 150px;
  }
 }
 
@@ -1213,7 +1202,7 @@ padding-right:0;
       background-color: #101010;
       color: white;
       text-align: center;
-      height: 60vh;
+      height: auto;
       
     }
 
@@ -1340,9 +1329,7 @@ padding-right:0;
 
 /* Adjust for screens smaller than 768px */
 @media (max-width: 768px) {
-  #reviews{
-    height: 60vh;
-  }
+  
   #reviews .short-description{
     font-size:1rem ;
     width: 100%;
@@ -1379,7 +1366,9 @@ padding-right:0;
 
 
 @media (max-width: 576px) {
- 
+ #reviews{
+  border: 2px solid red;
+ }
   #reviews .short-description{
     font-size: .8rem;
     width: 100%;
@@ -1399,7 +1388,7 @@ padding-right:0;
 
 .contact{
   width: 100%;
-  height: 100vh;
+  height: auto;
   font-family: 'Nunito', sans-serif;
   margin-bottom: 10rem;
   
@@ -1697,14 +1686,13 @@ border-radius: 20px;
   }
 }
 @media (max-width: 576px) {
- .contact{
-  height: 115vh;
- }
+  
   .connect{
     font-size: 3rem;
   }
   .with-us{
     font-size: 1rem;
+    left: 35%;
     }
     .contact .subtitle {
       font-size: .6rem;
