@@ -117,41 +117,36 @@
   </div>
 </div>
 
-<!-- Video Examples Section -->
-<div class="video-examples-section mb-5">
-  <h2 class="text-center mb-4 Art-Example-Title">3D Art Examples</h2>
-  <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center align-items-center">
-    <!-- Example 1 -->
-    <div class="col w-25 d-flex justify-content-center align-items-center ">
-      <div class="card project-card">
-        
-        <iframe
-          src="https://drive.google.com/file/d/1sUfkvKEd3nGcbuW3UjsFPFMqOhGuJjjq/preview"
-          allow="autoplay">
-        </iframe>
-        
+
+<!-- Video Carousel Section -->
+<div class="video-carousel-section mb-5">
+  <h2 class="text-center mb-4 Graphic-Example-Title">3D Art Examples</h2>
+  <div id="graphicDesignCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+    <div class="carousel-inner">
+      <!-- First Video -->
+      <div class="carousel-item active">
+        <video class="d-block carousel-video" autoplay loop muted playsinline>
+          <source src="https://dl.dropboxusercontent.com/scl/fi/6tmmc74eyfgbyds8ephkg/Final0001-0493.mp4?rlkey=yy159u4zm7xu2y4a9ckm6gmll&st=wsq13i2j" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <!-- Second Video -->
+      <div class="carousel-item">
+        <video class="d-block carousel-video" autoplay loop muted playsinline>
+          <source src="https://dl.dropboxusercontent.com/scl/fi/4jq6ilo8nanvvgceagaqv/0001-0245.mp4?rlkey=9zzpltbwnjgvzph5ayuk2besq&st=1tj2re6d" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
       </div>
     </div>
-    <!-- Example 2 -->
-    <div class="col w-25 d-flex justify-content-center align-items-center ">
-      <div class="card project-card">
-        <iframe
-          src="https://drive.google.com/file/d/1GMhmssT5ZxQHkezeqngpZaEuyM6NHqmq/preview"
-          allow="autoplay">
-        </iframe>
-        
-      </div>
-    </div>
-    <!-- Example 3 -->
-    <div class="col w-25 d-flex justify-content-center align-items-center ">
-      <div class="card project-card">
-        <iframe
-          src="https://drive.google.com/file/d/1TkD_kFjuZZYHkyDPl2S_SuRQf1WRghfe/preview"
-          allow="autoplay">
-        </iframe>
-        
-      </div>
-    </div>
+    <!-- Carousel Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#graphicDesignCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#graphicDesignCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
   </div>
 </div>
 

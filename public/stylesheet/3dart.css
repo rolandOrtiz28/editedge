@@ -299,59 +299,23 @@ padding: 2rem;
 }
 
 /* Video Examples Section */
-.video-examples-section {
+.video-carousel-section {
   padding: 2rem 1rem;
   background-color: #101010; /* Matches the page background */
+  height: auto;
+
 }
 
-.project-card {
-  background-color: #181818;
-  border-radius: 12px;
-  border: none;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width:100px; /* Set consistent width */
-  margin: .5rem; /* Add margin around each card for spacing */
- 
-  transform: scale(0.8); /* Smaller size by default */
-  transition: all 0.3s ease-in-out; /* Fallback animation */
+.carousel-video {
+  width: 80%; /* Reduce the width to 80% of the container */
+  max-width: 800px; /* Set a maximum width for larger screens */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Ensure the video fits well within the space */
+  margin: 0 auto; /* Center the video horizontally */
+  border-radius: 10px; /* Optional: Add rounded corners for styling */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Optional: Add a subtle shadow */
 }
 
-.project-card iframe {
-  width: 100%;
-  aspect-ratio: 9 / 16; /* Ensures consistent vertical video ratio */
-  border-radius: 12px 12px 0 0; /* Round top corners */
-  border: none; /* Remove iframe border */
-  background: #000; /* Placeholder color for better appearance */
-}
-
-.video-card img, 
-.video-card video {
-    width: 100%;      /* Make thumbnails fill the card width */
-    height: auto;     /* Maintain aspect ratio */
-    object-fit: cover; /* Ensure thumbnails cover the entire container */
-    border-radius: 8px; /* Optional: keep the same border radius as the card */
-}
-
-.project-card .card-body {
-  text-align: center;
-  color: white;
-  padding: 1rem;
-}
-
-.project-card .card-title {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-}
-
-.project-card .card-text {
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.8);
-}
 
 /* Responsive Design for Cards */
 @media (min-width: 768px) {

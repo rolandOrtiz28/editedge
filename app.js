@@ -114,10 +114,10 @@ const fontSrcUrls = [
 const mediaSrcUrls = [
   "'self'",
   "https://res.cloudinary.com/",
-  "https://drive.google.com/", // Allow media from Google Drive
+  "https://drive.google.com/",
   "https://www.google.com/",
   "https://www.dropbox.com/",
-
+  "https://dl.dropboxusercontent.com/" // Allow direct Dropbox links
 ];
 
 app.use(
