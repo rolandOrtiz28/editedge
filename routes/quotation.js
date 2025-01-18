@@ -68,11 +68,11 @@ router.post('/quotation/submit', upload.single('attachment'), async (req, res) =
 router.get('/quotation/requests', async (req, res) => {
     try {
         const quotations = await Quotation.find({});
-        res.render('quotation/requests', { quotations });
+        res.render('quotation/requests', { quotations, currentRoute: '/quotation/requests' });
     } catch (err) {
         console.error(err);
         req.flash('error', 'Failed to fetch quotation requests.');
-        res.redirect('/', { currentRoute: '/quotation/requests' });
+        res.redirect('/');
     }
 });
 
@@ -87,11 +87,11 @@ router.get('/quotation/requests/:id', async (req, res) => {
             return res.redirect('/quotation/requests');
         }
 
-        res.render('quotation/request', { quotation });
+        res.render('quotation/request', { quotation, currentRoute: '/quotation/requests' });
     } catch (err) {
         console.error(err);
         req.flash('error', 'Failed to fetch the quotation.');
-        res.redirect('/quotation/requests', { currentRoute: '/quotation/requests/:id' });
+        res.redirect('/quotation/requests');
     }
 });
 

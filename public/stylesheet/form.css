@@ -43,6 +43,9 @@
 	padding: 0px 25px;
 }
 
+h3{
+	color: white;
+}
 .quotation-form .form-control::-webkit-input-placeholder {
 	color: rgba(82, 82, 84, 0.4);
 }
