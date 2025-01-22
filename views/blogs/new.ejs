@@ -1,0 +1,128 @@
+<% layout('/layouts/boilerplate') -%>
+
+<style>
+    body {
+        background-color: white; /* Set the whole page's background to white */
+    }
+    #editor-container {
+        height: 300px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 10px;
+        background-color: #f9f9f9;
+    }
+    #preview {
+        border: 1px solid #ccc;
+        padding: 1rem;
+        border-radius: 4px;
+        background-color: #f9f9f9;
+    }
+    #sidebar {
+        background-color: #f8f9fa;
+        border-right: 1px solid #ccc;
+        padding: 1rem;
+        height: 100%;
+        position: sticky;
+        top: 0;
+    }
+</style>
+
+<div class="container-fluid my-5">
+    <div class="row">
+        <!-- Sidebar -->
+        <div id="sidebar" class="col-md-3">
+            <h5>Blog Options</h5>
+            <form action="/blogs" method="POST" enctype="multipart/form-data">
+                <!-- Blog Title -->
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" name="title" id="title" class="form-control" required>
+                </div>
+
+                <!-- Blog Content -->
+                <div class="mb-3">
+                    <label for="content" class="form-label">Content</label>
+                    <div id="editor-container"></div>
+                    <textarea name="content" id="content" style="display: none;"></textarea>
+                </div>
+
+                <!-- Template Options -->
+                <div class="mb-3">
+                    <label for="template" class="form-label">Template</label>
+                    <select name="template" id="template" class="form-control">
+                        <option value="Default">Default</option>
+                        <option value="Minimalist">Minimalist</option>
+                        <option value="Modern">Modern</option>
+                    </select>
+                </div>
+
+                <!-- Header Type -->
+                <div class="mb-3">
+                    <label for="headerType" class="form-label">Header Type</label>
+                    <select name="headerType" id="headerType" class="form-control">
+                        <option value="H1">H1</option>
+                        <option value="H2">H2</option>
+                        <option value="H3">H3</option>
+                    </select>
+                </div>
+
+                <!-- Blog Image -->
+                <div class="mb-3">
+                    <label for="image" class="form-label">Image</label>
+                    <input type="file" name="image" class="form-control">
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary mt-3">Create Blog</button>
+            </form>
+        </div>
+
+        <!-- Live Preview Section -->
+        <div id="preview" class="col-md-9">
+            <h3>Live Preview</h3>
+            <div id="live-preview">
+                <h1 id="preview-title">Title</h1>
+                <div id="preview-content"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Add custom fonts
+    const Font = Quill.import('formats/font');
+    Font.whitelist = ['sans-serif', 'serif', 'monospace', 'cursive', 'fantasy'];
+    Quill.register(Font, true);
+
+    // Initialize Quill editor with extended toolbar
+    const quill = new Quill('#editor-container', {
+        theme: 'snow',
+        placeholder: 'Write your blog here...',
+        modules: {
+            toolbar: [
+                [{ font: [] }], // Font choices
+                [{ size: ['small', false, 'large', 'huge'] }], // Font size
+                ['bold', 'italic', 'underline', 'strike'], // Text styling
+                [{ color: [] }, { background: [] }], // Text color and background color
+                [{ script: 'sub' }, { script: 'super' }], // Subscript/Superscript
+                [{ align: [] }], // Text alignment
+                [{ list: 'ordered' }, { list: 'bullet' }], // Lists
+                ['blockquote', 'code-block'], // Blockquote and code block
+                ['link', 'image', 'video'], // Link, image, and video embedding
+                ['clean'], // Remove formatting
+            ],
+        },
+    });
+
+    // Update hidden textarea and live preview on text change
+    quill.on('text-change', () => {
+        const editorHTML = quill.root.innerHTML; // Get editor content as HTML
+        document.getElementById('content').value = editorHTML; // Update hidden textarea
+        document.getElementById('preview-content').innerHTML = editorHTML; // Update live preview
+    });
+
+    // Live preview for title
+    document.getElementById('title').addEventListener('input', (e) => {
+        document.getElementById('preview-title').textContent = e.target.value || 'Title';
+    });
+</script>

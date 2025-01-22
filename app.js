@@ -7,6 +7,7 @@ const session = require('express-session');
 const ejsMate = require('ejs-mate');
 const catchAsync = require('./utils/CatchAsync');
 const nodemailer = require('nodemailer');
+const methodOverride = require('method-override');
 const flash = require('connect-flash');
 const mongoSanitize = require('express-mongo-sanitize');
 const MongoDBStore = require("connect-mongo");
@@ -16,7 +17,7 @@ const MongoDBStore = require("connect-mongo");
 // Routes
 const serviceRoute = require('./routes/services');
 const quoteRoute = require('./routes/quotation');
-
+const blogRoute = require('./routes/blogs');
 
 
 // SECURITY
@@ -71,7 +72,8 @@ const scriptSrcUrls = [
   "https://unpkg.com/@splinetool/viewer@1.9.48/build/process.js",
   "https://api.tiles.mapbox.com/",
   "https://api.mapbox.com/",
-  "https://code.jquery.com/" // Added this line
+  "https://code.jquery.com/",
+  "https://cdn.quilljs.com/" 
 ];
 
 const styleSrcUrls = [
@@ -82,6 +84,7 @@ const styleSrcUrls = [
   "https://kit-free.fontawesome.com/",
   "https://api.mapbox.com/",
   "https://api.tiles.mapbox.com/",
+  "https://cdn.quilljs.com/"
 ];
 
 const connectSrcUrls = [
@@ -147,7 +150,7 @@ app.use(
 app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
-
+app.use(methodOverride('_method'));
 app.use(session(sessionConfig));
 app.use(mongoSanitize());
 app.use(express.urlencoded({ extended: true }));
@@ -220,6 +223,7 @@ app.post('/send', catchAsync(async (req, res) => {
 
 app.use('/', serviceRoute)
 app.use('/', quoteRoute)
+app.use('/', blogRoute);
 
 const port = process.env.PORT || 3000;
 const server = app.listen(port, '0.0.0.0', () => {
