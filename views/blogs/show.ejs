@@ -1,0 +1,25 @@
+<% if (blog.template === 'Default') { %>
+    <div class="default-template">
+        <h1><%= blog.title %></h1>
+        <% if (blog.image) { %>
+            <img src="<%= blog.image %>" alt="Blog Image">
+        <% } %>
+        <div><%= blog.content %></div>
+    </div>
+<% } else if (blog.template === 'Minimalist') { %>
+    <div class="minimalist-template">
+        <h2><%= blog.title %></h2>
+        <% if (blog.image) { %>
+            <img src="<%= blog.image %>" alt="Blog Image">
+        <% } %>
+        <div><%= blog.content %></div>
+    </div>
+<% } else if (blog.template === 'Modern') { %>
+    <div class="modern-template">
+        <h3><%= blog.title %></h3>
+        <% if (blog.image) { %>
+            <img src="<%= blog.image %>" alt="Blog Image">
+        <% } %>
+        <div><%= blog.content %></div>
+    </div>
+<% } %>
