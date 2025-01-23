@@ -77,7 +77,7 @@ function initializeAnimations() {
   
   gsap.fromTo(
     ".project-gallery",
-    { scale: 1.6 }, // Start more zoomed in
+    { scale: 1.5 }, // Start more zoomed in
     {
       scale: 1.1, // End at the normal size
       duration: 2,
@@ -182,39 +182,48 @@ function initializeAnimations() {
       scrub: true,
     },
   });
-
-  gsap.from(".our-team-section .our-team-caption", {
-    y: 50,
-    opacity: 0,
-    stagger: 0.3,
-    duration: 1,
-    ease: "power2.out",
-    scrollTrigger: {
-      trigger: ".our-team-section",
-      start: "top 80%",
-      end: "top 50%",
-      scrub: true,
-    },
+  
+  // Ensure hover behavior works properly
+  document.querySelectorAll(".glass").forEach((glass) => {
+    glass.addEventListener("mouseenter", () => {
+      gsap.set(glass, { clearProps: "transform" }); // Clear transform on hover
+    });
   });
 
-  gsap.fromTo(
-    ".project-gallery",
-    {
-      opacity: 0,
-    },
-    {
-      opacity: 1,
-      stagger: 0.3,
-      duration: 0.8,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: ".project-gallery",
-        start: "top 90%",
-        end: "bottom 60%",
-        scrub: true,
-      },
-    }
-  );
+
+  // gsap.from(".our-team-section .our-team-caption", {
+  //   y: 50,
+  //   opacity: 0,
+  //   stagger: 0.3,
+  //   duration: 1,
+  //   ease: "power2.out",
+  //   scrollTrigger: {
+  //     trigger: ".our-team-section",
+  //     start: "top 80%",
+  //     end: "center 50%",
+  //     scrub: true,
+  //     markers: true
+  //   },
+  // });
+
+  // gsap.fromTo(
+  //   ".project-gallery",
+  //   {
+  //     opacity: 0,
+  //   },
+  //   {
+  //     opacity: 1,
+  //     stagger: 0.3,
+  //     duration: 0.8,
+  //     ease: "power2.out",
+  //     scrollTrigger: {
+  //       trigger: ".project-gallery",
+  //       start: "top 70%",
+  //       end: "bottom 60%",
+  //       scrub: true,
+  //     },
+  //   }
+  // );
 }
 
 // Debounced resize event listener
