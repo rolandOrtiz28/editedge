@@ -152,7 +152,7 @@
 
     <section id="services">
       <div class="row d-flex align-items-center justify-content-center services-section">
-        <div class="col-md-5 caption2  text-start w-100">
+        <div class="col-md-5 caption2 text-start w-100">
           <h1 class="what">
             <span class="we-offer">what we</span>
             Offer
@@ -163,32 +163,52 @@
         </div>
         <div class="services-container mt-5">
           <!-- Video Editing -->
-          <div data-text="Video Editing" style="--r:-15;" class="glass">
+          <div data-text="Video Editing" style="--r:-15;z-index: 1" class="glass">
             <div class="glass-content">
               <a href="/videoediting"><img src="/images/Video.gif" alt="Video Editing"></a>
             </div>
+            <div class="description-container">
+              <p class="service-description">Transform your footage into cinematic masterpieces with our expert video editing services.</p>
+              <a href="/videoediting" class="learn-more">Learn More</a>
+            </div>
           </div>
+        
           <!-- Web Development -->
-          <div data-text="Web Development" style="--r:-15;" class="glass">
+          <div data-text="Web Development" style="--r:-15;z-index: 2" class="glass">
             <div class="glass-content">
               <a href="/WebDevelopment"><img src="/images/Web.gif" alt="Web Development"></a>
             </div>
+            <div class="description-container">
+              <p class="service-description">Create responsive and dynamic websites that stand out in today’s digital landscape.</p>
+              <a href="/WebDevelopment" class="learn-more">Learn More</a>
+            </div>
           </div>
+        
           <!-- Graphic Design -->
-          <div data-text="Graphic Design" style="--r:15; z-index: 1;" class="glass">
+          <div data-text="Graphic Design" style="--r:15;z-index: 2" class="glass">
             <div class="glass-content">
               <a href="/GraphicDesign"><img src="/images/Graphic.gif" alt="Graphic Design"></a>
             </div>
+            <div class="description-container">
+              <p class="service-description">Enhance your brand with creative, impactful, and professional graphic design solutions.</p>
+              <a href="/GraphicDesign" class="learn-more">Learn More</a>
+            </div>
           </div>
+        
           <!-- 3D Art -->
-          <div data-text="3D Art" style="--r:15;z-index: 0;" class="glass">
+          <div data-text="3D Art" style="--r:15;z-index: 1;" class="glass">
             <div class="glass-content">
-             <a href="/3dart"> <img src="/images/3D.gif" alt="3D Art"></a>
+              <a href="/3dart"><img src="/images/3D.gif" alt="3D Art"></a>
+            </div>
+            <div class="description-container">
+              <p class="service-description">Bring your ideas to life with stunning and realistic 3D art creations.</p>
+              <a href="/3dart" class="learn-more">Learn More</a>
             </div>
           </div>
         </div>
       </div>
     </section>
+    
     
 </div>
 
@@ -203,10 +223,19 @@
         <!-- Card for Roland Ortiz -->
         <div class="cards">
           <div class="cards-info">
-            <div class="card-content">
+            <!-- Left Content (Image, Name, Position) -->
+            <div class="card-left">
               <img src="/images/junjo.png" alt="Roland Ortiz" class="card-image">
               <p class="name">Roland Ortiz</p>
               <p class="position">Founder, Web Developer, Video Editor</p>
+            </div>
+            <!-- Right Content (Additional Info) -->
+            <div class="card-right">
+              <div class="additional-info">
+                <p class="experience"><strong>Experience:</strong> 3+ years in web development and video editing</p>
+                <p class="education"><strong>Education:</strong> BS in Computer Science</p>
+                <p class="description">Passionate about creating innovative solutions for digital media and web platforms.</p>
+              </div>
               <!-- Social Media Icons -->
               <div class="social-icons">
                 <a href="https://facebook.com" target="_blank" class="social-link">
@@ -226,10 +255,19 @@
         <!-- Card for Roland Kristian Ortiz -->
         <div class="cards">
           <div class="cards-info">
-            <div class="card-content">
+            <!-- Left Content (Image, Name, Position) -->
+            <div class="card-left">
               <img src="/images/janjan.png" alt="Roland Kristian Ortiz" class="card-image">
               <p class="name">Roland Kristian Ortiz</p>
               <p class="position">Co-Founder, 3D Artist, Graphic Designer</p>
+            </div>
+            <!-- Right Content (Additional Info) -->
+            <div class="card-right">
+              <div class="additional-info">
+                <p class="experience"><strong>Experience:</strong> 5+ years in 3D modeling and graphic design</p>
+                <p class="education"><strong>Education:</strong> BS in Multimedia Arts</p>
+                <p class="description">Expert in crafting visually stunning 3D art and graphics, dedicated to pushing creative boundaries.</p>
+              </div>
               <!-- Social Media Icons -->
               <div class="social-icons">
                 <a href="https://facebook.com" target="_blank" class="social-link">
@@ -530,7 +568,7 @@
               <div class="email">
                 <img src="/images/Email.gif" alt="3D Art">
                 <h4>Email:</h4>
-                <p>editedge.com</p>
+                <p>info@editedgemultimedia.com</p>
               </div>
 
               <div class="phone">
