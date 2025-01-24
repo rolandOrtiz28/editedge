@@ -7,10 +7,22 @@ const Blog = require('../models/Blog');
 const catchAsync = require('../utils/CatchAsync');
 
 // Show all blogs
-router.get('/blogs', catchAsync(async (req, res) => {
-    const blogs = await Blog.find({});
-    res.render('blogs/index', { blogs });
-}));
+// router.get('/blogs', catchAsync(async (req, res) => {
+//     const blogs = await Blog.find({});
+//     res.render('blogs/index', { blogs });
+// }));
+router.get('/blogs', (req, res) => {
+    res.render('blogs/index', { currentRoute: '/blogs' });
+});
+
+router.get('/blogs/blog1', (req, res) => {
+    res.render('blogs/blog/blog1', { currentRoute: '/blogs/blog1' });
+});
+
+router.get('/blogs/manual/blog2', (req, res) => {
+    res.render('blogs/2');
+});
+
 
 // Show the new blog editor
 router.get('/blogs/new', (req, res) => {
@@ -36,14 +48,14 @@ router.post('/blogs', upload.single('image'), catchAsync(async (req, res) => {
 }));
 
 // Show a specific blog
-router.get('/blogs/:id', catchAsync(async (req, res) => {
-    const blog = await Blog.findById(req.params.id);
-    if (!blog) {
-        req.flash('error', 'Blog not found!');
-        return res.redirect('/blogs');
-    }
-    res.render('blogs/show', { blog });
-}));
+// router.get('/blogs/:id', catchAsync(async (req, res) => {
+//     const blog = await Blog.findById(req.params.id);
+//     if (!blog) {
+//         req.flash('error', 'Blog not found!');
+//         return res.redirect('/blogs');
+//     }
+//     res.render('blogs/show', { blog });
+// }));
 
 // Form for editing a blog
 router.get('/blogs/:id/edit', catchAsync(async (req, res) => {

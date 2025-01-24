@@ -1,14 +1,57 @@
-<h1>All Blogs</h1>
+<% layout('/layouts/boilerplate') -%>
+
+
+<h1 class="text-center my-4">All Blogs</h1>
 <div class="container">
-    <a href="/blogs/new">Create</a>
-    <% blogs.forEach(blog => { %>
-        <div class="card">
-            <img src="<%= blog.image || 'https://via.placeholder.com/150' %>" class="card-img-top" alt="<%= blog.title %>">
-            <div class="card-body">
-                <h5 class="card-title"><%= blog.title %></h5>
-                <p class="card-text"><%= blog.content.substring(0, 100) %>...</p>
-                <a href="/blogs/<%= blog._id %>" class="btn btn-primary">Read More</a>
-            </div>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <!-- Blog 1 Card -->
+    <div class="col">
+      <div class="card h-100">
+        <div class="bg-image hover-overlay" data-mdb-ripple-init data-mdb-ripple-color="light">
+          <img src="https://images.unsplash.com/photo-1623358044873-14eca747c41e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top img-fluid" alt="Blog 1">
+          <a href="/blogs/blog1">
+            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+          </a>
         </div>
-    <% }) %>
+        <div class="card-body">
+          <h5 class="card-title">Blog 1 Title</h5>
+          <p class="card-text">A short description or snippet of Blog 1...</p>
+          <a href="/blogs/blog1" class="btn btn-primary">Read More</a>
+        </div>
+      </div>
+    </div>
+    <!-- Blog 2 Card -->
+    <div class="col">
+      <div class="card h-100">
+        <div class="bg-image hover-overlay" data-mdb-ripple-init data-mdb-ripple-color="light">
+          <img src="https://images.unsplash.com/photo-1607112812619-182cb1c7bb61?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top img-fluid" alt="Blog 2">
+          <a href="/blogs/manual/blog2">
+            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+          </a>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Blog 2 Title</h5>
+          <p class="card-text">A short description or snippet of Blog 2...</p>
+          <a href="/blogs/manual/blog2" class="btn btn-primary">Read More</a>
+        </div>
+      </div>
+    </div>
+    <!-- Blog 3 Card -->
+    <div class="col">
+      <div class="card h-100">
+        <div class="bg-image hover-overlay" data-mdb-ripple-init data-mdb-ripple-color="light">
+          <img src="https://images.unsplash.com/photo-1607112812619-182cb1c7bb61?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top img-fluid" alt="Blog 2">
+          <a href="/blogs/manual/blog2">
+            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+          </a>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Blog 3 Title</h5>
+          <p class="card-text">A short description or snippet of Blog 2...</p>
+          <a href="/blogs/manual/blog2" class="btn btn-primary">Read More</a>
+        </div>
+      </div>
+    </div>
+    <!-- Add more blogs manually here -->
+  </div>
 </div>
