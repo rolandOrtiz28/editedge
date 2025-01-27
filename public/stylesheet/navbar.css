@@ -14,8 +14,9 @@
 
 
 .navbar-brand {
-    font-weight: 400;
-    letter-spacing: 1px;
+  font-family: "Bebas Neue", serif;
+  font-weight: 400;
+  font-style: normal;
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
 }
 

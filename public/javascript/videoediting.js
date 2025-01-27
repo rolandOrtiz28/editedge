@@ -1,35 +1,35 @@
-// Register the GSAP ScrollTrigger plugin
+
 gsap.registerPlugin(ScrollTrigger);
 
-// Typewriter effect function
-function typeWriterAnimation(targetElement) {
-  const textContent = targetElement.textContent; // Get the full text
-  targetElement.textContent = ""; // Clear the text initially
 
-  let index = 0;
+// function typeWriterAnimation(targetElement) {
+//   const textContent = targetElement.textContent; 
+//   targetElement.textContent = ""; 
 
-  // ScrollTrigger to start animation
-  ScrollTrigger.create({
-    trigger: targetElement,
-    start: "top 80%", // Adjust trigger point
-    onEnter: () => {
-      const interval = setInterval(() => {
-        targetElement.textContent += textContent[index];
-        index++;
+//   let index = 0;
 
-        if (index === textContent.length) {
-          clearInterval(interval); // Stop when complete
-        }
-      }, 70); // Typing speed in milliseconds
-    },
-    once: true, // Ensures it triggers only once
-  });
-}
 
-// Call the typewriter function on the description element
-document.querySelectorAll(".description").forEach((description) => {
-  typeWriterAnimation(description);
-});
+//   ScrollTrigger.create({
+//     trigger: targetElement,
+//     start: "top 80%",
+//     onEnter: () => {
+//       const interval = setInterval(() => {
+//         targetElement.textContent += textContent[index];
+//         index++;
+
+//         if (index === textContent.length) {
+//           clearInterval(interval); 
+//         }
+//       }, 70); 
+//     },
+//     once: true, 
+//   });
+// }
+
+
+// document.querySelectorAll(".description").forEach((description) => {
+//   typeWriterAnimation(description);
+// });
 
 // Animate the horizontal line
 gsap.to(".horizontal-line", {
