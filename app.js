@@ -105,7 +105,9 @@ const imgSrcUrls = [
   "https://cdn.jsdelivr.net/",
   "https://kit-free.fontawesome.com/",
   "https://cdnjs.cloudflare.com/",
-  "https://res.cloudinary.com/" // Allow Cloudinary images
+  "https://res.cloudinary.com/" ,
+  "https://media.istockphoto.com/" ,
+  
 ];
 
 const fontSrcUrls = [
