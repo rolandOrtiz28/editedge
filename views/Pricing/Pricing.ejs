@@ -1,0 +1,36 @@
+<% layout('/layouts/boilerplate') -%>
+<link rel="stylesheet" href="/stylesheet/pricing.css">
+
+<% layout('/layouts/boilerplate') -%>
+
+<div class="py-5">
+  <h2 class="text-center mb-4">Choose Your Service</h2>
+  <div class="d-flex justify-content-center mb-4">
+    <button id="video-editing" class="btn btn-primary mx-2">Video Editing</button>
+    <button id="web-dev" class="btn btn-primary mx-2">Web Development</button>
+    <button id="graphic-design" class="btn btn-primary mx-2">Graphic Design</button>
+    <button id="3d-art" class="btn btn-primary mx-2">3D Art</button>
+  </div>
+  
+  <div id="service-cards" class="row row-cols-1 row-cols-md-3 g-3 d-flex justify-content-center">
+    <!-- Dynamic Service Cards will go here -->
+  </div>
+</div>
+
+<div class="alert alert-info">
+  <h5>Bundle Discounts:</h5>
+  <ul>
+    <li>Video + Audio Editing Package: Save 10%</li>
+    <li>Graphic + Web Design Package: Save 15%</li>
+    <li>All-in-One Multimedia Package: Save 20% when bundling 3 or more services</li>
+  </ul>
+  <h5>Limited-Time Deals:</h5>
+  <ul>
+    <li>New Year Special: 25% off web design projects booked in January</li>
+    <li>Valentine’s Special: 15% off graphic design services in February</li>
+  </ul>
+  <h5>Custom Quotes:</h5>
+  <p>For large-scale or specialized projects like 3D reels or advanced websites, request a custom quote tailored to your needs.</p>
+</div>
+
+<script src="/javascript/pricing.js"></script>

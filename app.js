@@ -18,6 +18,7 @@ const MongoDBStore = require("connect-mongo");
 const serviceRoute = require('./routes/services');
 const quoteRoute = require('./routes/quotation');
 const blogRoute = require('./routes/blogs');
+const pricingRoute = require('./routes/Pricing');
 
 
 // SECURITY
@@ -226,6 +227,7 @@ app.post('/send', catchAsync(async (req, res) => {
 app.use('/', serviceRoute)
 app.use('/', quoteRoute)
 app.use('/', blogRoute);
+app.use('/', pricingRoute);
 
 const port = process.env.PORT || 3000;
 const server = app.listen(port, '0.0.0.0', () => {
