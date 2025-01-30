@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/pricing', (req, res) => {
-    res.render('/Pricing/Pricing', { currentRoute: '/pricing', service: null });
+    res.render('Pricing/Pricing', { currentRoute: '/pricing', service: null });
 
 })
 

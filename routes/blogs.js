@@ -15,6 +15,7 @@ router.get('/blogs', (req, res) => {
     res.render('blogs/index', { currentRoute: '/blogs' });
 });
 
+
 router.get('/blogs/blog1', (req, res) => {
     res.render('blogs/blog/blog1', { currentRoute: '/blogs/blog1' });
 });
