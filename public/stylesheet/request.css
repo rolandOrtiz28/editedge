@@ -1,6 +1,6 @@
 .request-section {
     width: 100%;
-    height: 100vh;
+    height: auto;
     margin-top: 6rem; /* Increased margin for more spacing */
     padding-top: 1rem; /* Optional padding if needed */
 }
