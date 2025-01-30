@@ -39,7 +39,7 @@ document.querySelectorAll('.icon-content a').forEach(button => {
                   </ul>
                 </div>
                 <div class="button-container">
-                  <button type="button">Select Package</button>
+                  <button id="btn"  class="btns">Select Package</button>
                 </div>
               </div>
             `;

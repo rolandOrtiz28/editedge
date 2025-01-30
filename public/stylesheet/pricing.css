@@ -24,11 +24,53 @@ body {
    
   }
   
-  button {
-    font-size: 16px;
+  .btns {
     padding: 10px 20px;
+    text-transform: uppercase;
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: 500;
+    color: #FF007F;
+    text-shadow: none;
+    background: transparent;
+    cursor: pointer;
+    box-shadow: transparent;
+    border: 1px solid #ffffff80;
+    transition: 0.5s ease;
+    user-select: none;
+    display: block;
+    width: 100%;
   }
 
+  .btns a{
+    text-decoration: none;
+    color: #FF007F;
+  }
+  .btns:hover a{
+    text-decoration:dashed;
+    color: white;
+  }
+  /* .button-container button {
+
+ 
+
+  padding: 10px 20px;
+  text-transform: uppercase;
+  color: #000;
+  outline: 0;
+  border: 0;
+  border-radius: 10px;
+} */
+
+  #btn:hover,
+  :focus {
+    color: #ffffff;
+    background: #FF007F;
+    border: 1px solid #FF007F;
+    text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
+    box-shadow: 0 0 5px #FF007F, 0 0 20px #FF007F, 0 0 50px #FF007F,
+      0 0 100px #FF007F;
+  }
   #service-cards {
     opacity: 1;
     transition: opacity 0.5s ease-in-out;
@@ -146,17 +188,7 @@ body {
   padding: 0;
 }
 
-.button-container button {
-  display: block;
-  width: 100%;
-  background-color: #fff;
-  padding: 10px 20px;
-  text-transform: uppercase;
-  color: #000;
-  outline: 0;
-  border: 0;
-  border-radius: 10px;
-}
+
 
 
 /* From Uiverse.io by jamik-dev */
