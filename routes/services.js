@@ -12,6 +12,11 @@ router.get('/3dart', (req, res) => {
 
 })
 
+router.get('/blogger', (req, res) => {
+    res.render('blogs/index',{ currentRoute: '/blogger' });
+
+})
+
 router.get('/GraphicDesign', (req, res) => {
     res.render('services/graphicdesign',{ currentRoute: '/GraphicDesign' });
 
