@@ -17,6 +17,7 @@ const MongoDBStore = require("connect-mongo");
 
 // Routes
 const serviceRoute = require('./routes/services');
+const trialRoute = require('./routes/trial');
 const quoteRoute = require('./routes/quotation');
 const blogRoute = require('./routes/blogs');
 const pricingRoute = require('./routes/Pricing');
@@ -228,6 +229,7 @@ app.post('/send', catchAsync(async (req, res) => {
 }));
 
 app.use('/', serviceRoute)
+app.use('/', trialRoute)
 app.use('/', quoteRoute)
 app.use('/', blogRoute);
 app.use('/', pricingRoute);
