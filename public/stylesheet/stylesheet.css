@@ -54,6 +54,7 @@ section {
   padding: 2px;
   background: radial-gradient(circle 80px at 80% -10%, #ffffff, #181b1b);
   position: relative;
+  z-index: 1;
 }
 .button::after {
   content: "";

@@ -9,8 +9,8 @@
   <div class="container-fluid">
     <!-- Navbar Brand -->
     <a class="navbar-brand" href="/">
-      <img src="/images/logo.png" alt="Logo" />
-      <span class="ms-1">Edit Edge</span>
+      <img src="/images/Logo.gif" alt="Logo" />
+ 
     </a>
 
     <!-- Navbar Toggler -->
@@ -28,61 +28,108 @@
 
     <!-- Navbar Links -->
     <div class="collapse navbar-collapse" id="navbarNav">
-      <% if (currentRoute === '/') { %> <!-- Render links only on home page -->
       <ul class="navbar-nav mx-auto">
-        <li class="nav-item">
-          <a class="nav-link text-secondary" href="#partners">Partners</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-secondary" href="#whychooseus">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-secondary" href="/blogs">Blogs</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-secondary" href="/pricing">Pricing</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle text-secondary"
-            href="#"
-            id="servicesDropdown"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Expertise
-          </a>
-          <div class="dropdown-menu p-3 bg-dark">
-            <div class="grid-container">
-              <a href="/videoediting" class="dropdown-item">
-                <i class="fas fa-video"></i>
-                <span class="ms-1">Video Editing</span>
-                <p class="text-muted">High-quality video post-production.</p>
-              </a>
-              <a href="/WebDevelopment" class="dropdown-item">
-                <i class="fas fa-code"></i>
-                <span class="ms-1">Web Development</span>
-                <p class="text-muted">Modern web design and apps.</p>
-              </a>
-              <a href="/3dart" class="dropdown-item">
-                <i class="fas fa-cubes"></i>
-                <span class="ms-1">3D Art</span>
-                <p class="text-muted">Immersive 3D creations.</p>
-              </a>
-              <a href="/GraphicDesign" class="dropdown-item">
-                <i class="fas fa-paint-brush"></i>
-                <span class="ms-1">Graphic Design</span>
-                <p class="text-muted">Creative visual designs.</p>
-              </a>
+        <% if (currentRoute !== '/') { %> <!-- Render links for non-home pages -->
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="/pricing">Pricing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="/blogs">Blogs</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle text-secondary"
+              href="#"
+              id="servicesDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Expertise
+            </a>
+            <div class="dropdown-menu p-3 bg-dark">
+              <div class="grid-container">
+                <a href="/videoediting" class="dropdown-item">
+                  <i class="fas fa-video"></i>
+                  <span class="ms-1">Video Editing</span>
+                  <p class="text-muted">High-quality video post-production.</p>
+                </a>
+                <a href="/WebDevelopment" class="dropdown-item">
+                  <i class="fas fa-code"></i>
+                  <span class="ms-1">Web Development</span>
+                  <p class="text-muted">Modern web design and apps.</p>
+                </a>
+                <a href="/3dart" class="dropdown-item">
+                  <i class="fas fa-cubes"></i>
+                  <span class="ms-1">3D Art</span>
+                  <p class="text-muted">Immersive 3D creations.</p>
+                </a>
+                <a href="/GraphicDesign" class="dropdown-item">
+                  <i class="fas fa-paint-brush"></i>
+                  <span class="ms-1">Graphic Design</span>
+                  <p class="text-muted">Creative visual designs.</p>
+                </a>
+              </div>
             </div>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-secondary" href="#contact">Reach Out</a>
-        </li>
+          </li>
+        <% } %> <!-- End of non-home page condition -->
+        <!-- Links always visible on home page -->
+        <% if (currentRoute === '/') { %>
+         
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="#partners">Partners</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="#whychooseus">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="/blogs">Blogs</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle text-secondary"
+              href="#"
+              id="servicesDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Expertise
+            </a>
+            <div class="dropdown-menu p-3 bg-dark">
+              <div class="grid-container">
+                <a href="/videoediting" class="dropdown-item">
+                  <i class="fas fa-video"></i>
+                  <span class="ms-1">Video Editing</span>
+                  <p class="text-muted">High-quality video post-production.</p>
+                </a>
+                <a href="/WebDevelopment" class="dropdown-item">
+                  <i class="fas fa-code"></i>
+                  <span class="ms-1">Web Development</span>
+                  <p class="text-muted">Modern web design and apps.</p>
+                </a>
+                <a href="/3dart" class="dropdown-item">
+                  <i class="fas fa-cubes"></i>
+                  <span class="ms-1">3D Art</span>
+                  <p class="text-muted">Immersive 3D creations.</p>
+                </a>
+                <a href="/GraphicDesign" class="dropdown-item">
+                  <i class="fas fa-paint-brush"></i>
+                  <span class="ms-1">Graphic Design</span>
+                  <p class="text-muted">Creative visual designs.</p>
+                </a>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="/pricing">Pricing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="#contact">Reach Out</a>
+          </li>
+        <% } %>
       </ul>
-      <% } %>
+
       <!-- Get a Quote Button -->
       <button type="button" class="qoute-button ms-auto mb-2">
         <div class="qoute-button-top"><a href="/quotation">Get A Quote</a></div>

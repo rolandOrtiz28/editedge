@@ -2,6 +2,7 @@ const dotenv = require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
+
 const path = require('path');
 const session = require('express-session');
 const ejsMate = require('ejs-mate');
@@ -108,6 +109,7 @@ const imgSrcUrls = [
   "https://cdnjs.cloudflare.com/",
   "https://res.cloudinary.com/" ,
   "https://media.istockphoto.com/" ,
+  "https://plus.unsplash.com/" ,
   
 ];
 
@@ -150,6 +152,7 @@ app.use(
 
 
 // Set EJS as the view engine
+
 app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));

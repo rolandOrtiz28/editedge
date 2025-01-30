@@ -21,8 +21,9 @@
 }
 
 .navbar-brand img{
-  width: 30px;
-  height: 30px;
+  width: 100px;
+  height: 60px;
+
 }
 .nav-link {
     transition: color 0.3s ease-in-out;

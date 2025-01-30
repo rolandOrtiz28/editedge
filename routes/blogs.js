@@ -19,8 +19,8 @@ router.get('/blogs/blog1', (req, res) => {
     res.render('blogs/blog/blog1', { currentRoute: '/blogs/blog1' });
 });
 
-router.get('/blogs/manual/blog2', (req, res) => {
-    res.render('blogs/2');
+router.get('/blogs/blog2', (req, res) => {
+    res.render('blogs/blog/blog2',{ currentRoute: '/blogs/blog2' });
 });
 
 
