@@ -1,13 +1,8 @@
- YML
-##### THIS ALLOWS US TO DEPLOY THE SITE FROM A GIT REPO ######
----
+#### THIS ALLOWS US TO DEPLOY THE SITE FROM A GIT REPO ####
 deployment:
   tasks:
     - export DEPLOYPATH=/home/editcezo/repositories/editedge
-    - /bin/cp -R .vscode $DEPLOYPATH
-    - /bin/cp -R assets $DEPLOYPATH
-    - /bin/cp -R css $DEPLOYPATH
-    - /bin/cp -R fonts $DEPLOYPATH
-    - /bin/cp -R img $DEPLOYPATH
-    - /bin/cp -R js $DEPLOYPATH
-    /bin/cp index.html $DEPLOYPATH
+    - cd $DEPLOYPATH
+    - /bin/cp -R * $DEPLOYPATH  # Copy all files
+    - npm install --production   # Install dependencies
+    - pm2 restart server.js      # Restart Node.js app
