@@ -11,9 +11,9 @@ const catchAsync = require('../utils/CatchAsync');
 //     const blogs = await Blog.find({});
 //     res.render('blogs/index', { blogs });
 // }));
-router.get('/blogposts', (req, res) => {
-    res.render('blogs/index', { currentRoute: '/blogposts' });
-});
+// router.get('/blogposts', (req, res) => {
+//     res.render('blogs/index', { currentRoute: '/blogposts' });
+// });
 
 
 
