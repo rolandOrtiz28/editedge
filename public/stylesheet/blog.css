@@ -28,7 +28,7 @@
 
   p, ul, li {
     font-family: "Montserrat", serif;
-    font-size: 1rem; /* Adjust the font size as needed */
+    font-size: 1.2rem; /* Adjust the font size as needed */
     line-height: 1.6; /* Optional: Adjust line height for better readability */
   }
 
@@ -39,7 +39,7 @@
   }
 
   strong{
-    color:  #FF007F;
+    color:  #58002c;
   }
 
   .blogger-button {

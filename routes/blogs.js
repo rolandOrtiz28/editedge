@@ -17,17 +17,18 @@ const catchAsync = require('../utils/CatchAsync');
 
 
 
-router.get('/blogs/blog-advertising-design-trends-2025', (req, res) => {
+router.get('/blogs/advertising-design-trends-2025', (req, res) => {
     res.render('blogs/blog/blog1', { currentRoute: '/blogs/blog-advertising-design-trends-2025' });
 });
 
-router.get('/blogs/blog2', (req, res) => {
+router.get('/blogs/the-evolution-of-the-modern-branding-package', (req, res) => {
     res.render('blogs/blog/blog2',{ currentRoute: '/blogs/blog2' });
 });
 
-router.get('/blogs/blog3', (req, res) => {
-    res.render('blogs/blog/blog3',{ currentRoute: '/blogs/blog3' });
+router.get('/blogs/how-startups-can-collaborate-with-web-design-agencies', (req, res) => {
+    res.render('blogs/blog/blog3', { currentRoute: '/blogs/blog3' });
 });
+
 
 
 // Show the new blog editor
