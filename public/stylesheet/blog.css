@@ -5,8 +5,16 @@
     font-style: normal;
   }
 
+  a{
+    text-decoration: none;
+    font-family: "Montserrat", serif;
+    font-size: 1.2rem; /* Adjust the font size as needed */
+    line-height: 1.6; /* Optional: Adjust line height for better readability */
+  }
+
   .position-relative img {
     filter: blur(2px);
+
   }
 
   .position-relative h1 {

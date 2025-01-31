@@ -11,13 +11,14 @@ const catchAsync = require('../utils/CatchAsync');
 //     const blogs = await Blog.find({});
 //     res.render('blogs/index', { blogs });
 // }));
-router.get('/blogs', (req, res) => {
-    res.render('blogs/index', { currentRoute: '/blogs' });
+router.get('/blogposts', (req, res) => {
+    res.render('blogs/index', { currentRoute: '/blogposts' });
 });
 
 
-router.get('/blogs/blog1', (req, res) => {
-    res.render('blogs/blog/blog1', { currentRoute: '/blogs/blog1' });
+
+router.get('/blogs/blog-advertising-design-trends-2025', (req, res) => {
+    res.render('blogs/blog/blog1', { currentRoute: '/blogs/blog-advertising-design-trends-2025' });
 });
 
 router.get('/blogs/blog2', (req, res) => {
