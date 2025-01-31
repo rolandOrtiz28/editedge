@@ -24,6 +24,10 @@ router.get('/blogs/blog2', (req, res) => {
     res.render('blogs/blog/blog2',{ currentRoute: '/blogs/blog2' });
 });
 
+router.get('/blogs/blog3', (req, res) => {
+    res.render('blogs/blog/blog3',{ currentRoute: '/blogs/blog3' });
+});
+
 
 // Show the new blog editor
 router.get('/blogs/new', (req, res) => {

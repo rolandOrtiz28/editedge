@@ -1,0 +1,47 @@
+.sub-header {
+    font-size: 50px;
+    font-family: "Spectral", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .position-relative img {
+    filter: blur(2px);
+  }
+
+  .position-relative h1 {
+    color: #101010;
+    text-shadow: #ffffff 1px 0 10px;
+  }
+  .position-relative h4 {
+    color: #101010;
+    text-shadow: #ffffff 1px 0 10px;
+  }
+
+  p, ul, li {
+    font-family: "Montserrat", serif;
+    font-size: 1rem; /* Adjust the font size as needed */
+    line-height: 1.6; /* Optional: Adjust line height for better readability */
+  }
+
+  ul, li {
+    margin: 0; /* Optional: Remove default margins for consistency */
+    padding: 0; /* Optional: Remove default padding for consistency */
+    
+  }
+
+  strong{
+    color:  #FF007F;
+  }
+
+  .blogger-button {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+    transition: color 0.3s ease-in-out;
+}
+
+.blogger-button:hover {
+    color: #FF007F;
+}

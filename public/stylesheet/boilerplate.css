@@ -11,17 +11,17 @@ body {
 html, body {
     height: 100%;
     overflow-x: hidden;
-    scrollbar-width: none; /* Hide scrollbar in Firefox */
+    /* scrollbar-width: none;  */
     
 }
 
-body {
--ms-overflow-style: none; /* Hide scrollbar in IE and Edge */
-}
+/* body {
+-ms-overflow-style: none; 
+} */
 
-body::-webkit-scrollbar {
-display: none; /* Hide scrollbar in Chrome, Safari, and Edge */
-}
+/* body::-webkit-scrollbar {
+display: none; 
+} */
 
 #particles-js {
     position: absolute;
