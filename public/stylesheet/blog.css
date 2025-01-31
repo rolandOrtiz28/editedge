@@ -53,3 +53,88 @@
 .blogger-button:hover {
     color: #FF007F;
 }
+@media screen and (max-width: 768px) {
+  .position-absolute {
+    width: 90% !important; /* Allow the text to take up more space */
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important; /* Maintain centering */
+    text-align: center !important;
+  }
+
+  .position-absolute h1 {
+    font-size: 1.8rem !important; /* Reduce size for mobile */
+    line-height: 1.4 !important;
+    padding: 5px !important;
+  }
+
+  .position-absolute h4 {
+    font-size: 1.2rem !important; /* Adjust smaller heading */
+    padding: 5px !important;
+  }
+  .content, .container {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+  }
+
+a{
+  font-size: 1rem;
+}
+  .row {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important; /* Instead of center */
+  }
+
+  .col {
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: left !important; /* Prevent text from being too centered */
+  }
+  ul, li{
+    font-size: 1rem;
+  }
+
+  .lead {
+    text-align: start !important;
+    font-size: 1rem !important;
+    line-height: 1.8 !important;
+    max-width: 100% !important; /* Ensure it doesn't shrink */
+  }
+
+ 
+  .sub-header {
+    text-align: center !important;
+    font-size: 2rem !important;
+    width: 100% !important;
+  }
+
+
+  .text-center img {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 600px !important;
+    margin: 0 auto !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .position-absolute {
+    width: 100% !important; /* Allow full width usage */
+    top: 45% !important; /* Adjust for better vertical spacing */
+  }
+
+  .position-absolute h1 {
+    font-size: 1.5rem !important; /* Make it smaller but still readable */
+  }
+
+  .position-absolute h4 {
+    font-size: 1rem !important; /* Ensure subtitle is visible */
+  }
+  .sub-header {
+    font-size: 1.8rem !important;
+  }
+
+  .lead {
+    font-size: 0.95rem !important;
+  }
+}

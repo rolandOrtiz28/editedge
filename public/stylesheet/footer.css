@@ -201,10 +201,11 @@
   @media (max-width: 768px) {
     .custom-footer {
         padding: 20px; /* Reduce padding for smaller screens */
-        min-height: auto; /* Allow the height to adjust based on content */
+        height: auto; /* Allow the height to adjust based on content */
         display: flex;
         flex-direction: column; /* Stack elements vertically */
         align-items: center; /* Center elements */
+        
     }
 
     .footer-bg-text {
@@ -221,6 +222,10 @@
     }
 
     .footer-logo {
-        width: 40px; /* Ensure logo scales proportionally */
+        width: 100px; /* Ensure logo scales proportionally */
+    }
+
+    .legal-notices p{
+        font-size: 10px;
     }
 }

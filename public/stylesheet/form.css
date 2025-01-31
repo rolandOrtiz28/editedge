@@ -2,7 +2,18 @@
     position: relative;
     min-height: 100vh; /* Changed from height to min-height */
     padding-top: 80px; /* Add padding to prevent overlap with the navbar */
-    padding-bottom: 80px; /* Add padding to prevent overlap with the footer */
+    padding-bottom: 120px; 
+
+}
+
+.card{
+	background: rgba( 255, 255, 255, 0.1 );
+
+backdrop-filter: blur( 4px );
+-webkit-backdrop-filter: blur( 4px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+
 }
 
 .section .section-center {
@@ -239,3 +250,157 @@ h3{
     color: #fff; /* Ensures text is visible on a dark background */
     border: 1px solid #fff; /* Adds a subtle white border */
 }
+
+
+.form-select.bg-transparent.text-white option {
+    color: black;
+}
+
+
+input:focus, select:focus, textarea:focus {
+    outline: none !important;
+    box-shadow: none !important;
+	filter: drop-shadow(0 0 0.10rem #FF007F);
+    border: 1px solid #ffffff !important; /* Change this color as needed */
+}
+
+.input i{
+	color:#FF007F;
+	margin-bottom: 2rem;
+}
+
+.form-control .bg-transparent .text-white option{
+color: #191a1e;
+}
+
+select {
+	background-color: transparent !important; /* Removes the dropdown background */
+	color: white; /* Keeps text visible */
+	border: 1px solid white; /* Optional: Adds a border */
+  }
+  
+  select option {
+	background-color: black; /* Adjust to match your design */
+	color: white; /* Ensures readability */
+  }
+
+.form-label{
+	color: white;
+}
+
+h1{
+	color: white;
+}
+
+.form-button {
+	color: #ffffff;
+	padding: 0.7em 1.7em;
+	font-size: 15px;
+	font-weight: 400;
+	border-radius: 0.5em;
+	background: #FF007F;
+	cursor: pointer;
+	border: 1px solid #FF007F;
+	transition: all 0.3s;
+	box-shadow: 1px 1px 6px #ff7abc, -1px -1px 6px #FF007F;
+	margin-top: 2rem;
+  }
+  
+  .form-button:hover {
+	border: 1px solid white;
+  }
+  
+  .form-button:active {
+	box-shadow: 2px 2px 6px #FF007F, -2px -2px 6px #FF007F;
+  }
+  
+
+
+  .feature-list {
+    margin-top: 20px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.feature-icon {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.feature-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+p {
+    color: #ccc;
+    font-size: 16px;
+}
+
+
+@media screen and (max-width: 768px) {
+	.card{
+		background:none;
+		backdrop-filter: blur( 0 );
+-webkit-backdrop-filter: blur( 0 );
+border-radius: 0;
+border: none;
+	}
+	.section{
+		padding-top: 5px;
+	}
+	/* Hide the right-side description on mobile */
+	.col-md-10.col-lg-6.col-xl-7.order-1.order-lg-2 {
+	  display: none !important;
+	}
+
+	.container.h-100 {
+		padding-bottom: 200px !important; /* Adds space above the footer */
+	  }
+
+	  form {
+		margin-bottom: 100px !important; /* Push form up */
+	  }
+  
+	/* Ensure form container takes full width */
+	.col-md-10.col-lg-6.col-xl-5 {
+	  width: 100% !important;
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	}
+  
+	/* Ensure form inputs are full-width */
+	.input,
+	.form-control {
+	  width: 100% !important;
+	}
+  
+	/* Reduce form input size for better mobile view */
+	.form-label,
+	.form-control,
+	.form-button {
+	  font-size: 14px !important;
+	}
+  
+	/* Reduce .form-button size */
+	.form-button {
+	  padding: 0 1.5em !important;
+	}
+
+	footer {
+		position: relative;
+		bottom: 0;
+		width: 100%;
+		padding: 20px 0;
+
+		height: 20vh;
+	  }
+  }

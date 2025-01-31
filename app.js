@@ -110,6 +110,7 @@ const imgSrcUrls = [
   "https://res.cloudinary.com/" ,
   "https://media.istockphoto.com/" ,
   "https://plus.unsplash.com/" ,
+  "https://mdbcdn.b-cdn.net/" ,
   
 ];
 

@@ -1176,12 +1176,21 @@ width: 100%;
 
 /* Medium Screen Adjustments */
 @media (max-width: 768px) {
+  
   .team-cards {
     flex-direction: column;
     gap: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 2px;
+  }
+
+  .additional-info .experience{
+    font-size: .7rem;
+  }
+  .additional-info .education{
+    font-size: .7rem;
   }
 
   .cards {
@@ -1208,14 +1217,32 @@ width: 100%;
 
 /* Small Screen Adjustments */
 @media (max-width: 576px) {
+ 
   .cards {
     width: 90%;
-    height: 50%;
+    height: 27%;
     margin-top: 0rem;
+   padding: 0.09rem;
+  }
+  .additional-info{
+    padding: .8rem 0;
+  }
+
+  .additional-info .experience{
+    font-size: .6rem;
+  }
+  .additional-info .education{
+    font-size: .6rem;
+    
+  }
+
+  .card-left{
+   
+    margin-left: 2rem;
   }
 
   .card-image {
-    width: 90px;
+    width: 100px;
     height: 90px;
   }
 
@@ -1241,6 +1268,10 @@ width: 100%;
 
   .card-content {
     gap: 2px;
+  }
+
+  .social-icons{
+    font-size: 13px;
   }
 }
 
@@ -1305,6 +1336,7 @@ width: 100%;
   .project-gallery {
     grid-template-columns: repeat(2, 1fr); /* Reduce columns for smaller screens */
     height: 50vh;
+    margin-top: 0;
   }
   .scroll-content{
     gap: .4rem;
