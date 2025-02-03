@@ -494,3 +494,58 @@ h2 {
     width: 100%;
   }
 }
+
+
+.video-gallery {
+  text-align: center;
+  padding: 2rem;
+  background-color: #101010;
+}
+.video-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.main-video-container {
+  width: 30%;
+  max-width: 800px;
+}
+.main-video {
+  width: 40%;
+  height: auto;
+  border-radius: 12px;
+}
+#video-title {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.video-playlist {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  max-height: 400px;
+  padding-right: 5px;
+}
+.video-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 10px;
+  background: #fff;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+.video-item.active, .video-item:hover {
+  background: #007bff;
+  color: white;
+}
+.thumbnail {
+  width: 80px;
+  height: 50px;
+  border-radius: 5px;
+  object-fit: cover;
+}

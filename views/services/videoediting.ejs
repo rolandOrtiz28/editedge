@@ -120,38 +120,64 @@
   </div>
 </div>
 
-<!-- Video Examples Section -->
-<div class="video-examples-section mb-5 mt-5">
-  <h2 class="text-center mb-4 Video-Example-Title">Video Examples</h2>
-  <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center align-items-center">
-    <!-- Example 1 -->
-    <div class="col w-25 d-flex justify-content-center align-items-center">
-      <div class="card project-card">
-        <video class="d-block" controls autoplay loop muted>
+
+  
+  <!-- Video Playlist -->
+  <div class="container-fluid video-gallery">
+    <h2 class="text-center mb-4 Video-Example-Title">Video Gallery</h2>
+    
+    <div class="video-container">
+      <!-- Main Video Player -->
+      <div class="main-video-container">
+        <video id="main-video" class="main-video" controls autoplay>
           <source src="https://dl.dropboxusercontent.com/scl/fi/up7e1vc8g5ndp1h5wowoz/Final_Output_TKFXM_Project1.mp4?rlkey=fa2djfmpkofebbxsj090jxdki&st=xmomnibk" type="video/mp4">
           Your browser does not support the video tag.
         </video>
+        <p id="video-title">01. Video Title Goes Here</p>
       </div>
-    </div>
-    <!-- Example 2 -->
-    <div class="col w-25 d-flex justify-content-center align-items-center">
-      <div class="card project-card">
-        <video class="d-block" controls autoplay loop muted>
-          <source src="https://dl.dropboxusercontent.com/scl/fi/8y1tz61llq45vz9q3ww1n/FinalOutput_1.mp4?rlkey=3p0a5p1j4i6wa25m9g9eunsvy&st=1ugdqerr" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-    </div>
-    <!-- Example 3 -->
-    <div class="col w-25 d-flex justify-content-center align-items-center">
-      <div class="card project-card">
-        <video class="d-block" controls autoplay loop muted>
-          <source src="https://dl.dropboxusercontent.com/scl/fi/b39kkdotjuqcrzswly1v8/Pocast_3D_Reels.mp4?rlkey=0qpjljy8jq5mdvedjnkdworox&st=2i07fedy" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
+      
+      <!-- Video Playlist -->
+      <div class="video-playlist">
+        <div class="video-item active" data-video="https://dl.dropboxusercontent.com/scl/fi/up7e1vc8g5ndp1h5wowoz/Final_Output_TKFXM_Project1.mp4?rlkey=fa2djfmpkofebbxsj090jxdki&st=xmomnibk" data-title="01. Video Title Goes Here">
+          <video class="thumbnail" muted>
+            <source src="https://dl.dropboxusercontent.com/scl/fi/up7e1vc8g5ndp1h5wowoz/Final_Output_TKFXM_Project1.mp4?rlkey=fa2djfmpkofebbxsj090jxdki&st=xmomnibk" type="video/mp4">
+          </video>
+          <p>01. Video Title Goes Here</p>
+        </div>
+        <div class="video-item" data-video="https://dl.dropboxusercontent.com/scl/fi/8y1tz61llq45vz9q3ww1n/FinalOutput_1.mp4?rlkey=3p0a5p1j4i6wa25m9g9eunsvy&st=1ugdqerr" data-title="02. Video Title Goes Here">
+          <video class="thumbnail" muted>
+            <source src="https://dl.dropboxusercontent.com/scl/fi/8y1tz61llq45vz9q3ww1n/FinalOutput_1.mp4?rlkey=3p0a5p1j4i6wa25m9g9eunsvy&st=1ugdqerr" type="video/mp4">
+          </video>
+          <p>02. Video Title Goes Here</p>
+        </div>
+        <div class="video-item" data-video="https://dl.dropboxusercontent.com/scl/fi/b39kkdotjuqcrzswly1v8/Pocast_3D_Reels.mp4?rlkey=0qpjljy8jq5mdvedjnkdworox&st=2i07fedy" data-title="03. Video Title Goes Here">
+          <video class="thumbnail" muted>
+            <source src="https://dl.dropboxusercontent.com/scl/fi/b39kkdotjuqcrzswly1v8/Pocast_3D_Reels.mp4?rlkey=0qpjljy8jq5mdvedjnkdworox&st=2i07fedy" type="video/mp4">
+          </video>
+          <p>03. Video Title Goes Here</p>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
 <script src="/javascript/videoediting.js"></script>
+<script>
+ document.addEventListener("DOMContentLoaded", function () {
+    const mainVideo = document.getElementById("main-video");
+    const videoTitle = document.getElementById("video-title");
+    const videoItems = document.querySelectorAll(".video-item");
+    
+    videoItems.forEach(item => {
+      item.addEventListener("click", function () {
+        const videoSrc = this.getAttribute("data-video");
+        const title = this.getAttribute("data-title");
+        mainVideo.src = videoSrc;
+        mainVideo.play();
+        videoTitle.textContent = title;
+        
+        document.querySelector(".video-item.active")?.classList.remove("active");
+        this.classList.add("active");
+      });
+    });
+  });
+</script>
