@@ -78,3 +78,23 @@ var carousel = new bootstrap.Carousel(myCarousel, {
   interval: 5000, // Auto-slide every 3 seconds
   ride: 'carousel'
 });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const mainVideo = document.getElementById("main-video");
+  const videoTitle = document.getElementById("video-title");
+  const videoItems = document.querySelectorAll(".video-item");
+  
+  videoItems.forEach(item => {
+    item.addEventListener("click", function () {
+      const videoSrc = this.getAttribute("data-video");
+      const title = this.getAttribute("data-title");
+      mainVideo.src = videoSrc;
+      mainVideo.play();
+      videoTitle.textContent = title;
+      
+      document.querySelector(".video-item.active")?.classList.remove("active");
+      this.classList.add("active");
+    });
+  });
+});

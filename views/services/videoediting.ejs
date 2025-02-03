@@ -124,7 +124,7 @@
   
   <!-- Video Playlist -->
   <div class="container-fluid video-gallery">
-    <h2 class="text-center mb-4 Video-Example-Title">Video Gallery</h2>
+    <h2 class="text-center mb-4">Video Gallery</h2>
     
     <div class="video-container">
       <!-- Main Video Player -->
@@ -161,23 +161,3 @@
   </div>
 
 <script src="/javascript/videoediting.js"></script>
-<script>
- document.addEventListener("DOMContentLoaded", function () {
-    const mainVideo = document.getElementById("main-video");
-    const videoTitle = document.getElementById("video-title");
-    const videoItems = document.querySelectorAll(".video-item");
-    
-    videoItems.forEach(item => {
-      item.addEventListener("click", function () {
-        const videoSrc = this.getAttribute("data-video");
-        const title = this.getAttribute("data-title");
-        mainVideo.src = videoSrc;
-        mainVideo.play();
-        videoTitle.textContent = title;
-        
-        document.querySelector(".video-item.active")?.classList.remove("active");
-        this.classList.add("active");
-      });
-    });
-  });
-</script>

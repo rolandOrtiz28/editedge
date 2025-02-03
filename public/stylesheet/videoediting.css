@@ -494,41 +494,50 @@ h2 {
     width: 100%;
   }
 }
-
-
 .video-gallery {
   text-align: center;
   padding: 2rem;
-  background-color: #101010;
+  background-color: transparent;
 }
+
 .video-container {
   display: flex;
+  flex-wrap: wrap; /* Allows items to stack on smaller screens */
   justify-content: center;
-  gap: 20px;
+  
 }
+
 .main-video-container {
-  width: 30%;
-  max-width: 800px;
+  width: 50%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
 .main-video {
   width: 40%;
-  height: auto;
+  max-width: 100%;
   border-radius: 12px;
 }
+
 #video-title {
   margin-top: 10px;
   font-size: 1.2rem;
   font-weight: bold;
+  color: white;
 }
+
 .video-playlist {
-  width: 25%;
+  width: 30%;
+  max-width: 400px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   overflow-y: auto;
-  max-height: 400px;
-  padding-right: 5px;
+  max-height: 500px;
 }
+
 .video-item {
   display: flex;
   align-items: center;
@@ -539,13 +548,67 @@ h2 {
   border-radius: 8px;
   transition: background 0.3s;
 }
+
 .video-item.active, .video-item:hover {
-  background: #007bff;
+  background: #ff007f;
   color: white;
 }
+
 .thumbnail {
   width: 80px;
   height: 50px;
   border-radius: 5px;
   object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .video-container {
+    flex-direction: column; /* Stack the video player and playlist */
+    align-items: center;
+  }
+
+  .main-video-container, .video-playlist {
+    width: 90%; /* Make both full-width on smaller screens */
+    max-width: 100%;
+  }
+
+  .video-playlist {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto; /* Make it scrollable horizontally */
+    max-height: unset;
+    gap: 10px;
+    padding-bottom: 10px;
+  }
+
+  .video-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 120px; /* Adjust the width for better mobile fit */
+  }
+
+  .thumbnail {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .video-gallery {
+    padding: 1rem;
+  }
+
+  #video-title {
+    font-size: 1rem;
+  }
+
+  .video-item {
+    width: 100px;
+  }
+
+  .thumbnail {
+    width: 90px;
+    height: 50px;
+  }
 }
