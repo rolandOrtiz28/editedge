@@ -75,7 +75,8 @@ const scriptSrcUrls = [
   "https://api.tiles.mapbox.com/",
   "https://api.mapbox.com/",
   "https://code.jquery.com/",
-  "https://cdn.quilljs.com/" 
+  "https://cdn.quilljs.com/" ,
+  "https://cdn.ckeditor.com/" 
 ];
 
 const styleSrcUrls = [
@@ -160,11 +161,16 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(methodOverride('_method'));
 app.use(session(sessionConfig));
 app.use(mongoSanitize());
+app.use('/uploads', express.static('uploads')); // ✅ Serve uploads as static
+
+// ✅ Increase JSON and form data size limits
+app.use(express.json({ limit: "50mb" }));  // ✅ Allows large JSON payloads
+app.use(express.urlencoded({ limit: "50mb", extended: true })); // ✅ Allows large form data
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '/public')));
 app.use('/stylesheet', express.static(path.join(__dirname, 'stylesheet')));
 app.use(flash());
-app.use(express.json()); // Place this before any routes
+
 
 app.use((req, res, next) => {
     res.locals.currentUser = req.user;

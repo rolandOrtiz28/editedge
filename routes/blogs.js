@@ -1,92 +1,147 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
-const { storage, cloudinary } = require('../cloudinary');
+const { storage } = require('../cloudinary');
 const upload = multer({ storage });
 const Blog = require('../models/Blog');
 const catchAsync = require('../utils/CatchAsync');
+const slugify = require('slugify');
 
-// Show all blogs
-// router.get('/blogs', catchAsync(async (req, res) => {
-//     const blogs = await Blog.find({});
-//     res.render('blogs/index', { blogs });
-// }));
-// router.get('/blogposts', (req, res) => {
-//     res.render('blogs/index', { currentRoute: '/blogposts' });
-// });
+// Get all blogs
+router.get('/blogs', catchAsync(async (req, res) => {
+    const blogs = await Blog.find({});
+    res.render('blogs/index', { blogs, currentRoute: '/blogs' });
+}));
 
-
-
-router.get('/blogs/advertising-design-trends-2025', (req, res) => {
-    res.render('blogs/blog/blog1', { currentRoute: '/blogs/blog-advertising-design-trends-2025' });
-});
-
-router.get('/blogs/the-evolution-of-the-modern-branding-package', (req, res) => {
-    res.render('blogs/blog/blog2',{ currentRoute: '/blogs/blog2' });
-});
-
-router.get('/blogs/how-startups-can-collaborate-with-web-design-agencies', (req, res) => {
-    res.render('blogs/blog/blog3', { currentRoute: '/blogs/blog3' });
-});
-
-
-
-// Show the new blog editor
+// Create a new blog (GET Form)
 router.get('/blogs/new', (req, res) => {
     res.render('blogs/new', { currentRoute: '/blogs/new' });
 });
 
-// Handle blog creation
-router.post('/blogs', upload.single('image'), catchAsync(async (req, res) => {
-    const { title, content, template, headerType } = req.body;
-    const image = req.file ? { url: req.file.path, filename: req.file.filename } : null;
-
-    const blog = new Blog({
+// ✅ Create a New Blog (Now Supports Image Upload)
+router.post(
+    "/blogs",
+    upload.single("image"), // ✅ Upload image to Cloudinary
+    express.json(),
+    catchAsync(async (req, res) => {
+      const { title, content, metaDescription, headerType, tags, status } = req.body;
+      const slug = slugify(title, { lower: true });
+  
+      // ✅ Save Cloudinary URL Instead of Local Path
+      let imageUrl = req.file ? req.file.path : null;
+  
+      const blog = new Blog({
         title,
+        slug,
         content,
-        template,
+        metaDescription,
         headerType,
-        image: image ? image.url : null,
-    });
-    await blog.save();
+        image: imageUrl, // ✅ Save Cloudinary URL in DB
+        tags: tags ? tags.split(",").map((tag) => tag.trim()) : [],
+        status,
+      });
+  
+      await blog.save();
+  
+      res.json({
+        success: true,
+        message: `Blog ${status === "draft" ? "saved as draft" : "published"} successfully!`,
+        slug: blog.slug,
+        image: imageUrl, // ✅ Send Cloudinary URL back to client
+      });
+    })
+  );
 
-    req.flash('success', 'Blog created successfully!');
-    res.redirect(`/blogs/${blog._id}`);
+router.post("/upload", upload.single("image"), async (req, res) => {
+    if (!req.file) return res.status(400).json({ error: "No file uploaded" });
+    res.json({ url: req.file.path }); // ✅ Return Cloudinary Image URL
+});
+
+// autosave
+router.post('/blogs/autosave', catchAsync(async (req, res) => {
+    const { title, content, metaDescription, tags, status } = req.body;
+    if (!title || !content) return res.status(400).json({ error: "Title and content required" });
+
+    let blog = await Blog.findOne({ title });
+
+    if (blog) {
+        blog.content = content;
+        blog.metaDescription = metaDescription;
+        blog.tags = tags ? tags.split(',').map(tag => tag.trim()) : [];
+        blog.status = "draft";
+        await blog.save();
+    } else {
+        blog = new Blog({
+            title,
+            slug: slugify(title, { lower: true }),
+            content,
+            metaDescription,
+            tags: tags ? tags.split(',').map(tag => tag.trim()) : [],
+            status: "draft"
+        });
+        await blog.save();
+    }
+
+    res.json({ message: "Draft saved", blogId: blog._id });
 }));
 
-// Show a specific blog
-// router.get('/blogs/:id', catchAsync(async (req, res) => {
-//     const blog = await Blog.findById(req.params.id);
-//     if (!blog) {
-//         req.flash('error', 'Blog not found!');
-//         return res.redirect('/blogs');
-//     }
-//     res.render('blogs/show', { blog });
-// }));
+router.get('/blogposts', catchAsync(async (req, res) => {
+    const blogs = await Blog.find({});
+    res.render('blogs/index', { blogs, currentRoute: '/blogposts' });
+}));
 
-// Form for editing a blog
-router.get('/blogs/:id/edit', catchAsync(async (req, res) => {
-    const blog = await Blog.findById(req.params.id);
+
+// Show a specific blog post and increment view count
+router.get('/blogs/:slug', catchAsync(async (req, res) => {
+    const blog = await Blog.findOne({ slug: req.params.slug });
+
     if (!blog) {
-        req.flash('error', 'Blog not found!');
+        req.flash('error', 'Blog not found');
         return res.redirect('/blogs');
     }
-    res.render('blogs/edit', { blog });
+
+    // ✅ Increment the views count
+    blog.views += 1;
+    await blog.save();  // Save the updated count in the database
+
+    res.render('blogs/show', { blog, currentRoute: `/blogs/${blog.slug}` });
 }));
 
-// Update a blog
-router.put('/blogs/:id', catchAsync(async (req, res) => {
-    const { id } = req.params;
-    const { title, content, image } = req.body;
-    await Blog.findByIdAndUpdate(id, { title, content, image });
+// Edit Blog (GET Form)
+router.get('/blogs/:slug/edit', catchAsync(async (req, res) => {
+    const blog = await Blog.findOne({ slug: req.params.slug });
+    if (!blog) {
+        req.flash('error', 'Blog not found');
+        return res.redirect('/blogs');
+    }
+    res.render('blogs/edit', { blog, currentRoute: `/blogs/${blog.slug}/edit` });
+}));
+
+// Update Blog (PUT)
+router.put('/blogs/:slug', upload.single('image'), catchAsync(async (req, res) => {
+    const { title, content, metaDescription, headerType, tags } = req.body;
+    const slug = slugify(title, { lower: true });
+    const blog = await Blog.findOneAndUpdate(
+        { slug: req.params.slug },
+        {
+            title,
+            slug,
+            content,
+            metaDescription,
+            headerType,
+            tags: tags.split(',').map(tag => tag.trim()),
+            image: req.file ? req.file.path : undefined
+        },
+        { new: true }
+    );
+
     req.flash('success', 'Blog updated successfully!');
-    res.redirect(`/blogs/${id}`);
+    res.redirect(`/blogs/${blog.slug}`);
 }));
 
-// Delete a blog
-router.delete('/blogs/:id', catchAsync(async (req, res) => {
-    const { id } = req.params;
-    await Blog.findByIdAndDelete(id);
+// Delete Blog
+router.delete('/blogs/:slug', catchAsync(async (req, res) => {
+    await Blog.findOneAndDelete({ slug: req.params.slug });
     req.flash('success', 'Blog deleted successfully!');
     res.redirect('/blogs');
 }));

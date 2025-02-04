@@ -1,43 +1,46 @@
 <% layout('/layouts/boilerplate') -%>
 <link rel="stylesheet" href="/stylesheet/blogs.css">
 
-<div class="page-container">
-  <h1 class="text-center my-4 all-blogs">All Blogs</h1>
-  <div class="page-card__container">
-    <!-- Blog 1 Card -->
-    <div class="page-card__article">
-      <img src="/images/TN1.png" alt="image" class="page-card__img">
-      <div class="page-card__data">
-         <h2 class="page-card__title">Digital Advertising Design Trends for 2025</h2>
-         <span class="page-card__description">
-           Discover 2025's top advertising design trends—minimalism, AI, video ads, and more to boost engagement.
-         </span>
-         <a href="/blogs/advertising-design-trends-2025" class="page-card__button">Read More</a>
+<section class="py-3 py-md-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 text-center mb-5">
+        <h3 class="fs-2 text-secondary text-uppercase">Our Blogs</h3>
+        <h5 class=" mx-auto text-white text-center w-50">Here’s our latest blog updates, featuring fresh content published regularly.</h5>
+        <hr class="w-50 mx-auto border-dark-subtle">
       </div>
     </div>
 
-    <!-- Blog 2 Card -->
-    <div class="page-card__article">
-      <img src="/images/blog1.png" alt="image" class="page-card__img">
-      <div class="page-card__data">
-        <h2 class="page-card__title">The Evolution of the Modern Branding Package</h2>
-        <span class="page-card__description">
-          Explore how web design companies' websites enhance branding with a well-crafted branding package, modern design, responsiveness, and user experience.
-        </span>
-        <a href="/blogs/the-evolution-of-the-modern-branding-package" class="page-card__button">Read More</a>
-      </div>
+    <div class="row gy-4 justify-content-center">
+      <% blogs.forEach(blog => { %>
+        <% if(blog.status === "published"){ %>
+        <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+          <article class="blog-card">
+            <div class="blog-card-img">
+              <a href="/blogs/<%= blog.slug %>">
+                <img class="img-fluid" src="<%= blog.image || '/default-thumbnail.jpg' %>" alt="<%= blog.title %>">
+                <div class="hover-overlay">
+                  <span class="hover-icon">👁</span>
+                  <span class="hover-text">Read More</span>
+                </div>
+              </a>
+            </div>
+            <div class="blog-card-body">
+              <% if (blog.tags.length > 0) { %>
+                <span class="text-primary"><%= blog.tags[0] %></span> 
+              <% } %>
+              <h3 class="blog-card-title"><a href="/blogs/<%= blog.slug %>"><%= blog.title %></a></h3>
+              <p class="blog-card-text"><%= blog.metaDescription %></p>
+            </div>
+            <div class="blog-card-footer">
+              <span class="blog-card-date">📅 <%= blog.createdAt.toDateString() %></span>
+              <span class="blog-card-views">👁 <%= blog.views %></span>
+            </div>
+          </article>
+        </div>
+        <% } %>
+      <% }) %>
     </div>
-
-    <!-- Blog 3 Card -->
-    <div class="page-card__article">
-      <img src="/images/TN2.png" alt="image" class="page-card__img">
-      <div class="page-card__data">
-         <h2 class="page-card__title">How Startups Can Collaborate with Web Design Agencies</h2>
-         <span class="page-card__description">
-          Discover how startups can collaborate with web design companies for branding success and seamless websites.
-        </span>
-         <a href="/blogs/how-startups-can-collaborate-with-web-design-agencies" class="page-card__button">Read More</a>
-      </div>
-    </div>
+   
   </div>
-</div>
+</section>
