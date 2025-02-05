@@ -4,6 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="<%= typeof blog !== 'undefined' ? blog.metaDescription : 'Default blog description' %>">
+    <meta name="keywords" content="<%= typeof blog !== 'undefined' && blog.tags ? blog.tags.join(', ') : 'default, keywords' %>">
+    <meta name="author" content="EditEdge Multimedia">
+
+    <!-- ✅ Open Graph (Facebook, LinkedIn, etc.) -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="<%= typeof blog !== 'undefined' ? blog.title : 'Your Blog Name' %>">
+    <meta property="og:description" content="<%= typeof blog !== 'undefined' ? blog.metaDescription : 'Default blog description' %>">
+    <meta property="og:image" content="<%= typeof blog !== 'undefined' && blog.image ? blog.image : '/default-image.jpg' %>">
+    <meta property="og:url" content="<%= typeof blog !== 'undefined' ? `https://yourwebsite.com/blogs/${blog.slug}` : 'https://yourwebsite.com' %>">
+    
+    <!-- ✅ Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<%= typeof blog !== 'undefined' ? blog.title : 'Your Blog Name' %>">
+    <meta name="twitter:description" content="<%= typeof blog !== 'undefined' ? blog.metaDescription : 'Default blog description' %>">
+    <meta name="twitter:image" content="<%= typeof blog !== 'undefined' && blog.image ? blog.image : '/default-image.jpg' %>">
     <title>Edit Edge</title>
 
     <!-- Favicon -->
