@@ -12,7 +12,7 @@
     <div class="content mt-5 px-5">
       <p class="lead"><%- blog.content %></p>
     </div>
-
+<a href="/blogs" class="text-center">EXPLORE MORE BLOGS</a>
     <div class="mt-3">
       <a href="/blogs/<%= blog.slug %>/edit" class="btn btn-warning">Edit</a>
       <form action="/blogs/<%= blog.slug %>?_method=DELETE" method="POST" style="display:inline;">

@@ -20,14 +20,15 @@ const serviceRoute = require('./routes/services');
 const quoteRoute = require('./routes/quotation');
 const blogRoute = require('./routes/blogs');
 const pricingRoute = require('./routes/Pricing');
+const adminRoute = require('./routes/Admin');
 
 
 // SECURITY
 const helmet = require('helmet')
 const Joi = require('joi');
 const secret = process.env.SESSION_SECRET;
-const dbUrl = process.env.DB_URL ||  'mongodb://127.0.0.1:27017/bluelightinnovations';
-//
+const dbUrl = 'mongodb://127.0.0.1:27017/bluelightinnovations';
+//process.env.DB_URL ||  
 // Connect to MongoDB with extended timeout options
 mongoose.connect(dbUrl, {
   serverSelectionTimeoutMS: 5000 // Adjust as needed
@@ -238,6 +239,7 @@ app.use('/', serviceRoute)
 app.use('/', quoteRoute)
 app.use('/', blogRoute);
 app.use('/', pricingRoute);
+app.use('/', adminRoute);
 
 const port = process.env.PORT || 3000;
 const server = app.listen(port, '0.0.0.0', () => {

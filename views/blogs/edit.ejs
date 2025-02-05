@@ -1,13 +1,102 @@
-<h1>Edit Blog</h1>
-<form action="/blogs/<%= blog._id %>?_method=PUT" method="POST">
-    <label for="title">Title</label>
-    <input type="text" name="title" value="<%= blog.title %>" required>
-    
-    <label for="content">Content</label>
-    <textarea name="content" required><%= blog.content %></textarea>
-    
-    <label for="image">Image URL</label>
-    <input type="text" name="image" value="<%= blog.image %>">
-    
-    <button type="submit">Update Blog</button>
-</form>
+<% layout('/layouts/boilerplate') -%>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/quill@1.3.6/dist/quill.snow.css">
+
+<style>
+    /* Ensure the sidebar is smaller */
+    .post-settings {
+        width: 270px; /* Adjust width */
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* Reduce Image Preview Size */
+    .post-settings img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 6px;
+    }
+
+    /* Ensure the content editor is much wider and fully flexible */
+    .content-editor {
+        flex: 3;
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Ensure editor resizes dynamically */
+    #editor-container {
+        flex-grow: 1;
+        min-height: 300px;
+        max-height: none;
+    }
+
+    /* Ensure form takes full height */
+    .form-container {
+        display: flex;
+        flex: 1;
+        gap: 16px;
+        align-items: flex-start;
+    }
+</style>
+
+<div class="container mx-auto p-5">
+   
+        <form id="editBlogForm" action="/blogs/<%= blog.slug %>" method="PUT" enctype="multipart/form-data" class="form-container">
+
+        <!-- ✅ Left Section: Content Editor (Fully Flexible) -->
+        <div class="content-editor bg-white shadow-lg rounded-lg p-6">
+            <input type="text" name="title" value="<%= blog.title %>" required 
+                class="w-full text-3xl font-bold border border-gray-300 rounded-md p-2 mb-4">
+
+            <!-- Quill Editor (Expands with Content) -->
+            <div id="editor-container" class="border rounded p-3 bg-gray-100"></div>
+            <textarea name="content" id="contentInput" hidden><%= blog.content %></textarea>
+        </div>
+
+        <!-- ✅ Right Sidebar: Post Settings (Compact & Includes Update Button) -->
+        <div class="post-settings bg-white shadow-md rounded-lg p-4">
+            <h2 class="text-lg font-semibold mb-3">Post Settings</h2>
+
+            <label class="block text-sm font-medium">Meta Description</label>
+            <input type="text" name="metaDescription" value="<%= blog.metaDescription %>" required 
+                class="w-full border border-gray-300 rounded-md p-2 mb-3">
+
+            <label class="block text-sm font-medium">Header Type</label>
+            <select name="headerType" class="w-full border border-gray-300 rounded-md p-2 mb-3">
+                <option value="image" <%= blog.headerType === "image" ? "selected" : "" %>>Image</option>
+                <option value="video" <%= blog.headerType === "video" ? "selected" : "" %>>Video</option>
+            </select>
+
+            <label class="block text-sm font-medium">Upload Cover Image</label>
+            <input type="file" name="image" class="w-full border border-gray-300 rounded-md p-2 mb-3">
+
+            <!-- Show Existing Image (Smaller) -->
+            <% if (blog.image) { %>
+                <img src="<%= blog.image %>" class="rounded-md w-[200px] mx-auto mt-2">
+            <% } %>
+
+            <label class="block text-sm font-medium">Tags (comma-separated)</label>
+            <input type="text" name="tags" value="<%= blog.tags.join(', ') %>" class="w-full border border-gray-300 rounded-md p-2 mb-3">
+
+            <!-- ✅ Update Button -->
+            <button type="submit" 
+                class="bg-blue-600 text-white w-full py-2 rounded hover:bg-blue-700">
+                Update Blog
+            </button>
+            <!-- ✅ Back Button -->
+<a href="/blogs/<%= blog.slug %>" 
+    class="bg-red-600 text-white w-full py-2 rounded hover:bg-red-700 text-center block py-2">
+    BACK
+</a>
+
+        </div>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/quill@1.3.6/dist/quill.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/quill-image-resize-module@3.0.0/image-resize.min.js"></script>
+<script src="/javascript/updateblog.js"></script>

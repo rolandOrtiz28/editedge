@@ -1,0 +1,101 @@
+<% layout('/layouts/boilerplate') -%>
+<link rel="stylesheet" href="/stylesheet/cms.css">
+
+<%- include('../partials/adminsidebar') %>
+
+<!-- Main Content -->
+<div class="main-content flex-grow-1">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Content Management</h2>
+        <a href="/blogs/new" class="btn btn-primary">Add New Blog</a>
+    </div>
+
+    <!-- Content Categories -->
+    <div class="row mb-4">
+        <!-- Blog Posts Total -->
+        <div class="col-md-3">
+            <div class="card content-card">
+                <div class="card-body">
+                    <h5>Total Blog Posts</h5>
+                    <p class="mb-0"><%= blogs.length %> posts</p> 
+                </div>
+            </div>
+        </div>
+    
+        <!-- Published Blogs -->
+        <div class="col-md-3">
+            <div class="card content-card">
+                <div class="card-body">
+                    <h5>Published Blogs</h5>
+                    <p class="mb-0"><%= publishedCount %> published</p> 
+                </div>
+            </div>
+        </div>
+    
+        <!-- Draft Blogs -->
+        <div class="col-md-3">
+            <div class="card content-card">
+                <div class="card-body">
+                    <h5>Drafts</h5>
+                    <p class="mb-0"><%= draftCount %> drafts</p> 
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ✅ Blog Performance Analytics -->
+    <div class="card mt-4">
+        <div class="card-body">
+            <h5 class="card-title mb-4">Top Performing Blogs</h5>
+            <canvas id="blogPerformanceChart"></canvas> <!-- Chart Placeholder -->
+        </div>
+    </div>
+    
+
+    <!-- Blog List -->
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title mb-4">Recent Blogs</h5>
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% blogs.forEach(blog => { %>
+                    <tr>
+                        <td><a href="/blogs/<%= blog.slug %>" class="text-light"><%= blog.title %></a></td>
+                        <td>Admin</td> <!-- Modify if you have multiple authors -->
+                        <td>
+                            <% if (blog.status === 'published') { %>
+                                <span class="badge bg-success">Published</span>
+                            <% } else { %>
+                                <span class="badge bg-warning">Draft</span>
+                            <% } %>
+                        </td>
+                        <td>
+                            <a href="/blogs/<%= blog.slug %>/edit" class="btn btn-sm btn-primary me-2">Edit</a>
+                            <form action="/blogs/<%= blog.slug %>?_method=DELETE" method="POST" style="display:inline;">
+                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/javascript/cms.js"></script>
+
+
+
+
