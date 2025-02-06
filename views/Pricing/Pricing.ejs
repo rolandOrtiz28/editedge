@@ -1,128 +1,45 @@
 <% layout('/layouts/boilerplate') -%>
 <link rel="stylesheet" href="/stylesheet/pricing.css">
-<div class="py-5">
-  <h1 class="text-center mb-4 text-white">Choose Your Service</h1>
-  <div class="d-flex justify-content-center align-items-center mb-4">
-    <ul class="example-2">
-      <li class="icon-content">
-        <a href="#" id="video-editing" aria-label="Video Editing" data-social="video-editing">
-          <div class="filled"></div>
-          <i class="fas fa-video"></i>
-        </a>
-        <div class="tooltip">Video Editing</div>
-      </li>
-      <li class="icon-content">
-        <a href="#" id="web-dev" aria-label="Web Development" data-social="web-development">
-          <div class="filled"></div>
-          <i class="fas fa-code"></i>
-        </a>
-        <div class="tooltip">Web Development</div>
-      </li>
-      <li class="icon-content">
-        <a href="#" id="graphic-design" aria-label="Graphic Design" data-social="graphic-design">
-          <div class="filled"></div>
-          <i class="fas fa-paint-brush"></i>
-        </a>
-        <div class="tooltip">Graphic Design</div>
-      </li>
-      <li class="icon-content">
-        <a href="#" id="3d-art" aria-label="3D Art" data-social="3d-art">
-          <div class="filled"></div>
-          <i class="fas fa-cubes"></i>
-        </a>
-        <div class="tooltip">3D Art</div>
-      </li>
+<section id="pricing" class="pricing-section py-5">
+  <div class="text-center pricing-header">
+      <h3 class="fs-2 text-white text-uppercase">Pricing</h3>
+  </div>
+
+  <!-- Service Selection Buttons -->
+  <div class="d-flex justify-content-center">
+      <div class="btn-group pricing-tabs" role="group">
+          <button type="button" class="btn service-btn" id="video-editing">Video Editing</button>
+          <button type="button" class="btn service-btn" id="web-dev">Web Development</button>
+          <button type="button" class="btn service-btn" id="graphic-design">Graphic Design</button>
+          <button type="button" class="btn service-btn" id="3d-art">3D Art</button>
+          <button type="button" class="btn service-btn" id="digital-marketing">Digital Marketing</button>
+      </div>
+  </div>
+
+ 
+
+  <!-- Pricing Cards -->
+  <div class="pricing-container row" id="pricing-cards">
+      <!-- Dynamic pricing cards will be generated here -->
+  </div>
+
+
+  <!-- Special Offers Section -->
+<div class="special-offers mt-5">
+  <div class="special-card">
+    <h3>Bundle Discounts</h3>
+    <ul>
+        <li>Web Development + Graphic Design Package: Save 10%</li>
+        <li>3D Art + Video Editing Package: Save 15%</li>
+        <li>Complete Digital Suite (Web, Video, 3D, and Graphics): Save 20% when bundling 3+ services</li>
     </ul>
+      <button type="button" id="btn"  class="btns special-offer-btn" data-plan="Bundle Discounts">Select Package</button>
   </div>
-  
-  <div id="service-cards" class="d-flex flex-wrap justify-content-center">
-    <!-- Dynamic Service Cards will go here -->
-  </div>
+
+
 </div>
 
-<div class="container bg-transparent" style="z-index: 2312;">
-  <!-- Row for Special Offers -->
-  <div class="row mb-3 justify-content-center align-items-center">
-    <!-- First Special Offer Card -->
-    <div class="col-md-4 mb-3">
-      <div class="pack-container">
-        <span class="banner"></span>
-        <div class="header mt-4">
-         
-          <div class="price-container mt-5">
-            <span>Bundle Discounts:</span>
-          </div>
-        </div>
-        <div>
-          <ul class="lists">
-            <li class="list">
-              <span>
-                <i class="fa-solid fa-circle-check"></i>
-              </span>
-              <p class="mt-3">Video + Audio Editing Package: Save 10%</p>
-            </li>
-            <li class="list">
-              <span>
-                <i class="fa-solid fa-circle-check"></i>
-              </span>
-              <p class="mt-3">Graphic + Web Design Package: Save 15%</p>
-            </li>
-            <li class="list">
-              <span>
-                <i class="fa-solid fa-circle-check"></i>
-              </span>
-              <p class="mt-3">All-in-One Multimedia Package: Save 20% when bundling 3 or more services</p>
-            </li>
-          </ul>
-        </div>
-        <div class="button-container">
-          <button type="button" id="btn"  class="btns special-offer-btn" data-plan="Bundle Discounts">Select Package</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Second Special Offer Card -->
-    <div class="col-md-4 mb-3">
-      <div class="pack-container" style="height: 565px;">
-        <span class="banner"></span>
-        <div class="header  mt-4">
-         
-          <div class="price-container mt-5">
-            Limited-Time Deals:
-          </div>
-        </div>
-        <div>
-          <ul class="lists">
-            <li class="list">
-              <span>
-                <i class="fa-solid fa-circle-check"></i>
-              </span>
-              <p class="mt-3">New Year Special: 25% off web design projects booked in January</p>
-            </li>
-            <li class="list">
-              <span>
-                <i class="fa-solid fa-circle-check"></i>
-              </span>
-              <p class="mt-3">Valentine’s Special: 15% off graphic design services in February</p>
-            </li>
-          </ul>
-        </div>
-        <div class="button-container">
-          <button id="btn"  class="btns special-offer-btn"><a href="/quotation">Request A quote</a></button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Custom Quote Card -->
-  <div class="card text-center bg-dark w-100 text-white" style="z-index: 2312;">
-    <div class="card-body d-flex align-items-center justify-content-center flex-column">
-      <h5 class="card-title">Custom Quotes:</h5>
-      <p>For large-scale or specialized projects like 3D reels or advanced websites, request a custom quote tailored to your needs.</p>
-      <button type="button" id="btn" class="btns custom-btn w-25"><a href="/quotation">Request a quote</a></button>
-    </div>
-  </div>
-</div>
+</section>
 
 
 

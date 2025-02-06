@@ -550,7 +550,7 @@ h2 {
 }
 
 .video-item.active, .video-item:hover {
-  background: #ff007f;
+  background: #101010;
   color: white;
 }
 
@@ -560,6 +560,26 @@ h2 {
   border-radius: 5px;
   object-fit: cover;
 }
+
+/* Custom Scrollbar */
+.video-playlist::-webkit-scrollbar {
+  width: 6px; /* Thin scrollbar */
+}
+
+.video-playlist::-webkit-scrollbar-track {
+  background: #222; /* Dark track background */
+  border-radius: 10px;
+}
+
+.video-playlist::-webkit-scrollbar-thumb {
+  background: #FF007F; /* Scrollbar color */
+  border-radius: 10px;
+}
+
+.video-playlist::-webkit-scrollbar-thumb:hover {
+  background: #ff3399; /* Slightly lighter pink on hover */
+}
+
 
 @media (max-width: 768px) {
   .video-container {

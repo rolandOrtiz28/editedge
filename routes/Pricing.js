@@ -24,26 +24,32 @@ router.get('/get-pricing', (req, res) => {
       {
         title: 'Standard Package',
         price: '400-600',
-        features: ['Color grading and advanced effects', 'Motion graphics', 'Videos up to 10 minutes', '2 revisions']
+        features: ['Color grading and advanced effects', 'Motion graphics', 'Videos up to 5 minutes', '2 revisions']
       },
       {
         title: 'Premium Package',
         price: '800-1,500',
-        features: ['Full production editing', 'Custom animations and sound design', 'Videos up to 20 minutes', 'Unlimited revisions']
+        features: ['Full production editing', 'Custom animations and sound design', 'Videos up to 10 minutes', '5 revisions']
       },
       {
         title: 'Short-form Monthly Subscription',
         price: '950/month',
-        features: ['15 short-form video edits (e.g., social media clips, reels, etc.)', 'Full production editing', 'Custom animations and sound design', 'Maximum of 1 minute and 30 seconds per video']
+        features: ['8 short-form video edits (e.g., social media clips, reels, etc.)', 'Full production editing', 'Custom animations and sound design', 'Maximum of 1 minute and 30 seconds per video']
       },
       {
         title: 'Long-form Monthly Subscription',
         price: '1,200/month',
-        features: ['5 long-form video edits (e.g., YouTube videos, tutorials, etc.)', 'Full production editing', 'Custom animations and sound design', 'Maximum of 20 minutes  per video']
+        features: ['5 long-form video edits (e.g., YouTube videos, tutorials, etc.)', 'Full production editing', 'Custom animations and sound design', 'Maximum of 10 minutes per video']
+      },
+      {
+        title: 'Ultimate Video Editing Subscription',
+        price: '2,500/month',
+        features: ['10 short &  5 long-form video edits', 'Advanced effects & custom animations', 'Priority delivery', 'Dedicated editor support']
       }
     ];
   }
-  // Web Development Service
+
+  // Web Development Service (No changes needed)
   else if (service === 'web-dev') {
     pricingData = [
       {
@@ -63,32 +69,39 @@ router.get('/get-pricing', (req, res) => {
       }
     ];
   }
-  // Graphic Design Service
+
+  // Graphic Design Service (Added another monthly plan)
   else if (service === 'graphic-design') {
     pricingData = [
       {
         title: 'Basic Plan',
         price: '50-150',
-        features: ['4 unique design concepts, each adapted to various social media sizes','Includes logos, social media posts, or flyers','Custom branding and color schemes']
+        features: ['4 unique design concepts, each adapted to various social media sizes', 'Includes logos, social media posts, or flyers', 'Custom branding and color schemes']
       },
       {
         title: 'Standard Plan',
         price: '300-500',
-        features: ['Complete branding package (logo, business card, letterhead)','6 unique design concepts, each adapted to various social media sizes', '3 revisions']
+        features: ['Complete branding package (logo, business card, letterhead)', '6 unique design concepts, each adapted to various social media sizes', '3 revisions']
       },
       {
         title: 'Premium Plan',
         price: '800-1,500',
-        features: ['Full-scale campaigns (social, print, and digital designs)', '8 unique design concepts, each adapted to various social media sizes','Unlimited revisions']
+        features: ['Full-scale campaigns (social, print, and digital designs)', '8 unique design concepts, each adapted to various social media sizes', 'Unlimited revisions']
       },
       {
         title: 'Monthly Subscription',
         price: '800/month',
-        features: ['Unlimited social media post designs', 'Up to 10 revisions per month','Custom branding for consistency across all designs', 'Priority support and fast turnaround times']
+        features: ['Unlimited social media post designs', 'Up to 10 revisions per month', 'Custom branding for consistency across all designs', 'Priority support and fast turnaround times']
+      },
+      {
+        title: 'Elite Branding Subscription',
+        price: '1,500/month',
+        features: ['Unlimited premium branding & ad designs', 'Fast turnaround', 'Direct collaboration with designers', 'Monthly strategy meetings']
       }
     ];
   }
-  // 3D Art Service
+
+  // 3D Art Service (Added another monthly plan)
   else if (service === '3d-art') {
     pricingData = [
       {
@@ -105,12 +118,44 @@ router.get('/get-pricing', (req, res) => {
         title: 'High-End Package',
         price: '2,000+',
         features: ['Full 3D animations or complex scenes', 'Custom textures and advanced lighting']
+      },
+      {
+        title: '3D Monthly Subscription',
+        price: '1,000/month',
+        features: ['4 custom 3D assets per month', 'Full high-quality rendering', 'Texturing & lighting included']
+      },
+      {
+        title: 'Advanced 3D Monthly Subscription',
+        price: '2,500/month',
+        features: ['Unlimited 3D models & animations', 'Game-ready assets', 'Realistic character modeling', 'Custom scene environments']
       }
     ];
   }
 
+  else if (service === 'digital-marketing') {
+    pricingData = [
+      {
+        title: 'Starter Marketing Plan',
+        price: '500/month',
+        features: ['Social media management', 'Basic SEO optimization', 'Content creation (5 posts/month)']
+      },
+      {
+        title: 'Growth Marketing Plan',
+        price: '1,200/month',
+        features: ['Social media & paid ad campaigns', 'Advanced SEO strategy', 'Content creation (10 posts/month)', 'Monthly performance reports']
+      },
+      {
+        title: 'Enterprise Marketing Plan',
+        price: '2,500/month',
+        features: ['Complete digital marketing solution', 'SEO, PPC, and social media advertising', 'Content strategy & lead generation', 'Dedicated account manager']
+      }
+    ];
+  }
+
+
   res.json(pricingData);
 });
+
 
   
 
