@@ -147,7 +147,7 @@ app.use(
       workerSrc: ["'self'", "blob:"],
       objectSrc: [],
       imgSrc: ["'self'", "blob:", "data:", ...imgSrcUrls],
-      fontSrc: ["'self'", ...fontSrcUrls],
+      fontSrc: ["'self'", ...fontSrcUrls, "data:"],
       mediaSrc: [...mediaSrcUrls],
       "script-src-attr": ["'unsafe-inline'"], 
     },
@@ -286,7 +286,7 @@ app.use('/', serviceRoute)
 app.use('/', quoteRoute)
 app.use('/', blogRoute);
 app.use('/', pricingRoute);
-app.use('/', adminRoute);
+app.use('/admin', adminRoute);
 
 const port = process.env.PORT || 3000;
 const server = app.listen(port, '0.0.0.0', () => {

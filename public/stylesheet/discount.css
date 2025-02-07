@@ -1,0 +1,175 @@
+:root {
+    --dark-bg: #1a1c23;
+    --card-bg: #22242f;
+    --text-primary: #ffffff;
+    --text-secondary: #9ca3af;
+    --highlight-color: #FF007F;
+    --danger-color: #d9534f;
+    --success-color: #28a745;
+}
+
+/* Main Layout */
+body {
+    background-color: var(--dark-bg);
+    color: var(--text-primary);
+}
+
+.sidebar {
+    background-color: var(--card-bg);
+    height: 100vh;
+    position: fixed;
+    width: 90px;
+}
+
+.main-content {
+    margin-left: 80px;
+}
+
+/* General Card Styling */
+.card {
+    background-color: var(--card-bg);
+    border: none;
+    color: var(--text-primary);
+}
+
+.metric-card {
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.search-bar {
+    background-color: var(--card-bg);
+    border: none;
+    color: var(--text-primary);
+}
+
+.table {
+    color: var(--text-primary);
+}
+
+.nav-link {
+    color: var(--text-secondary);
+    padding: 15px 0;
+    text-align: center;
+}
+
+.nav-link:hover {
+    color: var(--text-primary);
+}
+
+.chart-container {
+    height: 300px;
+}
+
+/* Kanban Board */
+.kanban-board {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.kanban-column {
+    background-color: var(--card-bg);
+    width: 30%;
+    min-height: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Column Title */
+.kanban-column h4 {
+    color: var(--text-primary);
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Kanban Item Container */
+.kanban-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    border: 1px dashed var(--text-secondary);
+    border-radius: 5px;
+    flex-grow: 1;
+}
+
+/* Discount Cards (Compact Row Layout) */
+.kanban-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    transition: 0.3s ease-in-out;
+    min-height: 50px;
+}
+
+/* Hover Effect */
+.kanban-item:hover {
+    transform: scale(1.03);
+}
+
+/* Discount Details Alignment */
+.kanban-item strong {
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.kanban-item p {
+    font-size: 13px;
+    margin: 0;
+}
+
+/* Button Styling */
+.kanban-item .btn {
+    font-size: 12px;
+    padding: 5px 10px;
+}
+
+/* Add Discount Button */
+.add-discount-btn {
+    width: 100%;
+    background-color: var(--highlight-color);
+    border: none;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.add-discount-btn:hover {
+    background-color: #e6006e;
+}
+
+/* Discount Form */
+.discount-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+/* Responsive Fix for Smaller Screens */
+@media (max-width: 992px) {
+    .kanban-board {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .kanban-column {
+        width: 90%;
+    }
+}

@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const catchAsync = require('../utils/CatchAsync');
+const Discount = require('../models/Discount');
 
 router.get('/pricing', (req, res) => {
     res.render('Pricing/Pricing', { currentRoute: '/pricing', service: null });
@@ -9,7 +11,7 @@ router.get('/pricing', (req, res) => {
 
 
 // GET pricing data based on service
-router.get('/get-pricing', (req, res) => {
+router.get('/get-pricing', catchAsync(async(req, res) => {
   const { service } = req.query;
   let pricingData = [];
 
@@ -152,9 +154,22 @@ router.get('/get-pricing', (req, res) => {
     ];
   }
 
+  const discounts = await Discount.find({ service });
+
+  // Apply discounts
+  pricingData = pricingData.map(plan => {
+      const discount = discounts.find(d => d.plan === plan.title);
+      if (discount) {
+          const discountAmount = (parseFloat(plan.price.split('-')[0]) * discount.discountPercentage) / 100;
+          const discountedPrice = parseFloat(plan.price.split('-')[0]) - discountAmount;
+          plan.discountedPrice = discountedPrice.toFixed(2);
+          plan.discountPercentage = discount.discountPercentage;
+      }
+      return plan;
+  });
 
   res.json(pricingData);
-});
+}));
 
 
   

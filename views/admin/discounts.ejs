@@ -1,0 +1,105 @@
+<% layout('/layouts/boilerplate') -%>
+<link rel="stylesheet" href="/stylesheet/discount.css">
+
+<%- include('../partials/adminsidebar') %>
+
+<!-- Main Content -->
+<div class="main-content flex-grow-1">
+    <h2 class="text-white mb-4">Manage Discounts</h2>
+
+    <!-- Discount Kanban Board -->
+    <div class="kanban-board">
+        <div class="kanban-column" id="pending">
+            <h4>Pending Discounts</h4>
+            <div class="kanban-items" id="pending-items">
+                <% discounts.forEach(discount => { %>
+                    <% if (!discount.status || discount.status === "pending") { %>
+                        <div class="kanban-item" id="discount-<%= discount._id %>" draggable="true">
+                            <strong><%= discount.plan %></strong>
+                            <p class="text-muted"><%= discount.service %></p>
+                            <p class="text-danger"><%= discount.discountPercentage %>% OFF</p>
+                            <form action="/admin/delete-discount" method="POST">
+                                <input type="hidden" name="id" value="<%= discount._id %>">
+                                <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+                            </form>
+                        </div>
+                    <% } %>
+                <% }) %>
+            </div>
+            <button class="btn add-discount-btn" onclick="openDiscountForm()">+ Add Discount</button>
+        </div>
+    
+        <div class="kanban-column" id="active">
+            <h4>Active Discounts</h4>
+            <div class="kanban-items" id="active-items">
+                <% discounts.forEach(discount => { %>
+                    <% if (discount.status === "active") { %>
+                        <div class="kanban-item" id="discount-<%= discount._id %>" draggable="true">
+                            <strong><%= discount.plan %></strong>
+                            <p class="text-muted"><%= discount.service %></p>
+                            <p class="text-success"><%= discount.discountPercentage %>% OFF</p>
+                            <form action="/admin/delete-discount" method="POST">
+                                <input type="hidden" name="id" value="<%= discount._id %>">
+                                <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+                            </form>
+                        </div>
+                    <% } %>
+                <% }) %>
+            </div>
+        </div>
+    
+        <div class="kanban-column" id="expired">
+            <h4>Expired Discounts</h4>
+            <div class="kanban-items" id="expired-items">
+                <% discounts.forEach(discount => { %>
+                    <% if (discount.status === "expired") { %>
+                        <div class="kanban-item" id="discount-<%= discount._id %>" draggable="true">
+                            <strong><%= discount.plan %></strong>
+                            <p class="text-muted"><%= discount.service %></p>
+                            <p class="text-warning"><%= discount.discountPercentage %>% OFF</p>
+                            <form action="/admin/delete-discount" method="POST">
+                                <input type="hidden" name="id" value="<%= discount._id %>">
+                                <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+                            </form>
+                        </div>
+                    <% } %>
+                <% }) %>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- Discount Form -->
+    <div class="discount-form card p-4 mt-4" id="discount-form">
+        <h4 class="mb-3 text-white">Add New Discount</h4>
+        <form action="/admin/add-discount" method="POST">
+            <div class="form-group mb-3">
+                <label for="service" class="text-white">Select Service:</label>
+                <select name="service" id="service" class="form-control" required>
+                    <option value="">-- Select Service --</option>
+                    <option value="video-editing">Video Editing</option>
+                    <option value="web-dev">Web Development</option>
+                    <option value="graphic-design">Graphic Design</option>
+                    <option value="3d-art">3D Art</option>
+                    <option value="digital-marketing">Digital Marketing</option>
+                </select>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="plan" class="text-white">Select Plan:</label>
+                <select name="plan" id="plan" class="form-control" required>
+                    <option value="">-- Select a Service First --</option>
+                </select>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="discountPercentage" class="text-white">Discount Percentage:</label>
+                <input type="number" name="discountPercentage" id="discountPercentage" class="form-control" min="1" max="100" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-3">Apply Discount</button>
+        </form>
+    </div>
+</div>
+
+<script src="/javascript/discount.js"></script>
