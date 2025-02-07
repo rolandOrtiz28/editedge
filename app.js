@@ -192,7 +192,9 @@ const contactSchema = Joi.object({
     message: Joi.string().min(5).max(1000).required()
   });
 
-
+  app.get('/sitemap.xml', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'sitemap.xml'));
+});
   app.get('/', (req, res) => {
 
     res.render('home/home', { currentRoute: '/' });
