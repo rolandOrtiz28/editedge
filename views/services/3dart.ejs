@@ -1,153 +1,104 @@
 <% layout('/layouts/boilerplate') -%>
 <link rel="stylesheet" href="/stylesheet/3dart.css">
 
+<div class="container-fluid digital-art-page">
+  <!-- Hero Section -->
+  <div class="hero-section">
+    <h1 class="highlight">Unleash Creativity with <span class="glow-text">3D Art</span></h1>
+    <p class="sub-text">Bring your ideas to life with photorealistic models and immersive animations.</p>
+    <a href="/quotation" class="cta-button">Get Started</a>
+  </div>
 
-
-<div class="container-fluid video-editing-page">
-    <!-- Header Video -->
-    <div class="video-header position-relative">
-      <video autoplay muted loop>
-        <source src="https://res.cloudinary.com/rolandortiz/video/upload/v1736056539/editedge/Untitled_design_roptot.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-      <!-- Gradient Overlay -->
-      <div class="video-gradient"></div>
-      <!-- Links Below Video -->
-     
-    </div>
-    <div class="video-links  text-center">
-      <a href="/videoediting" class="video-link">Video Editing</a>
-      <span>|</span>
-      <a href="/GraphicDesign" class="video-link">Graphic Design</a>
-      <span>|</span>
-      <a href="/WebDevelopment" class="video-link">Web Development</a>
-    </div>
-  <!-- Video Editing Header -->
-<div class="row align-items-center mb-5 text-center text-md-start introduction">
-    <!-- Left Column: Description -->
-    <div class="col-md-6 d-flex flex-column align-items-center align-items-md-center text-center">
-        <h1 class="text">
-            <span class="letter letter-1">3</span>
-            <span class="letter letter-2">D</span>
-          
-            <span class="letter letter-3 space">&nbsp;</span> <!-- Space between words -->
-            <span class="letter letter-4">A</span>
-            <span class="letter letter-5">R</span>
-            <span class="letter letter-6">T</span>
-     
-        </h1>
-        
+  <!-- Navigation Links -->
+  <div class="video-links text-center">
+    <a href="/Video-Editing" class="video-link">Video Editing</a>
+    <span>|</span>
+    <a href="/Graphic-Design" class="video-link">Graphic Design</a>
+    <span>|</span>
     
-        <p class="lead text-center w-75 description">
-            Our 3D art process involves bringing concepts to life with realistic models and immersive visuals. We start by conceptualizing and sketching ideas, then proceed to 3D modeling using advanced software like Blender or Maya. We add textures, lighting, and animations to create lifelike results. Whether it’s for a game, product visualization, or animation, we ensure high-quality output tailored to your needs.
-          </p>
-          
+    <a href="/Web-Development" class="video-link">Web Development</a>
+    <span>|</span>
+    <a href="/Degital-Marketing" class="video-link">Digital Marketing</a>
+  </div>
+
+  <!-- Service Offerings -->
+  <div class="service-section">
+    <div class="service-card">
+      <img src="/images/3drendering.gif" alt="3D Product Rendering">
+      <h3>3D Product Rendering</h3>
+      <p>Realistic product visualizations for marketing and e-commerce.</p>
     </div>
-  
-    <!-- Right Column: GIF -->
-    <div class="col-md-6 d-flex justify-content-center image-container">
-      <img src="/images/3D.png" alt="Video Editing" class="img-fluid floating-image">
+    <div class="service-card">
+      <img src="/images/Architectural.gif" alt="Architectural Visualization">
+      <h3>Architectural Visualization</h3>
+      <p>High-quality 3D renderings for real estate and construction projects.</p>
+    </div>
+    <div class="service-card">
+      <img src="/images/Character.gif" alt="Character Design">
+      <h3>Character Design & Animation</h3>
+      <p>Custom character modeling for games, animation, and branding.</p>
+    </div>
+    <div class="service-card">
+      <img src="/images/Motion.gif" alt="Motion Graphics">
+      <h3>Motion Graphics & VFX</h3>
+      <p>Dynamic animations and 3D graphics for video production.</p>
     </div>
   </div>
-  
+
   <!-- Process Section -->
-<div class="process-section text-center my-5">
-  <h2 class="process-title">3D Art Editing Process</h2>
-
-  <!-- Horizontal Line -->
-  <div class="horizontal-line-container">
-    <div class="horizontal-line"></div>
+  <div class="process-section">
+    <h2 class="process-title">Our 3D Art Process</h2>
+    <div class="process-steps">
+      <div class="process-step">
+        <img src="/images/3D1.gif" alt="Concept">
+        <h3>Concept & Sketching</h3>
+        <p>Defining ideas and creating sketches for the 3D project.</p>
+      </div>
+      <div class="process-step">
+        <img src="/images/3D2.gif" alt="Modeling">
+        <h3>3D Modeling</h3>
+        <p>Building detailed 3D models using industry-standard software.</p>
+      </div>
+     
+      <div class="process-step">
+        <img src="/images/3D5.gif" alt="Rendering">
+        <h3>Rendering & Animation</h3>
+        <p>Finalizing visuals with high-quality rendering and animation.</p>
+      </div>
+    </div>
   </div>
 
-  <div class="process-steps">
-    <!-- Step 1 -->
-    <div class="process-step">
-      <div class="step-number">1</div>
-      <div class="step-line"></div>
-      <div class="step-icon">
-        <img src="/images/3D1.gif" alt="Understanding">
+  <!-- Video Carousel Section -->
+  <div class="video-carousel-section">
+    <h2 class="text-center mb-4 process-title">3D Art Examples</h2>
+    <div id="artCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <video class="carousel-video" autoplay loop muted playsinline>
+            <source src="https://dl.dropboxusercontent.com/scl/fi/xmpeu50kc6z48alug68wr/Keyboard.mp4?rlkey=84qie2zsysy3iqjc9m2s3eurg&st=bmcpbz4f" type="video/mp4">
+          </video>
+        </div>
+        <div class="carousel-item">
+          <video class="carousel-video" autoplay loop muted playsinline>
+            <source src="https://dl.dropboxusercontent.com/scl/fi/4jq6ilo8nanvvgceagaqv/0001-0245.mp4?rlkey=9zzpltbwnjgvzph5ayuk2besq&st=1tj2re6d" type="video/mp4">
+          </video>
+        </div>
       </div>
-      <div class="podium"></div>
-      <div class="step-description">Conceptualizing and sketching ideas</div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#artCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#artCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
     </div>
+  </div>
 
-    <!-- Step 2 -->
-    <div class="process-step">
-      <div class="step-number">2</div>
-      <div class="step-line"></div>
-      <div class="step-icon">
-        <img src="/images/3D2.gif" alt="Assembling">
-      </div>
-      <div class="podium"></div>
-      <div class="step-description">Creating 3D models and applying textures</div>
-    </div>
-
-    <!-- Step 3 -->
-    <div class="process-step">
-      <div class="step-number">3</div>
-      <div class="step-line"></div>
-      <div class="step-icon">
-        <img src="/images/3.gif" alt="Applying">
-      </div>
-      <div class="podium"></div>
-      <div class="step-description">Adding lighting, materials, and effects</div>
-    </div>
-
-    <!-- Step 4 -->
-    <div class="process-step">
-      <div class="step-number">4</div>
-      <div class="step-line"></div>
-      <div class="step-icon">
-        <img src="/images/3D4.gif" alt="Adding">
-      </div>
-      <div class="podium"></div>
-      <div class="step-description">Rendering final outputs or animations</div>
-    </div>
-
-    <!-- Step 5 -->
-    <div class="process-step">
-      <div class="step-number">5</div>
-      <div class="step-line"></div>
-      <div class="step-icon">
-        <img src="/images/3D5.gif" alt="Review">
-      </div>
-      <div class="podium"></div>
-      <div class="step-description">Providing revisions and final deliverables</div>
-    </div>
+  <!-- Call to Action -->
+  <div class="cta-section">
+    <h2>Let's Bring Your Ideas to Life</h2>
+    <p>Get a free consultation with our 3D artists.</p>
+    <a href="/contact" class="cta-button">Contact Us</a>
   </div>
 </div>
 
-
-<!-- Video Carousel Section -->
-<div class="video-carousel-section mb-5">
-  <h2 class="text-center mb-4 Graphic-Example-Title">3D Art Examples</h2>
-  <div id="graphicDesignCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
-    <div class="carousel-inner">
-      <!-- First Video -->
-      <div class="carousel-item active">
-        <video class="d-block carousel-video" autoplay loop muted playsinline>
-          <source src="https://dl.dropboxusercontent.com/scl/fi/xmpeu50kc6z48alug68wr/Keyboard.mp4?rlkey=84qie2zsysy3iqjc9m2s3eurg&st=bmcpbz4f" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <!-- Second Video -->
-      <div class="carousel-item">
-        <video class="d-block carousel-video" autoplay loop muted playsinline>
-          <source src="https://dl.dropboxusercontent.com/scl/fi/4jq6ilo8nanvvgceagaqv/0001-0245.mp4?rlkey=9zzpltbwnjgvzph5ayuk2besq&st=1tj2re6d" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-    </div>
-    <!-- Carousel Controls -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#graphicDesignCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#graphicDesignCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-</div>
-
-<script src="/javascript/videoediting.js"></script>
+<script src="/javascript/digitalmarketing.js"></script>

@@ -81,13 +81,13 @@ height: 60px;
     transform: translateY(-3px);
 }
 
-.grid-container .dropdown-item i{
+.dropdown-item .fas{
     color: white;
 }
 .dropdown-item span{
     color: white;
 }
-.dropdown-item:hover i{
+.dropdown-item:hover .fas{
     color: #101010;
 }
 .dropdown-item:hover span{

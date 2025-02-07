@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/videoediting', (req, res) => {
-    res.render('services/videoediting', { currentRoute: '/videoediting' });
+router.get('/Video-Editing', (req, res) => {
+    res.render('services/videoediting', { currentRoute: '/Video-Editing' });
 
 })
 
@@ -13,14 +13,19 @@ router.get('/3dart', (req, res) => {
 })
 
 
-router.get('/GraphicDesign', (req, res) => {
-    res.render('services/graphicdesign',{ currentRoute: '/GraphicDesign' });
+router.get('/Graphic-Design', (req, res) => {
+    res.render('services/graphicdesign',{ currentRoute: '/Graphic-Design' });
 
 })
 
 
-router.get('/WebDevelopment', (req, res) => {
-    res.render('services/webdevelopment',{ currentRoute: '/WebDevelopment' });
+router.get('/Web-Development', (req, res) => {
+    res.render('services/webdevelopment',{ currentRoute: '/Web-Development' });
+
+})
+
+router.get('/Degital-Marketing', (req, res) => {
+    res.render('services/degitalmarketing',{ currentRoute: '/Degital-Marketing' });
 
 })
 

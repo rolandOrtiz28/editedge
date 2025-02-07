@@ -155,7 +155,7 @@ function initializeAnimations() {
     }
   );
 
-  gsap.from(".team-cards .cards", {
+  gsap.from(".team-card", {
     y: 50,
     opacity: 0,
     stagger: 0.3,
@@ -165,7 +165,7 @@ function initializeAnimations() {
       trigger: ".our-team-section",
       start: "top 80%",
       end: "bottom 20%",
-      scrub: true,
+      toggleActions: "play none none none",
     },
   });
 

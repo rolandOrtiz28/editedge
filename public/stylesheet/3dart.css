@@ -1,465 +1,253 @@
-/* Video Editing Page Styles */
-.video-editing-page {
-    font-family: 'Montserrat', sans-serif;
-    margin-bottom: 8rem;
-  }
-  
-  /* Header Video */
-  .video-header {
-    position: relative;
-    left: -10%;
-    width: 120%;
-    height: 50vh;
-    overflow: hidden;
-    margin: -56px 0 50px 0;
-    z-index: -6;
-  }
-  
-  .video-header video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .video-gradient {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 120%;
-    height: 50%; /* Adjust gradient height */
-    background: linear-gradient(transparent, rgba(16, 16, 16, 0.9));
-    z-index: 1;
-  }
-  
-  .video-links {
-    position: relative;
-    top:0;
-        left: 50%;
-        transform: translateX(-50%);
-        text-align: center;
-        z-index: 4; /* Increase z-index to make it appear above the navbar */
-        cursor: pointer;
-    }
-      .video-links span{
-        color: white;
-      }
-      
-      .video-link {
-        color: white;
-        font-weight: 500;
-        text-decoration: none;
-        padding: 0 10px;
-        z-index: 4; /* Match the increased z-index */
-        cursor: pointer;
-    }
-  
-  .video-link:hover {
-    color: #ff007f; /* Highlight color on hover */
-  }
-  
-  /* Video Editing Section */
-  .video-editing-page h1 {
-    font-weight: 700;
-    color: white;
-  }
-  
-  .video-editing-page .lead {
-    font-size: 1.3rem;
-    font-weight: 400;
-    color: rgba(255, 255, 255, 0.8);
-  }
-  
-  .introduction {
-    width: 100%;
-    height: auto;
-  }
-
-  .text {
-    font-family: 'Liberty', sans-serif;
-    font-weight: 100;
-    font-size: 5rem;
-    letter-spacing:10px; /* Adjust spacing between letters */
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.letter {
-    color: #d9fdff;
-    text-shadow: 0 0 2rem #FF007F;
-    display: inline-block;
-}
-
-.letter-2 {
-    transform: translate(-0.2rem, 1rem) rotate(10deg);
-    animation: flicker 2s ease-in-out infinite alternate;
-}
-
-.space {
-    width: 1rem; /* Adjust space between words */
-}
-
-/* Keyframes for flicker animation */
-@keyframes flicker {
-    0% {
-        opacity: 1;
-        transform: translate(-0.2rem, 1rem) rotate(10deg);
-    }
-    5% {
-        opacity: 1;
-        transform: translate(-0.2rem, 1rem) rotate(10deg);
-    }
-    5.5% {
-        opacity: 0;
-        transform: translate(-0.2rem, 1rem) rotate(10deg);
-    }
-    6% {
-        opacity: 1;
-        transform: translate(-0.2rem, 1rem) rotate(10deg);
-    }
-    6.5% {
-        opacity: 1;
-        transform: translate(-0.2rem, 1rem) rotate(10deg);
-    }
-    7% {
-        opacity: 0;
-        transform: translate(-0.2rem, 1rem) rotate(10deg);
-    }
-    8% {
-        opacity: 1;
-        transform: translate(-0.2rem, 1rem) rotate(10deg);
-    }
-    50% {
-        opacity: 1;
-        transform: translate(-0.2rem, 1rem) rotate(13deg);
-    }
-    100% {
-        opacity: 1;
-        transform: translate(-0.2rem, 1rem) rotate(10deg);
-    }
-}
-
-  
-  /* Floating Image */
-.floating-image {
-    max-height: 700px;
-    object-fit: contain;
-    animation: float-and-rotate 6s ease-in-out infinite;
-  }
-  
-  /* Keyframes for Floating and Rotating Animation */
-  @keyframes float-and-rotate {
-    0% {
-      transform: translate(0, 0) rotate(0deg);
-    }
-    25% {
-      transform: translate(-10px, -10px) rotate(1deg);
-    }
-    50% {
-      transform: translate(0, -20px) rotate(0deg);
-    }
-    75% {
-      transform: translate(10px, -10px) rotate(-1deg);
-    }
-    100% {
-      transform: translate(0, 0) rotate(0deg);
-    }
-  }
-  
-  /* Process Section */
-.process-section {
+/* General Styles */
+.digital-art-page {
+  font-family: 'Poppins', sans-serif;
   color: white;
-  height: auto;
-padding: 2rem;
-}
-
-
-.process-description {
-  font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 2rem;
-  width: 50%;
   text-align: center;
-  border: 2px solid red;
+  padding: 6rem 0;
 }
 
-/* Process Steps */
+/* Hero Section */
+.hero-section {
+  position: relative;
+  padding: 6rem 2rem;
+  text-align: center;
+  background: url("/images/Coverphotos.png") center/cover no-repeat;
+  border-radius: 20px;
+  box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.glow-text {
+  font-size: 3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #FF007F;
+  text-shadow: 0 0 20px #FF007F, 0 0 40px rgba(255, 0, 127, 0.3);
+}
+
+.highlight {
+  color: #ffffff;
+  text-shadow: none;
+}
+
+.sub-text {
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* CTA Button */
+.cta-button {
+  background: #101010;
+  color: #FF007F;
+  padding: 12px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 200;
+  transition: 0.3s;
+}
+
+.cta-button:hover {
+  background: white;
+  color: #101010;
+}
+
+/* Service Offerings */
+.service-section {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 4rem;
+}
+
+.service-card {
+  background: #1a1a1a;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 22%;
+  min-width: 280px;
+  box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.2);
+  transition: 0.3s;
+}
+
+.service-card img {
+  width: 50%;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Process Section */
+.process-section {
+  margin: 6rem 0;
+}
+
+.process-title {
+  font-size: 2.5rem;
+  color: #FF007F;
+}
+
 .process-steps {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 2rem;
-  padding: 0 2rem;
-  position: relative;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+  margin-top: 3rem;
 }
 
 .process-step {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
+  background: #1a1a1a;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 30%;
+  min-width: 280px;
+  box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.2);
 }
 
-.step-number {
-  background-color: #ff007f;
-  color: white;
-  font-size: 1.5rem;
-  width: 3rem;
-  height: 3rem;
-  line-height: 3rem;
-  text-align: center;
-  border-radius: 50%;
+.process-step img {
+  max-width: 100px;
   margin-bottom: 1rem;
-  position: relative;
-  border: 4px solid white;
-  z-index: 2;
 }
 
-/* Horizontal Line Container */
-.horizontal-line-container {
-  position: relative;
-  width: 100%;
-  height: 2px;
-  margin-top: 2rem;
-  background-color: transparent;
-  z-index: -1;
+.process-step h3 {
+  font-size: 1.5rem;
+  color: #FF007F;
 }
 
-/* Horizontal Line */
-.horizontal-line {
-  position: absolute;
-  top: 60px;
-  left: 0;
-  width: 0%; /* Initially hidden */
-  height: 4px;
-  background-color: #ff007f;
-  z-index: -1;
-}
-
-/* Process Steps */
-.process-steps {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 2rem;
-  padding: 0 2rem;
-  margin-top: 2rem;
-  position: relative;
-  z-index: 1;
-}
-
-/* Other Styles... (unchanged) */
-
-
-/* Vertical Line to Icon */
-.step-line {
-  width: 5px;
-  height: 4rem; /* Length of the line */
-  background-color: #ff007f;
-  position: absolute;
-  top: 3.5rem; /* Below the step number */
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-/* Step Icon */
-.step-icon {
-  width: 100px;
-  height: 100px;
-  margin:5rem 0 1rem 0;
-  position: relative;
-  z-index: 2;
-}
-
-.step-icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-/* Podium Below Icon */
-.podium {
-  width: 100px;
-  height: 20px;
-  background-color: #ffffff;
-  border-radius: 50%;
-  margin-top: -10px; /* Align slightly below icon */
-  position: relative;
-  z-index: 1;
-}
-
-/* Step Description */
-.step-description {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.9);
-  margin-top: 1rem;
-  font-weight: 400;
-  text-align: center;
-}
-
-/* Video Examples Section */
+/* Video Carousel Section */
 .video-carousel-section {
   padding: 2rem 1rem;
-  background-color: #101010; /* Matches the page background */
-  height: auto;
-
+  background-color: #101010;
 }
 
 .carousel-video {
-  width: 80%; /* Reduce the width to 80% of the container */
-  max-width: 800px; /* Set a maximum width for larger screens */
-  height: auto; /* Maintain aspect ratio */
-  object-fit: cover; /* Ensure the video fits well within the space */
-  margin: 0 auto; /* Center the video horizontally */
-  border-radius: 10px; /* Optional: Add rounded corners for styling */
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Optional: Add a subtle shadow */
+  width: 80%;
+  max-width: 800px;
+  height: auto;
+  object-fit: cover;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-
-/* Responsive Design for Cards */
-@media (min-width: 768px) {
-  .project-card {
-    width: 340px; /* Slightly larger width for desktop */
-  }
-}
-
-.row-cols-md-3 {
-  justify-content: center; /* Centers the cards horizontally */
-}
-
-
-h2 {
+/* Navigation Links */
+.video-links {
   position: relative;
-  font-size: 3.5rem;
-  font-weight: 400;
-  padding: 1rem 2rem;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
   text-align: center;
-  margin-bottom: 2rem;
-  color: transparent; /* Text color is transparent */
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.1));
-  background-size: 200%; /* Make the gradient larger to enable animation */
-  background-clip: text; /* Ensures the animation is inside the text */
-  -webkit-background-clip: text; /* Support for Webkit browsers */
-  animation: light-sweep 10s linear infinite; /* Animate the light sweep */
-  overflow: hidden;
+  z-index: 4;
+  cursor: pointer;
 }
 
-@keyframes light-sweep {
+.video-links span {
+  color: white;
+}
+
+.video-link {
+  color: white;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0 10px;
+  z-index: 4;
+  cursor: pointer;
+}
+
+.video-link:hover {
+  color: #ff007f;
+}
+
+/* Floating Image */
+.floating-image {
+  max-height: 700px;
+  object-fit: contain;
+  animation: float-and-rotate 6s ease-in-out infinite;
+}
+
+.cta-section {
+  box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.2);
+  padding: 3rem;
+  border-radius: 15px;
+}
+
+/* Floating Animation */
+@keyframes float-and-rotate {
   0% {
-    background-position: 200% 0; /* Start the gradient off-screen to the right */
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(-10px, -10px) rotate(1deg);
+  }
+  50% {
+    transform: translate(0, -20px) rotate(0deg);
+  }
+  75% {
+    transform: translate(10px, -10px) rotate(-1deg);
   }
   100% {
-    background-position: -200% 0; /* Move the gradient off-screen to the left */
+    transform: translate(0, 0) rotate(0deg);
   }
 }
 
-
-/* Adjust for screens smaller than 1629px */
-@media (max-width: 1629px) {
- 
-}
-
-/* Adjust for screens smaller than 1422px */
-@media (max-width: 1422px) {
-  
-}
-
-/* Adjust for screens smaller than 1300px */
-@media (max-width: 1300px) {
- 
-}
-
-/* Adjust for screens smaller than 1200px */
-@media (max-width: 1200px) {
-  
-}
-
-/* Adjust for screens smaller than 992px */
+/* Responsive Design */
 @media (max-width: 992px) {
- 
+  .hero-section {
+    padding: 4rem 2rem;
+  }
+
+  .glow-text {
+    font-size: 2.5rem;
+  }
+
+  .service-section,
+  .process-steps {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .service-card,
+  .process-step {
+    width: 90%;
+  }
 }
 
-
-/* Adjust for screens smaller than 768px */
 @media (max-width: 768px) {
-  
-  .text, .process-title, .Art-Example-Title{
+  .glow-text {
     font-size: 2rem;
   }
 
-
-  .introduction .lead{
+  .sub-text {
     font-size: 1rem;
   }
 
-  .video-links{
-    margin-bottom: 1.5rem;
+  .service-card,
+  .process-step {
+    width: 100%;
   }
 
-  .image-container .floating-image{
-    width: 300px;
+  .cta-button {
+    padding: 10px 20px;
   }
-
-
-  .horizontal-line{
-    top: 50px;
-        height: 2px;
-      }
-
-  .process-steps {
-    justify-content: center;
-    gap: 1rem;
-    padding: 0 1rem;
- 
-  }
-  
-  .step-number {
-
-    font-size: 1rem;
-    width: 2rem;
-    height: 2rem;
-    line-height: 2rem;
-  }
-
-  .process-steps {
-    gap: 1rem;
-  }
-  .step-line {
-    width: 2px;
-    height: 2rem; /* Length of the line */
- 
-  }
-
-  .step-icon {
-    width: 50px;
-    height: 50px;
-  
-  }
-  .podium {
-    width: 50px;
-    height: 20px;
-   
-  }
-  .step-description {
-    font-size: 0.5rem;
-  }
-  
 }
+
 @media (max-width: 576px) {
-  .text{
-    font-size: 1.4rem;
-  }
-.process-title, .Graphic-Example-Title{
+  .glow-text {
     font-size: 1.5rem;
   }
 
-  .introduction .lead{
-    font-size: .6rem;
+  .sub-text {
+    font-size: 0.9rem;
   }
 
-  .video-links{
-    font-size: .6rem;
+  .service-card,
+  .process-step {
+    padding: 1.5rem;
   }
 
+  .cta-section {
+    padding: 2rem;
+  }
 }

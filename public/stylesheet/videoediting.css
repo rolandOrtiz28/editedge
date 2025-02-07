@@ -1,524 +1,266 @@
-/* Video Editing Page Styles */
+/* General Styles */
 .video-editing-page {
-    font-family: 'Montserrat', sans-serif;
-    margin-bottom: 8rem;
-  }
-  
-  /* Header Video */
-  .video-header {
-    position: relative;
-    left: -10%;
-    width: 120%;
-    height: 50vh;
-    overflow: hidden;
-    margin: -56px 0 50px 0;
-    z-index: -6;
-  }
-  
-  .video-header video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .video-gradient {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 120%;
-    height: 50%; /* Adjust gradient height */
-    background: linear-gradient(transparent, rgba(16, 16, 16, 0.9));
-    z-index: 1;
-  }
-  
-  .video-links {
-position: relative;
-top:0;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    z-index: 4; /* Increase z-index to make it appear above the navbar */
-    cursor: pointer;
-}
-  .video-links span{
-    color: white;
-  }
-  
-  .video-link {
-    color: white;
-    font-weight: 500;
-    text-decoration: none;
-    padding: 0 10px;
-    z-index: 4; /* Match the increased z-index */
-    cursor: pointer;
-}
-  
-  .video-link:hover {
-    color: #ff007f; /* Highlight color on hover */
-  }
-  
-  /* Video Editing Section */
-  .video-editing-page h1 {
-    font-weight: 700;
-    color: white;
-  }
-  
-  .video-editing-page .lead {
-    font-size: 1.3rem;
-    font-weight: 400;
-    color: rgba(255, 255, 255, 0.8);
-  }
-  
-  .introduction {
-    width: 100%;
-    height:auto;
-  }
-
-  .text {
-    font-family: 'Liberty', sans-serif;
-    font-weight: 100;
-    font-size: 5rem;
-    letter-spacing:10px; /* Adjust spacing between letters */
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.letter {
-    color: #d9fdff;
-    text-shadow: 0 0 2rem #FF007F;
-    display: inline-block;
-}
-
-.letter-2 {
-    transform: translate(-0.2rem, 1rem) rotate(10deg);
-    animation: flicker 2s ease-in-out infinite alternate;
-}
-
-.space {
-    width: 1rem; /* Adjust space between words */
-}
-
-/* Keyframes for flicker animation */
-@keyframes flicker {
-    0% {
-        opacity: 1;
-        transform: translate(-0.2rem, 1rem) rotate(10deg);
-    }
-    5% {
-        opacity: 1;
-        transform: translate(-0.2rem, 1rem) rotate(10deg);
-    }
-    5.5% {
-        opacity: 0;
-        transform: translate(-0.2rem, 1rem) rotate(10deg);
-    }
-    6% {
-        opacity: 1;
-        transform: translate(-0.2rem, 1rem) rotate(10deg);
-    }
-    6.5% {
-        opacity: 1;
-        transform: translate(-0.2rem, 1rem) rotate(10deg);
-    }
-    7% {
-        opacity: 0;
-        transform: translate(-0.2rem, 1rem) rotate(10deg);
-    }
-    8% {
-        opacity: 1;
-        transform: translate(-0.2rem, 1rem) rotate(10deg);
-    }
-    50% {
-        opacity: 1;
-        transform: translate(-0.2rem, 1rem) rotate(13deg);
-    }
-    100% {
-        opacity: 1;
-        transform: translate(-0.2rem, 1rem) rotate(10deg);
-    }
-}
-
-  
-  /* Floating Image */
-.floating-image {
-    max-height: 700px;
-    object-fit: contain;
-    animation: float-and-rotate 6s ease-in-out infinite;
-  }
-  
-  /* Keyframes for Floating and Rotating Animation */
-  @keyframes float-and-rotate {
-    0% {
-      transform: translate(0, 0) rotate(0deg);
-    }
-    25% {
-      transform: translate(-10px, -10px) rotate(1deg);
-    }
-    50% {
-      transform: translate(0, -20px) rotate(0deg);
-    }
-    75% {
-      transform: translate(10px, -10px) rotate(-1deg);
-    }
-    100% {
-      transform: translate(0, 0) rotate(0deg);
-    }
-  }
-  
-  /* Process Section */
-.process-section {
+  font-family: 'Poppins', sans-serif;
   color: white;
-  height: auto;
-padding: 2rem;
-
+  text-align: center;
+  padding: 6rem 0;
 }
 
+/* Hero Section */
+.hero-section {
+  position: relative;
+  padding: 6rem 2rem;
+  text-align: center;
+  background: 
+              url("/images/Coverphotos.png") center/cover no-repeat;
+  border-radius: 20px;
+  box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.2);
+  color: white;
+}
 
-.process-description {
-  font-size: 1.2rem;
+/* Responsive Text */
+.glow-text {
+  font-size: 3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #FF007F;
+  text-shadow: 0 0 20px #FF007F, 0 0 40px rgba(255, 0, 127, 0.3);
+}
+
+.highlight {
+  color: #ffffff;
+  text-shadow: none;
+}
+
+.sub-text {
+  font-size: 1.3rem;
   color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 2rem;
-  width: 50%;
-  text-align: center;
-  border: 2px solid red;
 }
 
-/* Process Steps */
-.process-steps {
+/* CTA Button */
+.cta-button {
+  background: #101010;
+  color: #FF007F;
+  padding: 12px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 200;
+  transition: 0.3s;
+}
+
+.cta-button:hover {
+  background: white;
+  color: #101010;
+}
+
+/* Service Offerings */
+.service-section {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
   gap: 2rem;
-  padding: 0 2rem;
-  position: relative;
+  flex-wrap: wrap;
+  margin-top: 4rem;
 }
 
-.process-step {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-}
-
-.step-number {
-  background-color: #ff007f;
-  color: white;
-  font-size: 1.5rem;
-  width: 3rem;
-  height: 3rem;
-  line-height: 3rem;
+.service-card {
+  background: #1a1a1a;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 25%;
+  box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s;
   text-align: center;
-  border-radius: 50%;
-  margin-bottom: 1rem;
-  position: relative;
-  border: 4px solid white;
-  z-index: 2;
 }
 
-/* Horizontal Line Container */
-.horizontal-line-container {
-  position: relative;
-  width: 100%;
-  height: 2px;
-  margin-top: 2rem;
-  background-color: transparent;
-  z-index: -1;
-}
-
-/* Horizontal Line */
-.horizontal-line {
-  position: absolute;
-  top: 60px;
-  left: 0;
-  width: 0%; /* Initially hidden */
-  height: 4px;
-  background-color: #ff007f;
-  z-index: -1;
-}
-
-/* Process Steps */
-.process-steps {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 2rem;
-  padding: 0 2rem;
-  margin-top: 2rem;
-  position: relative;
-  z-index: 1;
-
-}
-
-/* Other Styles... (unchanged) */
-
-
-/* Vertical Line to Icon */
-.step-line {
-  width: 5px;
-  height: 4rem; /* Length of the line */
-  background-color: #ff007f;
-  position: absolute;
-  top: 3.5rem; /* Below the step number */
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-/* Step Icon */
-.step-icon {
-  width: 100px;
-  height: 100px;
-  margin:5rem 0 1rem 0;
-  position: relative;
-  z-index: 2;
-}
-
-.step-icon img {
-  width: 100%;
-  height: 100%;
+.service-card img {
+  width: 60%;
+  max-height: 120px;
   object-fit: contain;
 }
 
-/* Podium Below Icon */
-.podium {
-  width: 100px;
-  height: 20px;
-  background-color: #ffffff;
-  border-radius: 50%;
-  margin-top: -10px; /* Align slightly below icon */
-  position: relative;
-  z-index: 1;
-}
-
-/* Step Description */
-.step-description {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.9);
+.service-card h3 {
   margin-top: 1rem;
-  font-weight: 400;
-  text-align: center;
+  color: #FF007F;
 }
 
-/* Video Examples Section */
-.video-examples-section {
- height: auto;
-  padding: 2rem 1rem;
-  background-color: #101010; /* Matches the page background */
-
+.service-card p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
 }
 
-/* Updated Project Card Dimensions */
-.project-card {
-  width: 200px; /* Set a consistent card width */
-  height: 400px; /* Set a consistent card height */
-  background-color: #181818;
-  border-radius: 12px;
-  overflow: hidden;
-  margin: 10px auto; /* Center cards horizontally */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  text-align: center;
+.service-card:hover {
+  transform: translateY(-5px);
 }
 
-.project-card video {
-  width: 100%; /* Ensure the video fills the card's width */
-  height: 100%; /* Ensure the video fills the card's height */
-  object-fit: cover; /* Crop the video to fit neatly within the card */
-  border-radius: 12px; /* Match the card's border-radius */
+/* Process Section */
+.process-section {
+  margin: 6rem 0;
 }
 
-/* Title Styling */
-.Video-Example-Title {
-  font-size: 2rem;
-  font-weight: bold;
-  color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 20px;
+.process-title {
+  font-size: 2.5rem;
+  color: #FF007F;
 }
 
-/* Centered Row for Alignment */
-.row-cols-md-3 {
+.process-steps {
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 3rem;
+  flex-wrap: wrap;
+  margin-top: 3rem;
 }
 
-h2 {
+.process-step {
+  background: #1a1a1a;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 30%;
+  min-width: 280px;
+  box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.2);
+}
+
+.process-step img {
+  max-width: 100px;
+  margin-bottom: 1rem;
+}
+
+.process-step h3 {
+  font-size: 1.5rem;
+  color: #FF007F;
+}
+.video-links {
   position: relative;
-  font-size: 3.5rem;
-  font-weight: 400;
-  padding: 1rem 2rem;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
   text-align: center;
-  margin-bottom: 2rem;
-  color: transparent; /* Text color is transparent */
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.1));
-  background-size: 200%; /* Make the gradient larger to enable animation */
-  background-clip: text; /* Ensures the animation is inside the text */
-  -webkit-background-clip: text; /* Support for Webkit browsers */
-  animation: light-sweep 10s linear infinite; /* Animate the light sweep */
-  overflow: hidden;
+  z-index: 4;
+  cursor: pointer;
 }
 
-@keyframes light-sweep {
-  0% {
-    background-position: 200% 0; /* Start the gradient off-screen to the right */
-  }
-  100% {
-    background-position: -200% 0; /* Move the gradient off-screen to the left */
-  }
+.video-links span {
+  color: white;
+}
+.video-link {
+  color: white;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0 10px;
+  z-index: 4;
+  cursor: pointer;
+}
+.video-link:hover {
+  color: #FF007F;
 }
 
-
-/* Adjust for screens smaller than 1629px */
-@media (max-width: 1629px) {
-  .text{
-    font-size: 3rem;
-  }
+/* CTA Section */
+.cta-section {
+  box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.2);
+  padding: 3rem;
+  border-radius: 15px;
 }
 
-/* Adjust for screens smaller than 1422px */
-@media (max-width: 1422px) {
-  
-}
-
-/* Adjust for screens smaller than 1300px */
-@media (max-width: 1300px) {
- 
-}
-
-/* Adjust for screens smaller than 1200px */
-@media (max-width: 1200px) {
-  
-}
-
-/* Adjust for screens smaller than 992px */
+/* Responsive Adjustments */
 @media (max-width: 992px) {
- 
+  .glow-text {
+      font-size: 2.5rem;
+  }
+
+  .service-section, .process-steps {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .process-step {
+      width: 90%;
+  }
+  .service-card {
+    width: 45%;
+}
 }
 
-
-/* Adjust for screens smaller than 768px */
 @media (max-width: 768px) {
-  
-  .text, .process-title, .Video-Example-Title{
-    font-size: 1.9rem;
+  .glow-text {
+      font-size: 2rem;
   }
 
-
-  .introduction .lead{
-    font-size: 1rem;
+  .sub-text {
+      font-size: 1rem;
   }
 
-  .video-links{
-    margin-bottom: 1.5rem;
+  .service-card, .process-step {
+      width: 100%;
   }
 
-  .image-container .floating-image{
-    width: 300px;
+  .cta-button {
+      padding: 10px 20px;
   }
-
-
-  .horizontal-line{
-    top: 50px;
-        height: 2px;
-      }
-
-
-  .process-steps {
-    justify-content: center;
-    gap: 1rem;
-    padding: 0 1rem;
- 
-  }
-
-  
-  .step-number {
-    font-size: 1rem;
-    width: 2rem;
-    height: 2rem;
-    line-height: 2rem;
-  }
-   
-  /* Process Steps */
-  .process-steps {
-    gap: 1rem;
-  }
-
-  .step-line {
-    width: 2px;
-    height: 2rem; /* Length of the line */
- 
-  }
-  
-  /* Step Icon */
-  .step-icon {
-    width: 50px;
-    height: 50px;
-  
-  }
-  
-  .podium {
-    width: 50px;
-    height: 20px;
-   
-  }
-
-  .step-description {
-    font-size: 0.5rem;
-    
-  }
-  .project-card {
-    width: 90%; /* Take up more width on smaller screens */
-    height: auto; /* Allow dynamic height for videos */
-  }
-
-  .project-card video {
-    height: auto; /* Maintain video aspect ratio */
-  }
-
-
 }
-
 
 @media (max-width: 576px) {
-  .text, .process-title, .Video-Example-Title{
-    font-size: 1.3rem;
+  .glow-text {
+      font-size: 1.5rem;
   }
 
-  .project-card {
-    width: 160%; /* Full width on extra small screens */
-    height: auto; /* Adjust height automatically */
+  .sub-text {
+      font-size: 0.9rem;
   }
 
-  .introduction .lead{
-    font-size: .8rem;
-    width: 100%;
+  .service-card, .process-step {
+      padding: 1.5rem;
+  }
+
+  .cta-section {
+      padding: 2rem;
   }
 }
+
+
+/* Video Gallery */
 .video-gallery {
   text-align: center;
-  padding: 2rem;
-  background-color: transparent;
+  padding: 4rem 2rem;
+
+  border-radius: 20px;
+ 
+}
+
+.gallery-title {
+  font-size: 2.5rem;
+  color: #FF007F;
+  text-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
 }
 
 .video-container {
   display: flex;
-  flex-wrap: wrap; /* Allows items to stack on smaller screens */
+  flex-wrap: wrap;
   justify-content: center;
-  
+  gap: 2rem;
+  margin-top: 3rem;
 }
 
+/* Main Video Player */
 .main-video-container {
-  width: 50%;
+  width: 60%;
   max-width: 700px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: #1a1a1a;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.2);
 }
 
 .main-video {
   width: 40%;
-  max-width: 100%;
   border-radius: 12px;
+  transition: transform 0.3s;
+}
+
+.main-video:hover {
+  transform: scale(1.03);
 }
 
 #video-title {
@@ -528,9 +270,10 @@ h2 {
   color: white;
 }
 
+/* Video Playlist */
 .video-playlist {
-  width: 30%;
-  max-width: 400px;
+  width: 25%;
+  max-width: 350px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -544,14 +287,14 @@ h2 {
   gap: 10px;
   cursor: pointer;
   padding: 10px;
-  background: #fff;
+  background: #222;
   border-radius: 8px;
-  transition: background 0.3s;
+  transition: background 0.3s, transform 0.3s;
 }
 
-.video-item.active, .video-item:hover {
-  background: #101010;
-  color: white;
+.video-item:hover {
+  background: #FF007F;
+  transform: translateY(-5px);
 }
 
 .thumbnail {
@@ -563,72 +306,66 @@ h2 {
 
 /* Custom Scrollbar */
 .video-playlist::-webkit-scrollbar {
-  width: 6px; /* Thin scrollbar */
+  width: 6px;
 }
 
 .video-playlist::-webkit-scrollbar-track {
-  background: #222; /* Dark track background */
+  background: #222;
   border-radius: 10px;
 }
 
 .video-playlist::-webkit-scrollbar-thumb {
-  background: #FF007F; /* Scrollbar color */
+  background: #FF007F;
   border-radius: 10px;
 }
 
 .video-playlist::-webkit-scrollbar-thumb:hover {
-  background: #ff3399; /* Slightly lighter pink on hover */
+  background: #ff3399;
 }
 
-
-@media (max-width: 768px) {
-  .video-container {
-    flex-direction: column; /* Stack the video player and playlist */
-    align-items: center;
-  }
-
-  .main-video-container, .video-playlist {
-    width: 90%; /* Make both full-width on smaller screens */
-    max-width: 100%;
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .main-video-container {
+      width: 90%;
   }
 
   .video-playlist {
-    display: flex;
-    flex-direction: row;
-    overflow-x: auto; /* Make it scrollable horizontally */
-    max-height: unset;
-    gap: 10px;
-    padding-bottom: 10px;
+      width: 100%;
+      max-width: 100%;
+      flex-direction: row;
+      overflow-x: auto;
+      max-height: unset;
+      padding-bottom: 10px;
   }
 
   .video-item {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 120px; /* Adjust the width for better mobile fit */
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 120px;
   }
 
   .thumbnail {
-    width: 100%;
-    height: auto;
+      width: 100%;
+      height: auto;
   }
 }
 
-@media (max-width: 480px) {
-  .video-gallery {
-    padding: 1rem;
+@media (max-width: 576px) {
+  .gallery-title {
+      font-size: 2rem;
   }
 
   #video-title {
-    font-size: 1rem;
+      font-size: 1rem;
   }
 
   .video-item {
-    width: 100px;
+      width: 100px;
   }
 
   .thumbnail {
-    width: 90px;
-    height: 50px;
+      width: 90px;
+      height: 50px;
   }
 }

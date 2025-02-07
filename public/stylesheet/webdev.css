@@ -1,526 +1,365 @@
-/* Video Editing Page Styles */
-.video-editing-page {
-    font-family: 'Montserrat', sans-serif;
-    margin-bottom: 8rem;
-  }
-  
-  /* Header Video */
-  .video-header {
-    position: relative;
-    left: -10%;
-    width: 120%;
-    height: 50vh;
-    overflow: hidden;
-    margin: -56px 0 50px 0;
-    z-index: -6;
-  }
-  
-  .video-header video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .video-gradient {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 120%;
-    height: 50%; /* Adjust gradient height */
-    background: linear-gradient(transparent, rgba(16, 16, 16, 0.9));
-    z-index: 1;
-  }
-  
-  .video-links {
-    position: relative;
-    top:0;
-        left: 50%;
-        transform: translateX(-50%);
-        text-align: center;
-        z-index: 4; /* Increase z-index to make it appear above the navbar */
-        cursor: pointer;
-    }
-      .video-links span{
-        color: white;
-      }
-      
-      .video-link {
-        color: white;
-        font-weight: 500;
-        text-decoration: none;
-        padding: 0 10px;
-        z-index: 4; /* Match the increased z-index */
-        cursor: pointer;
-    }
-  
-  .video-link:hover {
-    color: #ff007f; /* Highlight color on hover */
-  }
-  
-  /* Video Editing Section */
-  .video-editing-page h1 {
-    font-weight: 700;
-    color: white;
-  }
-  
-  .video-editing-page .lead {
-    font-size: 1.3rem;
-    font-weight: 400;
-    color: rgba(255, 255, 255, 0.8);
-  }
-  
-  .introduction {
-    width: 100%;
-    height: 70vh;
-  }
 
-  .text {
-    font-family: 'Liberty', sans-serif;
-    font-weight: 100;
-    font-size: 5rem;
-    letter-spacing:10px; /* Adjust spacing between letters */
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.letter {
-    color: #d9fdff;
-    text-shadow: 0 0 2rem #FF007F;
-    display: inline-block;
-}
-
-.letter-2 {
-    transform: translate(-0.2rem, 1rem) rotate(10deg);
-    animation: flicker 2s ease-in-out infinite alternate;
-}
-
-.space {
-    width: 1rem; /* Adjust space between words */
-}
-
-/* Keyframes for flicker animation */
-@keyframes flicker {
-    0% {
-        opacity: 1;
-        transform: translate(-0.2rem, 1rem) rotate(10deg);
-    }
-    5% {
-        opacity: 1;
-        transform: translate(-0.2rem, 1rem) rotate(10deg);
-    }
-    5.5% {
-        opacity: 0;
-        transform: translate(-0.2rem, 1rem) rotate(10deg);
-    }
-    6% {
-        opacity: 1;
-        transform: translate(-0.2rem, 1rem) rotate(10deg);
-    }
-    6.5% {
-        opacity: 1;
-        transform: translate(-0.2rem, 1rem) rotate(10deg);
-    }
-    7% {
-        opacity: 0;
-        transform: translate(-0.2rem, 1rem) rotate(10deg);
-    }
-    8% {
-        opacity: 1;
-        transform: translate(-0.2rem, 1rem) rotate(10deg);
-    }
-    50% {
-        opacity: 1;
-        transform: translate(-0.2rem, 1rem) rotate(13deg);
-    }
-    100% {
-        opacity: 1;
-        transform: translate(-0.2rem, 1rem) rotate(10deg);
-    }
-}
-
-  
-  /* Floating Image */
-.floating-image {
-    max-height: 700px;
-    object-fit: contain;
-    animation: float-and-rotate 6s ease-in-out infinite;
-  }
-  
-  /* Keyframes for Floating and Rotating Animation */
-  @keyframes float-and-rotate {
-    0% {
-      transform: translate(0, 0) rotate(0deg);
-    }
-    25% {
-      transform: translate(-10px, -10px) rotate(1deg);
-    }
-    50% {
-      transform: translate(0, -20px) rotate(0deg);
-    }
-    75% {
-      transform: translate(10px, -10px) rotate(-1deg);
-    }
-    100% {
-      transform: translate(0, 0) rotate(0deg);
-    }
-  }
-  
-  /* Process Section */
-.process-section {
-  color: white;
-  height: auto;
-padding: 2rem;
-
-}
-
-
-.process-description {
-  font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 2rem;
-  width: 50%;
+/* Hero Section */
+.hero-section {
+  position: relative;
+  padding: 6rem 2rem;
   text-align: center;
-  
+  background: 
+              url("/images/Coverphotos.png") center/cover no-repeat;
+  border-radius: 20px;
+  box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.2);
+  color: white;
 }
 
-/* Process Steps */
+/* Responsive Text */
+.glow-text {
+  font-size: 3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #FF007F;
+  text-shadow: 0 0 20px #FF007F, 0 0 40px rgba(255, 0, 127, 0.3);
+}
+
+.highlight {
+  color: #ffffff;
+  text-shadow: none;
+}
+
+.sub-text {
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* CTA Button */
+.cta-button {
+  background: #101010;
+  color: #FF007F;
+  padding: 12px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 200;
+  transition: 0.3s;
+}
+
+.cta-button:hover {
+  background: white;
+  color: #101010;
+}
+
+.video-links {
+  position: relative;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 4;
+  cursor: pointer;
+}
+
+.video-links span {
+  color: white;
+}
+.video-link {
+  color: white;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0 10px;
+  z-index: 4;
+  cursor: pointer;
+}
+
+.video-link:hover {
+  color: #FF007F;
+}
+
+
+/* Service Offerings */
+.service-section {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 4rem;
+}
+
+.service-card {
+  background: #1a1a1a;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 30%;
+  min-width: 280px;
+  box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.2);
+  transition: 0.3s;
+}
+
+.service-card img {
+  width: 50%;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Process Section */
+.process-section {
+  margin: 6rem 0;
+}
+
+.process-title {
+  font-size: 2.5rem;
+  color: #FF007F;
+}
+
 .process-steps {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 2rem;
-  padding: 0 2rem;
-  position: relative;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+  margin-top: 3rem;
 }
 
 .process-step {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
+  background: #1a1a1a;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 30%;
+  min-width: 280px;
+  box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.2);
 }
 
-.step-number {
-  background-color: #ff007f;
-  color: white;
-  font-size: 1.5rem;
-  width: 3rem;
-  height: 3rem;
-  line-height: 3rem;
-  text-align: center;
-  border-radius: 50%;
+.process-step img {
+  max-width: 100px;
   margin-bottom: 1rem;
-  position: relative;
-  border: 4px solid white;
-  z-index: 2;
 }
 
-/* Horizontal Line Container */
-.horizontal-line-container {
-  position: relative;
+.process-step h3 {
+  font-size: 1.5rem;
+  color: #FF007F;
+}
+
+/* CTA Section */
+.cta-section {
+  box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.2);
+  padding: 3rem;
+  border-radius: 15px;
+}
+
+/* Centered Image Slider Container */
+.image-slider-container {
   width: 100%;
-  height: 2px;
-  margin-top: 2rem;
-  background-color: transparent;
-  z-index: -1;
+  max-width: 1200px;
+  margin: auto;
+  padding: 3rem 0;
+  position: relative;
 }
 
-/* Horizontal Line */
-.horizontal-line {
-  position: absolute;
-  top: 60px;
-  left: 0;
-  width: 0%; /* Initially hidden */
-  height: 4px;
-  background-color: #ff007f;
-  z-index: -1;
-}
-
-/* Process Steps */
-.process-steps {
+/* Swiper Core Container */
+.swiper {
+  width: 100%;
+  height: 450px;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 2rem;
-  padding: 0 2rem;
-  margin-top: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Swiper Slides - Center Formatting */
+.swiper-slide {
+  width: 260px;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
-  z-index: 1;
-  height: auto;
+  transition: transform 0.5s ease-in-out;
+  border-radius: 15px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
 }
 
-/* Other Styles... (unchanged) */
-
-
-/* Vertical Line to Icon */
-.step-line {
-  width: 5px;
-  height: 4rem; /* Length of the line */
-  background-color: #ff007f;
-  position: absolute;
-  top: 3.5rem; /* Below the step number */
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-/* Step Icon */
-.step-icon {
-  width: 100px;
-  height: 100px;
-  margin:5rem 0 1rem 0;
-  position: relative;
-  z-index: 2;
-}
-
-.step-icon img {
+/* Image Resizing & Positioning */
+.swiper-slide img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-}
-
-/* Podium Below Icon */
-.podium {
-  width: 100px;
-  height: 20px;
-  background-color: #ffffff;
-  border-radius: 50%;
-  margin-top: -10px; /* Align slightly below icon */
-  position: relative;
-  z-index: 1;
-}
-
-/* Step Description */
-.step-description {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.9);
-  margin-top: 1rem;
-  font-weight: 400;
-  text-align: center;
-}
-
-/* Image Examples Section */
-.image-examples-section {
-  padding: 2rem 1rem;
-  background-color: #101010; /* Matches the page background */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-/* Set a consistent width and height for the cards */
-.custom-card {
-  width: 16rem; /* Reduce the width */
-  height: 24rem; /* Ensure uniform height */
-  background-color: #181818;
-  border: none;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  object-fit: cover;
+  border-radius: 15px;
   transition: transform 0.3s ease-in-out;
 }
 
-
-
-.custom-card:hover {
-  transform: scale(1.05); /* Slight zoom on hover */
+/* Center Slide Expands to Full Size */
+.swiper-slide-active {
+  transform: scale(1.4);
+  z-index: 2;
 }
 
-/* Card Image */
-.card-img-top {
-  height: 9rem; /* Adjust height for consistent appearance */
-  object-fit: cover;
-  border-radius: 0.25rem 0.25rem 0 0;
+/* Previous & Next Slides */
+.swiper-slide-prev, .swiper-slide-next {
+  transform: scale(0.9);
+  opacity: 0.8;
+  z-index: 1;
 }
 
-/* Text and Buttons */
-.card-title {
+/* Further Left & Right Slides (Smallest Size) */
+.swiper-slide-prev-prev, .swiper-slide-next-next {
+  transform: scale(0.7);
+  opacity: 0.5;
+}
+
+/* Proper Caption Placement */
+.slide-caption {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
   color: white;
-  font-size: 1.1rem;
-  font-weight: bold;
-}
-
-.card-text {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
-  overflow: hidden; /* Ensures no overflow */
-  text-overflow: ellipsis; /* Adds "..." at the end */
-  display: -webkit-box; /* Use WebKit box model */
- 
-  -webkit-box-orient: vertical; /* Define the box orientation */
-}
-
-
-
-.btn-primary {
-  background-color: #ff007f;
-  border: none;
-}
-
-.btn-primary:hover {
-  background-color: #ff4c99;
-  color: white;
-}
-
-
-
-
-h2 {
-  position: relative;
-  font-size: 3.5rem;
-  font-weight: 400;
-  padding: 1rem 2rem;
+  padding: 8px 12px;
+  font-size: 1rem;
+  border-radius: 5px;
   text-align: center;
-  margin-bottom: 2rem;
-  color: transparent; /* Text color is transparent */
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.1));
-  background-size: 200%; /* Make the gradient larger to enable animation */
-  background-clip: text; /* Ensures the animation is inside the text */
-  -webkit-background-clip: text; /* Support for Webkit browsers */
-  animation: light-sweep 10s linear infinite; /* Animate the light sweep */
+  width: 80%;
+}
+
+/* Swiper Navigation Buttons */
+.swiper-button-next, .swiper-button-prev {
+  color: white;
+  font-size: 2rem;
+  width: 50px;
+  height: 50px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease-in-out;
+}
+
+/* Hover Effect for Navigation Buttons */
+.swiper-button-next:hover, .swiper-button-prev:hover {
+  background: rgba(255, 0, 127, 0.8);
+}
+
+/* Custom Navigation Icons */
+.swiper-button-next::after {
+  content: '➜'; /* Right arrow */
+  font-size: 1.8rem;
+}
+
+.swiper-button-prev::after {
+  content: '⬅'; /* Left arrow */
+  font-size: 1.8rem;
+}
+
+/* 🔥 FULLSCREEN MODAL STYLING 🔥 */
+.image-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px; /* Add padding for better spacing */
   overflow: hidden;
 }
 
-@keyframes light-sweep {
-  0% {
-    background-position: 200% 0; /* Start the gradient off-screen to the right */
-  }
-  100% {
-    background-position: -200% 0; /* Move the gradient off-screen to the left */
-  }
+.modal-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Adjust for screens smaller than 1629px */
-@media (max-width: 1629px) {
-  .text{
-    font-size: 3rem;
-  }
+.modal-content img {
+  width: auto;
+  height: auto;
+  max-width: 80vw; /* Limits the width to 80% of viewport width */
+  max-height: 80vh; /* Limits the height to 80% of viewport height */
+  border-radius: 15px;
 }
 
-/* Adjust for screens smaller than 1422px */
-@media (max-width: 1422px) {
-  
+/* Close Button */
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 1rem;
+  color: white;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 5px 12px;
+  border-radius: 50%;
+  transition: background 0.3s ease-in-out;
 }
 
-/* Adjust for screens smaller than 1300px */
-@media (max-width: 1300px) {
- 
+.close-modal:hover {
+  background: rgba(255, 0, 127, 0.8);
 }
 
-/* Adjust for screens smaller than 1200px */
-@media (max-width: 1200px) {
-  
-}
 
-/* Adjust for screens smaller than 992px */
+/* ✅ RESPONSIVE MEDIA QUERIES */
 @media (max-width: 992px) {
- 
+  .hero-section {
+      padding: 4rem 2rem;
+  }
+
+  .glow-text {
+      font-size: 2.5rem;
+  }
+
+  .service-section,
+  .process-steps {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .service-card,
+  .process-step {
+      width: 90%;
+  }
 }
 
-
-/* Adjust for screens smaller than 768px */
 @media (max-width: 768px) {
-  
-  .process-title, .Web-Example-Title{
-    font-size: 1.9rem;
-  }
-  .text{
-    font-size: 1.4rem;
+  .glow-text {
+      font-size: 2rem;
   }
 
-
-  .introduction .lead{
-    font-size: 0.8rem;
+  .sub-text {
+      font-size: 1rem;
   }
 
-  .video-links{
-    margin-bottom: 1.5rem;
+  .service-card,
+  .process-step {
+      width: 100%;
   }
 
-  .image-container .floating-image{
-    width: 300px;
+  .cta-button {
+      padding: 10px 20px;
   }
-
- 
-  .horizontal-line{
-top: 50px;
-    height: 2px;
-  }
-
-
-  .process-steps {
-    justify-content: center;
-    gap: 1rem;
-    padding: 0 1rem;
- 
-  }
-  .step-number {
-
-    font-size: 1rem;
-    width: 2rem;
-    height: 2rem;
-    line-height: 2rem;
-  }
-  /* Process Steps */
-  .process-steps {
-
-    gap: 1rem;
- 
-  }
-  .step-line {
-    width: 2px;
-    height: 2rem; /* Length of the line */
- 
-  }
-  .step-icon {
-    width: 50px;
-    height: 50px;
-  
-  }
-  .podium {
-    width: 50px;
-    height: 20px;
-   
-  }
-  .step-description {
-    font-size: 0.5rem;
-    
-  }
-  
-    .project-card {
-      width: 300px;
-      transform: scale(2); /* Reset any unnecessary scaling */
-     margin-left: 1.5rem;
-     border-radius: 0%;
-    }
-  
-    .project-card .card-text{
-      display: none;
-    }
-    
-    .project-card .card-title{
-font-size: .3rem;
-    }
-
-    .project-image{
-      border-radius: 0%;
-    }
- 
 }
+
 @media (max-width: 576px) {
-  .text{
-    font-size: .9rem;
-  }
-.process-title, .Graphic-Example-Title{
-    font-size: 1.5rem;
+  .glow-text {
+      font-size: 1.5rem;
   }
 
-  .lead{
-    font-size: .6rem;
+  .sub-text {
+      font-size: 0.9rem;
   }
 
-  .video-links{
-    font-size: .6rem;
+  .service-card,
+  .process-step {
+      padding: 1.5rem;
   }
 
+  .cta-section {
+      padding: 2rem;
+  }
 }
