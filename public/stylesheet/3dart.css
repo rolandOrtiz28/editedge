@@ -160,6 +160,10 @@
   color: #ff007f;
 }
 
+.carousel-item video{
+  border-radius: 20px;
+}
+
 /* Floating Image */
 .floating-image {
   max-height: 700px;
