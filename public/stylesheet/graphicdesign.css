@@ -1,4 +1,4 @@
-/* General Styles */
+/* ✅ GENERAL STYLES */
 .digital-marketing-page {
   font-family: 'Poppins', sans-serif;
   color: white;
@@ -6,19 +6,18 @@
   padding: 6rem 0;
 }
 
-/* Hero Section */
+/* ✅ HERO SECTION */
 .hero-section {
   position: relative;
   padding: 6rem 2rem;
   text-align: center;
-  background: 
-              url("/images/Coverphotos.png") center/cover no-repeat;
+  background: url("/images/Coverphotos.png") center/cover no-repeat;
   border-radius: 20px;
   box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.2);
   color: white;
 }
 
-/* Responsive Text */
+/* ✅ RESPONSIVE TEXT */
 .glow-text {
   font-size: 3rem;
   font-weight: bold;
@@ -37,7 +36,7 @@
   color: rgba(255, 255, 255, 0.8);
 }
 
-/* CTA Button */
+/* ✅ CTA BUTTON */
 .cta-button {
   background: #101010;
   color: #FF007F;
@@ -54,6 +53,7 @@
   color: #101010;
 }
 
+/* ✅ NAVIGATION LINKS */
 .video-links {
   position: relative;
   top: 0;
@@ -67,6 +67,7 @@
 .video-links span {
   color: white;
 }
+
 .video-link {
   color: white;
   font-weight: 500;
@@ -80,8 +81,7 @@
   color: #FF007F;
 }
 
-
-/* Service Offerings */
+/* ✅ SERVICE OFFERINGS */
 .service-section {
   display: flex;
   justify-content: center;
@@ -108,7 +108,7 @@
   transform: translateY(-5px);
 }
 
-/* Process Section */
+/* ✅ PROCESS SECTION */
 .process-section {
   margin: 6rem 0;
 }
@@ -145,14 +145,14 @@
   color: #FF007F;
 }
 
-/* CTA Section */
+/* ✅ CTA SECTION */
 .cta-section {
   box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.2);
   padding: 3rem;
   border-radius: 15px;
 }
 
-/* Centered Image Slider Container */
+/* ✅ FIXED SWIPER GALLERY STYLES */
 .image-slider-container {
   width: 100%;
   max-width: 1200px;
@@ -161,19 +161,19 @@
   position: relative;
 }
 
-/* Swiper Core Container */
+/* ✅ Swiper Core */
 .swiper {
   width: 100%;
-  height: 450px;
+  height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Swiper Slides - Center Formatting */
+/* ✅ Swiper Slides */
 .swiper-slide {
-  width: 260px;
-  height: 350px;
+  width: 250px;
+  height: 330px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -186,7 +186,7 @@
   cursor: pointer;
 }
 
-/* Image Resizing & Positioning */
+/* ✅ Image Resizing & Positioning */
 .swiper-slide img {
   width: 100%;
   height: 100%;
@@ -195,46 +195,46 @@
   transition: transform 0.3s ease-in-out;
 }
 
-/* Center Slide Expands to Full Size */
+/* ✅ Center Slide Expands to Full Size */
 .swiper-slide-active {
-  transform: scale(1.4);
+  transform: scale(1.2);
   z-index: 2;
 }
 
-/* Previous & Next Slides */
+/* ✅ Previous & Next Slides */
 .swiper-slide-prev, .swiper-slide-next {
-  transform: scale(0.9);
+  transform: scale(1);
   opacity: 0.8;
   z-index: 1;
 }
 
-/* Further Left & Right Slides (Smallest Size) */
+/* ✅ Further Left & Right Slides */
 .swiper-slide-prev-prev, .swiper-slide-next-next {
-  transform: scale(0.7);
-  opacity: 0.5;
+  transform: scale(0.8);
+  opacity: 0.6;
 }
 
-/* Proper Caption Placement */
+/* ✅ Caption Styling */
 .slide-caption {
   position: absolute;
-  bottom: 15px;
+  bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
   background: rgba(0, 0, 0, 0.7);
   color: white;
   padding: 8px 12px;
-  font-size: 1rem;
+  font-size: 0.9rem;
   border-radius: 5px;
   text-align: center;
-  width: 80%;
+  width: 85%;
 }
 
-/* Swiper Navigation Buttons */
+/* ✅ Swiper Navigation Buttons */
 .swiper-button-next, .swiper-button-prev {
   color: white;
-  font-size: 2rem;
-  width: 50px;
-  height: 50px;
+  font-size: 1.8rem;
+  width: 45px;
+  height: 45px;
   background: rgba(0, 0, 0, 0.6);
   border-radius: 50%;
   display: flex;
@@ -243,7 +243,7 @@
   transition: background 0.3s ease-in-out;
 }
 
-/* Hover Effect for Navigation Buttons */
+/* ✅ Hover Effect for Navigation Buttons */
 .swiper-button-next:hover, .swiper-button-prev:hover {
   background: rgba(255, 0, 127, 0.8);
 }
@@ -259,114 +259,19 @@
   font-size: 1.8rem;
 }
 
-/* 🔥 FULLSCREEN MODAL STYLING 🔥 */
-.image-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  padding: 20px; /* Add padding for better spacing */
-  overflow: hidden;
-}
 
-.modal-content {
-  position: relative;
-  max-width: 90%;
-  max-height: 90%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.modal-content img {
-  width: auto;
-  height: auto;
-  max-width: 80vw; /* Limits the width to 80% of viewport width */
-  max-height: 80vh; /* Limits the height to 80% of viewport height */
-  border-radius: 15px;
-}
-
-/* Close Button */
-.close-modal {
-  position: absolute;
-  top: 15px;
-  right: 25px;
-  font-size: 1rem;
-  color: white;
-  cursor: pointer;
-  background: rgba(0, 0, 0, 0.6);
-  padding: 5px 12px;
-  border-radius: 50%;
-  transition: background 0.3s ease-in-out;
-}
-
-.close-modal:hover {
-  background: rgba(255, 0, 127, 0.8);
-}
-
-
-/* ✅ RESPONSIVE MEDIA QUERIES */
-@media (max-width: 992px) {
-  .hero-section {
-      padding: 4rem 2rem;
-  }
-
-  .glow-text {
-      font-size: 2.5rem;
-  }
-
-  .service-section,
-  .process-steps {
-      flex-direction: column;
-      align-items: center;
-  }
-
-  .service-card,
-  .process-step {
-      width: 90%;
-  }
+/* ✅ Responsive Fixes */
+@media (max-width: 1024px) {
+  .swiper-slide { width: 220px; height: 300px; }
+  .swiper-slide-active { transform: scale(1.15); }
 }
 
 @media (max-width: 768px) {
-  .glow-text {
-      font-size: 2rem;
-  }
-
-  .sub-text {
-      font-size: 1rem;
-  }
-
-  .service-card,
-  .process-step {
-      width: 100%;
-  }
-
-  .cta-button {
-      padding: 10px 20px;
-  }
+  .swiper-slide { width: 200px; height: 270px; }
+  .swiper-slide-active { transform: scale(1.1); }
 }
 
 @media (max-width: 576px) {
-  .glow-text {
-      font-size: 1.5rem;
-  }
-
-  .sub-text {
-      font-size: 0.9rem;
-  }
-
-  .service-card,
-  .process-step {
-      padding: 1.5rem;
-  }
-
-  .cta-section {
-      padding: 2rem;
-  }
+  .swiper-slide { width: 180px; height: 240px; }
+  .swiper-slide-active { transform: scale(1.05); }
 }

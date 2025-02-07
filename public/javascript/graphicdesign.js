@@ -16,40 +16,31 @@ document.addEventListener("DOMContentLoaded", function () {
   
 
   document.addEventListener("DOMContentLoaded", function () {
-    const slides = document.querySelectorAll(".swiper-slide");
-    const middleIndex = Math.floor(slides.length / 2); // Ensures the center slide starts in front
-
     const swiper = new Swiper(".mySwiper", {
-        effect: "coverflow",
-        grabCursor: true,
-        centeredSlides: true,
-        slidesPerView: 5, // Ensures 2 slides on each side
-        initialSlide: middleIndex, // Always starts in the center
-        coverflowEffect: {
-            rotate: 0,
-            stretch: 0,
-            depth: 200,
-            modifier: 1.5,
-            slideShadows: false,
-        },
-        loop: true,
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
+      effect: "coverflow",
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: "auto",
+      initialSlide: Math.floor(document.querySelectorAll('.swiper-slide').length / 2), // Ensures center card
+      coverflowEffect: {
+        rotate: 0,
+        stretch: 0,
+        depth: 150,
+        modifier: 1,
+        slideShadows: false,
+      },
+      loop: false, // Looping off for better control
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      breakpoints: {
+        1024: { slidesPerView: 3, coverflowEffect: { depth: 200 } }, // Large screens
+        768: { slidesPerView: 2, coverflowEffect: { depth: 150 } },  // Tablets
+        480: { slidesPerView: 1, coverflowEffect: { depth: 100 } },  // Phones
+      }
     });
-
-    // Click to Expand Image Fullscreen
-    slides.forEach(slide => {
-        slide.addEventListener("click", function () {
-            if (!this.classList.contains("swiper-slide-active")) {
-                swiper.slideTo(this.dataset.swiperSlideIndex); // Move clicked slide to center
-            } else {
-                openFullscreen(this.querySelector("img").src);
-            }
-        });
-    });
-});
+  });
 
 // Function to Open Image in Fullscreen (Modal)
 function openFullscreen(imageSrc) {
