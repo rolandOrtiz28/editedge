@@ -192,6 +192,11 @@ const contactSchema = Joi.object({
     message: Joi.string().min(5).max(1000).required()
   });
 
+  app.get('/robots.txt', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'robots.txt'));
+});
+
+
   app.get('/sitemap.xml', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'sitemap.xml'));
 });
