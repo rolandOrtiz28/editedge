@@ -1,4 +1,9 @@
-
+.web-development-page {
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  text-align: center;
+  padding: 6rem 0;
+}
 /* Hero Section */
 .hero-section {
   position: relative;
@@ -153,7 +158,6 @@
   padding: 3rem 0;
   position: relative;
 }
-
 /* Swiper Core Container */
 .swiper {
   width: 100%;
@@ -190,24 +194,18 @@
 
 /* Center Slide Expands to Full Size */
 .swiper-slide-active {
-  transform: scale(1.4);
+  transform: scale(1.3);
   z-index: 2;
 }
 
 /* Previous & Next Slides */
 .swiper-slide-prev, .swiper-slide-next {
-  transform: scale(0.9);
+  transform: scale(1);
   opacity: 0.8;
   z-index: 1;
 }
 
-/* Further Left & Right Slides (Smallest Size) */
-.swiper-slide-prev-prev, .swiper-slide-next-next {
-  transform: scale(0.7);
-  opacity: 0.5;
-}
-
-/* Proper Caption Placement */
+/* Caption Placement */
 .slide-caption {
   position: absolute;
   bottom: 15px;
@@ -221,6 +219,18 @@
   text-align: center;
   width: 80%;
 }
+.slide-caption a{
+  text-decoration: none;
+  color: white;
+ 
+}
+
+.slide-caption:hover a{
+
+  color:#FF007F;
+}
+
+
 
 /* Swiper Navigation Buttons */
 .swiper-button-next, .swiper-button-prev {
@@ -251,6 +261,7 @@
   content: '⬅'; /* Left arrow */
   font-size: 1.8rem;
 }
+
 
 /* 🔥 FULLSCREEN MODAL STYLING 🔥 */
 .image-modal {

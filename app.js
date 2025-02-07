@@ -12,6 +12,7 @@ const methodOverride = require('method-override');
 const flash = require('connect-flash');
 const mongoSanitize = require('express-mongo-sanitize');
 const MongoDBStore = require("connect-mongo");
+const axios = require('axios');
 // const Subscriber = require('./model/Subscriber');
 
 
@@ -196,6 +197,50 @@ const contactSchema = Joi.object({
 
     res.render('home/home', { currentRoute: '/' });
 });
+  app.get('/trial', (req, res) => {
+
+    res.render('home/trial', { currentRoute: '/trial' });
+});
+
+// const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+
+// app.post('/generate-social', async (req, res) => {
+//   const { topic } = req.body;
+//   try {
+//       const response = await axios.post('https://api.openai.com/v1/chat/completions', {
+//           model: "gpt-4",
+//           messages: [{ role: "user", content: `Generate an engaging social media post about: ${topic}` }]
+//       }, {
+//           headers: { 
+//               'Authorization': `Bearer ${OPENAI_API_KEY}`,
+//               'Content-Type': 'application/json'  // Add this line
+//           }
+//       });
+
+//       res.json({ content: response.data.choices[0].message.content });
+//   } catch (error) {
+//       console.error("OpenAI API Error:", error.response?.data || error.message);  // Log the full error
+//       res.status(500).json({ error: 'Error generating content', details: error.response?.data || error.message });
+//   }
+// });
+
+
+
+// app.post('/generate-blog', async (req, res) => {
+//   const { topic } = req.body;
+//   try {
+//       const response = await axios.post('https://api.openai.com/v1/chat/completions', {
+//           model: "gpt-3.5-turbo",
+//           messages: [{ role: "user", content: `Write a detailed blog post about: ${topic}` }]
+//       }, {
+//           headers: { 'Authorization': `Bearer ${OPENAI_API_KEY}` }
+//       });
+
+//       res.json({ content: response.data.choices[0].message.content });
+//   } catch (error) {
+//       res.status(500).send('Error generating content');
+//   }
+// });
 
 
 app.post('/send', catchAsync(async (req, res) => {
