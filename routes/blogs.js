@@ -10,6 +10,11 @@ const slugify = require('slugify');
 // Get all blogs
 router.get('/blogs', catchAsync(async (req, res) => {
     const blogs = await Blog.find({});
+
+    blogs.forEach(blog => {
+        blog.readingTime = Math.ceil(blog.content.split(' ').length / 175); // Assuming 200 WPM reading speed
+    });
+
     res.render('blogs/index', { blogs, currentRoute: '/blogs' });
 }));
 
@@ -101,8 +106,19 @@ router.get('/blogs/:slug', catchAsync(async (req, res) => {
     }
 
    
-    blog.views += 1;
-    await blog.save();  
+// Create a views object in the session if it doesn’t exist
+if (!req.session.viewedBlogs) {
+    req.session.viewedBlogs = {};
+}
+
+// Check if this blog has been viewed by the user
+if (!req.session.viewedBlogs[blog._id]) {
+    blog.views += 1;  
+    await blog.save();
+
+    
+    req.session.viewedBlogs[blog._id] = true;
+}
 
     res.render('blogs/show', { blog, currentRoute: `/blogs/${blog.slug}` });
 }));
@@ -158,11 +174,11 @@ router.delete('/blogs/:slug', catchAsync(async (req, res) => {
     await Blog.findOneAndDelete({ slug: req.params.slug });
     
     // Check if it's from CMS
-    if (req.headers.referer && req.headers.referer.includes('/cms')) {
-        return res.redirect('/cms'); // Redirect back to CMS
+    if (req.headers.referer && req.headers.referer.includes('/admin/cms')) {
+        return res.redirect('/admin/cms'); // Redirect back to CMS
     }
 
-    res.redirect('/blogs'); // Default redirect to blogs list
+    res.redirect('/admin/cms'); // Default redirect to blogs list
 }));
 
 module.exports = router;

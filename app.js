@@ -28,7 +28,7 @@ const adminRoute = require('./routes/Admin');
 const helmet = require('helmet')
 const Joi = require('joi');
 const secret = process.env.SESSION_SECRET;
-const dbUrl = process.env.DB_URL ||  'mongodb://127.0.0.1:27017/bluelightinnovations';
+const dbUrl = process.env.DB_URL || 'mongodb://127.0.0.1:27017/bluelightinnovations';
 //
 // Connect to MongoDB with extended timeout options
 mongoose.connect(dbUrl, {
