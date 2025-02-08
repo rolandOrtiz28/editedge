@@ -2,12 +2,16 @@
 <link rel="stylesheet" href="/stylesheet/blog.css">
 
 <div class="container my-5 bg-white p-5 rounded shadow">
-    <div class="position-relative mb-4">
-      <img src="<%= blog.image %>" class="img-fluid w-100 rounded" style="height: 40vh; object-fit: cover;" alt="<%= blog.title %>">
-      <div class="position-absolute top-50 start-50 translate-middle text-center text-white">
-        <h1 class="display-4 fw-bold"><%= blog.title %></h1>
-      </div>
+  <div class="position-relative mb-4">
+    <% if (blog.image) { %>
+      <a href="<%= blog.imageLink || '#' %>" target="_blank">
+        <img src="<%= blog.image %>" class="img-fluid w-100 rounded" style="height: 40vh; object-fit: cover;" alt="<%= blog.title %>">
+      </a>
+    <% } %>
+    <div class="position-absolute top-50 start-50 translate-middle text-center text-white">
+      <h1 class="display-4 fw-bold"><%= blog.title %></h1>
     </div>
+  </div>
     
     <div class="content mt-5 px-5">
       <p class="lead"><%- blog.content %></p>

@@ -80,7 +80,10 @@
             <% if (blog.image) { %>
                 <img src="<%= blog.image %>" class="rounded-md w-[200px] mx-auto mt-2">
             <% } %>
-
+            <label class="block text-sm font-medium">Cover Image Link (Optional)</label>
+            <input type="text" name="imageLink" value="<%= blog.imageLink || '' %>" 
+                class="w-full border border-gray-300 rounded-md p-2 mb-3">
+            
             <label class="block text-sm font-medium">Tags (comma-separated)</label>
             <input type="text" name="tags" value="<%= blog.tags.join(', ') %>" class="w-full border border-gray-300 rounded-md p-2 mb-3">
             
@@ -89,6 +92,8 @@
                 <option value="draft" <%= blog.status === "draft" ? "selected" : "" %>>Draft</option>
                 <option value="published" <%= blog.status === "published" ? "selected" : "" %>>Published</option>
             </select>
+
+
             <!-- ✅ Update Button -->
             <button type="submit" 
                 class="bg-blue-600 text-white w-full py-2 rounded hover:bg-blue-700">

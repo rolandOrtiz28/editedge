@@ -6,9 +6,10 @@ const blogSchema = new mongoose.Schema({
     content: { type: String, required: true },
     metaDescription: { type: String },
     tags: [String],
-    image: { type: String },
+    image: { type: String }, // ✅ Cover image URL
+    imageLink: { type: String, default: "" }, // ✅ NEW: Clickable cover image link
     headerType: { type: String, enum: ["image", "video"], default: "image" },
-    status: { type: String, enum: ["draft", "published"], default: "draft" }, // ✅ NEW: Status field
+    status: { type: String, enum: ["draft", "published"], default: "draft" },
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now },
     views: { type: Number, default: 0 }

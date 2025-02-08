@@ -24,14 +24,45 @@ router.get('/blogs/new', (req, res) => {
 });
 
 // ✅ Create a New Blog (Now Supports Image Upload)
+// router.post(
+//     "/blogs",
+//     upload.single("image"), 
+//     express.json(),
+//     catchAsync(async (req, res) => {
+//       const { title, content, metaDescription, headerType, tags, status } = req.body;
+//       const slug = slugify(title, { lower: true });
+  
+  
+//       let imageUrl = req.file ? req.file.path : null;
+  
+//       const blog = new Blog({
+//         title,
+//         slug,
+//         content,
+//         metaDescription,
+//         headerType,
+//         image: imageUrl,
+//         tags: tags ? tags.split(",").map((tag) => tag.trim()) : [],
+//         status,
+//       });
+  
+//       await blog.save();
+  
+//       res.json({
+//         success: true,
+//         message: `Blog ${status === "draft" ? "saved as draft" : "published"} successfully!`,
+//         slug: blog.slug,
+//         image: imageUrl, 
+//       });
+//     })
+//   );
 router.post(
     "/blogs",
     upload.single("image"), 
     express.json(),
     catchAsync(async (req, res) => {
-      const { title, content, metaDescription, headerType, tags, status } = req.body;
+      const { title, content, metaDescription, headerType, tags, status, imageLink } = req.body;
       const slug = slugify(title, { lower: true });
-  
   
       let imageUrl = req.file ? req.file.path : null;
   
@@ -42,20 +73,24 @@ router.post(
         metaDescription,
         headerType,
         image: imageUrl,
+        imageLink: imageLink || "", 
         tags: tags ? tags.split(",").map((tag) => tag.trim()) : [],
         status,
       });
-  
+
       await blog.save();
-  
+
       res.json({
         success: true,
         message: `Blog ${status === "draft" ? "saved as draft" : "published"} successfully!`,
         slug: blog.slug,
-        image: imageUrl, 
+        image: imageUrl,
       });
     })
-  );
+);
+
+
+
 
 router.post("/upload", upload.single("image"), async (req, res) => {
     if (!req.file) return res.status(400).json({ error: "No file uploaded" });
@@ -137,9 +172,9 @@ router.get('/blogs/:slug/edit', catchAsync(async (req, res) => {
 
 // Update Blog (PUT)
 router.put('/blogs/:slug', upload.single('image'), catchAsync(async (req, res) => {
-    const { title, content, metaDescription, headerType, tags, status } = req.body;
+    const { title, content, metaDescription, headerType, tags, status, imageLink } = req.body;
     const slug = slugify(title, { lower: true });
-    
+
     // ✅ Find the existing blog
     const blog = await Blog.findOne({ slug: req.params.slug });
 
@@ -156,16 +191,21 @@ router.put('/blogs/:slug', upload.single('image'), catchAsync(async (req, res) =
     blog.headerType = headerType;
     blog.tags = tags.split(',').map(tag => tag.trim());
     blog.status = status;
+    
+    // ✅ Update cover image link (if provided)
+    if (imageLink) {
+        blog.imageLink = imageLink;
+    }
 
     // ✅ Handle new image upload (if a new one is provided)
     if (req.file) {
-        blog.image = req.file.path; // Store new image in database
+        blog.image = req.file.path;
     }
 
     await blog.save();
 
     req.flash('success', 'Blog updated successfully!');
-    res.json({ success: true, slug: blog.slug }); // ✅ Redirect to updated blog
+    res.json({ success: true, slug: blog.slug });
 }));
 
 

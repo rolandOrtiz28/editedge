@@ -16,8 +16,12 @@
   }
 
   .position-relative img {
-    filter: blur(2px);
+    filter: blur(5px);
 
+  }
+
+  strong{
+    color: black !important;
   }
 
   .position-relative h1 {
@@ -39,10 +43,6 @@
     margin: 0; /* Optional: Remove default margins for consistency */
     padding: 0; /* Optional: Remove default padding for consistency */
     
-  }
-
-  strong{
-    color:  #58002c;
   }
 
   .blogger-button {
