@@ -208,6 +208,19 @@ router.put('/blogs/:slug', upload.single('image'), catchAsync(async (req, res) =
     res.json({ success: true, slug: blog.slug });
 }));
 
+router.put('/blogs/:slug/status', catchAsync(async (req, res) => {
+    const { status } = req.body;
+    const blog = await Blog.findOne({ slug: req.params.slug });
+
+    if (!blog) {
+        return res.status(404).json({ success: false, message: 'Blog not found' });
+    }
+
+    blog.status = status;
+    await blog.save();
+
+    res.json({ success: true, message: 'Status updated successfully' });
+}));
 
 // Delete Blog
 router.delete('/blogs/:slug', catchAsync(async (req, res) => {

@@ -33,3 +33,35 @@
         });
     });
 
+    document.addEventListener("DOMContentLoaded", function () {
+        const statusDropdowns = document.querySelectorAll('.status-dropdown');
+    
+        statusDropdowns.forEach(dropdown => {
+            dropdown.addEventListener('change', async function () {
+                const blogId = this.getAttribute('data-blog-id');  // Get blog slug
+                const newStatus = this.value;  // Get selected status
+    
+                try {
+                    const response = await fetch(`/blogs/${blogId}/status`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ status: newStatus })
+                    });
+    
+                    const result = await response.json();
+    
+                    if (result.success) {
+                        alert('Status updated successfully!');
+                    } else {
+                        alert('Error updating status.');
+                    }
+                } catch (error) {
+                    console.error("Error updating status:", error);
+                    alert("Failed to update status. Try again.");
+                }
+            });
+        });
+    });
+    

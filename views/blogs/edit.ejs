@@ -30,8 +30,12 @@
     /* Ensure editor resizes dynamically */
     #editor-container {
         flex-grow: 1;
-        min-height: 300px;
-        max-height: none;
+        height: 800px; /* Adjustable */
+        max-height: 1200px; /* Prevents it from stretching too much */
+        overflow-y: auto; /* Enables scrolling */
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background: white;
     }
 
     /* Ensure form takes full height */
@@ -41,6 +45,7 @@
         gap: 16px;
         align-items: flex-start;
     }
+    
 </style>
 
 <div class="container mx-auto p-5">
@@ -93,6 +98,18 @@
                 <option value="published" <%= blog.status === "published" ? "selected" : "" %>>Published</option>
             </select>
 
+  <!-- ✅ SEO Analysis Panel -->
+  <div class="bg-white shadow-md rounded-lg p-4">
+    <h2 class="text-lg font-semibold mb-3">SEO Analysis</h2>
+    <ul class="text-sm space-y-2" id="seo-analysis">
+        <li id="seo-title" class="text-gray-700">Title: <span class="font-semibold text-gray-800"></span></li>
+        <li id="seo-meta" class="text-gray-700">Meta Description: <span class="font-semibold text-gray-800"></span></li>
+        <li id="seo-keywords" class="text-gray-700">Keyword Density: <span class="font-semibold text-gray-800"></span></li>
+        <li id="seo-readability" class="text-gray-700">Readability Score: <span class="font-semibold text-gray-800"></span></li>
+        <li id="seo-links" class="text-gray-700">Links: <span class="font-semibold text-gray-800"></span></li>
+        <li id="seo-images" class="text-gray-700">Images with Alt Text: <span class="font-semibold text-gray-800"></span></li>
+    </ul>
+</div>
 
             <!-- ✅ Update Button -->
             <button type="submit" 

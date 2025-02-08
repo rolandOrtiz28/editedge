@@ -26,10 +26,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     ["clean"]
                 ],
                 handlers: {
-                    image: imageHandler // ✅ Custom Image Handler for Links
+                    image: imageHandler
                 }
             },
-            imageResize: {} // ✅ Enable Image Resizing
+            imageResize: {}
         }
     });
 
@@ -59,11 +59,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     let range = quill.getSelection();
                     if (link) {
-                        // ✅ Insert Image Inside a Link
                         let imageHTML = `<a href="${link}" target="_blank"><img src="${data.url}" alt="Linked Image" /></a>`;
                         quill.clipboard.dangerouslyPasteHTML(range.index, imageHTML);
                     } else {
-                        // ✅ Insert Image Without Link
                         quill.insertEmbed(range.index, "image", data.url);
                     }
                 } else {
@@ -75,35 +73,89 @@ document.addEventListener("DOMContentLoaded", function () {
         };
     }
 
-    // ✅ Handle Form Submission with Loader
+    // ✅ SEO Analysis Functionality (Fix for Links & Image Alt Text)
+    const titleInput = document.querySelector('input[name="title"]');
+    const metaInput = document.querySelector('input[name="metaDescription"]');
+
+    // ✅ Add Keyword Input to SEO Analysis Section
+    const keywordInput = document.createElement("input");
+    keywordInput.type = "text";
+    keywordInput.placeholder = "Enter your focus keyword";
+    keywordInput.classList.add("w-full", "border", "border-gray-300", "rounded-md", "p-2", "mb-3");
+
+    // Insert keyword input above SEO Analysis list
+    document.querySelector("#seo-analysis").insertAdjacentElement("afterbegin", keywordInput);
+
+    function updateSEOAnalysis() {
+        const title = titleInput.value.trim();
+        const meta = metaInput.value.trim();
+        const content = quill.root.innerHTML;
+        const keyword = keywordInput.value.trim().toLowerCase(); // ✅ Manually entered keyword
+
+        document.getElementById("seo-title").innerHTML = `Title: <span class="${title.length >= 50 && title.length <= 60 ? 'text-green-600' : 'text-red-600'}">${title.length} characters</span>`;
+        document.getElementById("seo-meta").innerHTML = `Meta Description: <span class="${meta.length >= 150 && meta.length <= 160 ? 'text-green-600' : 'text-red-600'}">${meta.length} characters</span>`;
+
+        const words = quill.getText().split(/\s+/).length;
+        let keywordCount = 0;
+
+        if (keyword) {
+            const regex = new RegExp(`\\b${keyword}\\b`, "gi");
+            keywordCount = (quill.getText().match(regex) || []).length;
+        }
+
+        let keywordDensity = ((keywordCount / words) * 100).toFixed(2);
+        document.getElementById("seo-keywords").innerHTML = `Keyword Density: <span class="${keywordDensity >= 2 && keywordDensity <= 3 ? 'text-green-600' : 'text-red-600'}">${keywordDensity}%</span>`;
+
+        let readabilityScore = calculateReadability(quill.getText());
+        document.getElementById("seo-readability").innerHTML = `Readability Score: <span class="${readabilityScore >= 60 ? 'text-green-600' : 'text-red-600'}">${readabilityScore}</span>`;
+
+        const links = content.match(/<a\s+href="([^"]*)"/g) || [];
+        document.getElementById("seo-links").innerHTML = `Links: <span class="${links.length >= 1 ? 'text-green-600' : 'text-red-600'}">${links.length} links</span>`;
+
+        const images = content.match(/<img\s+[^>]*alt="([^"]*)"/g) || [];
+        document.getElementById("seo-images").innerHTML = `Images with Alt Text: <span class="${images.length >= 1 ? 'text-green-600' : 'text-red-600'}">${images.length} images</span>`;
+    }
+
+    titleInput.addEventListener("input", updateSEOAnalysis);
+    metaInput.addEventListener("input", updateSEOAnalysis);
+    keywordInput.addEventListener("input", updateSEOAnalysis); // ✅ Now updates when keyword is changed
+    quill.on("text-change", updateSEOAnalysis);
+
+    function calculateReadability(text) {
+        const sentenceCount = (text.match(/[.!?]/g) || []).length;
+        const wordCount = text.split(/\s+/).length;
+        const syllableCount = text.match(/[aeiouy]{1,2}/g)?.length || 0;
+
+        if (sentenceCount === 0 || wordCount === 0) return 0;
+
+        const score = 206.835 - (1.015 * (wordCount / sentenceCount)) - (84.6 * (syllableCount / wordCount));
+        return Math.round(score);
+    }
+
+    console.log("✅ SEO Analysis Enabled!");
+
+    // ✅ Handle Form Submission with Loader (UNCHANGED)
     document.getElementById("blogForm").onsubmit = function (event) {
         event.preventDefault();
 
-        // ✅ Select Buttons & Loading Elements
-        let submitBtn = document.querySelector('button[name="status"][value="published"]');
-        let draftBtn = document.querySelector('button[name="status"][value="draft"]');
-
-        let clickedBtn = document.activeElement; // Detect which button was clicked
-
-        // ✅ Disable Button & Show Loader
+        let clickedBtn = document.activeElement;
         let originalText = clickedBtn.innerHTML;
+
         clickedBtn.innerHTML = `<span class="spinner"></span> Processing...`;
         clickedBtn.disabled = true;
 
         let formData = new FormData();
-        formData.append("title", document.querySelector('input[name="title"]').value);
-        formData.append("metaDescription", document.querySelector('input[name="metaDescription"]').value);
+        formData.append("title", titleInput.value);
+        formData.append("metaDescription", metaInput.value);
         formData.append("tags", document.querySelector('input[name="tags"]').value);
         formData.append("content", quill.root.innerHTML);
-        formData.append("status", clickedBtn.value); // Detects if "draft" or "published"
+        formData.append("status", clickedBtn.value);
 
-        // ✅ Add Image File to FormData
         let imageInput = document.querySelector('input[name="image"]');
         if (imageInput.files.length > 0) {
             formData.append("image", imageInput.files[0]);
         }
 
-        // ✅ Add Cover Image Link
         let imageLink = document.querySelector('input[name="imageLink"]').value;
         if (imageLink.trim() !== "") {
             formData.append("imageLink", imageLink);
@@ -126,7 +178,6 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("Something went wrong. Please try again.");
         })
         .finally(() => {
-            // ✅ Restore Button State After Submission
             clickedBtn.innerHTML = originalText;
             clickedBtn.disabled = false;
         });

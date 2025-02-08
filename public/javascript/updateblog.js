@@ -79,6 +79,68 @@ document.addEventListener("DOMContentLoaded", function () {
         };
     }
 
+    
+    // ✅ SEO Analysis Functionality (Fix for Links & Image Alt Text)
+    const titleInput = document.querySelector('input[name="title"]');
+    const metaInput = document.querySelector('input[name="metaDescription"]');
+
+    // ✅ Add Keyword Input to SEO Analysis Section
+    const keywordInput = document.createElement("input");
+    keywordInput.type = "text";
+    keywordInput.placeholder = "Enter your focus keyword";
+    keywordInput.classList.add("w-full", "border", "border-gray-300", "rounded-md", "p-2", "mb-3");
+
+    // Insert keyword input above SEO Analysis list
+    document.querySelector("#seo-analysis").insertAdjacentElement("afterbegin", keywordInput);
+
+    function updateSEOAnalysis() {
+        const title = titleInput.value.trim();
+        const meta = metaInput.value.trim();
+        const content = quill.root.innerHTML;
+        const keyword = keywordInput.value.trim().toLowerCase(); // ✅ Manually entered keyword
+
+        document.getElementById("seo-title").innerHTML = `Title: <span class="${title.length >= 50 && title.length <= 60 ? 'text-green-600' : 'text-red-600'}">${title.length} characters</span>`;
+        document.getElementById("seo-meta").innerHTML = `Meta Description: <span class="${meta.length >= 150 && meta.length <= 160 ? 'text-green-600' : 'text-red-600'}">${meta.length} characters</span>`;
+
+        const words = quill.getText().split(/\s+/).length;
+        let keywordCount = 0;
+
+        if (keyword) {
+            const regex = new RegExp(`\\b${keyword}\\b`, "gi");
+            keywordCount = (quill.getText().match(regex) || []).length;
+        }
+
+        let keywordDensity = ((keywordCount / words) * 100).toFixed(2);
+        document.getElementById("seo-keywords").innerHTML = `Keyword Density: <span class="${keywordDensity >= 2 && keywordDensity <= 3 ? 'text-green-600' : 'text-red-600'}">${keywordDensity}%</span>`;
+
+        let readabilityScore = calculateReadability(quill.getText());
+        document.getElementById("seo-readability").innerHTML = `Readability Score: <span class="${readabilityScore >= 60 ? 'text-green-600' : 'text-red-600'}">${readabilityScore}</span>`;
+
+        const links = content.match(/<a\s+href="([^"]*)"/g) || [];
+        document.getElementById("seo-links").innerHTML = `Links: <span class="${links.length >= 1 ? 'text-green-600' : 'text-red-600'}">${links.length} links</span>`;
+
+        const images = content.match(/<img\s+[^>]*alt="([^"]*)"/g) || [];
+        document.getElementById("seo-images").innerHTML = `Images with Alt Text: <span class="${images.length >= 1 ? 'text-green-600' : 'text-red-600'}">${images.length} images</span>`;
+    }
+
+    titleInput.addEventListener("input", updateSEOAnalysis);
+    metaInput.addEventListener("input", updateSEOAnalysis);
+    keywordInput.addEventListener("input", updateSEOAnalysis); // ✅ Now updates when keyword is changed
+    quill.on("text-change", updateSEOAnalysis);
+
+    function calculateReadability(text) {
+        const sentenceCount = (text.match(/[.!?]/g) || []).length;
+        const wordCount = text.split(/\s+/).length;
+        const syllableCount = text.match(/[aeiouy]{1,2}/g)?.length || 0;
+
+        if (sentenceCount === 0 || wordCount === 0) return 0;
+
+        const score = 206.835 - (1.015 * (wordCount / sentenceCount)) - (84.6 * (syllableCount / wordCount));
+        return Math.round(score);
+    }
+
+    console.log("✅ SEO Analysis Enabled!");
+
     // ✅ Handle Form Submission with Loader
     document.getElementById("editBlogForm").onsubmit = function (event) {
         event.preventDefault();

@@ -7,22 +7,6 @@
     #editor-container {
         height: 700px;
     }
-    .spinner {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    border: 2px solid #fff;
-    border-top: 2px solid transparent;
-    border-radius: 50%;
-    animation: spin 0.6s linear infinite;
-    margin-right: 8px;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
 </style>
 <div class="container mx-auto p-5 flex gap-6">
     <!-- ✅ Wrap Everything in Form -->
@@ -64,29 +48,43 @@
                 <input type="text" name="tags" class="w-full border border-gray-300 rounded-md p-2 mb-3">
             </div>
 
-            <!-- Publish & Save Draft Buttons -->
-            <div class="bg-white shadow-md rounded-lg p-4">
-                <button type="submit" name="status" value="published" id="submitBtn"
-                    class="bg-blue-600 text-white w-full py-2 rounded hover:bg-blue-700 flex items-center justify-center">
-                    <span id="submitText">Publish Blog</span>
-                    <span id="loadingSpinner" class="hidden ml-2">
-                        <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 0116 0h-4a4 4 0 00-8 0H4z"></path>
-                        </svg>
-                    </span>
-                </button>
-                <button type="submit" name="status" value="draft" id="draftBtn"
-                    class="bg-gray-500 text-white w-full py-2 rounded mt-2 hover:bg-gray-600 flex items-center justify-center">
-                    <span id="draftText">Save Draft</span>
-                    <span id="loadingDraftSpinner" class="hidden ml-2">
-                        <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 0116 0h-4a4 4 0 00-8 0H4z"></path>
-                        </svg>
-                    </span>
-                </button>
+             <!-- ✅ SEO Analysis Panel -->
+             <div class="bg-white shadow-md rounded-lg p-4">
+                <h2 class="text-lg font-semibold mb-3">SEO Analysis</h2>
+                <ul class="text-sm space-y-2" id="seo-analysis">
+                    <li id="seo-title" class="text-gray-700">Title: <span class="font-semibold text-gray-800"></span></li>
+                    <li id="seo-meta" class="text-gray-700">Meta Description: <span class="font-semibold text-gray-800"></span></li>
+                    <li id="seo-keywords" class="text-gray-700">Keyword Density: <span class="font-semibold text-gray-800"></span></li>
+                    <li id="seo-readability" class="text-gray-700">Readability Score: <span class="font-semibold text-gray-800"></span></li>
+                    <li id="seo-links" class="text-gray-700">Links: <span class="font-semibold text-gray-800"></span></li>
+                    <li id="seo-images" class="text-gray-700">Images with Alt Text: <span class="font-semibold text-gray-800"></span></li>
+                </ul>
             </div>
+            
+
+            <!-- Publish & Save Draft Buttons -->
+           <div class="bg-white shadow-md rounded-lg p-4">
+    <button type="submit" name="status" value="published" id="submitBtn"
+        class="bg-blue-600 text-white w-full py-2 rounded hover:bg-blue-700 flex items-center justify-center">
+        <span id="submitText">Publish Blog</span>
+        <span id="loadingSpinner" class="hidden ml-2">
+            <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 0116 0h-4a4 4 0 00-8 0H4z"></path>
+            </svg>
+        </span>
+    </button>
+    <button type="submit" name="status" value="draft" id="draftBtn"
+        class="bg-gray-500 text-white w-full py-2 rounded mt-2 hover:bg-gray-600 flex items-center justify-center">
+        <span id="draftText">Save Draft</span>
+        <span id="loadingDraftSpinner" class="hidden ml-2">
+            <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 0116 0h-4a4 4 0 00-8 0H4z"></path>
+            </svg>
+        </span>
+    </button>
+</div>
         </div>
     </form>  <!-- ✅ Close the Form Here -->
 </div>

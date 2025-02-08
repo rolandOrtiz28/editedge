@@ -11,17 +11,14 @@ router.get('/dashboard', (req, res) => {
 });
 
 router.get('/cms', catchAsync(async (req, res) => {
-    const blogs = await Blog.find({});
+    const blogs = await Blog.find({}, 'title slug status views'); // Fetch only necessary fields
     const publishedCount = await Blog.countDocuments({ status: 'published' });
     const draftCount = await Blog.countDocuments({ status: 'draft' });
-
-    const topBlogs = await Blog.find({ status: 'published' }).sort({ views: -1 }).limit(5);
 
     res.render('admin/cms', {
         blogs,
         publishedCount,
         draftCount,
-        topBlogs: JSON.stringify(topBlogs),
         currentRoute: 'cms'
     });
 }));

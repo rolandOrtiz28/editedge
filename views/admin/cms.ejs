@@ -43,13 +43,7 @@
         </div>
     </div>
     
-    <!-- ✅ Blog Performance Analytics -->
-    <div class="card mt-4">
-        <div class="card-body">
-            <h5 class="card-title mb-4">Top Performing Blogs</h5>
-            <canvas id="blogPerformanceChart"></canvas> <!-- Chart Placeholder -->
-        </div>
-    </div>
+    
     
 
     <!-- Blog List -->
@@ -62,6 +56,7 @@
                         <th>Title</th>
                         <th>Author</th>
                         <th>Status</th>
+                        <th>Views</th> <!-- ✅ New Column -->
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -71,12 +66,12 @@
                         <td><a href="/blogs/<%= blog.slug %>" class="text-light"><%= blog.title %></a></td>
                         <td>Admin</td> <!-- Modify if you have multiple authors -->
                         <td>
-                            <% if (blog.status === 'published') { %>
-                                <span class="badge bg-success">Published</span>
-                            <% } else { %>
-                                <span class="badge bg-warning">Draft</span>
-                            <% } %>
+                            <select class="form-select status-dropdown custom-select-sm" data-blog-id="<%= blog.slug %>">
+                                <option value="published" class="text-success" <%= blog.status === 'published' ? 'selected' : '' %>>Published</option>
+                                <option value="draft" class="text-warning" <%= blog.status === 'draft' ? 'selected' : '' %>>Draft</option>
+                            </select>
                         </td>
+                        <td><%= blog.views || 0 %></td> <!-- ✅ Display view count -->
                         <td>
                             <a href="/blogs/<%= blog.slug %>/edit" class="btn btn-sm btn-primary me-2">Edit</a>
                             <form action="/blogs/<%= blog.slug %>?_method=DELETE" method="POST" style="display:inline;">
@@ -89,7 +84,7 @@
             </table>
         </div>
     </div>
-</div>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
