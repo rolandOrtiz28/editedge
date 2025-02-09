@@ -58,36 +58,39 @@ router.get('/blogs/new', (req, res) => {
 //   );
 router.post(
     "/blogs",
-    upload.single("image"), 
+    upload.single("image"),
     express.json(),
     catchAsync(async (req, res) => {
-      const { title, content, metaDescription, headerType, tags, status, imageLink } = req.body;
-      const slug = slugify(title, { lower: true });
-  
-      let imageUrl = req.file ? req.file.path : null;
-  
-      const blog = new Blog({
-        title,
-        slug,
-        content,
-        metaDescription,
-        headerType,
-        image: imageUrl,
-        imageLink: imageLink || "", 
-        tags: tags ? tags.split(",").map((tag) => tag.trim()) : [],
-        status,
-      });
+        const { title, customSlug, content, metaDescription, titleTag, headerType, tags, status, imageLink } = req.body;
 
-      await blog.save();
+        const slug = customSlug ? slugify(customSlug, { lower: true }) : slugify(title, { lower: true });
 
-      res.json({
-        success: true,
-        message: `Blog ${status === "draft" ? "saved as draft" : "published"} successfully!`,
-        slug: blog.slug,
-        image: imageUrl,
-      });
+        let imageUrl = req.file ? req.file.path : null;
+
+        const blog = new Blog({
+            title,
+            slug,
+            titleTag,
+            content,
+            metaDescription,
+            headerType,
+            image: imageUrl,
+            imageLink: imageLink || "",
+            tags: tags ? tags.split(",").map((tag) => tag.trim()) : [],
+            status,
+        });
+
+        await blog.save();
+
+        res.json({
+            success: true,
+            message: `Blog ${status === "draft" ? "saved as draft" : "published"} successfully!`,
+            slug: blog.slug,
+            image: imageUrl,
+        });
     })
 );
+
 
 
 
@@ -140,7 +143,6 @@ router.get('/blogs/:slug', catchAsync(async (req, res) => {
         return res.redirect('/blogs');
     }
 
-   
 // Create a views object in the session if it doesn’t exist
 if (!req.session.viewedBlogs) {
     req.session.viewedBlogs = {};
@@ -150,12 +152,10 @@ if (!req.session.viewedBlogs) {
 if (!req.session.viewedBlogs[blog._id]) {
     blog.views += 1;  
     await blog.save();
-
-    
     req.session.viewedBlogs[blog._id] = true;
 }
 
-    res.render('blogs/show', { blog, currentRoute: `/blogs/${blog.slug}` });
+    res.render('blogs/show', { blog, title: blog.titleTag || blog.title, currentRoute: `/blogs/${blog.slug}` }); // ✅ Pass title here
 }));
 
 // Edit Blog (GET Form)

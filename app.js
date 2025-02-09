@@ -45,14 +45,14 @@ const sessionConfig = {
     secret,
     name: '_bluelight',
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     store: MongoDBStore.create({
         mongoUrl: dbUrl,
         touchAfter: 24 * 3600 // time period in seconds
     }),
     cookie: {
         httpOnly: true,
-        // secure: true, // Enable if using HTTPS
+        secure: false, // Enable if using HTTPS
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
@@ -176,10 +176,11 @@ app.use(flash());
 
 
 app.use((req, res, next) => {
-    res.locals.currentUser = req.user;
-    res.locals.success = req.flash('success');
-    res.locals.error = req.flash('error');
-    next();
+  res.locals.currentUser = req.session.isAdminAuthenticated || null; 
+  res.locals.success = req.flash('success');
+  res.locals.error = req.flash('error');
+  res.locals.title = "Edit Edge";
+  next();
 });
 
 const subscriptionSchema = Joi.object({

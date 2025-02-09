@@ -73,8 +73,10 @@ document.addEventListener("DOMContentLoaded", function () {
         };
     }
 
-    // ✅ SEO Analysis Functionality (Fix for Links & Image Alt Text)
+    // ✅ SEO Analysis Functionality
     const titleInput = document.querySelector('input[name="title"]');
+    const titleTagInput = document.querySelector('input[name="titleTag"]'); // NEW: Title tag input
+    const slugInput = document.querySelector('input[name="customSlug"]'); // NEW: Slug input
     const metaInput = document.querySelector('input[name="metaDescription"]');
 
     // ✅ Add Keyword Input to SEO Analysis Section
@@ -90,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const title = titleInput.value.trim();
         const meta = metaInput.value.trim();
         const content = quill.root.innerHTML;
-        const keyword = keywordInput.value.trim().toLowerCase(); // ✅ Manually entered keyword
+        const keyword = keywordInput.value.trim().toLowerCase();
 
         document.getElementById("seo-title").innerHTML = `Title: <span class="${title.length >= 50 && title.length <= 60 ? 'text-green-600' : 'text-red-600'}">${title.length} characters</span>`;
         document.getElementById("seo-meta").innerHTML = `Meta Description: <span class="${meta.length >= 150 && meta.length <= 160 ? 'text-green-600' : 'text-red-600'}">${meta.length} characters</span>`;
@@ -117,8 +119,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     titleInput.addEventListener("input", updateSEOAnalysis);
+    titleTagInput.addEventListener("input", updateSEOAnalysis);
+    slugInput.addEventListener("input", updateSEOAnalysis);
     metaInput.addEventListener("input", updateSEOAnalysis);
-    keywordInput.addEventListener("input", updateSEOAnalysis); // ✅ Now updates when keyword is changed
+    keywordInput.addEventListener("input", updateSEOAnalysis);
     quill.on("text-change", updateSEOAnalysis);
 
     function calculateReadability(text) {
@@ -134,7 +138,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     console.log("✅ SEO Analysis Enabled!");
 
-    // ✅ Handle Form Submission with Loader (UNCHANGED)
+    // ✅ Handle Form Submission with Loader
     document.getElementById("blogForm").onsubmit = function (event) {
         event.preventDefault();
 
@@ -146,6 +150,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let formData = new FormData();
         formData.append("title", titleInput.value);
+        formData.append("titleTag", titleTagInput.value);
+        formData.append("customSlug", slugInput.value);
         formData.append("metaDescription", metaInput.value);
         formData.append("tags", document.querySelector('input[name="tags"]').value);
         formData.append("content", quill.root.innerHTML);

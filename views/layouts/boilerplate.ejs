@@ -20,7 +20,9 @@
     <meta name="twitter:title" content="<%= typeof blog !== 'undefined' ? blog.title : 'Your Blog Name' %>">
     <meta name="twitter:description" content="<%= typeof blog !== 'undefined' ? blog.metaDescription : 'Default blog description' %>">
     <meta name="twitter:image" content="<%= typeof blog !== 'undefined' && blog.image ? blog.image : '/default-image.jpg' %>">
-    <title>Edit Edge</title>
+
+    
+    <title><%= title || "Edit Edge" %></title> 
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/images/logo.svg" />

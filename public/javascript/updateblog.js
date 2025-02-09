@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("✅ ImageResize module registered successfully!");
     }
 
-    // ✅ Initialize Quill with Custom Toolbar
+    // ✅ Initialize Quill Editor
     var quill = new Quill("#editor-container", {
         theme: "snow",
         placeholder: "Edit your blog content...",
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     ["clean"]
                 ],
                 handlers: {
-                    image: imageHandler // ✅ Custom Image Upload Handler with Links
+                    image: imageHandler // ✅ Custom Image Upload Handler
                 }
             },
             imageResize: {} // ✅ Enable Image Resizing
@@ -35,9 +35,46 @@ document.addEventListener("DOMContentLoaded", function () {
 
     console.log("✅ Quill initialized successfully!");
 
-    // ✅ Set Quill Content to Existing Blog Content
+    // ✅ Load Existing Content
     const existingContent = document.getElementById("contentInput").value;
     quill.root.innerHTML = existingContent;
+
+    // ✅ Function to Detect Links and Generate Input Fields for Editing URLs
+    function updateLinkURLInputs() {
+        const contentLinks = quill.root.querySelectorAll("a"); // Get all links
+        const linkURLContainer = document.getElementById("link-url-container");
+
+        // Clear previous inputs
+        linkURLContainer.innerHTML = "";
+
+        contentLinks.forEach((link, index) => {
+            let linkHref = link.getAttribute("href");
+
+            let inputGroup = document.createElement("div");
+            inputGroup.classList.add("link-url-input-group", "mb-3");
+
+            let label = document.createElement("label");
+            label.textContent = `Link ${index + 1} URL:`;
+            label.classList.add("block", "text-sm", "font-medium");
+
+            let input = document.createElement("input");
+            input.type = "text";
+            input.classList.add("w-full", "border", "border-gray-300", "rounded-md", "p-2");
+            input.value = linkHref;
+
+            // ✅ Update Link in Editor when URL changes
+            input.addEventListener("input", function () {
+                link.setAttribute("href", input.value);
+            });
+
+            inputGroup.appendChild(label);
+            inputGroup.appendChild(input);
+            linkURLContainer.appendChild(inputGroup);
+        });
+    }
+
+    // ✅ Detect Link Changes in Quill Editor and Generate Inputs
+    quill.on("text-change", updateLinkURLInputs);
 
     // ✅ Handle Image Upload & Linking in the Text Editor
     function imageHandler() {
@@ -59,17 +96,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 let data = await response.json();
                 if (data.url) {
-                    let link = prompt("Enter a URL for the image (optional):");
-
                     let range = quill.getSelection();
-                    if (link) {
-                        // ✅ Insert Image Inside a Link
-                        let imageHTML = `<a href="${link}" target="_blank"><img src="${data.url}" alt="Linked Image" /></a>`;
-                        quill.clipboard.dangerouslyPasteHTML(range.index, imageHTML);
-                    } else {
-                        // ✅ Insert Image Without Link
-                        quill.insertEmbed(range.index, "image", data.url);
-                    }
+                    quill.insertEmbed(range.index, "image", data.url);
                 } else {
                     alert("Image upload failed.");
                 }
@@ -80,8 +108,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     
-    // ✅ SEO Analysis Functionality (Fix for Links & Image Alt Text)
+    // ✅ SEO Analysis Functionality
     const titleInput = document.querySelector('input[name="title"]');
+    const titleTagInput = document.querySelector('input[name="titleTag"]'); // NEW: Title tag input
+    const slugInput = document.querySelector('input[name="customSlug"]'); // NEW: Slug input
     const metaInput = document.querySelector('input[name="metaDescription"]');
 
     // ✅ Add Keyword Input to SEO Analysis Section
@@ -97,7 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const title = titleInput.value.trim();
         const meta = metaInput.value.trim();
         const content = quill.root.innerHTML;
-        const keyword = keywordInput.value.trim().toLowerCase(); // ✅ Manually entered keyword
+        const keyword = keywordInput.value.trim().toLowerCase();
 
         document.getElementById("seo-title").innerHTML = `Title: <span class="${title.length >= 50 && title.length <= 60 ? 'text-green-600' : 'text-red-600'}">${title.length} characters</span>`;
         document.getElementById("seo-meta").innerHTML = `Meta Description: <span class="${meta.length >= 150 && meta.length <= 160 ? 'text-green-600' : 'text-red-600'}">${meta.length} characters</span>`;
@@ -124,8 +154,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     titleInput.addEventListener("input", updateSEOAnalysis);
+    titleTagInput.addEventListener("input", updateSEOAnalysis);
+    slugInput.addEventListener("input", updateSEOAnalysis);
     metaInput.addEventListener("input", updateSEOAnalysis);
-    keywordInput.addEventListener("input", updateSEOAnalysis); // ✅ Now updates when keyword is changed
+    keywordInput.addEventListener("input", updateSEOAnalysis);
     quill.on("text-change", updateSEOAnalysis);
 
     function calculateReadability(text) {
@@ -141,56 +173,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
     console.log("✅ SEO Analysis Enabled!");
 
-    // ✅ Handle Form Submission with Loader
+    // ✅ Handle Form Submission
     document.getElementById("editBlogForm").onsubmit = function (event) {
         event.preventDefault();
 
-        // ✅ Select Update Button & Loading State
         let updateBtn = document.querySelector('button[type="submit"]');
-        let originalText = updateBtn.innerHTML;
-        updateBtn.innerHTML = `<span class="spinner"></span> Updating...`;
-        updateBtn.disabled = true;
-
         let formData = new FormData();
-        formData.append("title", document.querySelector('input[name="title"]').value);
-        formData.append("metaDescription", document.querySelector('input[name="metaDescription"]').value);
+
+        formData.append("title", titleInput.value);
+        formData.append("titleTag", titleTagInput.value);
+        formData.append("customSlug", slugInput.value);
+        formData.append("metaDescription", metaInput.value);
         formData.append("tags", document.querySelector('input[name="tags"]').value);
         formData.append("content", quill.root.innerHTML);
         formData.append("status", document.querySelector('select[name="status"]').value);
         formData.append("headerType", document.querySelector('select[name="headerType"]').value);
+        formData.append("imageLink", document.querySelector('input[name="imageLink"]').value);
 
-        // ✅ Add Image File to FormData (if changed)
         let imageInput = document.querySelector('input[name="image"]');
         if (imageInput.files.length > 0) {
             formData.append("image", imageInput.files[0]);
         }
 
-        // ✅ Add Cover Image Link (If Provided)
-        let imageLink = document.querySelector('input[name="imageLink"]').value;
-        if (imageLink.trim() !== "") {
-            formData.append("imageLink", imageLink);
-        }
-
-        fetch(document.getElementById("editBlogForm").action, {
-            method: "PUT",
-            body: formData
-        })
+        fetch(document.getElementById("editBlogForm").action, { method: "PUT", body: formData })
         .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                window.location.href = `/blogs/${data.slug}`;
-            } else {
-                alert("Error: " + data.message);
-            }
-        })
-        .catch(error => {
-            console.error("Error updating blog:", error);
-            alert("Something went wrong. Please try again.");
-        })
-        .finally(() => {
-            // ✅ Restore Button State After Submission
-            updateBtn.innerHTML = originalText;
-            updateBtn.disabled = false;
-        });
+        .then(data => { window.location.href = `/blogs/${data.slug}`; })
+        .catch(error => { alert("Update Failed!"); });
     };
+
+    // ✅ Initialize Link URL Editing
+    updateLinkURLInputs();
 });

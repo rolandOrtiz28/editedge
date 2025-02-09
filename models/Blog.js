@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 
 const blogSchema = new mongoose.Schema({
     title: { type: String, required: true },
-    slug: { type: String, unique: true },
+    titleTag: { type: String, required: true }, // ✅ NEW: Title tag for SEO
+    slug: { type: String, unique: true, required: true }, // ✅ Ensure slug is always required
     content: { type: String, required: true },
     metaDescription: { type: String },
     tags: [String],

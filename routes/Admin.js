@@ -1,17 +1,44 @@
+const dotenv = require('dotenv').config();
 const express = require('express');
 const router = express.Router();
-const Blog = require('../models/Blog'); // Ensure the correct path to your Blog model
-const catchAsync = require('../utils/CatchAsync'); // Ensure you have this utility
+const Blog = require('../models/Blog'); 
+const catchAsync = require('../utils/CatchAsync');
 const Discount = require('../models/Discount');
 
+// ✅ Middleware to Protect Admin Routes
+function requireSecurityCode(req, res, next) {
+    if (req.session.isAdminAuthenticated) {
+        return next(); // ✅ Allow access if authenticated
+    } else {
+        return res.redirect('/admin/login'); // 🔒 Redirect if not authenticated
+    }
+}
 
-// Routes
-router.get('/dashboard', (req, res) => {
+// ✅ Admin Login Route (Public)
+router.get('/login', (req, res) => {
+    res.render('admin/login', { error: null,currentRoute: '/login'  });
+});
+
+// ✅ Process Login
+router.post('/login', (req, res) => {
+    const { securityCode } = req.body;
+    const ADMIN_SECURITY_CODE = process.env.passkey; 
+
+    if (securityCode === ADMIN_SECURITY_CODE) {
+        req.session.isAdminAuthenticated = true; // ✅ Grant Access
+        return res.redirect('/admin/dashboard');
+    } else {
+        return res.render('admin/login', { error: "Invalid security code. Please try again."});
+    }
+});
+
+// ✅ Apply Middleware to Protect These Routes
+router.get('/dashboard', requireSecurityCode, (req, res) => {
     res.render('admin/dashboard', { currentRoute: '/dashboard' });
 });
 
-router.get('/cms', catchAsync(async (req, res) => {
-    const blogs = await Blog.find({}, 'title slug status views'); // Fetch only necessary fields
+router.get('/cms', requireSecurityCode, catchAsync(async (req, res) => {
+    const blogs = await Blog.find({}, 'title slug status views'); 
     const publishedCount = await Blog.countDocuments({ status: 'published' });
     const draftCount = await Blog.countDocuments({ status: 'draft' });
 
@@ -23,79 +50,43 @@ router.get('/cms', catchAsync(async (req, res) => {
     });
 }));
 
-
-
-router.get('/crm', (req, res) => {
-    res.render('admin/crm', { currentRoute: '/crm' }); // Create a crm.ejs template
+router.get('/crm', requireSecurityCode, (req, res) => {
+    res.render('admin/crm', { currentRoute: '/crm' }); 
 });
 
-
-// GET Discounts Management Page
-router.get('/discounts', catchAsync(async (req, res) => {
-    const discounts = await Discount.find({}); // Fetch all discounts
-
-    console.log("📌 Discounts Retrieved:", discounts); // Debugging output
-
+// ✅ Protect Discounts Page
+router.get('/discounts', requireSecurityCode, catchAsync(async (req, res) => {
+    const discounts = await Discount.find({});
     res.render('admin/discounts', { discounts, currentRoute: '/discounts' });
 }));
 
-// POST Add Discount
-router.post('/add-discount', catchAsync(async (req, res) => {
+// ✅ Protect Discounts Management
+router.post('/add-discount', requireSecurityCode, catchAsync(async (req, res) => {
     const { service, plan, discountPercentage } = req.body;
-
     let discount = await Discount.findOne({ service, plan });
 
     if (discount) {
         discount.discountPercentage = discountPercentage;
-        discount.status = "pending"; // Set status when updating
+        discount.status = "pending";
         await discount.save();
     } else {
-        discount = new Discount({ service, plan, discountPercentage, status: "pending" }); // New discount starts as "pending"
+        discount = new Discount({ service, plan, discountPercentage, status: "pending" });
         await discount.save();
     }
-
     res.redirect('/admin/discounts');
 }));
 
-
-// DELETE Discount
-router.post('/delete-discount', catchAsync(async (req, res) => {
+// ✅ Protect Deleting Discounts
+router.post('/delete-discount', requireSecurityCode, catchAsync(async (req, res) => {
     const { id } = req.body;
     await Discount.findByIdAndDelete(id);
     res.redirect('/admin/discounts');
 }));
 
-
-router.get('/get-plans', catchAsync(async (req, res) => {
-    const { service } = req.query;
-    let plans = [];
-
-    console.log("📌 Received request for plans. Service:", service);
-
-    if (!service) {
-        return res.status(400).json({ error: "Service parameter is required" });
-    }
-
-    const availablePlans = {
-        "video-editing": [
-            'Basic Package', 'Standard Package', 'Premium Package',
-            'Short-form Monthly Subscription', 'Long-form Monthly Subscription', 'Ultimate Video Editing Subscription'
-        ],
-        "web-dev": ['Starter Plan', 'Growth Plan', 'Pro Plan'],
-        "graphic-design": ['Basic Plan', 'Standard Plan', 'Premium Plan', 'Monthly Subscription', 'Elite Branding Subscription'],
-        "3d-art": ['Simple Package', 'Detailed Package', 'High-End Package', '3D Monthly Subscription', 'Advanced 3D Monthly Subscription'],
-        "digital-marketing": ['Starter Marketing Plan', 'Growth Marketing Plan', 'Enterprise Marketing Plan']
-    };
-
-    plans = availablePlans[service];
-
-    if (!plans) {
-        console.log("❌ No plans found for service:", service);
-        return res.status(404).json({ error: "No plans available for this service." });
-    }
-
-    console.log("✅ Returning plans:", plans);
-    res.json(plans);
-}));
+// ✅ Admin Logout
+router.get('/logout', (req, res) => {
+    req.session.destroy(); // Destroy session
+    res.redirect('/admin/login');
+});
 
 module.exports = router;
