@@ -399,9 +399,12 @@ width: 100%;
 }
 
 .choose-us {
+  font-family: 'Geomatic';
+    font-weight: bold;
+    font-style: normal;
   position: absolute;
-  bottom: -10%; 
-  left: 2%; 
+  bottom: -8%; 
+  left: 7%; 
   font-size: 3rem;
   font-weight: 500;
   color: white;
@@ -444,7 +447,7 @@ width: 100%;
   line-height: 1.6;
 }
 .circle-bg {
-  background-color: rgb(255, 0, 128);
+  background-color: #FF007F;
   width: 250px;
   height: 100px;
   border-radius: 50%;
@@ -458,7 +461,7 @@ width: 100%;
   height: 150%;
 }
 .circle-bg-ce {
-  background-color: #ff0080;
+  background-color: #FF007F;
   width: 230px;
   height: 80px;
   border-radius: 50%;
@@ -472,7 +475,7 @@ width: 100%;
   height: 190%;
 }
 .circle-bg-td {
-  background-color: #ff0080;
+  background-color: #FF007F;
   width: 240px;
   height: 80px;
   border-radius: 50%;
@@ -487,7 +490,7 @@ width: 100%;
   height: 180%;
 }
 .circle-bg-ae {
-  background-color: #ff0080;
+  background-color: #FF007F;
   width: 250px;
   height: 85px;
   border-radius: 50%;
@@ -502,7 +505,7 @@ width: 100%;
   height: 160%;
 }
 .circle-bg-ees {
-  background-color: #ff0080;
+  background-color: #FF007F;
   width: 220px;
   height: 90px;
   border-radius: 50%;
@@ -526,7 +529,7 @@ width: 100%;
 }
 .svg-connector-ce .connector-path-ce {
   fill: none;
-  stroke: rgb(255, 0, 127);
+  stroke: #ff007f;
   stroke-width: 8;
   stroke-dasharray: 20, 6;
   stroke-linecap: round; 
@@ -541,7 +544,7 @@ width: 100%;
 }
 .svg-connector-td .connector-path-td {
   fill: none; 
-  stroke: rgb(255, 0, 179); 
+  stroke: #FF007F; 
   stroke-width: 6;
   stroke-dasharray: 20, 6; 
 }
@@ -555,7 +558,7 @@ width: 100%;
 }
 .svg-connector-ae .connector-path-ae {
   fill: none; 
-  stroke: rgb(255, 0, 179); 
+  stroke: #FF007F; 
   stroke-width: 7;
   stroke-dasharray: 20, 6; 
 }
@@ -590,7 +593,7 @@ padding-right: 10rem;
 
 @media (max-width: 1422px) {
   #whychooseus h1.why {
-    font-size: 9rem;
+    font-size: 7rem;
   }
   #whychooseus .choose-us {
     font-size: 2.2rem;
@@ -608,7 +611,7 @@ padding-right: 10rem;
 }
 @media (max-width: 1300px) {
   #whychooseus h1.why {
-    font-size: 8rem;
+    font-size: 6rem;
   }
   #whychooseus .choose-us {
     font-size: 2rem;
@@ -630,7 +633,7 @@ padding-right: 10rem;
     margin-bottom: 0;
   }
   #whychooseus h1.why {
-    font-size: 7.5rem;
+    font-size: 5.5rem;
 
   }
   #whychooseus .choose-us {
@@ -649,7 +652,7 @@ padding-right: 10rem;
 }
 @media (max-width: 992px) {
   #whychooseus h1.why {
-    font-size: 7.3rem;
+    font-size: 5.3rem;
   }
   #whychooseus .choose-us {
     font-size: 1.5rem;
@@ -673,11 +676,11 @@ padding-right: 10rem;
 
   }
   #whychooseus .why {
-    font-size: 7rem;
+    font-size: 4rem;
     margin:0 0 1rem 1rem;
   }
   #whychooseus .choose-us {
-    font-size: 2rem;
+    font-size: 1.3rem;
     top: 80%;
     left: 5%;
   }
@@ -816,6 +819,9 @@ padding-right:0;
 .services-container .glass::before {
   content: attr(data-text);
   position: absolute;
+  font-family: 'Geomatic';
+  font-weight: bold;
+  font-style: normal;
   bottom: 0;
   width: 100%;
   height: 40px;
@@ -906,6 +912,9 @@ padding-right:0;
 }
 
 .we-offer {
+  font-family: 'Geomatic';
+  font-weight: bold;
+  font-style: normal;
   position: absolute;
   top: -10%;
   left: 5%;
@@ -942,13 +951,13 @@ padding-right:0;
   }
 
   .what {
-    font-size: 3rem;
+    font-size: 4rem;
     text-align: center;
     line-height: 1;
   }
 
   .we-offer {
-    font-size: 1rem;
+    font-size: 1.3rem;
     position: static;
     display: block;
     text-align: center;
@@ -1000,9 +1009,7 @@ padding-right:0;
 }
 
 @media (max-width: 480px) {
-  .what {
-    font-size: 2.5rem;
-  }
+  
 
   .caption2 .subtitle2 {
     font-size: 0.9rem;
@@ -1035,10 +1042,23 @@ padding-right:0;
   text-align: center;
 }
 
-.section-title {
-  font-size: 3rem;
+.our-team-section .creator {
+  font-size: 10rem; 
   font-weight: 700;
-  margin-bottom: 10px;
+  line-height: 1.2;
+  color: white;
+  position: relative; 
+}
+.our-team-section .creator .meet{
+  font-family: 'Geomatic';
+  font-weight: bold;
+  font-style: normal;
+  position: absolute;
+  top: 7%;
+  left: 56%;
+  font-size: 3.5rem; 
+  font-weight: 500; 
+  color: white;
 }
 
 .section-subtitle {
@@ -1127,8 +1147,14 @@ padding-right:0;
       grid-template-columns: repeat(2, 1fr);
   }
 
-  .section-title {
-      font-size: 2.5rem;
+  .our-team-section .creator {
+    font-size:4rem;
+  }
+
+  .our-team-section .creator .meet {
+    font-size:1.3rem;
+    top: 0;
+    left: 60%;
   }
 }
 
@@ -1226,20 +1252,23 @@ padding-right:0;
     }
 
 .what-our {
-  font-size: 10rem; /* Make "Why" larger */
+  font-size: 10rem; 
   font-weight: 700;
-  line-height: 1.2; /* Adjust line height for proper spacing */
+  line-height: 1.2;
   color: white;
-  position: relative; /* Needed for the absolute positioning of the child element */
+  position: relative; 
 }
 
-/* Styling for the "Choose us" text */
+
 .client {
+  font-family: 'Geomatic';
+  font-weight: bold;
+  font-style: normal;
   position: absolute;
   top: 7%;
   left: 55%;
-  font-size: 4rem; /* Smaller size for "Choose us" */
-  font-weight: 500; /* Slightly lighter font weight */
+  font-size: 4rem; 
+  font-weight: 500; 
   color: white;
 }
 
@@ -1357,9 +1386,9 @@ padding-right:0;
     font-size:4rem;
   }
   .client  {
-    font-size:2rem;
-    top: -4%;
-    left: 58%;
+    font-size:1.3rem;
+    top: 0;
+    left: 62%;
   }
   .reviews-container{
     margin-top: 0;
@@ -1392,12 +1421,12 @@ padding-right:0;
    
   }
 
-#reviews .what-our {
+/* #reviews .what-our {
   font-size: 3rem;
 }
 #reviews .client{
   font-size: 1.5rem;
-}
+} */
 .reviews-container{
   
   height: 50%;
@@ -1417,20 +1446,23 @@ padding-right:0;
   }
   
   .connect {
-    font-size: 8rem; /* Make "Why" larger */
+    font-size: 8rem; 
     font-weight: 700;
-    line-height: 1.2; /* Adjust line height for proper spacing */
+    line-height: 1.2; 
     color: white;
-    position: relative; /* Needed for the absolute positioning of the child element */
+    position: relative;
   }
   
 
   .with-us {
-    position: absolute; /* Align relative to "Why" */
-    bottom: -10%; /* Align with the bottom of "Why" */
-    right:3%; /* Adjust the horizontal alignment */
-    font-size: 3rem; /* Smaller size for "Choose us" */
-    font-weight: 500; /* Slightly lighter font weight */
+    font-family: 'Geomatic';
+    font-weight: bold;
+    font-style: normal;
+    position: absolute; 
+    bottom: -10%; 
+    right:14%; 
+    font-size: 3rem; 
+    font-weight: 500;
     color: white;
   }
   .contact .info {

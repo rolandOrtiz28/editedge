@@ -11,10 +11,25 @@
             <!-- Left Section: Logo and Tagline -->
             <div class="footer-left">
                 <img src="/images/logoname.png" alt="Logo" class="footer-logo">
-                <p class="tagline">Bringing Brands to Life, One Pixel at a Time.</p>
-            </div>
+                <p class="tagline-full">
+                    At EditEdge Multimedia, we specialize in creating visually compelling content that enhances your brand's identity. Bringing Brands to Life, One Pixel at a Time, we turn ideas into stunning digital experiences.
+                </p>
+                
+                <p class="tagline-short">Bringing Brands to Life, One Pixel at a Time.</p>  </div>
 
-           
+            <!-- Center Section: Newsletter Subscription -->
+            <div class="footer-center">
+                <h3 class="subscribe-header">Stay Updated</h3>
+                <p class="subscribe-description w-50">Join our community to stay updated on the latest news, exclusive offers, and special discounts!</p>
+
+                <form action="/subs" method="POST" class="subscribe-form">
+                    <div class="input-wrapper">
+                        <input class="input-box" type="email" name="email" placeholder="Enter your email" required>
+                        <span class="underline"></span>
+                    </div>
+                    <button type="submit" class="subscribe-btn">Subscribe</button>
+                </form>
+            </div>
 
             <!-- Right Section: Social Media Icons -->
             <div class="footer-right">
@@ -33,14 +48,16 @@
                     </a>
                 </div>
             </div>
-            
-            
         </div>
 
+        <!-- Legal Notices and Policies -->
         <div class="text-center mt-4 border-top pt-3 legal-notices">
             <p class="mb-0 text-muted">&copy; 2025 EditEdge. All rights reserved.</p>
+            <ul class="footer-policy-links">
+                <li><a href="/policy/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/policy/terms-of-service">Terms of Service</a></li>
+                <li><a href="/policy/refund-policy">Refund Policy</a></li>
+            </ul>
         </div>
     </div>
 </footer>
-
-

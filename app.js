@@ -13,7 +13,7 @@ const flash = require('connect-flash');
 const mongoSanitize = require('express-mongo-sanitize');
 const MongoDBStore = require("connect-mongo");
 const axios = require('axios');
-// const Subscriber = require('./model/Subscriber');
+const Subscriber = require('./models/Subscriber');
 
 
 // Routes
@@ -22,6 +22,7 @@ const quoteRoute = require('./routes/quotation');
 const blogRoute = require('./routes/blogs');
 const pricingRoute = require('./routes/Pricing');
 const adminRoute = require('./routes/Admin');
+const policiesRoute = require('./routes/Policies');
 
 
 // SECURITY
@@ -248,6 +249,33 @@ const contactSchema = Joi.object({
 //       res.status(500).send('Error generating content');
 //   }
 // });
+app.post('/subs', catchAsync(async (req, res) => {
+  // Validate the email against the schema
+  const { error } = subscriptionSchema.validate(req.body);
+  
+  if (error) {
+    // Return an error message if validation fails
+    req.flash('error', 'Please provide a valid email address.');
+    return res.redirect('/');
+  }
+
+  // Sanitize the email input
+  const email = req.body.email.trim();
+
+  // Check if the email is already subscribed
+  const existingEmail = await Subscriber.findOne({ email });
+  if (existingEmail) {
+    req.flash('success', 'You are already subscribed!');
+    return res.redirect('/');
+  }
+
+  // Save the new subscriber
+  const subscriber = new Subscriber({ email });
+  await subscriber.save();
+
+  req.flash('success', 'Thank you for subscribing!');
+  res.redirect('/');
+}));
 
 
 app.post('/send', catchAsync(async (req, res) => {
@@ -292,6 +320,7 @@ app.use('/', quoteRoute)
 app.use('/', blogRoute);
 app.use('/', pricingRoute);
 app.use('/admin', adminRoute);
+app.use('/policy', policiesRoute);
 
 const port = process.env.PORT || 3000;
 const server = app.listen(port, '0.0.0.0', () => {

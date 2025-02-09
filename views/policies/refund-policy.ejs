@@ -1,0 +1,109 @@
+<% layout('/layouts/boilerplate') -%>
+<style>
+    .nav a {
+        text-decoration: none;
+        color: white;
+    }
+    .nav a:hover {
+        text-decoration: underline;
+        color: #FF007F;
+    }
+    .card {
+        border-radius: 20px;
+    }
+    .card-body {
+        border-radius: 20px;
+        padding: 2rem;
+    }
+    .col-lg-3 {
+        border-radius: 20px;
+    }
+</style>
+
+<div class="bg-transparent container">
+    <div class="container py-5">
+        <div class="row">
+            <!-- Table of Contents -->
+            <div class="col-lg-3 mb-4">
+                <div class="card sticky-top" style="top: 2rem;">
+                    <div class="card-body bg-dark">
+                        <h5 class="card-title mb-3 text-white">Contents</h5>
+                        <nav class="nav flex-column">
+                            <a class="toc-link py-2" href="#eligibility">Eligibility for Refunds</a>
+                            <a class="toc-link py-2" href="#non-refundable">Non-Refundable Situations</a>
+                            <a class="toc-link py-2" href="#request">Refund Request Process</a>
+                            <a class="toc-link py-2" href="#method">Refund Method</a>
+                            <a class="toc-link py-2" href="#revisions">Revisions Before Refunds</a>
+                            <a class="toc-link py-2" href="#contact">Contact Us</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-lg-9">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="mb-4">Refund Policy</h1>
+                        <p class="text-muted">Last updated: <%= new Date().getFullYear() %></p>
+
+                        <div id="eligibility" class="policy-section py-4">
+                            <h2>Eligibility for Refunds</h2>
+                            <p>Refunds are available under the following conditions:</p>
+                            <ul>
+                                <li><strong>Service Issues:</strong> If the delivered project does not meet the agreed-upon specifications.</li>
+                                <li><strong>Technical Errors:</strong> In cases of technical issues caused by us that cannot be resolved.</li>
+                                <li><strong>Non-Delivery:</strong> If services are not delivered within the agreed timeline without prior notice.</li>
+                            </ul>
+                        </div>
+
+                        <div id="non-refundable" class="policy-section py-4">
+                            <h2>Non-Refundable Situations</h2>
+                            <ul>
+                                <li><strong>Change of Mind:</strong> Refunds are not provided for changes in personal preference after service completion.</li>
+                                <li><strong>Partial Satisfaction:</strong> If the project was completed per specifications but does not meet subjective expectations.</li>
+                                <li><strong>Third-Party Issues:</strong> We are not responsible for delays or issues caused by third-party platforms or software.</li>
+                            </ul>
+                        </div>
+
+                        <div id="request" class="policy-section py-4">
+                            <h2>Refund Request Process</h2>
+                            <p>To request a refund:</p>
+                            <ol>
+                                <li>Contact us at <strong>editedgemultimedia@gmail.com</strong> within <strong>7 days</strong> of service delivery.</li>
+                                <li>Provide your project details, payment proof, and reasons for the refund request.</li>
+                                <li>Our team will review your request and respond within <strong>3 business days</strong>.</li>
+                            </ol>
+                        </div>
+
+                        <div id="method" class="policy-section py-4">
+                            <h2>Refund Method</h2>
+                            <ul>
+                                <li>Approved refunds will be processed to the original payment method.</li>
+                                <li>Processing times may vary depending on your payment provider.</li>
+                            </ul>
+                        </div>
+
+                        <div id="revisions" class="policy-section py-4">
+                            <h2>Revisions Before Refunds</h2>
+                            <p>Before a refund is issued, we may offer revisions to address any concerns. We encourage clients to allow us the opportunity to correct issues.</p>
+                        </div>
+
+                        <div id="contact" class="policy-section py-4">
+                            <h2>Contact Us</h2>
+                            <p>If you have questions regarding our Refund Policy, please contact us:</p>
+                            <div class="card bg-light mt-3">
+                                <div class="card-body">
+                                    <p class="mb-1"><strong>Email:</strong> editedgemultimedia@gmail.com</p>
+                                    <p class="mb-1"><strong>Phone:</strong> +63 919 432 1215</p>
+                                    <p class="mb-0"><strong>Address:</strong> Tacloban City, Philippines</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

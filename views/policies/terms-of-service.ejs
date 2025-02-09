@@ -1,0 +1,128 @@
+<% layout('/layouts/boilerplate') -%>
+<style>
+    .nav a {
+        text-decoration: none;
+        color: white;
+    }
+    .nav a:hover {
+        text-decoration: underline;
+        color: #FF007F;
+    }
+    .card {
+        border-radius: 20px;
+    }
+    .card-body {
+        border-radius: 20px;
+        padding: 2rem;
+    }
+    .col-lg-3 {
+        border-radius: 20px;
+    }
+</style>
+
+<div class="bg-transparent container">
+    <div class="container py-5">
+        <div class="row">
+            <!-- Table of Contents -->
+            <div class="col-lg-3 mb-4">
+                <div class="card sticky-top" style="top: 2rem;">
+                    <div class="card-body bg-dark">
+                        <h5 class="card-title mb-3 text-white">Contents</h5>
+                        <nav class="nav flex-column">
+                            <a class="toc-link py-2" href="#acceptance">Acceptance of Terms</a>
+                            <a class="toc-link py-2" href="#changes">Changes to Terms</a>
+                            <a class="toc-link py-2" href="#use">Use of the Site</a>
+                            <a class="toc-link py-2" href="#intellectual">Intellectual Property</a>
+                            <a class="toc-link py-2" href="#user-content">User Content</a>
+                            <a class="toc-link py-2" href="#disclaimers">Disclaimers</a>
+                            <a class="toc-link py-2" href="#liability">Limitation of Liability</a>
+                            <a class="toc-link py-2" href="#indemnification">Indemnification</a>
+                            <a class="toc-link py-2" href="#law">Governing Law</a>
+                            <a class="toc-link py-2" href="#contact">Contact Us</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-lg-9">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="mb-4">Terms of Service</h1>
+                        <p class="text-muted">Last updated: <%= new Date().getFullYear() %></p>
+
+                        <div id="acceptance" class="policy-section py-4">
+                            <h2>Acceptance of Terms</h2>
+                            <p>Welcome to Editedge Multimedia ("we," "our," or "us"). By accessing or using our website <a href="https://editedgemultimedia.com/" target="_blank">https://editedgemultimedia.com/</a> (the "Site"), you agree to comply with and be bound by these Terms of Service ("Terms"). If you do not agree, please do not use the Site.</p>
+                        </div>
+
+                        <div id="changes" class="policy-section py-4">
+                            <h2>Changes to Terms</h2>
+                            <p>We may update these Terms from time to time. Continued use of the Site after changes constitutes acceptance of the new Terms.</p>
+                        </div>
+
+                        <div id="use" class="policy-section py-4">
+                            <h2>Use of the Site</h2>
+                            <ul>
+                                <li>You must be at least 13 years old to use our Site.</li>
+                                <li>You agree to use the Site for lawful purposes only.</li>
+                                <li>You shall not engage in activities that disrupt or harm the Site or its users.</li>
+                            </ul>
+                        </div>
+
+                        <div id="intellectual" class="policy-section py-4">
+                            <h2>Intellectual Property</h2>
+                            <p>All content on the Site, including text, graphics, logos, and software, is the property of Editedge Multimedia or its content suppliers and is protected by intellectual property laws. You may not copy, modify, distribute, or create derivative works without our permission.</p>
+                        </div>
+
+                        <div id="user-content" class="policy-section py-4">
+                            <h2>User Content</h2>
+                            <ul>
+                                <li>You retain ownership of any content you submit to the Site.</li>
+                                <li>By submitting content, you grant us a non-exclusive, royalty-free license to use, reproduce, and display it on the Site.</li>
+                                <li>You are responsible for ensuring your content does not violate any laws or third-party rights.</li>
+                            </ul>
+                        </div>
+
+                        <div id="disclaimers" class="policy-section py-4">
+                            <h2>Disclaimers</h2>
+                            <ul>
+                                <li>The Site is provided "as is" without warranties of any kind, either express or implied.</li>
+                                <li>We do not guarantee the Site will be error-free or uninterrupted.</li>
+                                <li>We are not responsible for third-party content linked on the Site.</li>
+                            </ul>
+                        </div>
+
+                        <div id="liability" class="policy-section py-4">
+                            <h2>Limitation of Liability</h2>
+                            <p>To the fullest extent permitted by law, Editedge Multimedia shall not be liable for any indirect, incidental, or consequential damages arising from your use of the Site.</p>
+                        </div>
+
+                        <div id="indemnification" class="policy-section py-4">
+                            <h2>Indemnification</h2>
+                            <p>You agree to indemnify and hold Editedge Multimedia harmless from any claims, damages, or expenses arising from your use of the Site or violation of these Terms.</p>
+                        </div>
+
+                        <div id="law" class="policy-section py-4">
+                            <h2>Governing Law</h2>
+                            <p>These Terms are governed by the laws of [Insert Jurisdiction], without regard to its conflict of law principles.</p>
+                        </div>
+
+                        <div id="contact" class="policy-section py-4">
+                            <h2>Contact Us</h2>
+                            <p>If you have questions about these Terms, please contact us:</p>
+                            <div class="card bg-light mt-3">
+                                <div class="card-body">
+                                    <p class="mb-1"><strong>Email:</strong> editedgemultimedia@gmail.com</p>
+                                    <p class="mb-1"><strong>Phone:</strong> +63 919 432 1215</p>
+                                    <p class="mb-0"><strong>Address:</strong> Tacloban City, Philippines</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -3,14 +3,14 @@
 }
 .sub-header {
     font-size: 50px;
-    font-family: "Spectral", serif;
+
     font-weight: 400;
     font-style: normal;
   }
 
   a{
     text-decoration: none;
-    font-family: "Montserrat", serif;
+  
     font-size: 1.2rem; /* Adjust the font size as needed */
     line-height: 1.6; /* Optional: Adjust line height for better readability */
   }
@@ -23,6 +23,7 @@
 
   strong{
     color: black !important;
+    font-weight: 400 !important;
   }
 
   .position-relative h1 {
@@ -35,7 +36,7 @@
   }
 
   p, ul, li {
-    font-family: "Montserrat", serif;
+  
     font-size: 1.2rem; /* Adjust the font size as needed */
     line-height: 1.6; /* Optional: Adjust line height for better readability */
   }
@@ -128,7 +129,7 @@ a{
   }
 
   .position-absolute h1 {
-    font-size: 1.5rem !important; /* Make it smaller but still readable */
+    font-size: 2.7rem !important; /* Make it smaller but still readable */
   }
 
   .position-absolute h4 {
@@ -141,4 +142,10 @@ a{
   .lead {
     font-size: 0.95rem !important;
   }
+  .content img {
+    max-width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    margin: 10px auto !important; /* Centers the image */
+}
 }

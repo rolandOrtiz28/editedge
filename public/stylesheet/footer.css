@@ -8,7 +8,7 @@ section{
     background-color: #181818;
     color: #cccccc;
     padding: 40px 0;
-    font-family: 'Nunito', sans-serif;
+
    
     height: auto; /* Let content define the height */
 }
@@ -26,7 +26,7 @@ section{
     pointer-events: none;
     overflow: hidden;
     line-height: 1;
-    height: 40%;
+    height: 35%;
     background: linear-gradient(
         120deg,
         rgba(255, 255, 255, 0.1) 0%,
@@ -51,6 +51,29 @@ section{
 }
 
 
+.footer-policy-links {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.footer-policy-links li {
+    display: inline;
+}
+
+.footer-policy-links a {
+    color: #cccccc;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.footer-policy-links a:hover {
+    color: #FF007F;
+}
 
 
 
@@ -88,7 +111,11 @@ section{
 .footer-center {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: center; /* Ensures content stays centered */
+    flex-direction: column; /* Stacks elements vertically */
+    align-items: center; /* Aligns elements in the center */
+    text-align: center; /* Ensures text alignment remains centered */
+    flex: 1; /* Allows flexibility for responsiveness */
 }
 
 .footer-links {
@@ -149,6 +176,89 @@ section{
     color: #666666;
 }
 
+.subscribe-header {
+    font-size: 20px;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.subscribe-description {
+    font-size: 14px;
+    color: #cccccc;
+    margin-bottom: 20px;
+}
+
+.subscribe-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Input Field */
+.input-wrapper {
+    position: relative;
+    width: 250px;
+    margin: 10px auto;
+}
+
+.input-box {
+    font-size: 16px;
+    padding: 10px 0;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    color: white;
+    width: 100%;
+    background-color: transparent;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.underline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #FF007F;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.input-box:focus {
+    border-color: #FF007F;
+    outline: none;
+}
+
+.input-box:focus + .underline {
+    transform: scaleX(1);
+}
+
+/* Subscribe Button */
+.subscribe-btn {
+    background-color: #FF007F;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.subscribe-btn:hover {
+    background-color: #cc0066;
+}
+.tagline-short {
+    display: none; /* Hide full paragraph on small screens */
+}
+
+.tagline-full {
+    display: block; /* Show short tagline on small screens */
+    text-align: center;
+    font-size: 14px;
+    width: 100%;
+}
+
 @media (max-width: 1629px) {
     .custom-footer {
         padding: 40px 20px; /* Adjust padding for smaller screens */
@@ -176,60 +286,137 @@ section{
     .social-icon {
         font-size: 25px; /* Adjust icon size */
     }
+
 }
 
-
-  
-  /* Adjust for screens smaller than 1422px */
-  @media (max-width: 1422px) {
-    
-  }
-  
-  /* Adjust for screens smaller than 1300px */
-  @media (max-width: 1300px) {
-   
-  }
-  
-  /* Adjust for screens smaller than 1200px */
-  @media (max-width: 1200px) {
-    
-  }
-  
-  /* Adjust for screens smaller than 992px */
-  @media (max-width: 992px) {
-   
-  }
-  
-  
-  /* Adjust for screens smaller than 768px */
-  @media (max-width: 768px) {
+/* Responsive Adjustments */
+@media (max-width: 992px) {
     .custom-footer {
-        padding: 20px; /* Reduce padding for smaller screens */
-        height: auto; /* Allow the height to adjust based on content */
-        display: flex;
-        flex-direction: column; /* Stack elements vertically */
-        align-items: center; /* Center elements */
-        
+        padding: 30px 15px; /* Reduce padding for smaller screens */
     }
 
-    .footer-bg-text {
-        font-size: 80px; /* Scale down the background text */
-        top: -16%; /* Push the background text up for partial visibility */
-        left: 50%;
-        
-        height: 16%; /* Ensure the text appears partially */
-        overflow: hidden; /* Prevent overflow */
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
 
-    .tagline {
-        font-size: 10px; /* Adjust text size */
+    .footer-left,
+    .footer-center,
+    .footer-right {
+        width: 100%;
+        text-align: center;
     }
 
     .footer-logo {
-        width: 100px; /* Ensure logo scales proportionally */
+        width: 250px; /* Adjusted for better visibility */
+        display: block;
+        margin: 0 auto; /* Ensures proper centering */
     }
 
-    .legal-notices p{
-        font-size: 10px;
+    .footer-bg-text {
+        font-size: 150px; /* Reduce size */
+        top: -25%;
+        left: 50%;
+        height: 30%;
+    }
+
+    .tagline {
+        max-width: 100%; /* Expands width to fit in 3 lines */
+        margin: 0 auto; /* Centers the tagline */
+    }
+
+    .social-icons {
+        justify-content: center;
+        display: flex;
+    }
+
+    .social-icon {
+        font-size: 30px; /* Adjust size */
+    }
+    .tagline-full {
+        display: none; /* Hide full paragraph on small screens */
+    }
+
+    .tagline-short {
+        display: block; /* Show short tagline on small screens */
+        text-align: center;
+        font-size: 14px;
+        width: 100%;
     }
 }
+@media (max-width: 576px) {
+    .footer-center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+        
+    }
+
+    .footer-bg-text{
+        font-size: 90px; /* Reduce size */
+        top: -8%;
+        left: 50%;
+        height: 30%;
+    }
+    
+    /* ✅ Center the Logo */
+    .footer-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        max-width: 100%;
+        width: 100%;
+        text-align: center;
+        
+    }
+
+    .footer-logo {
+        width: 200px; /* ✅ Adjust logo size */
+        
+        margin: 0 auto; 
+        
+    }
+
+    /* ✅ Expand Tagline to Fit 3 Lines */
+    .tagline {
+        font-size: 14px;
+        width: 100%; /* Ensures it stays within the container */
+        max-width:1000px; /* Prevents excessive stretching */
+        text-align: center;
+        margin: 0 auto; /* Centers it horizontally */
+        line-height: 1.5; /* Adjusts spacing for readability */
+        display: block; /* Ensures proper layout */
+    }
+    
+
+    /* ✅ Ensure Social Icons are Centered */
+    .footer-right {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .social-icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px; /* ✅ Adds spacing */
+        width: 100%;
+    }
+
+    .social-icon {
+        font-size: 25px;
+    }
+
+
+    
+}
+

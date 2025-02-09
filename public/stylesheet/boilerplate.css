@@ -1,5 +1,13 @@
+@font-face {
+  font-family: 'Geomatic';
+  src: url('/fonts/geomatic/Geomatic-Black.woff2') format('woff2'),
+       url('/fonts/geomatic/Geomatic-Black.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
-    font-family: 'Nunito', sans-serif;
+    
     background: #101010 !important;
     color: #fff;
     margin: 0;
@@ -7,8 +15,19 @@ body {
     overflow-x: hidden;
 }
 
+h1, h2, h3, h4,h5{
+  font-family: 'Geomatic';
+    font-weight: bold;
+    font-style: normal;
+}
+
+p, span, li, .description, .sub-heading, button {
+  font-family: 'Montserrat';
+  font-weight: 400;
+}
 
 html, body {
+  width: 100% !important;
     height: 100%;
     overflow-x: hidden;
     /* scrollbar-width: none;  */
