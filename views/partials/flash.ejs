@@ -1,12 +1,14 @@
-<% if (success && success.length) { %>
-    <div class="alert alert-success alert-dismissible fade show border-0 text-center" role="alert" style="position: relative; margin-top: 7rem !important; z-index: 1203;">
-        <%= success %>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="position: absolute; top: -5px; right: 10px;"></button>
-    </div>
-<% } %>
-<% if (error && error.length) { %>
-    <div class="alert alert-danger alert-dismissible fade show" role="alert" style="position: relative; margin-top: 2rem;">
-        <%= error %>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="position: absolute; top: -20px; right: 10px;"></button>
-    </div>
-<% } %>
+<div class="d-flex justify-content-center position-absolute w-100" style="top: 7rem; z-index: 1203;">
+    <% if (success && success.length) { %>
+        <div class="alert alert-dismissible fade show w-50 text-center text-success" role="alert" style="background: #141414; box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.37);">
+            <%= success %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <% } %>
+    <% if (error && error.length) { %>
+        <div class="alert alert-dismissible fade show w-50 text-center text-danger" role="alert" style="background: #141414; box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.37);">
+            <%= error %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <% } %>
+</div>

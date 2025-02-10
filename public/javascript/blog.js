@@ -1,12 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // ✅ Ensure ImageResize is Loaded
-    if (typeof window.ImageResize === "undefined") {
-        console.error("❌ ImageResize module not found.");
-    } else {
-        console.log("✅ ImageResize module registered successfully!");
-    }
-
-    // ✅ Initialize Quill with Custom Toolbar
+    // ✅ Initialize Quill Editor
     var quill = new Quill("#editor-container", {
         theme: "snow",
         placeholder: "Write your blog content here...",
@@ -35,7 +28,71 @@ document.addEventListener("DOMContentLoaded", function () {
 
     console.log("✅ Quill initialized successfully!");
 
-    // ✅ Handle Image Upload & Linking in the Text Editor
+    // ✅ Floating input box for editing image links
+    const linkInputBox = document.createElement("div");
+    linkInputBox.innerHTML = `
+        <input type="text" id="image-link-input" placeholder="Enter link..." 
+            class="border p-2 rounded-md shadow-sm w-64">
+        <button id="save-link-btn" class="bg-blue-500 text-white p-1 rounded">Save</button>
+    `;
+    linkInputBox.style.position = "absolute";
+    linkInputBox.style.display = "none";
+    linkInputBox.style.background = "white";
+    linkInputBox.style.border = "1px solid #ccc";
+    linkInputBox.style.padding = "5px";
+    linkInputBox.style.zIndex = "1000";
+    document.body.appendChild(linkInputBox);
+
+    let selectedImage = null;
+
+    // ✅ Handle Image Click - Show Link Input
+    quill.root.addEventListener("click", function (event) {
+        if (event.target.tagName === "IMG") {
+            selectedImage = event.target;
+
+            // Check if the image is inside an <a> tag
+            let parentLink = selectedImage.closest("a");
+            document.getElementById("image-link-input").value = parentLink ? parentLink.href : "";
+
+            // Position input box near image
+            let rect = selectedImage.getBoundingClientRect();
+            linkInputBox.style.top = `${rect.top + window.scrollY + rect.height + 5}px`;
+            linkInputBox.style.left = `${rect.left + window.scrollX}px`;
+            linkInputBox.style.display = "block";
+        } else {
+            linkInputBox.style.display = "none"; // Hide input box when clicking elsewhere
+        }
+    });
+
+    // ✅ Save Image Link
+    document.getElementById("save-link-btn").addEventListener("click", function () {
+        let link = document.getElementById("image-link-input").value.trim();
+
+        if (selectedImage) {
+            if (link) {
+                let parentLink = selectedImage.closest("a");
+                if (!parentLink) {
+                    let newLink = document.createElement("a");
+                    newLink.href = link;
+                    newLink.target = "_blank";
+                    selectedImage.parentNode.insertBefore(newLink, selectedImage);
+                    newLink.appendChild(selectedImage);
+                } else {
+                    parentLink.href = link;
+                }
+            } else {
+                let parentLink = selectedImage.closest("a");
+                if (parentLink) {
+                    parentLink.parentNode.insertBefore(selectedImage, parentLink);
+                    parentLink.remove();
+                }
+            }
+        }
+
+        linkInputBox.style.display = "none";
+    });
+
+    // ✅ Handle Image Upload
     function imageHandler() {
         let input = document.createElement("input");
         input.setAttribute("type", "file");
@@ -55,15 +112,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 let data = await response.json();
                 if (data.url) {
-                    let link = prompt("Enter a URL for the image (optional):");
-
                     let range = quill.getSelection();
-                    if (link) {
-                        let imageHTML = `<a href="${link}" target="_blank"><img src="${data.url}" alt="Linked Image" /></a>`;
-                        quill.clipboard.dangerouslyPasteHTML(range.index, imageHTML);
-                    } else {
-                        quill.insertEmbed(range.index, "image", data.url);
-                    }
+                    quill.insertEmbed(range.index, "image", data.url);
                 } else {
                     alert("Image upload failed.");
                 }
@@ -73,19 +123,16 @@ document.addEventListener("DOMContentLoaded", function () {
         };
     }
 
-    // ✅ SEO Analysis Functionality
+    // ✅ SEO Analysis
     const titleInput = document.querySelector('input[name="title"]');
-    const titleTagInput = document.querySelector('input[name="titleTag"]'); // NEW: Title tag input
-    const slugInput = document.querySelector('input[name="customSlug"]'); // NEW: Slug input
+    const titleTagInput = document.querySelector('input[name="titleTag"]');
+    const slugInput = document.querySelector('input[name="customSlug"]');
     const metaInput = document.querySelector('input[name="metaDescription"]');
-
-    // ✅ Add Keyword Input to SEO Analysis Section
     const keywordInput = document.createElement("input");
-    keywordInput.type = "text";
-    keywordInput.placeholder = "Enter your focus keyword";
-    keywordInput.classList.add("w-full", "border", "border-gray-300", "rounded-md", "p-2", "mb-3");
 
-    // Insert keyword input above SEO Analysis list
+    keywordInput.type = "text";
+    keywordInput.placeholder = "Enter focus keyword";
+    keywordInput.classList.add("border", "p-2", "rounded-md", "w-full", "mb-3");
     document.querySelector("#seo-analysis").insertAdjacentElement("afterbegin", keywordInput);
 
     function updateSEOAnalysis() {
@@ -93,29 +140,21 @@ document.addEventListener("DOMContentLoaded", function () {
         const meta = metaInput.value.trim();
         const content = quill.root.innerHTML;
         const keyword = keywordInput.value.trim().toLowerCase();
+        const words = quill.getText().split(/\s+/).length;
+        let keywordCount = (quill.getText().match(new RegExp(`\\b${keyword}\\b`, "gi")) || []).length;
+        let keywordDensity = ((keywordCount / words) * 100).toFixed(2);
 
         document.getElementById("seo-title").innerHTML = `Title: <span class="${title.length >= 50 && title.length <= 60 ? 'text-green-600' : 'text-red-600'}">${title.length} characters</span>`;
-        document.getElementById("seo-meta").innerHTML = `Meta Description: <span class="${meta.length >= 150 && meta.length <= 160 ? 'text-green-600' : 'text-red-600'}">${meta.length} characters</span>`;
-
-        const words = quill.getText().split(/\s+/).length;
-        let keywordCount = 0;
-
-        if (keyword) {
-            const regex = new RegExp(`\\b${keyword}\\b`, "gi");
-            keywordCount = (quill.getText().match(regex) || []).length;
-        }
-
-        let keywordDensity = ((keywordCount / words) * 100).toFixed(2);
+        document.getElementById("seo-meta").innerHTML = `Meta: <span class="${meta.length >= 150 && meta.length <= 160 ? 'text-green-600' : 'text-red-600'}">${meta.length} characters</span>`;
         document.getElementById("seo-keywords").innerHTML = `Keyword Density: <span class="${keywordDensity >= 2 && keywordDensity <= 3 ? 'text-green-600' : 'text-red-600'}">${keywordDensity}%</span>`;
+        document.getElementById("seo-readability").innerHTML = `Readability: <span class="${calculateReadability(quill.getText()) >= 60 ? 'text-green-600' : 'text-red-600'}">${calculateReadability(quill.getText())}</span>`;
+    }
 
-        let readabilityScore = calculateReadability(quill.getText());
-        document.getElementById("seo-readability").innerHTML = `Readability Score: <span class="${readabilityScore >= 60 ? 'text-green-600' : 'text-red-600'}">${readabilityScore}</span>`;
-
-        const links = content.match(/<a\s+href="([^"]*)"/g) || [];
-        document.getElementById("seo-links").innerHTML = `Links: <span class="${links.length >= 1 ? 'text-green-600' : 'text-red-600'}">${links.length} links</span>`;
-
-        const images = content.match(/<img\s+[^>]*alt="([^"]*)"/g) || [];
-        document.getElementById("seo-images").innerHTML = `Images with Alt Text: <span class="${images.length >= 1 ? 'text-green-600' : 'text-red-600'}">${images.length} images</span>`;
+    function calculateReadability(text) {
+        const sentenceCount = (text.match(/[.!?]/g) || []).length;
+        const wordCount = text.split(/\s+/).length;
+        const syllableCount = text.match(/[aeiouy]{1,2}/g)?.length || 0;
+        return sentenceCount === 0 || wordCount === 0 ? 0 : Math.round(206.835 - (1.015 * (wordCount / sentenceCount)) - (84.6 * (syllableCount / wordCount)));
     }
 
     titleInput.addEventListener("input", updateSEOAnalysis);
@@ -125,29 +164,9 @@ document.addEventListener("DOMContentLoaded", function () {
     keywordInput.addEventListener("input", updateSEOAnalysis);
     quill.on("text-change", updateSEOAnalysis);
 
-    function calculateReadability(text) {
-        const sentenceCount = (text.match(/[.!?]/g) || []).length;
-        const wordCount = text.split(/\s+/).length;
-        const syllableCount = text.match(/[aeiouy]{1,2}/g)?.length || 0;
-
-        if (sentenceCount === 0 || wordCount === 0) return 0;
-
-        const score = 206.835 - (1.015 * (wordCount / sentenceCount)) - (84.6 * (syllableCount / wordCount));
-        return Math.round(score);
-    }
-
-    console.log("✅ SEO Analysis Enabled!");
-
-    // ✅ Handle Form Submission with Loader
+    // ✅ Handle Form Submission
     document.getElementById("blogForm").onsubmit = function (event) {
         event.preventDefault();
-
-        let clickedBtn = document.activeElement;
-        let originalText = clickedBtn.innerHTML;
-
-        clickedBtn.innerHTML = `<span class="spinner"></span> Processing...`;
-        clickedBtn.disabled = true;
-
         let formData = new FormData();
         formData.append("title", titleInput.value);
         formData.append("titleTag", titleTagInput.value);
@@ -155,37 +174,11 @@ document.addEventListener("DOMContentLoaded", function () {
         formData.append("metaDescription", metaInput.value);
         formData.append("tags", document.querySelector('input[name="tags"]').value);
         formData.append("content", quill.root.innerHTML);
-        formData.append("status", clickedBtn.value);
+        formData.append("status", document.activeElement.value);
 
-        let imageInput = document.querySelector('input[name="image"]');
-        if (imageInput.files.length > 0) {
-            formData.append("image", imageInput.files[0]);
-        }
-
-        let imageLink = document.querySelector('input[name="imageLink"]').value;
-        if (imageLink.trim() !== "") {
-            formData.append("imageLink", imageLink);
-        }
-
-        fetch("/blogs", {
-            method: "POST",
-            body: formData
-        })
+        fetch("/blogs", { method: "POST", body: formData })
         .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                window.location.href = `/blogs/${data.slug}`;
-            } else {
-                alert("Error: " + data.message);
-            }
-        })
-        .catch(error => {
-            console.error("Error saving blog:", error);
-            alert("Something went wrong. Please try again.");
-        })
-        .finally(() => {
-            clickedBtn.innerHTML = originalText;
-            clickedBtn.disabled = false;
-        });
+        .then(data => { if (data.success) { window.location.href = `/blogs/${data.slug}`; } })
+        .catch(error => alert("Error: " + error));
     };
 });

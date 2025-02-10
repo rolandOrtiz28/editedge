@@ -2,17 +2,20 @@ const dotenv = require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
-
+const User = require('./models/user')
 const path = require('path');
 const session = require('express-session');
 const ejsMate = require('ejs-mate');
 const catchAsync = require('./utils/CatchAsync');
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
 const nodemailer = require('nodemailer');
 const methodOverride = require('method-override');
 const flash = require('connect-flash');
 const mongoSanitize = require('express-mongo-sanitize');
 const MongoDBStore = require("connect-mongo");
 const axios = require('axios');
+const ExpressError = require('./utils/ExpressError')
 const Subscriber = require('./models/Subscriber');
 
 
@@ -29,8 +32,8 @@ const policiesRoute = require('./routes/Policies');
 const helmet = require('helmet')
 const Joi = require('joi');
 const secret = process.env.SESSION_SECRET;
-const dbUrl = process.env.DB_URL || 'mongodb://127.0.0.1:27017/bluelightinnovations';
-//
+const dbUrl = process.env.DB_URL ||'mongodb://127.0.0.1:27017/bluelightinnovations';
+// 
 // Connect to MongoDB with extended timeout options
 mongoose.connect(dbUrl, {
   serverSelectionTimeoutMS: 5000 // Adjust as needed
@@ -163,6 +166,8 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(methodOverride('_method'));
 app.use(session(sessionConfig));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(mongoSanitize());
 app.use('/uploads', express.static('uploads')); // ✅ Serve uploads as static
 
@@ -174,9 +179,12 @@ app.use(express.static(path.join(__dirname, '/public')));
 app.use('/stylesheet', express.static(path.join(__dirname, 'stylesheet')));
 app.use(flash());
 
+passport.use(new LocalStrategy(User.authenticate()));
 
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 app.use((req, res, next) => {
-  res.locals.currentUser = req.session.isAdminAuthenticated || null; 
+  res.locals.currentUser = req.user;
   res.locals.success = req.flash('success');
   res.locals.error = req.flash('error');
   res.locals.title = "Edit Edge";
@@ -211,45 +219,6 @@ const contactSchema = Joi.object({
     res.render('home/trial', { currentRoute: '/trial' });
 });
 
-// const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
-
-// app.post('/generate-social', async (req, res) => {
-//   const { topic } = req.body;
-//   try {
-//       const response = await axios.post('https://api.openai.com/v1/chat/completions', {
-//           model: "gpt-4",
-//           messages: [{ role: "user", content: `Generate an engaging social media post about: ${topic}` }]
-//       }, {
-//           headers: { 
-//               'Authorization': `Bearer ${OPENAI_API_KEY}`,
-//               'Content-Type': 'application/json'  // Add this line
-//           }
-//       });
-
-//       res.json({ content: response.data.choices[0].message.content });
-//   } catch (error) {
-//       console.error("OpenAI API Error:", error.response?.data || error.message);  // Log the full error
-//       res.status(500).json({ error: 'Error generating content', details: error.response?.data || error.message });
-//   }
-// });
-
-
-
-// app.post('/generate-blog', async (req, res) => {
-//   const { topic } = req.body;
-//   try {
-//       const response = await axios.post('https://api.openai.com/v1/chat/completions', {
-//           model: "gpt-3.5-turbo",
-//           messages: [{ role: "user", content: `Write a detailed blog post about: ${topic}` }]
-//       }, {
-//           headers: { 'Authorization': `Bearer ${OPENAI_API_KEY}` }
-//       });
-
-//       res.json({ content: response.data.choices[0].message.content });
-//   } catch (error) {
-//       res.status(500).send('Error generating content');
-//   }
-// });
 app.post('/subs', catchAsync(async (req, res) => {
   // Validate the email against the schema
   const { error } = subscriptionSchema.validate(req.body);
@@ -322,6 +291,19 @@ app.use('/', blogRoute);
 app.use('/', pricingRoute);
 app.use('/admin', adminRoute);
 app.use('/policy', policiesRoute);
+
+//error route
+app.all('*', (req, res, next) => {
+  next(new ExpressError('Page Not Found', 404))
+})
+
+
+app.use((err, req, res, next) => {
+  const { statusCode = 500 } = err;
+  if (!err.message) err.message = 'Oh No, Something went wrong!';
+  res.status(statusCode).render('error', { err });
+});
+
 
 const port = process.env.PORT || 3000;
 const server = app.listen(port, '0.0.0.0', () => {

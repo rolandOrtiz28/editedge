@@ -1,0 +1,159 @@
+<% layout('/layouts/boilerplate') -%>
+<style>
+    /* From Uiverse.io by ammarsaa */ 
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 350px;
+  padding: 20px;
+  border-radius: 20px;
+  position: relative;
+  background-color: #1a1a1a;
+  color: #fff;
+  border: 1px solid #333;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -1px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+  color: #FF007F;
+}
+
+.title::before,
+.title::after {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  left: 0px;
+  background-color: #FF007F;
+}
+
+.message, 
+.signin {
+  font-size: 14.5px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.signin {
+  text-align: center;
+}
+
+.signin a {
+  color: #FF007F;
+}
+
+.flex {
+  display: flex;
+  width: 100%;
+  gap: 6px;
+}
+
+.form label {
+  position: relative;
+  width: 100%;
+}
+
+.form label .input {
+  background-color: #333;
+  color: #fff;
+  width: 100%;
+  padding: 20px 40px 5px 10px;
+  outline: 0;
+  border: 1px solid rgba(105, 105, 105, 0.397);
+  border-radius: 10px;
+}
+
+.form label .input + span {
+  color: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  left: 10px;
+  top: 5px;
+  font-size: 0.9em;
+  transition: 0.3s ease;
+}
+
+.input:focus + span,
+.input:valid + span {
+  color: #FF007F;
+  top: 0px;
+  font-size: 0.7em;
+  font-weight: 600;
+}
+
+/* Eye Icon for Password Visibility */
+.eye-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.eye-icon:hover {
+  color: #FF007F;
+}
+
+.submit {
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  background-color: #FF007F;
+  cursor: pointer;
+}
+
+.submit:hover {
+  background-color: #FF007F;
+}
+</style>
+
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <form class="form" action="/admin/register" method="POST">
+        <p class="title">Register</p>
+
+        <label>
+            <input class="input" type="text" name="username" required>
+            <span>Username</span>
+        </label>
+
+        <label>
+            <input class="input" type="email" name="email" required>
+            <span>Email</span>
+        </label> 
+
+        <label>
+            <input class="input password-field" type="password" name="password" required>
+            <span>Password</span>
+            <span class="eye-icon" onclick="togglePassword('password')">👁️</span>
+        </label>
+
+       
+
+        <button type="submit" class="submit">Register</button>
+
+        <p class="signin">Already have an account? 
+            <a href="/login">Sign in</a>
+        </p>
+    </form>
+</div>
+
+<script>
+function togglePassword(fieldName) {
+    let passwordInput = document.querySelector(`[name="${fieldName}"]`);
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+    } else {
+        passwordInput.type = "password";
+    }
+}
+</script>

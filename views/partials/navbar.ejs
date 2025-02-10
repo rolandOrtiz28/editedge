@@ -146,12 +146,15 @@
       <!-- Get a Quote Button -->
     
         <!-- If user is NOT logged in, show "Get A Quote" button -->
+        <% if(currentUser) {%>
+          <a class="me-5" href="/admin/logout" ><i class="fa fa-sign-out text-white" aria-hidden="true"></i></a>
+          <% }else{ %>
         <button type="button" class="qoute-button ms-auto mb-2">
           <div class="qoute-button-top"><a href="/quotation">Get A Quote</a></div>
           <div class="qoute-button-bottom"></div>
           <div class="qoute-button-base"></div>
         </button>
-      
+        <% } %>
       
     </div>
   </div>

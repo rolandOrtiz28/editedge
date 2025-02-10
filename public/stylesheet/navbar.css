@@ -40,7 +40,7 @@ height: 70px;
     position: absolute;
     top: 100%;
     left: 0;
-    width: 600px;
+    width: 700px;
     background-color: #222;
     border: 5px solid rgba(255, 255, 255, 0.2);
     padding: 20px;
@@ -75,20 +75,26 @@ height: 70px;
     border-radius: 8px;
     transition: transform 0.2s, background-color 0.2s;
 }
-
+.dropdown-item{
+  color: white !important;
+  font-size: 1rem;
+}
+.dropdown-item .text-muted{
+  
+  font-size: 1rem;
+}
 .dropdown-item:hover {
     background-color: rgba(255, 255, 255, 0.2);
     transform: translateY(-3px);
+
 }
 
-.dropdown-item .fas{
-    color: white;
-}
+
 .dropdown-item span{
     color: white;
 }
-.dropdown-item:hover .fas{
-    color: #101010;
+.dropdown-item:hover{
+    color: #101010 !important;
 }
 .dropdown-item:hover span{
     color: #101010;

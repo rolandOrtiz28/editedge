@@ -172,8 +172,7 @@ router.get('/blogs/:slug/edit', catchAsync(async (req, res) => {
 
 // Update Blog (PUT)
 router.put('/blogs/:slug', upload.single('image'), catchAsync(async (req, res) => {
-    const { title, content, metaDescription, headerType, tags, status, imageLink } = req.body;
-    const slug = slugify(title, { lower: true });
+    const { title, content, metaDescription, headerType, tags, status, imageLink, customSlug } = req.body;
 
     // ✅ Find the existing blog
     const blog = await Blog.findOne({ slug: req.params.slug });
@@ -183,15 +182,21 @@ router.put('/blogs/:slug', upload.single('image'), catchAsync(async (req, res) =
         return res.redirect('/blogs');
     }
 
+    // ✅ Determine if the slug should be updated
+    if (customSlug && customSlug !== blog.slug) {
+        blog.slug = slugify(customSlug, { lower: true });
+    } else if (blog.title !== title) {
+        blog.slug = slugify(title, { lower: true });
+    }
+
     // ✅ Update blog details
     blog.title = title;
-    blog.slug = slug;
     blog.content = content;
     blog.metaDescription = metaDescription;
     blog.headerType = headerType;
     blog.tags = tags.split(',').map(tag => tag.trim());
     blog.status = status;
-    
+
     // ✅ Update cover image link (if provided)
     if (imageLink) {
         blog.imageLink = imageLink;
@@ -207,6 +212,7 @@ router.put('/blogs/:slug', upload.single('image'), catchAsync(async (req, res) =
     req.flash('success', 'Blog updated successfully!');
     res.json({ success: true, slug: blog.slug });
 }));
+
 
 router.put('/blogs/:slug/status', catchAsync(async (req, res) => {
     const { status } = req.body;
