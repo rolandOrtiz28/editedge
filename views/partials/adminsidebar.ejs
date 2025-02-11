@@ -1,6 +1,25 @@
+<style>
+    .content-card {
+    background-color: #222; /* Match dark theme */
+    padding: 15px;
+    border-radius: 8px;
+}
+
+/* Ensure tables do not overflow */
+.table-responsive {
+    overflow-x: auto;
+}
+
+/* Prevent cards from floating incorrectly */
+.card {
+    position: relative;
+    z-index: 1;
+}
+
+</style>
 <div class="d-flex">
     <!-- Sidebar -->
-    <div class="sidebar">
+    <div class="sidebar overflow-auto">
         <nav class="nav flex-column">
             <a class="nav-link" href="/admin/dashboard">
                 <i class="fas fa-home"></i>
@@ -21,6 +40,10 @@
             <a class="nav-link" href="/admin/subscribers">
                 <i class="fas fa-envelope"></i>
                 <div class="small">Subscribers</div>
+            </a>
+            <a class="nav-link" href="/admin/quotation/requests">
+                <i class="fas fa-note-sticky"></i>
+                <div class="small">Quotations</div>
             </a>
         </nav>
     </div>

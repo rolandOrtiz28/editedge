@@ -5,6 +5,7 @@ const Blog = require('../models/Blog');
 const catchAsync = require('../utils/CatchAsync');
 const Discount = require('../models/Discount');
 const Subscriber = require('../models/Subscriber');
+const Quotation = require('../models/Quotation');
 const User = require('../models/user');
 const passport = require('passport')
 const { isLoggedIn } = require('../middleware')
@@ -103,6 +104,13 @@ router.delete('/delete-subscriber', catchAsync(async (req, res) => {
     await Subscriber.findByIdAndDelete(id);
     res.redirect('/admin/subscribers');
 }));
+
+router.delete('/delete-request', catchAsync(async (req, res) => {
+    const { id } = req.body;
+    await Quotation.findByIdAndDelete(id);
+    res.redirect('/admin/quotation/requests');
+}));
+
 
 // AUTHENTICATION
 router.get('/register', (req, res) => {

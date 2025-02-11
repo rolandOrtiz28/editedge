@@ -10,23 +10,43 @@ body {
     color: var(--text-primary);
 }
 
+/* Ensure main content takes up full space and prevents floating issues */
+.main-content {
+    margin-left: 80px;
+    padding: 20px;
+    min-height: 100vh; /* Ensure it expands fully */
+    overflow-x: hidden;
+}
+
+/* Prevent cards from overlapping */
+.card {
+    background-color: var(--card-bg);
+    border: none;
+    color: var(--text-primary);
+    margin-bottom: 20px; /* Add spacing between cards */
+    min-height: 150px; /* Prevent collapsed cards */
+}
+
+/* Make sidebar scrollable if content overflows */
 .sidebar {
     background-color: var(--card-bg);
     height: 100vh;
     position: fixed;
     width: 80px;
+    overflow-y: auto; /* Enables scrolling */
+    overflow-x: hidden;
 }
 
-.main-content {
-    margin-left: 80px;
-    padding: 20px;
+/* Add custom scrollbar for sidebar */
+.sidebar::-webkit-scrollbar {
+    width: 6px;
 }
 
-.card {
-    background-color: var(--card-bg);
-    border: none;
-    color: var(--text-primary);
+.sidebar::-webkit-scrollbar-thumb {
+    background: #ff007f;
+    border-radius: 5px;
 }
+
 
 .metric-card {
     padding: 20px;
@@ -55,4 +75,28 @@ body {
 
 .chart-container {
     height: 300px;
+}
+
+/* Ensure tables do not overflow */
+.table-responsive {
+    overflow-x: auto;
+}
+
+/* Make action buttons align in a row */
+.table td .d-flex {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Reduce button spacing */
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 0.875rem;
+}
+
+/* Ensure form does not break row */
+.table td form {
+    margin: 0;
+    display: inline;
 }

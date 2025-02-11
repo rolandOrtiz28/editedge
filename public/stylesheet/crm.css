@@ -1,6 +1,8 @@
 :root {
     --dark-bg: #1a1c23;
     --card-bg: #22242f;
+    --sidebar-bg: #181920; /* Match Subscriber Sidebar */
+    --table-bg: #1e1f29;
     --text-primary: #ffffff;
     --text-secondary: #9ca3af;
 }
@@ -10,48 +12,99 @@ body {
     color: var(--text-primary);
 }
 
+/* 🟢 FIXED: Sidebar Background and Behavior */
 .sidebar {
-    background-color: var(--card-bg);
+    background-color: var(--sidebar-bg) !important; /* Ensure uniform background */
     height: 100vh;
     position: fixed;
     width: 80px;
+    overflow-y: auto; /* Enables scrolling */
+    overflow-x: hidden;
+    z-index: 1000;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); /* Adds subtle shadow for depth */
 }
 
-.main-content {
-    margin-left: 80px;
-    padding: 20px;
-}
-
-.card {
-    background-color: var(--card-bg);
-    border: none;
-    color: var(--text-primary);
-}
-
+/* 🟢 FIXED: Sidebar Nav Link Colors */
 .nav-link {
-    color: var(--text-secondary);
+    color: var(--text-secondary) !important;
     padding: 15px 0;
     text-align: center;
+    font-size: 0.9rem;
 }
 
 .nav-link:hover {
+    color: var(--text-primary) !important;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* 🟢 FIXED: Sidebar Icons */
+.sidebar .nav-link i {
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* 🟢 FIXED: Sidebar Scrollbar */
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: #ff007f;
+    border-radius: 5px;
+}
+
+/* 🟢 FIXED: Ensure Main Content Doesn't Overlap Sidebar */
+.main-content {
+    margin-left: 80px;
+    padding: 20px;
+    min-height: 100vh;
+    background-color: var(--dark-bg);
+}
+
+/* 🟢 FIXED: Match Table & Card Background */
+.card {
+    background-color: var(--card-bg) !important;
+    border: none;
     color: var(--text-primary);
 }
 
-.customer-card {
-    margin-bottom: 20px;
+.table {
+    background-color: var(--table-bg) !important;
+    color: var(--text-primary);
 }
 
-.btn-primary {
-    background-color: #93e6cf;
-    border: none;
-    color: #000;
+.table thead {
+    background-color: var(--card-bg) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.btn-primary:hover {
-    background-color: #7bc9b4;
+/* 🟢 FIXED: Ensure Buttons Align */
+.table td .d-flex {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.chart-container {
-    height: 300px;
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 0.875rem;
+}
+
+/* 🟢 FIXED: Mobile Responsive Sidebar */
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0;
+        padding: 15px;
+    }
+
+    .sidebar {
+        width: 100px;
+    }
+
+    .table td .d-flex {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
