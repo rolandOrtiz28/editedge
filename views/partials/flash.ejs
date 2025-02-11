@@ -1,14 +1,14 @@
 <div class="d-flex justify-content-center position-absolute w-100" style="top: 7rem; z-index: 1203;">
     <% if (success && success.length) { %>
-        <div class="alert alert-dismissible fade show w-50 text-center text-success" role="alert" style="background: #141414; box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.37);">
+        <div class="alert alert-dismissible fade show w-50 text-center text-success " role="alert" style="background: #141414; box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.37);">
             <%= success %>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <button type="button" class="btn-close text-white mb-4" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     <% } %>
     <% if (error && error.length) { %>
         <div class="alert alert-dismissible fade show w-50 text-center text-danger" role="alert" style="background: #141414; box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.37);">
             <%= error %>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <button type="button" class="btn-close text-white mb-4" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     <% } %>
 </div>

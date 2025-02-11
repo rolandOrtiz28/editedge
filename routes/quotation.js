@@ -67,36 +67,7 @@ router.post('/quotation/submit', catchAsync(async (req, res) => {
     }
 }));
 
-// Display all quotation requests
-router.get('/quotation/requests', async (req, res) => {
-    try {
-        const quotations = await Quotation.find({});
-        res.render('quotation/requests', { quotations, currentRoute: '/quotation/requests' });
-    } catch (err) {
-        console.error(err);
-        req.flash('error', 'Failed to fetch quotation requests.');
-        res.redirect('/');
-    }
-});
 
-// Display a specific quotation request by ID
-router.get('/quotation/requests/:id', async (req, res) => {
-    try {
-        const { id } = req.params;
-        const quotation = await Quotation.findById(id);
-
-        if (!quotation) {
-            req.flash('error', 'Quotation not found.');
-            return res.redirect('/quotation/requests');
-        }
-
-        res.render('quotation/request', { quotation, currentRoute: '/quotation/requests' });
-    } catch (err) {
-        console.error(err);
-        req.flash('error', 'Failed to fetch the quotation.');
-        res.redirect('/quotation/requests');
-    }
-});
 
 
 

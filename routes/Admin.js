@@ -4,6 +4,7 @@ const router = express.Router();
 const Blog = require('../models/Blog'); 
 const catchAsync = require('../utils/CatchAsync');
 const Discount = require('../models/Discount');
+const Subscriber = require('../models/Subscriber');
 const User = require('../models/user');
 const passport = require('passport')
 const { isLoggedIn } = require('../middleware')
@@ -11,6 +12,7 @@ const { isLoggedIn } = require('../middleware')
 router.get('/dashboard',  isLoggedIn,(req, res) => {
     res.render('admin/dashboard', { currentRoute: '/dashboard' });
 });
+
 
 router.get('/cms',  isLoggedIn,catchAsync(async (req, res) => {
     const blogs = await Blog.find({}, 'title slug status views'); 
@@ -24,6 +26,43 @@ router.get('/cms',  isLoggedIn,catchAsync(async (req, res) => {
         currentRoute: 'cms'
     });
 }));
+
+router.get('/subscribers', catchAsync(async (req, res) => {
+    const subscribers = await Subscriber.find({});
+    res.render('admin/subscriber', { subscribers, currentRoute: '/subscribers' });
+}));
+
+// Display all quotation requests
+router.get('/quotation/requests', async (req, res) => {
+    try {
+        const quotations = await Quotation.find({});
+        res.render('quotation/requests', { quotations, currentRoute: '/quotation/requests' });
+    } catch (err) {
+        console.error(err);
+        req.flash('error', 'Failed to fetch quotation requests.');
+        res.redirect('/');
+    }
+});
+
+// Display a specific quotation request by ID
+router.get('/quotation/requests/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const quotation = await Quotation.findById(id);
+
+        if (!quotation) {
+            req.flash('error', 'Quotation not found.');
+            return res.redirect('/quotation/requests');
+        }
+
+        res.render('quotation/request', { quotation, currentRoute: '/quotation/requests' });
+    } catch (err) {
+        console.error(err);
+        req.flash('error', 'Failed to fetch the quotation.');
+        res.redirect('/quotation/requests');
+    }
+});
+
 
 router.get('/crm',  isLoggedIn,(req, res) => {
     res.render('admin/crm', { currentRoute: '/crm' }); 
@@ -59,7 +98,11 @@ router.post('/delete-discount',  catchAsync(async (req, res) => {
 }));
 
 
-
+router.delete('/delete-subscriber', catchAsync(async (req, res) => {
+    const { id } = req.body;
+    await Subscriber.findByIdAndDelete(id);
+    res.redirect('/admin/subscribers');
+}));
 
 // AUTHENTICATION
 router.get('/register', (req, res) => {
