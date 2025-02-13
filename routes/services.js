@@ -24,8 +24,8 @@ router.get('/Web-Development', (req, res) => {
 
 })
 
-router.get('/Degital-Marketing', (req, res) => {
-    res.render('services/degitalmarketing',{ currentRoute: '/Degital-Marketing' });
+router.get('/Digital-Marketing', (req, res) => {
+    res.render('services/degitalmarketing',{ currentRoute: '/Digital-Marketing' });
 
 })
 
