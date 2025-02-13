@@ -26,6 +26,7 @@ const blogRoute = require('./routes/blogs');
 const pricingRoute = require('./routes/Pricing');
 const adminRoute = require('./routes/Admin');
 const policiesRoute = require('./routes/Policies');
+const chatbotRoute = require('./routes/chatbot');
 
 
 // SECURITY
@@ -178,7 +179,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '/public')));
 app.use('/stylesheet', express.static(path.join(__dirname, 'stylesheet')));
 app.use(flash());
-
+app.use((req, res, next) => {
+  if (req.url.endsWith('.woff')) res.setHeader('Content-Type', 'font/woff');
+  if (req.url.endsWith('.woff2')) res.setHeader('Content-Type', 'font/woff2');
+  next();
+});
 passport.use(new LocalStrategy(User.authenticate()));
 
 passport.serializeUser(User.serializeUser());
@@ -289,6 +294,7 @@ app.use('/', serviceRoute)
 app.use('/', quoteRoute)
 app.use('/', blogRoute);
 app.use('/', pricingRoute);
+app.use('/', chatbotRoute);
 app.use('/admin', adminRoute);
 app.use('/policy', policiesRoute);
 

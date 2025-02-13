@@ -1,0 +1,77 @@
+/* chatbot.css - Dark Modern Theme */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #fff;
+    text-align: center;
+}
+
+h1 {
+    font-size: 24px;
+    color: #FF007F; /* Your brand accent color */
+    margin-top: 20px;
+}
+
+#chat-container {
+    width: 400px;
+    margin: auto;
+    background: #1E1E1E;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 0 15px rgba(255, 0, 127, 0.3);
+}
+
+#chat-box {
+    height: 250px;
+    overflow-y: auto;
+    background: #181818;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: left;
+}
+
+#chat-box p {
+    padding: 8px;
+    border-radius: 5px;
+}
+
+#chat-box p strong {
+    color: #FF007F;
+}
+
+#user-input {
+    width: 80%;
+    padding: 10px;
+    border: 2px solid #FF007F;
+    border-radius: 5px;
+    background: #121212;
+    color: #fff;
+}
+
+button {
+    background-color: #FF007F;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #ff2a99;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1E1E1E;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #FF007F;
+    border-radius: 3px;
+}

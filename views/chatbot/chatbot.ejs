@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot</title>
+    <link rel="stylesheet" href="/css/chatbot.css">
+    <style>
+        /* chatbot.css - Dark Modern Theme */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #fff;
+    text-align: center;
+}
+
+h1 {
+    font-size: 24px;
+    color: #FF007F; /* Your brand accent color */
+    margin-top: 20px;
+}
+
+#chat-container {
+    width: 400px;
+    margin: auto;
+    background: #1E1E1E;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 0 15px rgba(255, 0, 127, 0.3);
+}
+
+#chat-box {
+    height: 250px;
+    overflow-y: auto;
+    background: #181818;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: left;
+}
+
+#chat-box p {
+    padding: 8px;
+    border-radius: 5px;
+}
+
+#chat-box p strong {
+    color: #FF007F;
+}
+
+#user-input {
+    width: 80%;
+    padding: 10px;
+    border: 2px solid #FF007F;
+    border-radius: 5px;
+    background: #121212;
+    color: #fff;
+}
+
+button {
+    background-color: #FF007F;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #ff2a99;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1E1E1E;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #FF007F;
+    border-radius: 3px;
+}
+
+    </style>
+</head>
+<body>
+    <h1>AI Chatbot</h1>
+    <div id="chat-container">
+        <div id="chat-box"></div>
+        <input type="text" id="user-input" placeholder="Type your message..." />
+        <button onclick="sendMessage()">Send</button>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.12/marked.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.12/marked.min.js"></script>
+    <script>
+        async function sendMessage() {
+            const userInput = document.getElementById("user-input").value;
+            const chatBox = document.getElementById("chat-box");
+    
+            if (!userInput) return;
+    
+            chatBox.innerHTML += `<p><strong>You:</strong> ${userInput}</p>`;
+            document.getElementById("user-input").value = "";
+    
+            try {
+                const response = await fetch("/chatbot", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ message: userInput })
+                });
+    
+                const data = await response.json();
+    
+                // ✅ Ensure Markdown is converted to HTML correctly
+                if (typeof marked !== "undefined") {
+    chatBox.innerHTML += `<p><strong>Bot:</strong> ${marked(data.reply)}</p>`;
+} else {
+    chatBox.innerHTML += `<p><strong>Bot:</strong> ${data.reply}</p>`;
+}
+
+    
+                // Auto-scroll to the bottom
+                chatBox.scrollTop = chatBox.scrollHeight;
+    
+            } catch (error) {
+                chatBox.innerHTML += `<p><strong>Bot:</strong> There was an issue processing your request. Please try again later.</p>`;
+                console.error("Chatbot Error:", error);
+            }
+        }
+    </script>
+    
+    
+</body>
+</html>
