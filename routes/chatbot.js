@@ -108,8 +108,6 @@ router.post("/chatbot", async (req, res) => {
     }
 });
   
-router.get("/chatbot", (req, res) => {
-    res.render("chatbot/chatbot", { currentRoute: "/chatbot" });
-});
+
   
 module.exports = router;
