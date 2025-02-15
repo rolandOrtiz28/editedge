@@ -12,7 +12,6 @@ body {
 
 h1, h2, h3, h4,h5{
   font-family: 'Raleway', sans-serif;
-
     font-weight: bold;
     font-style: normal;
 }
@@ -30,13 +29,6 @@ html, body {
     
 }
 
-/* body {
--ms-overflow-style: none; 
-} */
-
-/* body::-webkit-scrollbar {
-display: none; 
-} */
 
 #particles-js {
     position: absolute;

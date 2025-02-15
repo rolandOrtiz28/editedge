@@ -524,7 +524,7 @@ width: 100%;
   height: 265px;
   position: absolute;
   top: 100%; 
-  left: -25%;
+  left: 2%;
   transform: translateY(-50%);
 }
 .svg-connector-ce .connector-path-ce {
