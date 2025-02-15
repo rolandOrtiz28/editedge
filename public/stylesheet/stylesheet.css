@@ -844,7 +844,7 @@ padding-right:0;
   transition: opacity 0.3s ease-in-out;
 }
 
-.services-container .glass-content img {
+.services-container .glass-content video {
   width: 150px;
   object-fit: contain;
   border-radius: 8px;
