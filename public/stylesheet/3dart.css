@@ -71,7 +71,7 @@
   transition: 0.3s;
 }
 
-.service-card img {
+.service-card video {
   width: 50%;
 }
 
@@ -106,7 +106,7 @@
   box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.2);
 }
 
-.process-step img {
+.process-step video {
   max-width: 100px;
   margin-bottom: 1rem;
 }
@@ -117,20 +117,33 @@
 }
 
 /* Video Carousel Section */
-.video-carousel-section {
-  padding: 2rem 1rem;
+.video-gallery-section {
+  padding: 3rem 1rem;
   background-color: #101010;
+  text-align: center;
 }
 
-.carousel-video {
-  width: 80%;
-  max-width: 800px;
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Responsive grid */
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.gallery-video {
+  width: 100%;
   height: auto;
   object-fit: cover;
-  margin: 0 auto;
   border-radius: 10px;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
 }
+
+.gallery-video:hover {
+  transform: scale(1.05);
+}
+
 
 /* Navigation Links */
 .video-links {

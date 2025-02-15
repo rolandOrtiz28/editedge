@@ -11,7 +11,7 @@ body {
 }
 
 h1, h2, h3, h4,h5{
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Geomatic';
     font-weight: bold;
     font-style: normal;
 }
@@ -71,7 +71,7 @@ footer {
   transition: opacity 0.5s ease, visibility 0.5s ease; 
 }
 
-#loader img.loader-logo {
+#loader video {
   width: 150px; 
   height: auto;
   animation: pulse 1.5s infinite; 

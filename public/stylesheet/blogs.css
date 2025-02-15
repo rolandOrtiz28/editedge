@@ -10,21 +10,23 @@
   max-width: 350px; /* Prevent it from being too wide */
 }
 
-.header .title{
+.header .title {
   font-size: 8rem; 
   font-weight: 700;
   line-height: 1.2;
   color: white;
   position: relative; 
+  display: inline-block; /* Ensures correct span positioning */
 }
+
 
 .title .our{
   font-family: 'Geomatic';
     font-weight: bold;
     font-style: normal;
   position: absolute;
-  top: -9%;
-  left: 33%;
+  top: -13%;
+  left: 2%;
   font-size: 3rem; 
   font-weight: 500; 
   color: white
@@ -162,9 +164,9 @@
     width: 100% !important;
   }
 
-  .title .our {
-    top: -22%;
-    left: 22%;
+  .title span{
+    top: 5%;
+    left: 50%;
     font-size: 1.8rem;
   }
 
