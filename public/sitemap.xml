@@ -10,11 +10,7 @@
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
-    <url>
-        <loc>https://editedgemultimedia.com/services</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
+   
     <url>
         <loc>https://editedgemultimedia.com/blogs</loc>
         <changefreq>weekly</changefreq>
@@ -22,11 +18,6 @@
     </url>
     <url>
         <loc>https://editedgemultimedia.com/pricing</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://editedgemultimedia.com/contact</loc>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
@@ -55,4 +46,9 @@
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
+    <url>
+    <loc>https://editedgemultimedia.com/quotation</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+</url>
 </urlset>
