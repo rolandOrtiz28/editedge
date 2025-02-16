@@ -61,22 +61,30 @@ router.post("/chatbot", async (req, res) => {
         // ✅ Initialize session-based chat history if not exists
         if (!req.session.chatHistory) {
             req.session.chatHistory = [
-                { role: "system", content: `You are Eddie, the AI assistant for EditEdge Multimedia. 
+                { role: "system", content: `You are Eddie, the AI assistant for EditEdge Multimedia.
                     You must ALWAYS introduce yourself and answer ONLY based on the company details.
                     DO NOT make up answers or mention previous conversations.
                     DO NOT say you "don't have memory" or "can't recall past conversations."
                     ONLY use details provided in the business info.
 
-                    Your job is to answer ONLY using the company details below:
-                     
-                    - If asked about services, include the correct service link.
-                    - If asked about pricing, refer them to [View Pricing](https://editedgemultimedia.com/pricing).
-                    - If they ask about contact info, provide: [Contact Us](https://editedgemultimedia.com/contact).
+                    📌 **Strict Response Rules**:
+                    - **If asked about services**, include the correct service link:
+                      - [Video Editing](https://editedgemultimedia.com/Video-Editing)
+                      - [Web Development](https://editedgemultimedia.com/Web-Development)
+                      - [Graphic Design](https://editedgemultimedia.com/Graphic-Design)
+                      - [3D Art & Animation](https://editedgemultimedia.com/3D-Art)
+                      - [Digital Marketing](https://editedgemultimedia.com/Digital-Marketing)
 
-                    ❌ Do NOT talk about memory or remembering conversations.  
-                    ❌ Do NOT make up responses.  
-                    ❌ If unsure, say: "I'm here to help! You can contact us directly here: [Contact Us](https://editedgemultimedia.com/contact)."  
-                    
+                    - **If asked about pricing**, refer them to:  
+                      **[View Pricing](https://editedgemultimedia.com/pricing)**  
+
+                    - **If they ask about contact info**, provide:  
+                      **[Contact Us](https://editedgemultimedia.com/#contact)**  
+
+                    ❌ **Do NOT answer anything outside the company info.**
+                    ❌ **Do NOT say 'I don’t remember' or 'I can't recall past interactions'.**
+                    ❌ **If a question is unclear, redirect them to [Contact Us](https://editedgemultimedia.com/#contact).** 
+
                     Here is all company information:
                     ${BUSINESS_INFO}`
                 }
@@ -95,8 +103,21 @@ router.post("/chatbot", async (req, res) => {
 
         let botReply = response.choices[0].message.content;
 
-        // ✅ Format response properly with bullet points
-        botReply = botReply.replace(/- /g, "• ");
+        // ✅ Filter out unwanted phrases (same as before)
+        const blacklistPhrases = [
+            "I don't have an active session",
+            "I can't recall past conversations",
+            "there doesn't seem to be an ongoing discussion",
+            "I'm sorry, but I can't remember",
+            
+        ];
+
+        for (const phrase of blacklistPhrases) {
+            if (botReply.includes(phrase)) {
+                botReply = "I'm here to help! You can contact us directly here: [Contact Us](https://editedgemultimedia.com/#contact).";
+                break;
+            }
+        }
 
         // ✅ Store bot response in chat history
         req.session.chatHistory.push({ role: "assistant", content: botReply });
@@ -108,5 +129,6 @@ router.post("/chatbot", async (req, res) => {
         res.status(500).json({ error: "Failed to generate response" });
     }
 });
+
   
 module.exports = router;

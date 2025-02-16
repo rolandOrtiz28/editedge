@@ -8,6 +8,8 @@ section {
   scroll-margin-top: 60px !important; /* Adjust this value to match your navbar height */
 }
 
+
+
 #main h2 {
   position: relative;
   font-size: 2rem; /* Adjust font size as needed */
@@ -204,10 +206,10 @@ button {
 @media (max-width: 1629px) {
 
   .text-container,.line-2 ,.line-2  {
-      font-size: 3rem;
+      font-size: 4rem;
   }
   #main h2{
-font-size: 2rem;
+font-size: 1.5rem;
 width: 100%;
 }
 

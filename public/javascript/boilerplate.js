@@ -63,30 +63,48 @@ document.addEventListener("DOMContentLoaded", function () {
     async function sendMessage() {
         const userMessage = chatbotInput.value.trim();
         if (!userMessage) return;
-
+    
         chatbotMessages.innerHTML += `<p class="user-message"><strong>You:</strong> ${userMessage}</p>`;
         chatbotInput.value = "";
-
+    
         showTypingIndicator();
-
+    
         try {
             const response = await fetch("/chatbot", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ message: userMessage })
             });
-
+    
             const data = await response.json();
             hideTypingIndicator();
-
+    
+            let botReply = data.reply;
+    
+            // ✅ Remove unnecessary responses
+            const blacklistPhrases = [
+                "I don't have an active session",
+                "I can't recall past conversations",
+                "there doesn't seem to be an ongoing discussion",
+                "I'm sorry, but I can't remember",
+                "Could you provide more details?"
+            ];
+    
+            for (const phrase of blacklistPhrases) {
+                if (botReply.includes(phrase)) {
+                    botReply = "I'm here to help! You can contact us directly here: [Contact Us](https://editedgemultimedia.com/contact).";
+                    break;
+                }
+            }
+    
             chatbotMessages.innerHTML += `
                 <div class="chat-message">
                     <img src="/images/chatbot-icon.png" alt="Eddie AI" class="bot-avatar">
-                    <p class="bot-message"><strong>Eddie:</strong> ${formatMessage(data.reply)}</p>
+                    <p class="bot-message"><strong>Eddie:</strong> ${formatMessage(botReply)}</p>
                 </div>`;
-
+    
             chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-
+    
         } catch (error) {
             hideTypingIndicator();
             console.error("Chatbot Error:", error);
