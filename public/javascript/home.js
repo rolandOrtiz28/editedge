@@ -1,8 +1,6 @@
 gsap.registerPlugin(ScrollTrigger);
 
-/**
- * Utility Function: Animate SVG Paths
- */
+
 function animatePath(selector, delay = 0) {
   const paths = document.querySelectorAll(selector);
 
@@ -29,23 +27,21 @@ function animatePath(selector, delay = 0) {
   });
 }
 
-/**
- * Initialize GSAP Animations with Optimized Performance
- */
+
 function initializeAnimations() {
-  gsap.killTweensOf("*"); // Stop all existing animations
-  ScrollTrigger.getAll().forEach((trigger) => trigger.kill()); // Kill all existing ScrollTriggers
+  gsap.killTweensOf("*"); 
+  ScrollTrigger.getAll().forEach((trigger) => trigger.kill()); 
 
-  if (window.innerWidth < 768) return; // Skip animations on mobile
+  if (window.innerWidth < 768) return; 
 
-  // ✅ Optimize path animations
+
   animatePath(".connector-path-ce");
   animatePath(".connector-path-td", 1);
   animatePath(".connector-path-ae", 2);
 
-  // ✅ Optimize infographic animation
+
   gsap.utils.toArray(".infographic-item").forEach((item) => {
-    if (item.getBoundingClientRect().top > window.innerHeight) return; // Skip if not in view
+    if (item.getBoundingClientRect().top > window.innerHeight) return;
 
     gsap.from(item, {
       y: 50,
@@ -142,15 +138,15 @@ function initializeAnimations() {
 
   // ✅ Optimize services-container animation
   gsap.from(".services-container .glass", {
-    y: 50,
+    y: 20, /* ✅ Reduced movement to prevent flicker */
     opacity: 0,
-    stagger: 0.3,
-    duration: 1,
-    ease: "power2.out",
+    stagger: 0.2, /* ✅ Faster stagger for smoother reveal */
+    duration: 0.8, /* ✅ Slightly faster animation */
+    ease: "power3.out",
     scrollTrigger: {
-      trigger: ".glass",
-      start: "top 80%",
-      end: "top 50%",
+      trigger: ".services-container",
+      start: "top 85%",
+      end: "top 60%",
       scrub: true,
       once: true,
     },

@@ -1,6 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
-
-
 body {
     
     background: #101010 !important;
@@ -25,18 +22,18 @@ html, body {
   width: 100% !important;
     height: 100%;
     overflow-x: hidden;
-    /* scrollbar-width: none;  */
+  
     
 }
-
-
-#particles-js {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: #ff007f;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #101010;
 }
 
 header {
@@ -47,8 +44,8 @@ header {
     z-index: 1050; /* Ensure it's on top of other content */
 }
 
-main {
-    margin-top: 70px; /* Add margin to offset the fixed navbar */
+body {
+  padding-top: 70px;
 }
 
 footer {
