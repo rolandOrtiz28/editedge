@@ -8,7 +8,10 @@ const Subscriber = require('../models/Subscriber');
 const Quotation = require('../models/Quotation');
 const User = require('../models/user');
 const passport = require('passport')
+const Client = require('../models/Client');
+const uploadContract = require('../cloudinary/contractStorage');
 const { isLoggedIn } = require('../middleware')
+
 
 router.get('/dashboard',  isLoggedIn,(req, res) => {
     res.render('admin/dashboard', { currentRoute: '/dashboard' });
@@ -259,5 +262,90 @@ router.get('/logout', (req, res, next) => {
         res.redirect('/admin/login');
     });
 })
+
+// ✅ Define the plans object inside Admin.js (Backend)
+const plans = {
+    "Video Production": ["Basic Package", "Standard Package", "Premium Package", "Short-form Monthly Subscription", "Long-form Monthly Subscription", "Ultimate Video Editing Subscription"],
+    "Graphic Design": ["Basic Plan", "Standard Plan", "Premium Plan", "Monthly Subscription", "Elite Branding Subscription"],
+    "3D Visualization": ["Simple Package", "Detailed Package", "High-End Package", "3D Monthly Subscription", "Advanced 3D Monthly Subscription"],
+    "Web Development": ["Starter Plan", "Growth Plan", "Pro Plan"],
+    "Digital Marketing": ["SEO Optimization", "Social Media Marketing", "Email Marketing", "Market Research", "Branding"]
+};
+
+
+
+// Clients
+router.post('/clients/new', isLoggedIn, uploadContract.single('contractAttachment'), catchAsync(async (req, res) => {
+    const { name, email, phone, company, status, deadline, fileFormat, brandColors, typography, moodboard, designStyle, revisionsAllowed, reviewDate, paymentPlan, paymentMethod } = req.body;
+
+    const projectDetails = [];
+    for (const category of Object.keys(plans)) {
+        if (req.body[`plan-${category}`]) {
+            projectDetails.push({
+                serviceCategory: category,
+                plan: req.body[`plan-${category}`],
+                bundle: req.body[`bundle-${category}`] === "on",
+                fileFormat,
+                deadline,
+                brandGuidelines: { brandColors, typography, moodboard, designStyle },
+                revisionsAllowed,
+                reviewDate
+            });
+        }
+    }
+
+    const client = new Client({
+        name, email, phone, company, status,
+        projectDetails,
+        billing: { paymentPlan, paymentMethod },
+        contractAttachment: req.file ? req.file.path : null // ✅ Store Cloudinary URL
+    });
+
+    await client.save();
+    req.flash('success', 'Client added successfully!');
+    res.redirect(`/admin/clients/${client._id}`);
+
+}));
+
+router.get('/clients-form', isLoggedIn, catchAsync(async (req, res) => {
+    
+    res.render('admin/clients/new', { currentRoute: '/clients' });
+}));
+
+router.get('/clients', isLoggedIn, catchAsync(async (req, res) => {
+    const clients = await Client.find({});
+    res.render('admin/clients', { clients, currentRoute: '/clients' });
+}));
+
+// 🟢 3. View Client Profile
+router.get('/clients/:id', isLoggedIn, catchAsync(async (req, res) => {
+    const client = await Client.findById(req.params.id);
+    if (!client) {
+        req.flash('error', 'Client not found.');
+        return res.redirect('/admin/clients');
+    }
+    res.render('admin/clients/show', { client, currentRoute: '/clients' });
+}));
+
+// 🟢 4. Update Client
+// router.put('/clients/:id', isLoggedIn, upload.single('contractAttachment'), catchAsync(async (req, res) => {
+//     const { name, email, phone, company, status, projectDetails, paymentPlan, paymentMethod } = req.body;
+//     const updatedClient = await Client.findByIdAndUpdate(req.params.id, {
+//         name, email, phone, company, status,
+//         projectDetails: JSON.parse(projectDetails),
+//         billing: { paymentPlan, paymentMethod },
+//         contractAttachment: req.file ? req.file.path : req.body.existingContract // Keep old file if no new one is uploaded
+//     }, { new: true });
+
+//     req.flash('success', 'Client updated successfully!');
+//     res.redirect(`/admin/clients/${updatedClient._id}`);
+// }));
+
+// 🟢 5. Delete Client
+// router.delete('/clients/:id', isLoggedIn, catchAsync(async (req, res) => {
+//     await Client.findByIdAndDelete(req.params.id);
+//     req.flash('success', 'Client deleted successfully!');
+//     res.redirect('/admin/clients');
+// }));
 
 module.exports = router;

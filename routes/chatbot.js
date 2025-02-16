@@ -98,7 +98,7 @@ router.post("/chatbot", async (req, res) => {
         const response = await openai.chat.completions.create({
             model: "gpt-4-turbo",
             messages: req.session.chatHistory,
-            max_tokens: 500,  
+            max_tokens: 200,  
         });
 
         let botReply = response.choices[0].message.content;

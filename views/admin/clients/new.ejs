@@ -1,0 +1,459 @@
+<% layout('/layouts/boilerplate') -%>
+<style>
+   /* General Styles */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+body {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  color: #b9b9b9;
+  background-color: #e3e3e3;
+}
+h4 {
+  color: #bf005f;
+}
+
+/* Input Fields & Styling */
+input,
+input[type="radio"] + label,
+select option,
+select {
+  width: 100%;
+  padding: 1em;
+  background-color: #f9f9f9;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+  transition: all 0.35s ease-in-out;
+}
+input:focus {
+  outline: 0;
+  border-color: #bf005f;
+}
+input:focus + .input-icon i {
+  color: #bf005f;
+}
+input:focus + .input-icon:after {
+  border-right-color: #bf005f;
+}
+
+/* Radio Buttons */
+input[type="radio"] {
+  display: none;
+}
+input[type="radio"] + label {
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+  border-radius: 0;
+  padding: 1em;
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+input[type="radio"]:checked + label {
+  background-color: #ff007f;
+  color: #fff;
+  border-color: #bf005f;
+}
+
+/* ✅ Fix Bundle Checkbox Styling */
+.bundle-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 5px;
+}
+
+.bundle-container input[type="checkbox"] {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ff007f;
+  border-radius: 3px;
+  background-color: white;
+  position: relative;
+  cursor: pointer;
+}
+
+.bundle-container input[type="checkbox"]:checked {
+  background-color: #ff007f;
+}
+
+.bundle-container input[type="checkbox"]:checked::after {
+  content: "✔";
+  font-size: 12px;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bundle-container label {
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  margin-left: 5px;
+  user-select: none;
+}
+
+/* ✅ Fix the Service Selection Checkboxes */
+#serviceContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 8px;
+}
+
+#serviceContainer .bundle-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: auto;
+  flex: 1 1 200px;
+}
+
+/* ✅ Custom Checkboxes (NO DUPLICATES) */
+.bundle-container input[type="checkbox"] {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+#serviceContainer label {
+  font-size: 14px;
+  color: #b9b9b9;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+/* ✅ Ensure No Default Checkbox Duplication */
+input[type="checkbox"] {
+  display: none;
+}
+
+/* ✅ Fix the Display of Selected Plans */
+#serviceDetails {
+  margin-top: 15px;
+  padding: 10px;
+  border-left: 3px solid #ff007f;
+  background: #f9f9f9;
+  border-radius: 5px;
+}
+
+/* Select Dropdown */
+select {
+  height: 3.4em;
+  line-height: 2;
+  cursor: pointer;
+}
+select:focus {
+  outline: 0;
+}
+
+/* Input Groups */
+.input-group {
+  margin-bottom: 1em;
+  position: relative;
+}
+.input-group-icon {
+  position: relative;
+}
+.input-group-icon input {
+  padding-left: 4.4em;
+}
+.input-group-icon .input-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3.4em;
+  height: 3.4em;
+  line-height: 3.4em;
+  text-align: center;
+  background: #f9f9f9;
+  border-right: 1px solid #e5e5e5;
+}
+.input-group-icon .input-icon i {
+  transition: 0.35s ease-in-out;
+  color: #bd8200;
+}
+
+/* Form Layout */
+.container2 {
+  max-width: 50em;
+  padding: 1em 3em 2em 3em;
+  margin: 2em auto;
+  background-color: #fff;
+  border-radius: 4.2px;
+  box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.2);
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1em;
+}
+.col-half {
+  flex: 1;
+  padding-right: 10px;
+}
+.col-half:last-of-type {
+  padding-right: 0;
+}
+
+/* Button */
+button {
+  background-color: #ff007f;
+  color: #fff;
+  padding: 1em 2em;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 100%;
+  text-align: center;
+}
+button:hover {
+  background-color: #bf005f;
+}
+
+/* Responsive */
+@media only screen and (max-width: 540px) {
+  .col-half {
+    width: 100%;
+    padding-right: 0;
+  }
+}
+
+
+</style>
+
+<div class="container2">
+  <form action="/admin/clients/new" method="POST" enctype="multipart/form-data">
+    
+    <!-- CLIENT DETAILS -->
+    <div class="row">
+      <h4>Client Details</h4>
+      <div class="input-group input-group-icon">
+        <input type="text" name="name" placeholder="Full Name" required>
+        <div class="input-icon">
+          <i class="fa fa-user"></i>
+        </div>
+      </div>
+      <div class="input-group input-group-icon">
+        <input type="email" name="email" placeholder="Email Address" required>
+        <div class="input-icon">
+          <i class="fa fa-envelope"></i>
+        </div>
+      </div>
+      <div class="input-group input-group-icon">
+        <input type="text" name="phone" placeholder="Phone Number" required>
+        <div class="input-icon">
+          <i class="fa fa-phone"></i>
+        </div>
+      </div>
+      <div class="input-group input-group-icon">
+        <input type="text" name="company" placeholder="Company (Optional)">
+        <div class="input-icon">
+          <i class="fa fa-building"></i>
+        </div>
+      </div>
+      <div class="input-group">
+        <h4>Client Status</h4>
+        <select name="status">
+          <option>Interested</option>
+          <option>Onboarding</option>
+          <option>Active</option>
+          <option>Closed</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- PROJECT DETAILS -->
+    <h4>Project Details</h4>
+
+<!-- Bundle Selection -->
+<div class="input-group bundle-container">
+    <input type="checkbox" id="isBundle" name="isBundle">
+    <label for="isBundle"> Is this a Bundle?</label>
+</div>
+
+<!-- Service Selection -->
+<div class="input-group">
+    <h4>Select Services</h4>
+    <div id="serviceContainer"></div>
+</div>
+
+<!-- DYNAMIC PLAN SELECTION -->
+<div id="serviceDetails"></div>
+
+      <!-- Dynamic Service Selection -->
+      <div id="serviceDetails"></div>
+
+      <div class="input-group input-group-icon">
+        <input type="date" name="deadline" required>
+        <div class="input-icon">
+          <i class="fa fa-calendar"></i>
+        </div>
+      </div>
+
+      <div class="input-group input-group-icon">
+        <input type="text" name="fileFormat" placeholder="File Format Required (e.g., MP4, PNG, PSD)" required>
+        <div class="input-icon">
+          <i class="fa fa-file"></i>
+        </div>
+      </div>
+    
+
+    <!-- BRAND GUIDELINES -->
+    <div class="row">
+      <h4>Brand Guidelines</h4>
+      <div class="input-group input-group-icon">
+        <input type="text" name="brandColors" placeholder="Brand Colors (Hex Codes)">
+        <div class="input-icon">
+          <i class="fa fa-palette"></i>
+        </div>
+      </div>
+      <div class="input-group input-group-icon">
+        <input type="text" name="typography" placeholder="Preferred Typography/Fonts">
+        <div class="input-icon">
+          <i class="fa fa-font"></i>
+        </div>
+      </div>
+      <div class="input-group input-group-icon">
+        <input type="text" name="moodboard" placeholder="Reference Designs or Moodboard Link">
+        <div class="input-icon">
+          <i class="fa fa-image"></i>
+        </div>
+      </div>
+    
+      <div class="input-group input-group-icon">
+        <input type="text" name="designStyle" placeholder="Design Style/Theme">
+        <div class="input-icon">
+          <i class="fa fa-pencil-ruler"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- REVISIONS & REVIEW DATE -->
+    <div class="row">
+      <h4>Revisions & Review Date</h4>
+      <div class="input-group input-group-icon">
+        <input type="number" name="revisionsAllowed" min="0" placeholder="Revisions Allowed" required>
+        <div class="input-icon">
+          <i class="fa fa-sync"></i>
+        </div>
+      </div>
+      <div class="input-group input-group-icon">
+        <input type="text" name="reviewDate" placeholder="e.g., Every Sunday / Specific Date">
+        <div class="input-icon">
+          <i class="fa fa-calendar-check"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- BILLING DETAILS -->
+    <div class="row">
+      <h4>Billing Details</h4>
+      <div class="input-group">
+        <input type="radio" id="payment-monthly" name="paymentPlan" value="Monthly" checked>
+        <label for="payment-monthly">Monthly</label>
+        <input type="radio" id="payment-biweekly" name="paymentPlan" value="Bi-weekly">
+        <label for="payment-biweekly">Bi-weekly</label>
+      </div>
+      <div class="input-group">
+        <input type="radio" id="payment-wise" name="paymentMethod" value="Wise" checked>
+        <label for="payment-wise">Wise</label>
+        <input type="radio" id="payment-paypal" name="paymentMethod" value="PayPal">
+        <label for="payment-paypal">PayPal</label>
+      </div>
+    </div>
+
+    <!-- CONTRACT ATTACHMENT -->
+    <div class="row">
+      <h4>Contract Attachment (PDF/DOCX/DOC)</h4>
+      <div class="input-group input-group-icon">
+        <input type="file" name="contractAttachment" accept=".pdf,.doc,.docx" required>
+        <div class="input-icon">
+          <i class="fa fa-file-contract"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUBMIT BUTTON -->
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+<script>
+   document.addEventListener("DOMContentLoaded", function () {
+    const plans = {
+        "Video Production": ["Basic Package", "Standard Package", "Premium Package", "Short-form Monthly Subscription", "Long-form Monthly Subscription", "Ultimate Video Editing Subscription"],
+        "Graphic Design": ["Basic Plan", "Standard Plan", "Premium Plan", "Monthly Subscription", "Elite Branding Subscription"],
+        "3D Visualization": ["Simple Package", "Detailed Package", "High-End Package", "3D Monthly Subscription", "Advanced 3D Monthly Subscription"],
+        "Web Development": ["Starter Plan", "Growth Plan", "Pro Plan"],
+        "Digital Marketing": ["SEO Optimization", "Social Media Marketing", "Email Marketing", "Market Research", "Branding"]
+    };
+
+    const serviceContainer = document.getElementById("serviceContainer");
+    const serviceDetailsDiv = document.getElementById("serviceDetails");
+
+    // ✅ Generate checkboxes for services dynamically
+    Object.keys(plans).forEach(service => {
+        let checkboxWrapper = document.createElement("div");
+        checkboxWrapper.classList.add("bundle-container");
+
+        let checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.id = `service-${service}`;
+        checkbox.name = "services[]";
+        checkbox.value = service;
+
+        let label = document.createElement("label");
+        label.htmlFor = `service-${service}`;
+        label.innerText = service;
+
+        checkboxWrapper.appendChild(checkbox);
+        checkboxWrapper.appendChild(label);
+        serviceContainer.appendChild(checkboxWrapper);
+
+        checkbox.addEventListener("change", updatePlans);
+    });
+
+    function updatePlans() {
+        serviceDetailsDiv.innerHTML = ""; // Clear previous plans
+
+        let selectedServices = Array.from(serviceContainer.querySelectorAll("input[type=checkbox]:checked"))
+            .map(checkbox => checkbox.value);
+
+        if (selectedServices.length === 0) return; // Do nothing if no service selected
+
+        let plansDiv = document.createElement("div");
+        plansDiv.innerHTML = `<h5>Selected Plans</h5>`;
+
+        selectedServices.forEach(service => {
+            if (plans[service]) {
+                let div = document.createElement("div");
+                div.classList.add("input-group");
+                div.innerHTML = `<h6>${service} - Select a Plan</h6>`;
+
+                let planSelect = document.createElement("select");
+                planSelect.name = `plan-${service}`;
+                planSelect.style.width = "100%";
+                planSelect.style.padding = "10px";
+                planSelect.innerHTML = plans[service].map(plan => `<option value="${plan}">${plan}</option>`).join('');
+
+                div.appendChild(planSelect);
+                plansDiv.appendChild(div);
+            }
+        });
+
+        serviceDetailsDiv.appendChild(plansDiv);
+    }
+});
+    </script>
+    
+    
+    
