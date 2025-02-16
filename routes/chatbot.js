@@ -1,10 +1,18 @@
 const express = require('express');
 const router = express.Router();
+const session = require("express-session");
 const OpenAI = require("openai");
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
+
+router.use(session({
+    secret: "chatbot_secret_key",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 5 * 60 * 1000 } 
+}));
 
 const BUSINESS_INFO = `
 ### Company Overview
@@ -12,17 +20,17 @@ EditEdge Multimedia is a full-service creative agency offering **Video Editing, 
 
 📍 **Location:** Tacloban City, Philippines  
 📧 **Email:** info@editedgemultimedia.com  
-🌍 **Website:** [editedgemultimedia.com](https://www.editedgemultimedia.com)  
+🌍 **Website:** [editedgemultimedia.com](https://editedgemultimedia.com)  
 
 ### Services
-- **[Video Editing](https://editedgemultimedia.com/#services)** → Social media videos, corporate promos, animations, and more.  
-- **[Web Development](https://editedgemultimedia.com/#services)** → Custom websites, e-commerce, and SEO-optimized pages.  
-- **[Graphic Design](https://editedgemultimedia.com/#services)** → Branding, UI/UX, marketing materials, and social media graphics.  
-- **[3D Art & Animation](https://editedgemultimedia.com/#services)** → Product rendering, architectural visualization, and motion graphics.  
-- **[Digital Marketing](https://editedgemultimedia.com/#services)** → SEO, social media campaigns, branding, and email marketing.
+- **[Video Editing](https://editedgemultimedia.com/Video-Editing)** → Social media videos, corporate promos, animations, and more.  
+- **[Web Development](https://editedgemultimedia.com/Web-Development)** → Custom websites, e-commerce, and SEO-optimized pages.  
+- **[Graphic Design](https://editedgemultimedia.com/Graphic-Design)** → Branding, UI/UX, marketing materials, and social media graphics.  
+- **[3D Art & Animation](https://editedgemultimedia.com/3D-Art)** → Product rendering, architectural visualization, and motion graphics.  
+- **[Digital Marketing](https://editedgemultimedia.com/Digital-Marketing)** → SEO, social media campaigns, branding, and email marketing.
 
 📌 **For a full list of services, visit:**  
-[View All Services](https://editedgemultimedia.com/#services)
+[View All Services](https://editedgemultimedia.com/services)
 
 ### Pricing & Promotions
 - **Price Range:** $50 - $3,000+ per service.  
@@ -32,65 +40,16 @@ EditEdge Multimedia is a full-service creative agency offering **Video Editing, 
   - Digital Suite (3+ services) → **20% off**  
 
 📌 **For full pricing details, visit:**  
-[View Pricing](https://editedgemultimedia.com/#pricing)
+[View Pricing](https://editedgemultimedia.com/pricing)
 
 ### Contact Details
 📧 **Email:** info@editedgemultimedia.com  
 📞 **Phone:** +639773938580  
-🌍 **Website:** [Contact Us](https://editedgemultimedia.com/#contact)
+🌍 **Website:** [Contact Us](https://editedgemultimedia.com/contact)
 
-### Contact Details
-**Quotation:** [Request quotation](https://editedgemultimedia.com/quotation)
+### Quotation
+**Request a Quote:** [Request quotation](https://editedgemultimedia.com/quotation)
 `;
-
-async function generateResponse(userMessage) {
-    let fullResponse = "";
-    let nextMessage = null;
-
-    do {
-        const response = await openai.chat.completions.create({
-            model: "gpt-4-turbo",
-            messages: nextMessage ? [{ role: "user", content: nextMessage }] : [
-                { 
-                    role: "system", 
-                    content: `You are Eddie, the AI assistant for EditEdge Multimedia.
-                    ALWAYS introduce yourself as Eddie when responding.
-                    
-                    When a user asks about services, provide the correct service link:
-                    - Video Editing → [Video Editing](https://editedgemultimedia.com/#services)
-                    - Web Development → [Web Development](https://editedgemultimedia.com/#services)
-                    - Graphic Design → [Graphic Design](https://editedgemultimedia.com/#services)
-                    - 3D Art & Animation → [3D Art](https://editedgemultimedia.com/#services)
-                    - Digital Marketing → [Digital Marketing](https://editedgemultimedia.com/#services)
-
-                    If the user asks about pricing, respond with:
-                    "For a detailed breakdown, check our pricing page here: [View Pricing](https://editedgemultimedia.com/#pricing)."
-
-                    If you don’t have an answer, **DO NOT** make unnecessary statements.
-                    Instead, say:  
-                    "I'm not entirely sure, but you can reach out to us here: [Contact Us](https://editedgemultimedia.com/#contact)."
-
-                    **Do NOT say anything about past conversations.**
-                    **Do NOT say anything unrelated to EditEdge Multimedia.**
-                    
-                    Here is everything you need to know:
-                    ${BUSINESS_INFO}`
-                },
-                { role: "user", content: userMessage }
-            ],
-            max_tokens: 250,  // Limit per response
-        });
-
-        const responseText = response.choices[0].message.content;
-        fullResponse += responseText; // Append to the total response
-
-        // Check if response is cut off
-        nextMessage = responseText.length >= 240 ? "Continue from where you left off." : null;
-
-    } while (nextMessage); // Loop if message is incomplete
-
-    return fullResponse;
-}
 
 router.post("/chatbot", async (req, res) => {
     try {
@@ -99,15 +58,55 @@ router.post("/chatbot", async (req, res) => {
             return res.json({ reply: "Please enter a message!" });
         }
 
-        const fullReply = await generateResponse(userMessage);
-        res.json({ reply: fullReply });
+        // ✅ Initialize session-based chat history if not exists
+        if (!req.session.chatHistory) {
+            req.session.chatHistory = [
+                { role: "system", content: `You are Eddie, the AI assistant for EditEdge Multimedia. 
+                    You must ALWAYS introduce yourself and answer ONLY based on the company details.
+                    DO NOT make up answers or mention previous conversations.
+                    DO NOT say you "don't have memory" or "can't recall past conversations."
+                    ONLY use details provided in the business info.
+
+                    Your job is to answer ONLY using the company details below:
+                     
+                    - If asked about services, include the correct service link.
+                    - If asked about pricing, refer them to [View Pricing](https://editedgemultimedia.com/pricing).
+                    - If they ask about contact info, provide: [Contact Us](https://editedgemultimedia.com/contact).
+
+                    ❌ Do NOT talk about memory or remembering conversations.  
+                    ❌ Do NOT make up responses.  
+                    ❌ If unsure, say: "I'm here to help! You can contact us directly here: [Contact Us](https://editedgemultimedia.com/contact)."  
+                    
+                    Here is all company information:
+                    ${BUSINESS_INFO}`
+                }
+            ];
+        }
+
+        // ✅ Add user message to session history
+        req.session.chatHistory.push({ role: "user", content: userMessage });
+
+        // ✅ Send chat history to OpenAI for context
+        const response = await openai.chat.completions.create({
+            model: "gpt-4-turbo",
+            messages: req.session.chatHistory,
+            max_tokens: 500,  
+        });
+
+        let botReply = response.choices[0].message.content;
+
+        // ✅ Format response properly with bullet points
+        botReply = botReply.replace(/- /g, "• ");
+
+        // ✅ Store bot response in chat history
+        req.session.chatHistory.push({ role: "assistant", content: botReply });
+
+        res.json({ reply: botReply });
 
     } catch (error) {
         console.error("Chatbot Error:", error);
         res.status(500).json({ error: "Failed to generate response" });
     }
 });
-  
-
   
 module.exports = router;

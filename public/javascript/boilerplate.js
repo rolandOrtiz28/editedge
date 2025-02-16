@@ -12,12 +12,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         setTimeout(() => {
             loader.style.display = "none"; 
-        }, 300);
+        }, 1000);
     }
 });
 
-
-// ✅ Ensure chatbot doesn't break if elements are missing
 document.addEventListener("DOMContentLoaded", function () {
     const chatbotToggle = document.getElementById("chatbot-toggle");
     const chatbotWindow = document.getElementById("chatbot-window");
@@ -27,42 +25,49 @@ document.addEventListener("DOMContentLoaded", function () {
     const chatbotSend = document.getElementById("chatbot-send");
     const chatbotMessages = document.getElementById("chatbot-messages");
 
-    // ✅ Exit if chatbot elements are missing
-    if (!chatbotToggle || !chatbotWindow || !chatbotMessages) return;
-
-    // ✅ Toggle Chatbot (Show/Hide)
     chatbotToggle.addEventListener("click", function () {
         chatbotWindow.style.display = chatbotWindow.style.display === "flex" ? "none" : "flex";
     });
 
-    // ✅ Close Chatbot (Clears Messages)
-    closeChatbot?.addEventListener("click", function () {
-        chatbotWindow.style.display = "none";
-        chatbotMessages.innerHTML = ""; // Clears chat history when closed
+    minimizeChatbot.addEventListener("click", function () {
+        chatbotWindow.style.display = "none"; 
     });
 
-    // ✅ Minimize Chatbot (Hides but Retains Messages)
-    minimizeChatbot?.addEventListener("click", function () {
-        chatbotWindow.style.display = "none"; // Hide the chatbox
+    closeChatbot.addEventListener("click", function () {
+        chatbotWindow.style.display = "none"; 
+        chatbotMessages.innerHTML = ""; 
     });
 
-    chatbotSend?.addEventListener("click", sendMessage);
-    chatbotInput?.addEventListener("keypress", function (event) {
+    chatbotSend.addEventListener("click", sendMessage);
+    chatbotInput.addEventListener("keypress", function (event) {
         if (event.key === "Enter") sendMessage();
     });
 
     function formatMessage(text) {
         return text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-                   .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank">$1</a>');
+                   .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" style="color: #ffd9ec; text-decoration: underline;">$1</a>');
+    }
+
+    function showTypingIndicator() {
+        const typingIndicator = document.createElement("div");
+        typingIndicator.classList.add("typing-container");
+        typingIndicator.innerHTML = `<span class="loader2"></span>`;
+        chatbotMessages.appendChild(typingIndicator);
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }
+    function hideTypingIndicator() {
+        const typingIndicator = document.querySelector(".typing-container");
+        if (typingIndicator) typingIndicator.remove();
     }
 
     async function sendMessage() {
-        if (!chatbotInput) return;
         const userMessage = chatbotInput.value.trim();
         if (!userMessage) return;
 
         chatbotMessages.innerHTML += `<p class="user-message"><strong>You:</strong> ${userMessage}</p>`;
         chatbotInput.value = "";
+
+        showTypingIndicator();
 
         try {
             const response = await fetch("/chatbot", {
@@ -72,11 +77,18 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             const data = await response.json();
-            chatbotMessages.innerHTML += `<p class="bot-message"><strong>Eddie:</strong> ${formatMessage(data.reply)}</p>`;
-            
-            // ✅ Auto-scroll to latest message
+            hideTypingIndicator();
+
+            chatbotMessages.innerHTML += `
+                <div class="chat-message">
+                    <img src="/images/chatbot-icon.png" alt="Eddie AI" class="bot-avatar">
+                    <p class="bot-message"><strong>Eddie:</strong> ${formatMessage(data.reply)}</p>
+                </div>`;
+
             chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+
         } catch (error) {
+            hideTypingIndicator();
             console.error("Chatbot Error:", error);
         }
     }
