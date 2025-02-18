@@ -106,9 +106,11 @@ footer {
 #eddie-model {
   cursor: grab;
 } 
+
+
 #chatbot-toggle {
-  width: 150px;  /* ✅ Increase the button size */
-  height: 150px; /* ✅ Ensure Eddie has space */
+  width: 100px;  /* ✅ Increase the button size */
+  height: 100px; /* ✅ Ensure Eddie has space */
   background: none !important; /* ✅ Remove the background circle */
   display: flex;
   align-items: center;
@@ -145,9 +147,9 @@ footer {
 #chatbot-window {
 
   position: fixed;
-  bottom: 150px;
+  bottom: 100px;
   right: 80px;
-  width: 460px;
+  width: 390px;
   height: 500px;
   max-height: 500px;
   background: #1a1a1a;
@@ -414,17 +416,20 @@ margin-bottom:.5rem ;
 /* Adjust for screens smaller than 768px */
 @media (max-width: 768px) {
   
-  #chatbot-window {
-   
-    margin-right:none;
-  }
+  
 
   #chatbot-window {
-    bottom: 135px;
-    right: 30px;
-    width: 360px;
-    height: 500px;
-    
+    bottom: 100px;
+    right: 22px;
+    width: 330px;
+    height: 450px;
+    margin-right:none;
+  }
+  #chatbot-toggle {
+
+    bottom: -10px;
+    right: -10px;
+  
   }
 }
 
@@ -443,3 +448,4 @@ margin-bottom:.5rem ;
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
 }
+

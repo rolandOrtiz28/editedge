@@ -88,17 +88,17 @@ router.get('/get-pricing', catchAsync(async(req, res) => {
       {
         title: 'Premium Plan',
         price: '800-1,500',
-        features: ['Full-scale campaigns (social, print, and digital designs)', '8 unique design concepts, each adapted to various social media sizes', 'Unlimited revisions']
+        features: ['Full-scale campaigns (social, print, and digital designs)', '8 unique design concepts, each adapted to various social media sizes', '8 revisions']
       },
       {
         title: 'Monthly Subscription',
         price: '800/month',
-        features: ['Unlimited social media post designs', 'Up to 10 revisions per month', 'Custom branding for consistency across all designs', 'Priority support and fast turnaround times']
+        features: ['15 social media post designs', 'Up to 8 revisions per month', 'Custom branding for consistency across all designs', 'Priority support and fast turnaround times']
       },
       {
         title: 'Elite Branding Subscription',
         price: '1,500/month',
-        features: ['Unlimited premium branding & ad designs', 'Fast turnaround', 'Direct collaboration with designers', 'Monthly strategy meetings']
+        features: ['20 premium branding & ad designs', 'Fast turnaround', 'Direct collaboration with designers', 'Monthly strategy meetings']
       }
     ];
   }
