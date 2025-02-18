@@ -107,6 +107,7 @@ const connectSrcUrls = [
   "https://a.tiles.mapbox.com/",
   "https://b.tiles.mapbox.com/",
   "https://events.mapbox.com/",
+  "blob:",
 ];
 
 const imgSrcUrls = [
@@ -131,6 +132,7 @@ const fontSrcUrls = [
 
 const mediaSrcUrls = [
   "'self'",
+  "blob:",
   "https://res.cloudinary.com/",
   "https://drive.google.com/",
   "https://www.google.com/",
@@ -141,7 +143,7 @@ const mediaSrcUrls = [
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
-      defaultSrc: [],
+      defaultSrc: ["'self'", "blob:"],
       formAction: ["'self'"],
       frameSrc: ["'self'", ...frameSrcUrls],
       connectSrc: ["'self'", ...connectSrcUrls],
@@ -171,6 +173,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(mongoSanitize());
 app.use('/uploads', express.static('uploads')); // ✅ Serve uploads as static
+app.use('/assets', express.static(path.join(__dirname, 'public/assets')));
 
 // ✅ Increase JSON and form data size limits
 app.use(express.json({ limit: "50mb" }));  // ✅ Allows large JSON payloads

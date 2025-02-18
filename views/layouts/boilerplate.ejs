@@ -38,7 +38,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.12/marked.min.js"></script>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/loaders/GLTFLoader.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Righteous&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="loader" class="loader">
@@ -66,12 +70,16 @@
         <%- include('../partials/footer') %>
     </footer>
 
-   
+
+ 
 <!-- Chatbot Floating Button -->
 <div id="chatbot-container">
+    <div id="eddie-model"></div>
     <div id="chatbot-toggle">
-        <img src="/images/chatbot-icon.png" alt="Chatbot" loading="lazy"/>
+        <div id="speech-bubble">Hello!</div>
+        
     </div>
+    
     <div id="chatbot-window">
         <div id="chatbot-header">
             <div class="chatbot-avatar">

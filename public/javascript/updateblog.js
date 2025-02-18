@@ -1,12 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // ✅ Ensure ImageResize is Loaded
     if (typeof window.ImageResize === "undefined") {
         console.error("❌ ImageResize module not found.");
     } else {
         console.log("✅ ImageResize module registered successfully!");
     }
 
-    // ✅ Initialize Quill Editor
+
+   
     var quill = new Quill("#editor-container", {
         theme: "snow",
         placeholder: "Edit your blog content...",
@@ -26,45 +26,64 @@ document.addEventListener("DOMContentLoaded", function () {
                     ["clean"]
                 ],
                 handlers: {
-                    image: imageHandler // ✅ Custom Image Upload Handler
+                    image: imageHandler
                 }
             },
-            imageResize: {} // ✅ Enable Image Resizing
+            imageResize: {}
         }
     });
 
     console.log("✅ Quill initialized successfully!");
 
-    // ✅ Load Existing Content
+    // ✅ Load existing content
     const existingContent = document.getElementById("contentInput").value;
     quill.root.innerHTML = existingContent;
 
-    // ✅ Function to Detect Links and Generate Input Fields for Editing URLs
-    function updateLinkURLInputs() {
-        const contentLinks = quill.root.querySelectorAll("a"); // Get all links
+    // ✅ Detect and add inputs for images without links
+    function updateImageLinkInputs() {
+        const contentImages = quill.root.querySelectorAll("img");
         const linkURLContainer = document.getElementById("link-url-container");
 
         // Clear previous inputs
         linkURLContainer.innerHTML = "";
 
-        contentLinks.forEach((link, index) => {
-            let linkHref = link.getAttribute("href");
+        contentImages.forEach((img, index) => {
+            let parentLink = img.closest("a");
+            let imgSrc = img.getAttribute("src");
 
             let inputGroup = document.createElement("div");
             inputGroup.classList.add("link-url-input-group", "mb-3");
 
             let label = document.createElement("label");
-            label.textContent = `Link ${index + 1} URL:`;
+            label.textContent = `Image ${index + 1} Link:`;
             label.classList.add("block", "text-sm", "font-medium");
 
             let input = document.createElement("input");
             input.type = "text";
             input.classList.add("w-full", "border", "border-gray-300", "rounded-md", "p-2");
-            input.value = linkHref;
+            input.value = parentLink ? parentLink.href : "";
 
-            // ✅ Update Link in Editor when URL changes
+            // ✅ Handle link input changes
             input.addEventListener("input", function () {
-                link.setAttribute("href", input.value);
+                if (input.value.trim()) {
+                    if (!parentLink) {
+                        let newLink = document.createElement("a");
+                        newLink.href = input.value;
+                        newLink.target = "_blank";
+
+                        // Wrap the image inside the link
+                        img.parentNode.insertBefore(newLink, img);
+                        newLink.appendChild(img);
+                    } else {
+                        parentLink.href = input.value;
+                    }
+                } else {
+                    // If input is cleared, remove the link
+                    if (parentLink) {
+                        parentLink.parentNode.insertBefore(img, parentLink);
+                        parentLink.remove();
+                    }
+                }
             });
 
             inputGroup.appendChild(label);
@@ -73,10 +92,11 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // ✅ Detect Link Changes in Quill Editor and Generate Inputs
-    quill.on("text-change", updateLinkURLInputs);
+    // ✅ Run update function on Quill content change
+    quill.on("text-change", updateImageLinkInputs);
+    updateImageLinkInputs(); // Run on page load
 
-    // ✅ Handle Image Upload & Linking in the Text Editor
+    // ✅ Handle Image Upload
     function imageHandler() {
         let input = document.createElement("input");
         input.setAttribute("type", "file");
@@ -98,6 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (data.url) {
                     let range = quill.getSelection();
                     quill.insertEmbed(range.index, "image", data.url);
+                    updateImageLinkInputs();
                 } else {
                     alert("Image upload failed.");
                 }
@@ -173,17 +194,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     console.log("✅ SEO Analysis Enabled!");
 
-    // ✅ Handle Form Submission
+    // ✅ Handle form submission
     document.getElementById("editBlogForm").onsubmit = function (event) {
         event.preventDefault();
 
-        let updateBtn = document.querySelector('button[type="submit"]');
         let formData = new FormData();
-
-        formData.append("title", titleInput.value);
-        formData.append("titleTag", titleTagInput.value);
-        formData.append("customSlug", slugInput.value);
-        formData.append("metaDescription", metaInput.value);
+        formData.append("title", document.querySelector('input[name="title"]').value);
+        formData.append("customSlug", document.querySelector('input[name="customSlug"]').value);
+        formData.append("metaDescription", document.querySelector('input[name="metaDescription"]').value);
         formData.append("tags", document.querySelector('input[name="tags"]').value);
         formData.append("content", quill.root.innerHTML);
         formData.append("status", document.querySelector('select[name="status"]').value);
@@ -196,11 +214,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         fetch(document.getElementById("editBlogForm").action, { method: "PUT", body: formData })
-        .then(response => response.json())
-        .then(data => { window.location.href = `/blogs/${data.slug}`; })
-        .catch(error => { alert("Update Failed!"); });
+            .then(response => response.json())
+            .then(data => { window.location.href = `/blogs/${data.slug}`; })
+            .catch(error => { alert("Update Failed!"); });
     };
-
-    // ✅ Initialize Link URL Editing
-    updateLinkURLInputs();
 });

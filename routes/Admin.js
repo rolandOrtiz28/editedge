@@ -303,13 +303,13 @@ router.post('/clients/new', isLoggedIn, uploadContract.single('contractAttachmen
 
     await client.save();
     req.flash('success', 'Client added successfully!');
-    res.redirect(`/admin/clients/${client._id}`);
+    res.redirect(`/admin/client/${client._id}`);
 
 }));
 
 router.get('/clients-form', isLoggedIn, catchAsync(async (req, res) => {
     
-    res.render('admin/clients/new', { currentRoute: '/clients' });
+    res.render('admin/clientnew', { currentRoute: '/clients' });
 }));
 
 router.get('/clients', isLoggedIn, catchAsync(async (req, res) => {
@@ -324,8 +324,9 @@ router.get('/clients/:id', isLoggedIn, catchAsync(async (req, res) => {
         req.flash('error', 'Client not found.');
         return res.redirect('/admin/clients');
     }
-    res.render('admin/clients/show', { client, currentRoute: '/clients' });
+    res.render('admin/clientshow', { client, currentRoute: '/clients' });
 }));
+
 
 // 🟢 4. Update Client
 // router.put('/clients/:id', isLoggedIn, upload.single('contractAttachment'), catchAsync(async (req, res) => {
@@ -342,10 +343,10 @@ router.get('/clients/:id', isLoggedIn, catchAsync(async (req, res) => {
 // }));
 
 // 🟢 5. Delete Client
-// router.delete('/clients/:id', isLoggedIn, catchAsync(async (req, res) => {
-//     await Client.findByIdAndDelete(req.params.id);
-//     req.flash('success', 'Client deleted successfully!');
-//     res.redirect('/admin/clients');
-// }));
+router.delete('/delete/clients/:id', isLoggedIn, catchAsync(async (req, res) => {
+    await Client.findByIdAndDelete(req.params.id);
+    req.flash('success', 'Client deleted successfully!');
+    res.redirect('/admin/clients');
+}));
 
 module.exports = router;

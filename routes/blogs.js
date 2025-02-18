@@ -23,39 +23,6 @@ router.get('/blogs/new', (req, res) => {
     res.render('blogs/new', { currentRoute: '/blogs/new' });
 });
 
-// ✅ Create a New Blog (Now Supports Image Upload)
-// router.post(
-//     "/blogs",
-//     upload.single("image"), 
-//     express.json(),
-//     catchAsync(async (req, res) => {
-//       const { title, content, metaDescription, headerType, tags, status } = req.body;
-//       const slug = slugify(title, { lower: true });
-  
-  
-//       let imageUrl = req.file ? req.file.path : null;
-  
-//       const blog = new Blog({
-//         title,
-//         slug,
-//         content,
-//         metaDescription,
-//         headerType,
-//         image: imageUrl,
-//         tags: tags ? tags.split(",").map((tag) => tag.trim()) : [],
-//         status,
-//       });
-  
-//       await blog.save();
-  
-//       res.json({
-//         success: true,
-//         message: `Blog ${status === "draft" ? "saved as draft" : "published"} successfully!`,
-//         slug: blog.slug,
-//         image: imageUrl, 
-//       });
-//     })
-//   );
 router.post(
     "/blogs",
     upload.single("image"),
@@ -212,6 +179,7 @@ router.put('/blogs/:slug', upload.single('image'), catchAsync(async (req, res) =
     req.flash('success', 'Blog updated successfully!');
     res.json({ success: true, slug: blog.slug });
 }));
+
 
 
 router.put('/blogs/:slug/status', catchAsync(async (req, res) => {

@@ -111,3 +111,134 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    let hasEddieSpoken = sessionStorage.getItem("hasEddieSpoken") === "true";
+    const buttonScene = new THREE.Scene();
+    const buttonCamera = new THREE.PerspectiveCamera(90, 1, 0.1, 100);
+    const buttonRenderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+
+    buttonRenderer.setSize(80, 80);
+    const chatbotToggle = document.getElementById("chatbot-toggle");
+    if (!chatbotToggle) {
+        console.error("❌ Element #chatbot-toggle not found!");
+    } else {
+        chatbotToggle.appendChild(buttonRenderer.domElement);
+    }
+
+    const buttonLight = new THREE.AmbientLight(0xffffff, 1);
+    buttonScene.add(buttonLight);
+
+    const buttonLoader = new THREE.GLTFLoader();
+    let buttonModel = null;
+
+    buttonLoader.load("/assets/chatbot_4.glb", function (gltf) {
+        if (buttonModel) {
+            console.warn("⚠️ Eddie is already loaded in the button. Skipping duplicate.");
+            return;
+        }
+    
+        buttonModel = gltf.scene;
+    
+        // ✅ Fix: Remove duplicate meshes (Extra eyes issue)
+        const seenMeshes = new Set();
+        buttonModel.traverse((child) => {
+            if (child.isMesh) {
+                // If we already saw this mesh, remove the duplicate
+                if (seenMeshes.has(child.name)) {
+                    console.warn("🛑 Removing duplicate mesh:", child.name);
+                    child.parent.remove(child);
+                } else {
+                    seenMeshes.add(child.name);
+                }
+    
+                // Ensure correct material rendering
+                child.material.side = THREE.DoubleSide;
+                child.material.needsUpdate = true;
+            }
+        });
+    
+        buttonModel.scale.set(9, 9, 9);
+        buttonModel.position.set(0, -2, -6);
+        buttonScene.add(buttonModel);
+    
+        let waveOffset = 0;
+        function animateButton() {
+            requestAnimationFrame(animateButton);
+            waveOffset += -0.01;
+            buttonModel.rotation.z = Math.sin(waveOffset) * 0.1; // Side-to-side animation
+            buttonRenderer.render(buttonScene, buttonCamera);
+        }
+        animateButton();
+    
+        makeDraggable(buttonModel, buttonCamera, buttonRenderer, buttonScene);
+    });
+    
+
+    buttonCamera.position.z = 3.5;
+
+    
+    if (!hasEddieSpoken) {
+        sessionStorage.setItem("hasEddieSpoken", "true"); // Store in session storage
+        setTimeout(() => {
+            document.getElementById("speech-bubble").style.opacity = "1";
+        }, 1000);
+
+        setTimeout(() => {
+            document.getElementById("speech-bubble").style.opacity = "0";
+        }, 4000);
+    }
+});
+
+
+function makeDraggable(model, camera, renderer, scene) {
+    let isDragging = false;
+    let previousMousePosition = { x: 0, y: 0 };
+
+    renderer.domElement.addEventListener("mousedown", (event) => {
+        isDragging = true;
+        previousMousePosition = { x: event.clientX, y: event.clientY };
+    });
+
+    renderer.domElement.addEventListener("mousemove", (event) => {
+        if (!isDragging) return;
+        const deltaX = event.clientX - previousMousePosition.x;
+        const deltaY = event.clientY - previousMousePosition.y;
+
+        model.rotation.y += deltaX * 0.01;
+        model.rotation.x += deltaY * 0.01;
+
+        previousMousePosition = { x: event.clientX, y: event.clientY };
+    });
+
+    renderer.domElement.addEventListener("mouseup", () => {
+        isDragging = false;
+    });
+
+    renderer.domElement.addEventListener("mouseleave", () => {
+        isDragging = false;
+    });
+
+    // ✅ Support for Touchscreens
+    renderer.domElement.addEventListener("touchstart", (event) => {
+        isDragging = true;
+        previousMousePosition = { x: event.touches[0].clientX, y: event.touches[0].clientY };
+    });
+
+    renderer.domElement.addEventListener("touchmove", (event) => {
+        if (!isDragging) return;
+        const deltaX = event.touches[0].clientX - previousMousePosition.x;
+        const deltaY = event.touches[0].clientY - previousMousePosition.y;
+
+        model.rotation.y += deltaX * 0.01;
+        model.rotation.x += deltaY * 0.01;
+
+        previousMousePosition = { x: event.touches[0].clientX, y: event.touches[0].clientY };
+    });
+
+    renderer.domElement.addEventListener("touchend", () => {
+        isDragging = false;
+    });
+}
+
+

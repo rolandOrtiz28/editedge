@@ -39,6 +39,13 @@
     <!-- Navbar Links -->
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav mx-auto">
+        <% if(currentUser) {%>
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="/admin/dashboard">Admin</a>
+          </li>
+<% }else{ %>
+ 
+
         <% if (currentRoute !== '/') { %> <!-- Render links for non-home pages -->
           <li class="nav-item">
             <a class="nav-link text-secondary" href="/pricing">Pricing</a>
@@ -150,6 +157,7 @@
           <li class="nav-item">
             <a class="nav-link text-secondary" href="#contact">Reach Out</a>
           </li>
+        <% } %>
         <% } %>
       </ul>
 
