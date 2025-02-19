@@ -318,13 +318,13 @@ router.get('/clients', isLoggedIn, catchAsync(async (req, res) => {
 }));
 
 // 🟢 3. View Client Profile
-router.get('/clients/:id', isLoggedIn, catchAsync(async (req, res) => {
+router.get('/client/:id', isLoggedIn, catchAsync(async (req, res) => {
     const client = await Client.findById(req.params.id);
     if (!client) {
         req.flash('error', 'Client not found.');
         return res.redirect('/admin/clients');
     }
-    res.render('admin/clientshow', { client, currentRoute: '/clients' });
+    res.render('admin/clientshow', { client, currentRoute: `/client/${client._id}` });
 }));
 
 
