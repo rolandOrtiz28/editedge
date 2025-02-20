@@ -4,25 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="<%= typeof blog !== 'undefined' ? blog.metaDescription : 'Default blog description' %>">
+    <meta name="description" content="<%= typeof blog !== 'undefined' ? blog.metaDescription : 'EditEdge Multimedia is a full-service creative agency offering video editing, graphic design, 3D art, web development, and digital marketing. They blend technical expertise with creativity to enhance clients digital presence.' %>">
     <meta name="keywords" content="<%= typeof blog !== 'undefined' && blog.tags ? blog.tags.join(', ') : 'default, keywords' %>">
     <meta name="author" content="EditEdge Multimedia">
 
     <!-- ✅ Open Graph (Facebook, LinkedIn, etc.) -->
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="<%= typeof blog !== 'undefined' ? blog.title : 'Your Blog Name' %>">
-    <meta property="og:description" content="<%= typeof blog !== 'undefined' ? blog.metaDescription : 'Default blog description' %>">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="<%= typeof blog !== 'undefined' ? blog.title : 'Edit Edge Blogs' %>">
+    <meta property="og:description" content="<%= typeof blog !== 'undefined' ? blog.metaDescription : 'EditEdge Multimedia is a full-service creative agency offering video editing, graphic design, 3D art, web development, and digital marketing. They blend technical expertise with creativity to enhance clients digital presence.' %>">
     <meta property="og:image" content="<%= typeof blog !== 'undefined' && blog.image ? blog.image : '/default-image.jpg' %>">
-    <meta property="og:url" content="<%= typeof blog !== 'undefined' ? `https://yourwebsite.com/blogs/${blog.slug}` : 'https://yourwebsite.com' %>">
+    <meta property="og:url" content="<%= typeof blog !== 'undefined' ? `https://editedgemultimedia.com/${blog.slug}` : 'https://editedgemultimedia.com/' %>">
     
     <!-- ✅ Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="<%= typeof blog !== 'undefined' ? blog.title : 'Your Blog Name' %>">
-    <meta name="twitter:description" content="<%= typeof blog !== 'undefined' ? blog.metaDescription : 'Default blog description' %>">
-    <meta name="twitter:image" content="<%= typeof blog !== 'undefined' && blog.image ? blog.image : '/default-image.jpg' %>">
+    <meta name="twitter:title" content="<%= typeof blog !== 'undefined' ? blog.title : 'Edit Edge Blogs' %>">
+    <meta name="twitter:description" content="<%= typeof blog !== 'undefined' ? blog.metaDescription : 'EditEdge Multimedia is a full-service creative agency offering video editing, graphic design, 3D art, web development, and digital marketing. They blend technical expertise with creativity to enhance clients digital presence.' %>">
+    <meta name="twitter:image" content="<%= typeof blog !== 'undefined' && blog.image ? blog.image : '/images/logo.jpg' %>">
 
     
-    <title><%= title || "Edit Edge" %></title> 
+    <title><%= title || "Edit Edge Multimedia" %></title> 
 
     <link rel="icon" type="image/svg+xml" href="/images/logo.svg" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
