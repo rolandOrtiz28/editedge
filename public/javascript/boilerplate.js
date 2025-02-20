@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
             chatbotMessages.innerHTML += `
                 <div class="chat-message">
-                    <img src="/images/chatbot-icon.png" alt="Eddie AI" class="bot-avatar">
+                    <img src="https://res.cloudinary.com/dowyujl8h/image/upload/f_auto,q_auto,w_800/v1740017134/Eddie_eeubkc.png" alt="Eddie AI" class="bot-avatar">
                     <p class="bot-message"><strong>Eddie:</strong> ${formatMessage(botReply)}</p>
                 </div>`;
     

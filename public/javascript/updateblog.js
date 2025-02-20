@@ -208,6 +208,9 @@ document.addEventListener("DOMContentLoaded", function () {
         formData.append("headerType", document.querySelector('select[name="headerType"]').value);
         formData.append("imageLink", document.querySelector('input[name="imageLink"]').value);
 
+        let deleteImage = document.getElementById("deleteImage").checked;
+        formData.append("deleteImage", deleteImage);
+
         let imageInput = document.querySelector('input[name="image"]');
         if (imageInput.files.length > 0) {
             formData.append("image", imageInput.files[0]);
@@ -218,4 +221,17 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(data => { window.location.href = `/blogs/${data.slug}`; })
             .catch(error => { alert("Update Failed!"); });
     };
+});
+
+
+
+document.getElementById("imageInput").addEventListener("change", function (event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            document.getElementById("previewImage").src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
 });
