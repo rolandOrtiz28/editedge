@@ -98,8 +98,13 @@
   transition: 0.3s;
 }
 
-.service-card img {
-  width: 50%;
+.service-card video {
+  width: 40%;
+}
+
+.service-card p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .service-card:hover {
@@ -129,12 +134,12 @@
   padding: 2rem;
   border-radius: 12px;
   width: 30%;
-  min-width: 280px;
+  min-width: 200px;
   box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.2);
 }
 
-.process-step img {
-  max-width: 100px;
+.process-step video {
+  max-width: 120px;
   margin-bottom: 1rem;
 }
 
@@ -348,7 +353,7 @@
 
   .service-card,
   .process-step {
-      width: 100%;
+      width: 80%;
   }
 
   .cta-button {
@@ -369,6 +374,11 @@
   .process-step {
       padding: 1.5rem;
   }
+
+  .service-card p, .process-step p{
+    font-size: .9rem;
+  }
+
 
   .cta-section {
       padding: 2rem;

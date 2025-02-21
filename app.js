@@ -195,7 +195,21 @@ app.use((req, res, next) => {
   res.locals.currentUser = req.user;
   res.locals.success = req.flash('success');
   res.locals.error = req.flash('error');
-  res.locals.title = "Edit Edge";
+  res.locals.title = "EditEdge Multimedia: Video Editing, Graphic Design, 3D Art, Web Development & Digital Marketing";
+  app.use((req, res, next) => {
+    res.locals.currentUser = req.user;
+    res.locals.success = req.flash('success');
+    res.locals.error = req.flash('error');
+    res.locals.title = "EditEdge Multimedia: Video Editing, Graphic Design, 3D Art, Web Development & Digital Marketing";
+    res.locals.services = [
+      "Video Editing",
+      "Graphic Design",
+      "3D Art",
+      "Web Development",
+      "Digital Marketing"
+    ];
+    next();
+  });
   next();
 });
 

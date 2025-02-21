@@ -100,6 +100,11 @@
   transition: 0.3s;
 }
 
+.service-card p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
 .service-card img {
   width: 50%;
 }
@@ -175,13 +180,7 @@
 }
 
 @media (max-width: 768px) {
-  .glow-text {
-      font-size: 2rem;
-  }
 
-  .sub-text {
-      font-size: 1rem;
-  }
 
   .service-card,
   .process-step {
@@ -206,6 +205,11 @@
   .process-step {
       padding: 1.5rem;
   }
+  .service-card p, .process-step p{
+    font-size: .9rem;
+  }
+
+ 
 
   .cta-section {
       padding: 2rem;

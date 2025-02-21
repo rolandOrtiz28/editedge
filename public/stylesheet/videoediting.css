@@ -372,6 +372,10 @@ width: 90%;
       width: 200px;
   }
 
+  .service-card p, .process-step p{
+    font-size: .9rem;
+  }
+
   .thumbnail {
       width: 100px;
       height: 150px;
