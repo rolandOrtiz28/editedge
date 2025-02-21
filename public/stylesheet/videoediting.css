@@ -190,7 +190,11 @@
   }
 
   .service-card, .process-step {
-      width: 100%;
+      width: 80%;
+  }
+
+  .process-step video{
+    width: 110px;
   }
 
   .cta-button {
@@ -326,7 +330,11 @@
 /* Responsive Adjustments */
 @media (max-width: 992px) {
   .main-video-container {
-      width: 90%;
+      width: 100%;
+  }
+
+  .main-video{
+width: 90%;
   }
 
   .video-playlist {
@@ -342,7 +350,7 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      width: 120px;
+      width: 220px;
   }
 
   .thumbnail {
@@ -353,19 +361,19 @@
 
 @media (max-width: 576px) {
   .gallery-title {
-      font-size: 2rem;
-  }
-
-  #video-title {
       font-size: 1rem;
   }
 
+  #video-title {
+      font-size: .7rem;
+  }
+
   .video-item {
-      width: 100px;
+      width: 200px;
   }
 
   .thumbnail {
-      width: 90px;
-      height: 50px;
+      width: 100px;
+      height: 150px;
   }
 }

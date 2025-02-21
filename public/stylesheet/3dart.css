@@ -125,16 +125,22 @@
 
 .video-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Responsive grid */
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
   gap: 1.5rem;
-  justify-content: center;
-  align-items: center;
+  justify-content: center; 
+  align-items: center; 
+  place-items: center; 
 }
 
 .gallery-video {
   width: 100%;
+  max-width: 350px; 
   height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   object-fit: cover;
+  margin: 0 auto;
   border-radius: 10px;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease-in-out;
@@ -229,11 +235,20 @@
   .process-step {
     width: 90%;
   }
+
+  .gallery-video{
+    width: 90%;
+  }
 }
 
 @media (max-width: 768px) {
   .glow-text {
     font-size: 2rem;
+  }
+
+  .gallery-video{
+    width: 80%;
+    max-width: 300px;
   }
 
   .sub-text {
@@ -242,7 +257,7 @@
 
   .service-card,
   .process-step {
-    width: 100%;
+    width: 80%;
   }
 
   .cta-button {
@@ -253,6 +268,10 @@
 @media (max-width: 576px) {
   .glow-text {
     font-size: 1.5rem;
+  }
+  .gallery-video {
+    width: 100%;
+    max-width: 280px; 
   }
 
   .sub-text {

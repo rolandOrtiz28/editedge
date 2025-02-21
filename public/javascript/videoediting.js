@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   gsap.registerPlugin(ScrollTrigger);
 
   // ✅ Detect Screen Size (Disable GSAP on Mobile)
-  const isMobile = window.matchMedia("(max-width: 768px)").matches; 
+  const isMobile = window.innerWidth <= 768;
 
   if (!isMobile) {
     // ✅ Optimize Horizontal Line Animation (Only on Desktop)
@@ -38,6 +38,50 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       );
     });
+
+     
+  //    gsap.utils.toArray(".service-card").forEach((card, i) => {
+  //     gsap.fromTo(
+  //         card,
+  //         { y: 150 + i * 20, opacity: 0, scale: 0.8 },
+  //         {
+  //             y: 0,
+  //             opacity: 1,
+  //             scale: 1,
+  //             duration: 1.5,
+  //             ease: "power4.out",
+  //             delay: i * 0.2,
+  //             scrollTrigger: {
+  //                 trigger: card,
+  //                 start: "top 85%",
+  //                 end: "bottom 60%",
+  //                 scrub: 2,
+  //             },
+  //         }
+  //     );
+  // });
+
+
+  // gsap.utils.toArray(".process-step").forEach((step, i) => {
+  //     gsap.fromTo(
+  //         step,
+  //         { y: 150 + i * 20, opacity: 0, scale: 0.8 },
+  //         {
+  //             y: 0,
+  //             opacity: 1,
+  //             scale: 1,
+  //             duration: 1.8,
+  //             ease: "power4.out",
+  //             delay: i * 0.2,
+  //             scrollTrigger: {
+  //                 trigger: step,
+  //                 start: "top 85%",
+  //                 end: "bottom 60%",
+  //                 scrub: 2,
+  //             },
+  //         }
+  //     );
+  // });
   }
 });
 
