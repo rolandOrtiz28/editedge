@@ -46,49 +46,54 @@ document.addEventListener("DOMContentLoaded", function () {
 
     counters.forEach(counter => observer.observe(counter));
 
-    // ✅ Service Cards Floating Animation
-    gsap.utils.toArray(".service-card").forEach((card, i) => {
-        gsap.fromTo(
-            card,
-            { y: 150 + i * 20, opacity: 0, scale: 0.8 },
-            {
-                y: 0,
-                opacity: 1,
-                scale: 1,
-                duration: 1.5,
-                ease: "power4.out",
-                delay: i * 0.2,
-                scrollTrigger: {
-                    trigger: card,
-                    start: "top 85%",
-                    end: "bottom 60%",
-                    scrub: 2,
-                },
-            }
-        );
-    });
+    // ✅ Detect Screen Size (Disable GSAP on Mobile)
+    const isMobile = window.innerWidth <= 768;
 
-    // ✅ Process Steps Floating Effect
-    gsap.utils.toArray(".process-step").forEach((step, i) => {
-        gsap.fromTo(
-            step,
-            { y: 150 + i * 20, opacity: 0, scale: 0.8 },
-            {
-                y: 0,
-                opacity: 1,
-                scale: 1,
-                duration: 1.8,
-                ease: "power4.out",
-                delay: i * 0.2,
-                scrollTrigger: {
-                    trigger: step,
-                    start: "top 85%",
-                    end: "bottom 60%",
-                    scrub: 2,
-                },
-            }
-        );
-    });
+    if (!isMobile) {
+        // ✅ Service Cards Floating Animation (Only on Desktop)
+        gsap.utils.toArray(".service-card").forEach((card, i) => {
+            gsap.fromTo(
+                card,
+                { y: 150 + i * 20, opacity: 0, scale: 0.8 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    scale: 1,
+                    duration: 1.5,
+                    ease: "power4.out",
+                    delay: i * 0.2,
+                    scrollTrigger: {
+                        trigger: card,
+                        start: "top 85%",
+                        end: "bottom 60%",
+                        scrub: 2,
+                    },
+                }
+            );
+        });
+
+        // ✅ Process Steps Floating Effect (Only on Desktop)
+        gsap.utils.toArray(".process-step").forEach((step, i) => {
+            gsap.fromTo(
+                step,
+                { y: 150 + i * 20, opacity: 0, scale: 0.8 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    scale: 1,
+                    duration: 1.8,
+                    ease: "power4.out",
+                    delay: i * 0.2,
+                    scrollTrigger: {
+                        trigger: step,
+                        start: "top 85%",
+                        end: "bottom 60%",
+                        scrub: 2,
+                    },
+                }
+            );
+        });
+    }
 
     // ✅ Lazy Load Videos using Intersection Observer
     let videos = document.querySelectorAll(".lazy-video");
