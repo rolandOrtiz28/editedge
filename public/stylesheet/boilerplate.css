@@ -135,8 +135,8 @@ footer {
 
 
 #chatbot-toggle img {
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
 }
 
 #chatbot-toggle:hover {
@@ -430,8 +430,13 @@ margin-bottom:.5rem ;
   #chatbot-toggle {
 
     bottom: -10px;
-    right: -10px;
+    right: -20px;
   
+  }
+
+  #chatbot-toggle img {
+    width: 40px;
+    height: 40px;
   }
 }
 

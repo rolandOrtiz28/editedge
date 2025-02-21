@@ -978,7 +978,7 @@ padding-right:0;
     transform: rotate(0deg);
   }
 
-  .services-container .glass-content img {
+  .services-container .glass-content video {
     width: 100px;
     margin-bottom: 2rem;
   }
@@ -1076,6 +1076,8 @@ padding-right:0;
   padding: 20px;
   border-radius: 10px;
   text-align: center;
+  width: 100%;
+  max-width: 360px;
   transition: transform 0.3s ease-in-out;
 }
 
@@ -1140,6 +1142,11 @@ padding-right:0;
       grid-template-columns: repeat(2, 1fr);
   }
 
+  .team-card{
+    width: 100%;
+    max-width: 400px;
+  }
+
   .our-team-section .creator {
     font-size:4rem;
   }
@@ -1163,6 +1170,13 @@ padding-right:0;
 
   .section-title {
       font-size: 2rem;
+  }
+
+  .team-card .team-role,.team-name{
+    font-size: .8rem;
+  }
+  .team-card .team-description{
+    font-size: .7rem;
   }
 }
 
