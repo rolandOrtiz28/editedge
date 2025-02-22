@@ -1,20 +1,46 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const loader = document.getElementById("loader");
-    const content = document.getElementById("content");
-
-    if (content) {
-        content.style.visibility = "visible"; // ✅ Ensures content is not hidden
+(function() {
+    function revealContent() {
+      const loader = document.getElementById("loader");
+      const content = document.getElementById("content");
+  
+      if (content) {
+        content.style.visibility = "visible";
         content.style.opacity = "1";
-    }
-
-    if (loader) {
+      }
+  
+      if (loader) {
         loader.classList.add("fade-out");
-
         setTimeout(() => {
-            loader.style.display = "none"; 
+          loader.style.display = "none";
         }, 1000);
+      }
     }
-});
+  
+    // Fallback: force reveal after 5 seconds in case load event never fires
+    const fallbackTimeout = setTimeout(() => {
+      console.log("Fallback timeout triggered.");
+      revealContent();
+    }, 5000);
+  
+    // If the document is already loaded, run immediately; otherwise, wait for Turbo's load event.
+    if (document.readyState === "complete") {
+      clearTimeout(fallbackTimeout);
+      console.log("Document already loaded.");
+      revealContent();
+    } else {
+      // Listen for Turbo's load event.
+      document.addEventListener("turbo:load", () => {
+        console.log("Turbo load event triggered.");
+        clearTimeout(fallbackTimeout);
+        if (document.readyState === "complete") {
+          revealContent();
+        } else {
+          window.addEventListener("load", revealContent);
+        }
+      });
+    }
+  })();
+  
 
 document.addEventListener("DOMContentLoaded", function () {
     const chatbotToggle = document.getElementById("chatbot-toggle");
