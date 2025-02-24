@@ -11,7 +11,7 @@ const passport = require('passport')
 const Client = require('../models/Client');
 const uploadContract = require('../cloudinary/contractStorage');
 const { isLoggedIn } = require('../middleware')
-
+const mongoose = require("mongoose");
 
 router.get('/dashboard',  isLoggedIn,(req, res) => {
     res.render('admin/dashboard', { currentRoute: '/dashboard' });
@@ -79,20 +79,64 @@ router.get('/discounts',  isLoggedIn,catchAsync(async (req, res) => {
 }));
 
 // ✅ Protect Discounts Management
-router.post('/add-discount',  catchAsync(async (req, res) => {
-    const { service, plan, discountPercentage } = req.body;
+router.post('/add-discount', catchAsync(async (req, res) => {
+    const { service, plan, discountPercentage, description } = req.body;
     let discount = await Discount.findOne({ service, plan });
 
     if (discount) {
         discount.discountPercentage = discountPercentage;
+        discount.description = description || ""; // Update the description if provided
         discount.status = "pending";
         await discount.save();
     } else {
-        discount = new Discount({ service, plan, discountPercentage, status: "pending" });
+        discount = new Discount({
+            service,
+            plan,
+            discountPercentage,
+            description: description || "", // Ensure an empty string if no description is provided
+            status: "pending"
+        });
         await discount.save();
     }
     res.redirect('/admin/discounts');
 }));
+
+
+// ✅ Route to Update Discount Status
+router.post('/update-discount-status', catchAsync(async (req, res) => {
+    try {
+        let { id, status } = req.body;
+
+        // Validate ObjectId format
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(400).json({ success: false, error: "Invalid ID format" });
+        }
+
+        // Convert id to ObjectId
+        const objectId = new mongoose.Types.ObjectId(id);
+
+        // Validate status
+        if (!["pending", "active", "expired"].includes(status)) {
+            return res.status(400).json({ success: false, error: "Invalid status" });
+        }
+
+        // Find and update the discount
+        const discount = await Discount.findById(objectId);
+        if (!discount) {
+            return res.status(404).json({ success: false, error: "Discount not found" });
+        }
+
+        discount.status = status;
+        await discount.save();
+
+        return res.json({ success: true, message: "Discount status updated successfully" });
+    } catch (error) {
+        console.error("Error updating discount status:", error);
+        return res.status(500).json({ success: false, error: "Internal Server Error" });
+    }
+}));
+
+
 
 // ✅ Protect Deleting Discounts
 router.post('/delete-discount',  catchAsync(async (req, res) => {

@@ -1,8 +1,9 @@
 .section {
     position: relative;
+	height: auto;
     min-height: 100vh; /* Changed from height to min-height */
     padding-top: 80px; /* Add padding to prevent overlap with the navbar */
-    padding-bottom: 120px; 
+	padding-bottom: 200px;
 
 }
 
@@ -38,6 +39,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 	padding: 40px;
 	border-radius: 6px;
     height: auto;
+	
 }
 
 .quotation-form .form-group {

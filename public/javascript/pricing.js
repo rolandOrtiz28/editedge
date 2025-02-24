@@ -26,18 +26,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 let priceDisplay = `$${plan.price}`;
                 let discountBadge = "";
+                let descriptionText = "";
+                
                 if (plan.discountedPrice) {
                     priceDisplay = `<span class="original-price">$${plan.price}</span> <span class="discounted-price">$${plan.discountedPrice}</span>`;
                     discountBadge = `<span class="discount-badge">${plan.discountPercentage}% OFF</span>`;
+                
+                    if (plan.discountDescription && plan.discountDescription.trim() !== "") {
+                        descriptionText = `<p class="discount-description">${plan.discountDescription}</p>`;
+                    }
                 }
 
                 const card = `
                     <div class="card mt-4 card_box">
-                        ${discountBadge}
+                    ${plan.hasActiveDiscount ? discountBadge : ''}
                         <div class="mx-2 card-body">
                             <h5 class="card-title my-2">${plan.title}</h5>
                             <p class="text-muted mb-2">Tailored solutions to bring your ideas to <span>life.</span></p>
                             <p class="h2 fw-bold">${priceDisplay}</p>
+
+                            ${plan.hasActiveDiscount && plan.discountDescription.trim() !== "" ? `
+            <p class="text-info small mt-2">${plan.discountDescription}</p>
+        ` : ''}
                             <button class="btn btn-dark d-block mb-2 mt-3 text-capitalize select-package" 
                                     data-service="${encodedService}" 
                                     data-plan="${encodedTitle}">

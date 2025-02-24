@@ -18,6 +18,9 @@
                             <strong><%= discount.plan %></strong>
                             <p class="text-muted"><%= discount.service %></p>
                             <p class="text-danger"><%= discount.discountPercentage %>% OFF</p>
+                            <% if (discount.description && discount.description.trim() !== "") { %>
+                                <p class="discount-description text-white"><%= discount.description %></p>
+                            <% } %>
                             <form action="/admin/delete-discount" method="POST">
                                 <input type="hidden" name="id" value="<%= discount._id %>">
                                 <button type="submit" class="btn btn-sm btn-danger">Remove</button>
@@ -38,6 +41,9 @@
                             <strong><%= discount.plan %></strong>
                             <p class="text-muted"><%= discount.service %></p>
                             <p class="text-success"><%= discount.discountPercentage %>% OFF</p>
+                            <% if (discount.description && discount.description.trim() !== "") { %>
+                                <p class="discount-description text-white"><%= discount.description %></p>
+                            <% } %>
                             <form action="/admin/delete-discount" method="POST">
                                 <input type="hidden" name="id" value="<%= discount._id %>">
                                 <button type="submit" class="btn btn-sm btn-danger">Remove</button>
@@ -57,6 +63,9 @@
                             <strong><%= discount.plan %></strong>
                             <p class="text-muted"><%= discount.service %></p>
                             <p class="text-warning"><%= discount.discountPercentage %>% OFF</p>
+                            <% if (discount.description && discount.description.trim() !== "") { %>
+                                <p class="discount-description text-white"><%= discount.description %></p>
+                            <% } %>
                             <form action="/admin/delete-discount" method="POST">
                                 <input type="hidden" name="id" value="<%= discount._id %>">
                                 <button type="submit" class="btn btn-sm btn-danger">Remove</button>
@@ -95,6 +104,11 @@
             <div class="form-group mb-3">
                 <label for="discountPercentage" class="text-white">Discount Percentage:</label>
                 <input type="number" name="discountPercentage" id="discountPercentage" class="form-control" min="1" max="100" required>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="description" class="text-white">Discount Description (Optional):</label>
+                <textarea name="description" id="description" class="form-control" rows="2" placeholder="Enter a description (optional)"></textarea>
             </div>
 
             <button type="submit" class="btn btn-primary mt-3">Apply Discount</button>

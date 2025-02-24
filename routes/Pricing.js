@@ -158,15 +158,19 @@ router.get('/get-pricing', catchAsync(async(req, res) => {
 
   // Apply discounts
   pricingData = pricingData.map(plan => {
-      const discount = discounts.find(d => d.plan === plan.title);
-      if (discount) {
-          const discountAmount = (parseFloat(plan.price.split('-')[0]) * discount.discountPercentage) / 100;
-          const discountedPrice = parseFloat(plan.price.split('-')[0]) - discountAmount;
-          plan.discountedPrice = discountedPrice.toFixed(2);
-          plan.discountPercentage = discount.discountPercentage;
-      }
-      return plan;
-  });
+    const discount = discounts.find(d => d.plan === plan.title && d.status === "active"); // Only apply active discounts
+    if (discount) {
+        const discountAmount = (parseFloat(plan.price.split('-')[0]) * discount.discountPercentage) / 100;
+        const discountedPrice = parseFloat(plan.price.split('-')[0]) - discountAmount;
+        plan.discountedPrice = discountedPrice.toFixed(2);
+        plan.discountPercentage = discount.discountPercentage;
+        plan.discountDescription = discount.description || ""; // Include the description
+        plan.hasActiveDiscount = true; // Flag to indicate active discount
+    } else {
+        plan.hasActiveDiscount = false; // No active discount
+    }
+    return plan;
+});
 
   res.json(pricingData);
 }));
