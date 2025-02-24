@@ -67,7 +67,7 @@ router.get('/get-pricing', catchAsync(async(req, res) => {
       {
         title: 'Pro Plan',
         price: '3,000+',
-        features: ['Advanced 3D animations and effects', 'Custom integrations', 'E-commerce functionality']
+        features: ['AI Integration','Advanced 3D animations and effects', 'Custom integrations', 'E-commerce functionality']
       }
     ];
   }
@@ -124,12 +124,12 @@ router.get('/get-pricing', catchAsync(async(req, res) => {
       {
         title: '3D Monthly Subscription',
         price: '1,000/month',
-        features: ['4 custom 3D assets per month', 'Full high-quality rendering', 'Texturing & lighting included']
+        features: ['5 custom 3D assets per month', 'Full high-quality rendering', 'Texturing & lighting included']
       },
       {
         title: 'Advanced 3D Monthly Subscription',
         price: '2,500/month',
-        features: ['Unlimited 3D models & animations', 'Game-ready assets', 'Realistic character modeling', 'Custom scene environments']
+        features: ['10 3D models & animations', 'Game-ready assets', 'Realistic character modeling', 'Custom scene environments']
       }
     ];
   }
@@ -160,8 +160,9 @@ router.get('/get-pricing', catchAsync(async(req, res) => {
   pricingData = pricingData.map(plan => {
     const discount = discounts.find(d => d.plan === plan.title && d.status === "active"); // Only apply active discounts
     if (discount) {
-        const discountAmount = (parseFloat(plan.price.split('-')[0]) * discount.discountPercentage) / 100;
-        const discountedPrice = parseFloat(plan.price.split('-')[0]) - discountAmount;
+      const basePrice = parseFloat(plan.price.replace(/,/g, '').split('-')[0]); // Remove comma from number
+      const discountAmount = (basePrice * discount.discountPercentage) / 100;
+      const discountedPrice = basePrice - discountAmount;
         plan.discountedPrice = discountedPrice.toFixed(2);
         plan.discountPercentage = discount.discountPercentage;
         plan.discountDescription = discount.description || ""; // Include the description
