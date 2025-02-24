@@ -160,7 +160,7 @@
     margin-bottom: 0.5rem;
   }
   .header h5{
-    font-size: 1rem;
+    font-size: .8rem;
     width: 100% !important;
   }
 
@@ -194,5 +194,12 @@
   .blog-card-footer {
       font-size: 0.8rem;
       padding: 8px;
+  }
+
+  .title .our{
+   
+    top: -45%;
+    left: 2%;
+    
   }
 }

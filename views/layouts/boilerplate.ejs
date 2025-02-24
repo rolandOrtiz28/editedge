@@ -4,25 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="<%= typeof blog !== 'undefined' ? blog.metaDescription : 'Default blog description' %>">
+    <meta name="description" content="<%= typeof blog !== 'undefined' ? blog.metaDescription : 'EditEdge Multimedia is a full-service creative agency offering video editing, graphic design, 3D art, web development, and digital marketing. They blend technical expertise with creativity to enhance clients digital presence.' %>">
     <meta name="keywords" content="<%= typeof blog !== 'undefined' && blog.tags ? blog.tags.join(', ') : 'default, keywords' %>">
     <meta name="author" content="EditEdge Multimedia">
 
     <!-- ✅ Open Graph (Facebook, LinkedIn, etc.) -->
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="<%= typeof blog !== 'undefined' ? blog.title : 'Your Blog Name' %>">
-    <meta property="og:description" content="<%= typeof blog !== 'undefined' ? blog.metaDescription : 'Default blog description' %>">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="<%= typeof blog !== 'undefined' ? blog.title : 'EditEdge Multimedia' %>">
+    <meta property="og:description" content="<%= typeof blog !== 'undefined' ? blog.metaDescription : 'EditEdge Multimedia is a full-service creative agency offering video editing, graphic design, 3D art, web development, and digital marketing. They blend technical expertise with creativity to enhance clients digital presence.' %>">
     <meta property="og:image" content="<%= typeof blog !== 'undefined' && blog.image ? blog.image : '/default-image.jpg' %>">
-    <meta property="og:url" content="<%= typeof blog !== 'undefined' ? `https://yourwebsite.com/blogs/${blog.slug}` : 'https://yourwebsite.com' %>">
+    <meta property="og:url" content="<%= typeof blog !== 'undefined' ? `https://editedgemultimedia.com/${blog.slug}` : 'https://editedgemultimedia.com/' %>">
     
     <!-- ✅ Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="<%= typeof blog !== 'undefined' ? blog.title : 'Your Blog Name' %>">
-    <meta name="twitter:description" content="<%= typeof blog !== 'undefined' ? blog.metaDescription : 'Default blog description' %>">
-    <meta name="twitter:image" content="<%= typeof blog !== 'undefined' && blog.image ? blog.image : '/default-image.jpg' %>">
+    <meta name="twitter:title" content="<%= typeof blog !== 'undefined' ? blog.title : 'EditEdge Multimedia' %>">
+    <meta name="twitter:description" content="<%= typeof blog !== 'undefined' ? blog.metaDescription : 'EditEdge Multimedia is a full-service creative agency offering video editing, graphic design, 3D art, web development, and digital marketing. They blend technical expertise with creativity to enhance clients digital presence.' %>">
+    <meta name="twitter:image" content="<%= typeof blog !== 'undefined' && blog.image ? blog.image : '/images/logo.svg' %>">
 
     
-    <title><%= title || "Edit Edge" %></title> 
+    <title><%= typeof title !== 'undefined' && title ? title : "EditEdge Multimedia" %></title>
+
 
     <link rel="icon" type="image/svg+xml" href="/images/logo.svg" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
@@ -74,16 +75,16 @@
  
 <!-- Chatbot Floating Button -->
 <div id="chatbot-container">
-    <div id="eddie-model"></div>
+    <!-- <div id="eddie-model"></div> -->
     <div id="chatbot-toggle">
         <div id="speech-bubble">Hello!</div>
-        
+        <img src="https://res.cloudinary.com/dowyujl8h/image/upload/f_auto,q_auto,w_800/v1740017134/Eddie_eeubkc.png" alt="Eddie AI" loading="lazy">
     </div>
     
     <div id="chatbot-window">
         <div id="chatbot-header">
             <div class="chatbot-avatar">
-                <img src="/images/chatbot-icon.png" alt="Eddie AI" loading="lazy">
+                <img src="https://res.cloudinary.com/dowyujl8h/image/upload/f_auto,q_auto,w_800/v1740017134/Eddie_eeubkc.png" alt="Eddie AI" loading="lazy">
                 <span class="status-indicator"></span>
             </div>
             <span id="eddie-name">Eddie</span>
@@ -109,7 +110,7 @@
 
 
 
-
+<script src="https://cdn.jsdelivr.net/npm/@hotwired/turbo@7.2.0/dist/turbo.es5-umd.js" defer></script>
     <script async src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script async type="text/javascript" src="https://cdn.jsdelivr.net/gh/yesiamrocks/cssanimation.io@1.0.3/letteranimation.min.js"></script>
     <script src="/javascript/boilerplate.js"></script>

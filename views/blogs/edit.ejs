@@ -95,7 +95,14 @@
 
             <!-- Show Existing Image (Smaller) -->
             <% if (blog.image) { %>
-                <img src="<%= blog.image %>" class="rounded-md w-[200px] mx-auto mt-2">
+                <div class="relative w-[200px] mx-auto mt-2">
+                    <img id="previewImage" src="<%= blog.image %>" class="rounded-md w-full">
+                    <!-- Checkbox to delete the image -->
+                    <label class="flex items-center mt-2 space-x-2">
+                        <input type="checkbox" name="deleteImage" id="deleteImage">
+                        <span class="text-red-500 text-sm">Delete current cover image</span>
+                    </label>
+                </div>
             <% } %>
 
             <!-- ✅ Link URLs Input Section -->

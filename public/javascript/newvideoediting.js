@@ -1,6 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
     gsap.registerPlugin(ScrollTrigger);
 
+
+    const isMobile = window.innerWidth <= 768;
+
+  if (!isMobile) {
     // Service Cards Floating Animation with Delay
     gsap.utils.toArray(".service-card").forEach((card, i) => {
         gsap.fromTo(
@@ -44,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         );
     });
+}
 });
 
 

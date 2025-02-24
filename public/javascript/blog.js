@@ -176,6 +176,11 @@ document.addEventListener("DOMContentLoaded", function () {
         formData.append("content", quill.root.innerHTML);
         formData.append("status", document.activeElement.value);
 
+        let imageInput = document.querySelector('input[name="image"]');
+        if (imageInput.files.length > 0) {
+            formData.append("image", imageInput.files[0]);
+        }
+
         fetch("/blogs", { method: "POST", body: formData })
         .then(response => response.json())
         .then(data => { if (data.success) { window.location.href = `/blogs/${data.slug}`; } })

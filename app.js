@@ -33,7 +33,7 @@ const chatbotRoute = require('./routes/chatbot');
 const helmet = require('helmet')
 const Joi = require('joi');
 const secret = process.env.SESSION_SECRET;
-const dbUrl = process.env.DB_URL || 'mongodb://127.0.0.1:27017/bluelightinnovations';
+const dbUrl =  process.env.DB_URL || 'mongodb://127.0.0.1:27017/bluelightinnovations';
 //
 // Connect to MongoDB with extended timeout options
 mongoose.connect(dbUrl, {
@@ -195,7 +195,21 @@ app.use((req, res, next) => {
   res.locals.currentUser = req.user;
   res.locals.success = req.flash('success');
   res.locals.error = req.flash('error');
-  res.locals.title = "Edit Edge";
+  res.locals.title = "EditEdge Multimedia: Video Editing, Graphic Design, 3D Art, Web Development & Digital Marketing";
+  app.use((req, res, next) => {
+    res.locals.currentUser = req.user;
+    res.locals.success = req.flash('success');
+    res.locals.error = req.flash('error');
+    res.locals.title = "EditEdge Multimedia: Video Editing, Graphic Design, 3D Art, Web Development & Digital Marketing";
+    res.locals.services = [
+      "Video Editing",
+      "Graphic Design",
+      "3D Art",
+      "Web Development",
+      "Digital Marketing"
+    ];
+    next();
+  });
   next();
 });
 

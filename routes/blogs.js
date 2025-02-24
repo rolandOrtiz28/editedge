@@ -59,9 +59,6 @@ router.post(
 );
 
 
-
-
-
 router.post("/upload", upload.single("image"), async (req, res) => {
     if (!req.file) return res.status(400).json({ error: "No file uploaded" });
     res.json({ url: req.file.path }); 
