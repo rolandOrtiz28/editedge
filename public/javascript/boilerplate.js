@@ -158,11 +158,50 @@ document.addEventListener("DOMContentLoaded", function () {
     const buttonLoader = new THREE.GLTFLoader();
     let buttonModel = null;
 
-    buttonLoader.load("/assets/chatbot_export.glb", function (gltf) {
-      if (buttonModel) {
-          console.warn("⚠️ Eddie is already loaded in the button. Skipping duplicate.");
+    function enableEyeTracking(model) {
+      let eddieEyes = [];
+  
+      // 🎯 Select the correct eye objects
+      model.traverse((child) => {
+          if (child.name === "1" || child.name === "2" || child.name === "3") {  
+              console.log(`👀 Eye Tracking Enabled for: ${child.name}`);
+              eddieEyes.push({ mesh: child, originalPosition: child.position.clone() }); // ✅ Store original position
+          }
+      });
+  
+      if (eddieEyes.length === 0) {
+          console.warn("⚠️ No eye mesh found! Skipping eye tracking.");
           return;
       }
+  
+      // 🎯 Make Eyes Follow Cursor (Without Leaving the Head)
+      document.addEventListener("mousemove", (event) => {
+          const rect = chatbotToggle.getBoundingClientRect();
+          const x = ((event.clientX - rect.left) / rect.width) * 2 - 1; // Normalize X (-1 to 1)
+          const y = ((event.clientY - rect.top) / rect.height) * 2 - 1; // Normalize Y (-1 to 1)
+  
+          const movementRange = 0.04; // ✅ **New Limit: Max movement range**
+  
+          // ✅ Move eyes slightly within their original position range
+          eddieEyes.forEach((eye) => {
+              const newX = eye.originalPosition.x + x * movementRange;
+              const newY = eye.originalPosition.y - y * movementRange;
+  
+              // ✅ **Clamp values so eyes don’t leave the head**
+              eye.mesh.position.x = Math.max(eye.originalPosition.x - movementRange, Math.min(newX, eye.originalPosition.x + movementRange));
+              eye.mesh.position.y = Math.max(eye.originalPosition.y - movementRange, Math.min(newY, eye.originalPosition.y + movementRange));
+          });
+      });
+  }
+  
+
+    buttonLoader.load("/assets/chatbot_export.glb", function (gltf) {
+      if (buttonModel) {
+        console.warn("⚠️ Eddie is already loaded in the button. Skipping duplicate.");
+        return;
+    }
+     
+      
   
       buttonModel = gltf.scene;
       let eddieHead = null; 
@@ -186,18 +225,46 @@ document.addEventListener("DOMContentLoaded", function () {
       if (gltf.animations.length > 0) {
         mixer = new THREE.AnimationMixer(buttonModel); // Create mixer
     
-        // 🟢 Try applying animation to all clips (if multiple exist)
-        gltf.animations.forEach((clip, index) => {
+        // ✅ Play all animations (including hands)
+        gltf.animations.forEach((clip) => {
             const action = mixer.clipAction(clip);
-            action.clampWhenFinished = true; // Stop looping when done
-            action.setEffectiveTimeScale(0.6); // Ensure normal speed
-            action.setEffectiveWeight(1); // Make sure it's visible
-            action.play(); // Play animation
-            console.log(`🎬 Playing Eddie's Animation: ${clip.name}`);
+            action.setLoop(THREE.LoopRepeat, 3); // ✅ Play 3 times
+            action.setEffectiveTimeScale(0.3); // ✅ Slow down
+            action.setEffectiveWeight(1);
+            action.clampWhenFinished = true;
+            action.play();
+            console.log(`🎬 Playing Animation: ${clip.name}`);
         });
-    } else {
-          console.warn("⚠️ No animations found in Eddie's model!");
-      }
+    
+        // ✅ When animation finishes, reset Eddie to default standing pose
+        mixer.addEventListener("finished", () => {
+          console.log("🎬 Animation finished! Forcing Eddie back to standing pose.");
+      
+          // 🔹 STOP all current animations
+          mixer.stopAllAction();
+      
+          // 🔹 Force Eddie's whole model to reset position & rotation
+          buttonModel.position.set(0, 2.5, 2); // ✅ Move Eddie back to his original spot
+          buttonModel.rotation.set(0, 0, 0);   // ✅ Reset rotation
+      
+          // 🔹 If Eddie has bones, reset their rotations too
+          buttonModel.traverse((child) => {
+              if (child.isBone || child.isMesh) {
+                  child.rotation.set(0, 0, 0); // ✅ Reset each part to neutral
+              }
+          });
+      
+          console.log("✅ Eddie is now back to standing!");
+      
+          // ✅ Enable Eye Tracking after resetting pose
+          enableEyeTracking(buttonModel);
+      });
+      
+      
+    }
+    
+    
+    
   
       // ✅ Adjust Scale & Position for Correct Visibility
       buttonModel.scale.set(4, 4, 4);
