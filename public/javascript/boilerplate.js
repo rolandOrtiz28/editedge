@@ -200,26 +200,10 @@ document.addEventListener("DOMContentLoaded", function () {
         console.warn("⚠️ Eddie is already loaded in the button. Skipping duplicate.");
         return;
     }
-     
-      
-  
       buttonModel = gltf.scene;
       let eddieHead = null; 
       let mixer = null; // 🎥 Animation mixer
   
-      // ✅ Find Eddie's Head and Handle Animation
-      buttonModel.traverse((child) => {
-          if (child.isMesh) {
-              child.material.side = THREE.DoubleSide;
-              child.material.needsUpdate = true;
-  
-              // 🎯 Detect Eddie's head for cursor interaction
-              if (child.name.toLowerCase().includes("head")) {
-                  console.log("🟢 Eddie's Head Found:", child.name);
-                  eddieHead = child;
-              }
-          }
-      });
   
       // ✅ Start Animation if Available
       if (gltf.animations.length > 0) {
@@ -229,7 +213,7 @@ document.addEventListener("DOMContentLoaded", function () {
         gltf.animations.forEach((clip) => {
             const action = mixer.clipAction(clip);
             action.setLoop(THREE.LoopRepeat, 3); // ✅ Play 3 times
-            action.setEffectiveTimeScale(0.3); // ✅ Slow down
+            action.setEffectiveTimeScale(0.5); // ✅ Slow down
             action.setEffectiveWeight(1);
             action.clampWhenFinished = true;
             action.play();
@@ -258,14 +242,8 @@ document.addEventListener("DOMContentLoaded", function () {
       
           // ✅ Enable Eye Tracking after resetting pose
           enableEyeTracking(buttonModel);
-      });
-      
-      
+      });     
     }
-    
-    
-    
-  
       // ✅ Adjust Scale & Position for Correct Visibility
       buttonModel.scale.set(4, 4, 4);
       buttonModel.position.set(0, 2.5, 2);
@@ -294,17 +272,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       animateButton();
   
-      // 🎯 **Make Eddie's Head Follow Cursor**
-      document.addEventListener("mousemove", (event) => {
-          const rect = chatbotToggle.getBoundingClientRect();
-          const x = ((event.clientX - rect.left) / rect.width) * 2 - 1; // Normalize X (-1 to 1)
-          const y = ((event.clientY - rect.top) / rect.height) * 2 - 1; // Normalize Y (-1 to 1)
-  
-          if (eddieHead) {
-              eddieHead.rotation.y = x * 0.8; // Left/Right rotation
-              eddieHead.rotation.x = -y * 0.5; // Up/Down rotation
-          }
-      });
+     
   });
   
 
@@ -324,55 +292,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-function makeDraggable(model, camera, renderer, scene) {
-    let isDragging = false;
-    let previousMousePosition = { x: 0, y: 0 };
-
-    renderer.domElement.addEventListener("mousedown", (event) => {
-        isDragging = true;
-        previousMousePosition = { x: event.clientX, y: event.clientY };
-    });
-
-    renderer.domElement.addEventListener("mousemove", (event) => {
-        if (!isDragging) return;
-        const deltaX = event.clientX - previousMousePosition.x;
-        const deltaY = event.clientY - previousMousePosition.y;
-
-        model.rotation.y += deltaX * 0.01;
-        model.rotation.x += deltaY * 0.01;
-
-        previousMousePosition = { x: event.clientX, y: event.clientY };
-    });
-
-    renderer.domElement.addEventListener("mouseup", () => {
-        isDragging = false;
-    });
-
-    renderer.domElement.addEventListener("mouseleave", () => {
-        isDragging = false;
-    });
-
-   
-    renderer.domElement.addEventListener("touchstart", (event) => {
-        isDragging = true;
-        previousMousePosition = { x: event.touches[0].clientX, y: event.touches[0].clientY };
-    });
-
-    renderer.domElement.addEventListener("touchmove", (event) => {
-        if (!isDragging) return;
-        const deltaX = event.touches[0].clientX - previousMousePosition.x;
-        const deltaY = event.touches[0].clientY - previousMousePosition.y;
-
-        model.rotation.y += deltaX * 0.01;
-        model.rotation.x += deltaY * 0.01;
-
-        previousMousePosition = { x: event.touches[0].clientX, y: event.touches[0].clientY };
-    });
-
-    renderer.domElement.addEventListener("touchend", () => {
-        isDragging = false;
-    });
-}
 
 document.addEventListener("DOMContentLoaded", function () {
     let hasEddieSpoken = sessionStorage.getItem("hasEddieSpoken") === "true";
