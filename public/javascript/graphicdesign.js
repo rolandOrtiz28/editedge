@@ -74,3 +74,58 @@ function openFullscreen(imageSrc) {
       modal.remove();
   });
 }
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const images = document.querySelectorAll(".swiper-slide img");
+
+    // Create fullscreen overlay
+    const fullscreenOverlay = document.createElement("div");
+    fullscreenOverlay.style.position = "fixed";
+    fullscreenOverlay.style.top = "0";
+    fullscreenOverlay.style.left = "0";
+    fullscreenOverlay.style.width = "100vw";
+    fullscreenOverlay.style.height = "100vh";
+    fullscreenOverlay.style.backgroundColor = "rgba(0, 0, 0, 0.9)";
+    fullscreenOverlay.style.display = "none";
+    fullscreenOverlay.style.justifyContent = "center";
+    fullscreenOverlay.style.alignItems = "center";
+    fullscreenOverlay.style.zIndex = "1000";
+    fullscreenOverlay.style.cursor = "pointer";
+
+    const fullscreenImage = document.createElement("img");
+    fullscreenImage.style.maxWidth = "90%";
+    fullscreenImage.style.maxHeight = "90%";
+    fullscreenImage.style.borderRadius = "10px";
+
+    fullscreenOverlay.appendChild(fullscreenImage);
+    document.body.appendChild(fullscreenOverlay);
+
+    images.forEach(img => {
+        img.addEventListener("click", function () {
+            fullscreenImage.src = this.src;
+            fullscreenOverlay.style.display = "flex";
+        });
+    });
+
+    // Close fullscreen when clicking the overlay
+    fullscreenOverlay.addEventListener("click", function () {
+        fullscreenOverlay.style.display = "none";
+    });
+
+    // Close on ESC key
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+            fullscreenOverlay.style.display = "none";
+        }
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const num1 = Math.floor(Math.random() * 10) + 1;
+    const num2 = Math.floor(Math.random() * 10) + 1;
+    document.getElementById("num1").innerText = num1;
+    document.getElementById("num2").innerText = num2;
+    document.getElementById("captchaCorrectAnswer").value = num1 + num2;
+  });

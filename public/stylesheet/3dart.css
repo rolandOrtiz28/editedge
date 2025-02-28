@@ -7,19 +7,186 @@
 }
 
 /* Hero Section */
+
+
 .hero-section {
   position: relative;
-  padding: 6rem 2rem;
-  text-align: center;
-  background: url("/images/Coverphotos.png") center/cover no-repeat;
+  padding: 5rem 2rem;
+  background: rgba( 255, 255, 255, 0.25 ) url("/images/Coverphotos.png") center/cover no-repeat;
   border-radius: 20px;
   box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.2);
   color: white;
+ 
+    backdrop-filter: blur(5px); /* Blurred glass effect */
+    -webkit-backdrop-filter: blur(5px); /* Safari support */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Soft border */
 }
 
+.hero-section .row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Left Side - Service Description */
+.hero-section h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.hero-section .sub-text {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 90%;
+}
+
+/* Right Side - Quotation Form */
+.quote-box {
+  width: 100%;
+  max-width: 450px;
+  padding: 30px;
+  text-align: center;
+  background: rgba( 48, 48, 48, 0.25 );
+box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.37);
+backdrop-filter: blur( 4px );
+-webkit-backdrop-filter: blur( 4px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+/* Quote Form Title */
+.quote-title {
+  font-size: 1.5rem;
+
+  color: #FF007F;
+  margin-bottom: 1rem;
+}
+
+/* Form Fields */
+.quote-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+/* Labels */
+.quote-form label {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.8);
+  display: block;
+  margin-bottom: 4px;
+  text-align: left;
+}
+
+/* Form Inputs */
+.quote-form .form-group {
+  margin: 0;
+}
+
+.quote-form .form-control {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ffffff;
+  box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  background: none;
+  color: white;
+}
+
+.quote-form .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Smaller Textarea */
+.quote-form textarea {
+  resize: none;
+}
+
+/* Submit Button */
+.quote-form .form-button {
+  background: #FF007F;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+  cursor: pointer;
+  border: none;
+  font-size: 1rem;
+}
+
+.quote-form .form-button:hover {
+  background: white;
+  color: #101010;
+}
+
+.captcha-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.captcha-container label {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: left;
+}
+
+
+/* ✅ Responsive Adjustments */
+@media (max-width: 992px) {
+  .hero-section {
+      padding: 4rem 2rem;
+  }
+
+  .hero-section .row {
+      flex-direction: column;
+      text-align: center;
+  }
+
+  .quote-box {
+      max-width: 100%;
+  }
+
+  .hero-section .sub-text {
+      max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section h1 {
+      font-size: 2rem;
+  }
+
+  .hero-section .sub-text {
+      font-size: 1rem;
+  }
+
+  .quote-form label {
+      font-size: 0.8rem;
+  }
+
+  .quote-form .form-control {
+      font-size: 0.9rem;
+      padding: 8px;
+  }
+
+  .quote-form .form-button {
+      padding: 8px 12px;
+      font-size: 0.9rem;
+  }
+}
+/* Responsive Text */
 .glow-text {
   font-size: 3rem;
-  font-weight: bold;
+
   text-transform: uppercase;
   color: #FF007F;
   text-shadow: 0 0 20px #FF007F, 0 0 40px rgba(255, 0, 127, 0.3);

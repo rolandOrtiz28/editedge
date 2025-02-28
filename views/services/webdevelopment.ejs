@@ -1,24 +1,56 @@
 <% layout('/layouts/boilerplate') -%>
 <link rel="stylesheet" href="/stylesheet/webdev.css">
 
+
 <div class="container-fluid web-development-page">
   <!-- Hero Section -->
   <div class="hero-section">
-    <h1 class="highlight">Expert <span class="glow-text">Web Development Services</span></h1>
-    <p class="sub-text">Custom-built, high-performance, and SEO-optimized websites powered by the latest web technologies.</p>
-    <a href="/quotation" class="cta-button">Request a Free Quote</a>
+    <div class="row align-items-center">
+        <!-- Left: Service Description -->
+        <div class="col-md-6 text-center">
+            <h1 class="highlight">Expert <span class="glow-text">Web Development Services</span></h1>
+            <p class="sub-text">
+                Custom-built, high-performance, and SEO-optimized websites powered by the latest web technologies.
+            </p>
+        </div>
+
+        <!-- Right: Quotation Form -->
+        <div class="col-md-5 d-flex justify-content-center">
+            <div class="quote-box">
+                <h2 class="quote-title">Get a Fast Quote</h2>
+                <form action="/quotation/web-development" method="POST" class="quote-form">
+                    <input type="hidden" name="serviceType" value="Web Development">
+
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="emailAddress">Email Address</label>
+                        <input type="email" id="emailAddress" name="emailAddress" placeholder="Enter your email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNumber">Phone Number</label>
+                        <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="projectDescription">Project Description</label>
+                        <textarea id="projectDescription" name="projectDescription" placeholder="Briefly describe your project" class="form-control" rows="2" required></textarea>
+                    </div>
+
+                    <div class="form-group captcha-container">
+                      <label for="captchaAnswer">(Captcha) What is <span id="num1"></span> + <span id="num2"></span>?</label>
+                      <input type="text" id="captchaAnswer" name="captchaAnswer" placeholder="Enter the answer" class="form-control" required>
+                      <input type="hidden" id="captchaCorrectAnswer" name="captchaCorrectAnswer">
+                  </div>
+                    <button type="submit" class="form-button">Get a Free Quote</button>
+                </form>
+            </div>
+        </div>
+    </div>
   </div>
 
-  <!-- Navigation Links -->
-  <div class="video-links text-center">
-    <a href="/Video-Editing" class="video-link">Professional Video Editing</a>
-    <span>|</span>
-    <a href="/Graphic-Design" class="video-link">Custom Graphic Design</a>
-    <span>|</span>
-    <a href="/3Dart" class="video-link">3D Modeling & Animation</a>
-    <span>|</span>
-    <a href="/Digital-Marketing" class="video-link">Degital Marketing</a>
-  </div>
+
 
   <!-- Service Offerings -->
   <div class="service-section">
@@ -91,36 +123,52 @@
   </div>
 
   <!-- Portfolio - Image Slider -->
-  <section class="image-slider-container">
-    <h2 class="slider-title">Recent Web Development Projects</h2>
-    <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <img src="/images/IEDS.png" alt="Educational Institution Website Design">
-          <div class="slide-caption"><a href="https://ieds.onrender.com">Educational Website</a></div>
+  <section class="projects-container">
+    <h2 class="section-title">Recent Web Development Projects</h2>
+    <div class="projects-grid">
+        <div class="project-card">
+            <img src="/images/IEDS.png" alt="Educational Institution Website Design">
+            <div class="project-info">
+                <h3>Educational Website</h3>
+                <p>Designed for an educational institution to enhance online learning.</p>
+                <a href="https://ieds.onrender.com" target="_blank" class="btn-visit">View Project</a>
+            </div>
         </div>
-        <div class="swiper-slide">
-          <img src="/images/coffee.png" alt="Coffee Shop E-Commerce Website">
-          <div class="slide-caption"><a href="https://paulamed-cafe.onrender.com">Coffee Shop Website</a></div>
+        <div class="project-card">
+            <img src="/images/coffee.png" alt="Coffee Shop E-Commerce Website">
+            <div class="project-info">
+                <h3>Coffee Shop Website</h3>
+                <p>An e-commerce platform for a modern coffee shop business.</p>
+                <a href="https://paulamed-cafe.onrender.com" target="_blank" class="btn-visit">View Project</a>
+            </div>
         </div>
-        <div class="swiper-slide">
-          <img src="/images/Bluelight.png" alt="Business Portfolio Website Development">
-          <div class="slide-caption"><a href="https://bluelightinnovations.com/">Business Portfolio</a></div>
+        <div class="project-card">
+            <img src="/images/Bluelight.png" alt="Business Portfolio Website Development">
+            <div class="project-info">
+                <h3>Business Portfolio</h3>
+                <p>Corporate website showcasing a business’s services & branding.</p>
+                <a href="https://bluelightinnovations.com/" target="_blank" class="btn-visit">View Project</a>
+            </div>
         </div>
-        <div class="swiper-slide">
-          <img src="/images/online-exam.png" alt="Online Examination Web App">
-          <div class="slide-caption"><a href="https://washington-first-online-examination.onrender.com">Online Exam System</a></div>
+        <div class="project-card">
+            <img src="/images/online-exam.png" alt="Online Examination Web App">
+            <div class="project-info">
+                <h3>Online Exam System</h3>
+                <p>A web-based platform for conducting secure online exams.</p>
+                <a href="https://washington-first-online-examination.onrender.com" target="_blank" class="btn-visit">View Project</a>
+            </div>
         </div>
-        <div class="swiper-slide">
-          <img src="/images/assessment.png" alt="Enrollment Evaluation System">
-          <div class="slide-caption"><a href="https://wfs-placement.onrender.com">Student Enrollment Evaluation</a></div>
+        <div class="project-card">
+            <img src="/images/assessment.png" alt="Enrollment Evaluation System">
+            <div class="project-info">
+                <h3>Student Enrollment Evaluation</h3>
+                <p>Automated system for evaluating student enrollments.</p>
+                <a href="https://wfs-placement.onrender.com" target="_blank" class="btn-visit">View Project</a>
+            </div>
         </div>
-      </div>
-      <!-- Navigation Arrows -->
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
     </div>
-  </section>
+</section>
+
 
   <!-- Call to Action -->
   <div class="cta-section">

@@ -3,21 +3,54 @@
 
 <div class="container-fluid video-editing-page">
   <!-- Hero Section -->
-  <div class="hero-section">
-    <h1 class="highlight">Create Stunning Videos with <span class="glow-text">Professional Editing</span></h1>
-    <p class="sub-text">High-quality post-production to bring your vision to life.</p>
-    <a href="/quotation" class="cta-button">Get Started</a>
+  <div class="container-fluid web-development-page">
+    <!-- Hero Section -->
+    <div class="hero-section">
+      <div class="row align-items-center">
+        <!-- Left Side: Service Description -->
+        <div class="col-md-6 d-flex flex-column align-items-center text-center">
+          <h1 class="highlight">Create Stunning Videos with <span class="glow-text">Professional Editing</span></h1>
+          <p class="sub-text">High-quality post-production to bring your vision to life.</p>
+        </div>
+  
+        <!-- Right Side: Quotation Form -->
+        <div class="col-md-5 d-flex justify-content-center">
+          <div class="quote-box">
+            <h2 class="quote-title">Get a Fast Quote</h2>
+            <form action="/quotation/video-editing" method="POST" class="quote-form">
+                <input type="hidden" name="serviceType" value="Web Development">
+  
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="emailAddress">Email Address</label>
+                    <input type="email" id="emailAddress" name="emailAddress" placeholder="Enter your email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="projectDescription">Project Description</label>
+                    <textarea id="projectDescription" name="projectDescription" placeholder="Briefly describe your project" class="form-control" rows="2" required></textarea>
+                </div>
+  
+                <div class="form-group captcha-container">
+                  <label for="captchaAnswer">(Captcha) What is <span id="num1"></span> + <span id="num2"></span>?</label>
+                  <input type="text" id="captchaAnswer" name="captchaAnswer" placeholder="Enter the answer" class="form-control" required>
+                  <input type="hidden" id="captchaCorrectAnswer" name="captchaCorrectAnswer">
+                </div>
+                <button type="submit" class="form-button">Get a Free Quote</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="video-links text-center">
-    
-    <a href="/Graphic-Design" class="video-link">Graphic Design</a>
-    <span>|</span>
-    <a href="/3Dart" class="video-link">3D Art</a>
-    <span>|</span>
-    <a href="/Web-Development" class="video-link">Web Development</a>
-    <span>|</span>
-    <a href="/Digital-Marketing" class="video-link">Digital Marketing</a>
-  </div>
+  
+
   
 <div class="service-section">
   <div class="service-card">
@@ -104,17 +137,19 @@
     <!-- Video Playlist -->
     <div class="video-playlist">
       <% let videos = [
-        { src: "https://dl.dropboxusercontent.com/scl/fi/qjzbwpqj1otgml7fw0dpf/FinalOutput_Ads.mp4?rlkey=rbqse96ychr0wxxhpaxy8q4is&st=fx61pf6r&dl", title: "01. Show-Reel Video" },
-        { src: "https://dl.dropboxusercontent.com/scl/fi/ecoiypez3o27yopseko5o/VideoForAds_finale.mp4?rlkey=28tlt02p9gju9rulg15eu6awz&st=3d24btja&dl", title: "02. Show-Reel Video" },
-        { src: "https://dl.dropboxusercontent.com/scl/fi/up7e1vc8g5ndp1h5wowoz/Final_Output_TKFXM_Project1.mp4?rlkey=fa2djfmpkofebbxsj090jxdki&st=xmomnibk", title: "03. Short-Form Video" },
-        { src: "https://dl.dropboxusercontent.com/scl/fi/8y1tz61llq45vz9q3ww1n/FinalOutput_1.mp4?rlkey=3p0a5p1j4i6wa25m9g9eunsvy&st=1ugdqerr", title: "04. Short-Form Video" },
-        { src: "https://dl.dropboxusercontent.com/scl/fi/b39kkdotjuqcrzswly1v8/Pocast_3D_Reels.mp4?rlkey=0qpjljy8jq5mdvedjnkdworox&st=2i07fedy", title: "05. Podcast 3D Reel" },
-        { src: "https://dl.dropboxusercontent.com/scl/fi/lma0nmgsy4iemfhk9nwzj/BetMax_FinalOutput.mp4?rlkey=7ksmu19072a9s32usbmhsk8h0&st=pbx756fz", title: "06. Promo Video" },
-        { src: "https://dl.dropboxusercontent.com/scl/fi/cefexqcgvjtyblybukklg/Dimo_Project_Reels_Final.mp4?rlkey=jp8mbl3kdfomzy0gnbe36lmpa&st=df5oowuv", title: "07. Promo Video" },
-        { src: "https://dl.dropboxusercontent.com/scl/fi/1p2nsz1ekoas019olwc3p/FinalOutput_Alex2.mp4?rlkey=ilhwu4g5kd0h312yj3z9ypl7t&st=xbo95220", title: "08. Short-Form Video" },
-        { src: "https://dl.dropboxusercontent.com/scl/fi/frsf655w9esxu69j723sv/K2x_4_FinalOutput.mp4?rlkey=f7sxylbkt8cggeo9z0f3dactb&st=tjejwxbb", title: "09. Short-Form Video" },
-        { src: "https://dl.dropboxusercontent.com/scl/fi/abs7meqads00jfpwgwgc6/k2x0_1.mp4?rlkey=llbov4u4f16fzt4s8qvee287q&st=sahtebu8", title: "08. Short-Form Video" },
-        { src: "https://dl.dropboxusercontent.com/scl/fi/bkpgjftiql5wyaz1509sr/tdwii_final_output.mp4?rlkey=ew3zg3iklax7eq61iuynwm2od&st=175jacr6", title: "10. Short-Form Video" },
+        { src: "https://dl.dropboxusercontent.com/scl/fi/1ih9w25u3s1vt603t91k5/Final_Output.mp4?rlkey=veoyc2by8ft6n3uztlqspiteb&st=ctrka73z&dl", title: "01. Show-Reel Video" },
+        { src: "https://dl.dropboxusercontent.com/scl/fi/qjzbwpqj1otgml7fw0dpf/FinalOutput_Ads.mp4?rlkey=rbqse96ychr0wxxhpaxy8q4is&st=3dwaxrus&dl", title: "02. Show-Reel Video" },
+        { src: "https://dl.dropboxusercontent.com/scl/fi/8knrdqhndawf4rbj7eblg/Final_wSFX.mp4?rlkey=6qvh9ozrrgzoau9ddjfmscbue&st=h6fpmsm9&dl", title: "03. Show-Reel Video" },
+        { src: "https://dl.dropboxusercontent.com/scl/fi/ecoiypez3o27yopseko5o/VideoForAds_finale.mp4?rlkey=28tlt02p9gju9rulg15eu6awz&st=3d24btja&dl", title: "04. Show-Reel Video" },
+        { src: "https://dl.dropboxusercontent.com/scl/fi/up7e1vc8g5ndp1h5wowoz/Final_Output_TKFXM_Project1.mp4?rlkey=fa2djfmpkofebbxsj090jxdki&st=xmomnibk", title: "05. Short-Form Video" },
+        { src: "https://dl.dropboxusercontent.com/scl/fi/8y1tz61llq45vz9q3ww1n/FinalOutput_1.mp4?rlkey=3p0a5p1j4i6wa25m9g9eunsvy&st=1ugdqerr", title: "06. Short-Form Video" },
+        { src: "https://dl.dropboxusercontent.com/scl/fi/b39kkdotjuqcrzswly1v8/Pocast_3D_Reels.mp4?rlkey=0qpjljy8jq5mdvedjnkdworox&st=2i07fedy", title: "07. Podcast 3D Reel" },
+        { src: "https://dl.dropboxusercontent.com/scl/fi/lma0nmgsy4iemfhk9nwzj/BetMax_FinalOutput.mp4?rlkey=7ksmu19072a9s32usbmhsk8h0&st=pbx756fz", title: "08. Promo Video" },
+        { src: "https://dl.dropboxusercontent.com/scl/fi/cefexqcgvjtyblybukklg/Dimo_Project_Reels_Final.mp4?rlkey=jp8mbl3kdfomzy0gnbe36lmpa&st=df5oowuv", title: "09. Promo Video" },
+        { src: "https://dl.dropboxusercontent.com/scl/fi/1p2nsz1ekoas019olwc3p/FinalOutput_Alex2.mp4?rlkey=ilhwu4g5kd0h312yj3z9ypl7t&st=xbo95220", title: "10. Short-Form Video" },
+        { src: "https://dl.dropboxusercontent.com/scl/fi/frsf655w9esxu69j723sv/K2x_4_FinalOutput.mp4?rlkey=f7sxylbkt8cggeo9z0f3dactb&st=tjejwxbb", title: "11. Short-Form Video" },
+        { src: "https://dl.dropboxusercontent.com/scl/fi/abs7meqads00jfpwgwgc6/k2x0_1.mp4?rlkey=llbov4u4f16fzt4s8qvee287q&st=sahtebu8", title: "12. Short-Form Video" },
+        { src: "https://dl.dropboxusercontent.com/scl/fi/bkpgjftiql5wyaz1509sr/tdwii_final_output.mp4?rlkey=ew3zg3iklax7eq61iuynwm2od&st=175jacr6", title: "13. Short-Form Video" },
       ]; %>
 
       <% videos.forEach((video, index) => { %>

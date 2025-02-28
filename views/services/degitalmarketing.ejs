@@ -2,39 +2,54 @@
 <link rel="stylesheet" href="/stylesheet/digitalmarketing.css">
 
 <div class="container-fluid digital-marketing-page">
-  <!-- Hero Section -->
-  <div class="hero-section">
-    <h1 class="highlight">Transform Your Brand with <span class="glow-text ">Digital Marketing</span></h1>
-    <p class="sub-text">AI-driven strategies to boost your online presence & maximize conversions.</p>
-    <a href="/quotation" class="cta-button">Get Started</a>
+ 
+  <div class="container-fluid graphi-design-page">
+    <!-- Hero Section -->
+    <div class="hero-section">
+      <div class="row align-items-center">
+        <!-- Left Side: Service Description -->
+        <div class="col-md-6 d-flex flex-column align-items-center text-center">
+          <h1 class="highlight">Transform Your Brand with <span class="glow-text ">Digital Marketing</span></h1>
+          <p class="sub-text">AI-driven strategies to boost your online presence & maximize conversions.</p>
+        </div>
+  
+        <!-- Right Side: Quotation Form -->
+        <div class="col-md-5 d-flex justify-content-center">
+          <div class="quote-box">
+            <h2 class="quote-title">Get a Fast Quote</h2>
+            <form action="/quotation/degital-marketing" method="POST" class="quote-form">
+                <input type="hidden" name="serviceType" value="Degital Marketing">
+  
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="emailAddress">Email Address</label>
+                    <input type="email" id="emailAddress" name="emailAddress" placeholder="Enter your email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="projectDescription">Project Description</label>
+                    <textarea id="projectDescription" name="projectDescription" placeholder="Briefly describe your project" class="form-control" rows="2" required></textarea>
+                </div>
+  
+                <div class="form-group captcha-container">
+                  <label for="captchaAnswer">(Captcha) What is <span id="num1"></span> + <span id="num2"></span>?</label>
+                  <input type="text" id="captchaAnswer" name="captchaAnswer" placeholder="Enter the answer" class="form-control" required>
+                  <input type="hidden" id="captchaCorrectAnswer" name="captchaCorrectAnswer">
+                </div>
+                <button type="submit" class="form-button">Get a Free Quote</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- Stats Section -->
-  <!-- <div class="stats-section mt-3">
-    <div class="stat">
-      <h4>Growing Client Base</h4>
-      <p>Businesses trust us for data-driven marketing strategies.</p>
-    </div>
-    <div class="stat">
-      <h4>Committed to Excellence</h4>
-      <p>Providing quality service and measurable results.</p>
-    </div>
-    <div class="stat">
-      <h4>Adapting to Trends</h4>
-      <p>Always evolving to match the latest digital marketing landscape.</p>
-    </div>
-</div> -->
-
-<div class="video-links text-center">
-  <a href="/Video-Editing" class="video-link">Video Editing</a>
-  <span>|</span>
-  <a href="/Graphic-Design" class="video-link">Graphic Design</a>
-  <span>|</span>
-  <a href="/3Dart" class="video-link">3D Art</a>
-  <span>|</span>
-  <a href="/Web-Development" class="video-link">Web Development</a>
-  
-</div>
 
 
 

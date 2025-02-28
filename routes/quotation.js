@@ -67,6 +67,283 @@ router.post('/quotation/submit', catchAsync(async (req, res) => {
     }
 }));
 
+router.post('/quotation/web-development', catchAsync(async (req, res) => {
+    try {
+        const { fullName, emailAddress, phoneNumber, projectDescription, captchaAnswer, captchaCorrectAnswer } = req.body;
+        const serviceType = "Web Development";  // Automatically set service type
+
+        // CAPTCHA Validation
+        if (parseInt(captchaAnswer) !== parseInt(captchaCorrectAnswer)) {
+            req.flash('error', 'Incorrect CAPTCHA answer. Please try again.');
+            return res.redirect('/web-development');
+        }
+
+        const newQuotation = new Quotation({
+            fullName,
+            emailAddress,
+            phoneNumber,
+            serviceType,
+            projectDescription
+        });
+
+        await newQuotation.save();
+
+        const transporter = nodemailer.createTransport({
+            service: 'Gmail',
+            auth: {
+                user: process.env.GMAIL_EMAIL,
+                pass: process.env.GMAIL_PASSWORD,
+            },
+        });
+
+        // Send email notification
+        const mailOptions = {
+            from: `${emailAddress}`,
+            to: process.env.GMAIL_EMAIL,
+            subject: `Web Development Quote Request from ${fullName}`,
+            html: `
+                <p><strong>Full Name:</strong> ${fullName}</p>
+                <p><strong>Email:</strong> ${emailAddress}</p>
+                <p><strong>Phone Number:</strong> ${phoneNumber}</p>
+                <p><strong>Service Type:</strong> ${serviceType}</p>
+                <p><strong>Project Description:</strong></p>
+                <p>${projectDescription}</p>
+            `
+        };
+
+        await transporter.sendMail(mailOptions);
+
+        req.flash('success', 'Thank you for your request! We’ll get back to you soon.');
+        res.redirect('/web-development');
+    } catch (err) {
+        console.error(err);
+        req.flash('error', 'Something went wrong. Please try again.');
+        res.redirect('/web-development');
+    }
+}));
+
+router.post('/quotation/video-editing', catchAsync(async (req, res) => {
+    try {
+        const { fullName, emailAddress, phoneNumber, projectDescription, captchaAnswer, captchaCorrectAnswer } = req.body;
+        const serviceType = "Video Editing";  // Automatically set service type
+
+        // CAPTCHA Validation
+        if (parseInt(captchaAnswer) !== parseInt(captchaCorrectAnswer)) {
+            req.flash('error', 'Incorrect CAPTCHA answer. Please try again.');
+            return res.redirect('/Video-Editing');
+        }
+
+        const newQuotation = new Quotation({
+            fullName,
+            emailAddress,
+            phoneNumber,
+            serviceType,
+            projectDescription
+        });
+
+        await newQuotation.save();
+
+        const transporter = nodemailer.createTransport({
+            service: 'Gmail',
+            auth: {
+                user: process.env.GMAIL_EMAIL,
+                pass: process.env.GMAIL_PASSWORD,
+            },
+        });
+
+        // Send email notification
+        const mailOptions = {
+            from: `${emailAddress}`,
+            to: process.env.GMAIL_EMAIL,
+            subject: `Web Development Quote Request from ${fullName}`,
+            html: `
+                <p><strong>Full Name:</strong> ${fullName}</p>
+                <p><strong>Email:</strong> ${emailAddress}</p>
+                <p><strong>Phone Number:</strong> ${phoneNumber}</p>
+                <p><strong>Service Type:</strong> ${serviceType}</p>
+                <p><strong>Project Description:</strong></p>
+                <p>${projectDescription}</p>
+            `
+        };
+
+        await transporter.sendMail(mailOptions);
+
+        req.flash('success', 'Thank you for your request! We’ll get back to you soon.');
+        res.redirect('/Video-Editing');
+    } catch (err) {
+        console.error(err);
+        req.flash('error', 'Something went wrong. Please try again.');
+        res.redirect('/Video-Editing');
+    }
+}));
+
+
+router.post('/quotation/graphic-design', catchAsync(async (req, res) => {
+    try {
+        const { fullName, emailAddress, phoneNumber, projectDescription, captchaAnswer, captchaCorrectAnswer } = req.body;
+        const serviceType = "Graphic Design";  // Automatically set service type
+
+        // CAPTCHA Validation
+        if (parseInt(captchaAnswer) !== parseInt(captchaCorrectAnswer)) {
+            req.flash('error', 'Incorrect CAPTCHA answer. Please try again.');
+            return res.redirect('/Graphic-Design');
+        }
+
+        const newQuotation = new Quotation({
+            fullName,
+            emailAddress,
+            phoneNumber,
+            serviceType,
+            projectDescription
+        });
+
+        await newQuotation.save();
+
+        const transporter = nodemailer.createTransport({
+            service: 'Gmail',
+            auth: {
+                user: process.env.GMAIL_EMAIL,
+                pass: process.env.GMAIL_PASSWORD,
+            },
+        });
+
+        // Send email notification
+        const mailOptions = {
+            from: `${emailAddress}`,
+            to: process.env.GMAIL_EMAIL,
+            subject: `Graphic Design Quote Request from ${fullName}`,
+            html: `
+                <p><strong>Full Name:</strong> ${fullName}</p>
+                <p><strong>Email:</strong> ${emailAddress}</p>
+                <p><strong>Phone Number:</strong> ${phoneNumber}</p>
+                <p><strong>Service Type:</strong> ${serviceType}</p>
+                <p><strong>Project Description:</strong></p>
+                <p>${projectDescription}</p>
+            `
+        };
+
+        await transporter.sendMail(mailOptions);
+
+        req.flash('success', 'Thank you for your request! We’ll get back to you soon.');
+        res.redirect('/Graphic-Design');
+    } catch (err) {
+        console.error(err);
+        req.flash('error', 'Something went wrong. Please try again.');
+        res.redirect('/Graphic-Design');
+    }
+}));
+
+
+router.post('/quotation/degital-marketing', catchAsync(async (req, res) => {
+    try {
+        const { fullName, emailAddress, phoneNumber, projectDescription, captchaAnswer, captchaCorrectAnswer } = req.body;
+        const serviceType = "Degital Marketing";  // Automatically set service type
+
+        // CAPTCHA Validation
+        if (parseInt(captchaAnswer) !== parseInt(captchaCorrectAnswer)) {
+            req.flash('error', 'Incorrect CAPTCHA answer. Please try again.');
+            return res.redirect('/Digital-Marketing');
+        }
+
+        const newQuotation = new Quotation({
+            fullName,
+            emailAddress,
+            phoneNumber,
+            serviceType,
+            projectDescription
+        });
+
+        await newQuotation.save();
+
+        const transporter = nodemailer.createTransport({
+            service: 'Gmail',
+            auth: {
+                user: process.env.GMAIL_EMAIL,
+                pass: process.env.GMAIL_PASSWORD,
+            },
+        });
+
+        // Send email notification
+        const mailOptions = {
+            from: `${emailAddress}`,
+            to: process.env.GMAIL_EMAIL,
+            subject: `Degital Marketing Quote Request from ${fullName}`,
+            html: `
+                <p><strong>Full Name:</strong> ${fullName}</p>
+                <p><strong>Email:</strong> ${emailAddress}</p>
+                <p><strong>Phone Number:</strong> ${phoneNumber}</p>
+                <p><strong>Service Type:</strong> ${serviceType}</p>
+                <p><strong>Project Description:</strong></p>
+                <p>${projectDescription}</p>
+            `
+        };
+
+        await transporter.sendMail(mailOptions);
+
+        req.flash('success', 'Thank you for your request! We’ll get back to you soon.');
+        res.redirect('/Digital-Marketing');
+    } catch (err) {
+        console.error(err);
+        req.flash('error', 'Something went wrong. Please try again.');
+        res.redirect('/Digital-Marketing');
+    }
+}));
+
+
+router.post('/quotation/3d-art', catchAsync(async (req, res) => {
+    try {
+        const { fullName, emailAddress, phoneNumber, projectDescription, captchaAnswer, captchaCorrectAnswer } = req.body;
+        const serviceType = "3D Art";  // Automatically set service type
+
+        // CAPTCHA Validation
+        if (parseInt(captchaAnswer) !== parseInt(captchaCorrectAnswer)) {
+            req.flash('error', 'Incorrect CAPTCHA answer. Please try again.');
+            return res.redirect('/3dart');
+        }
+
+        const newQuotation = new Quotation({
+            fullName,
+            emailAddress,
+            phoneNumber,
+            serviceType,
+            projectDescription
+        });
+
+        await newQuotation.save();
+
+        const transporter = nodemailer.createTransport({
+            service: 'Gmail',
+            auth: {
+                user: process.env.GMAIL_EMAIL,
+                pass: process.env.GMAIL_PASSWORD,
+            },
+        });
+
+        // Send email notification
+        const mailOptions = {
+            from: `${emailAddress}`,
+            to: process.env.GMAIL_EMAIL,
+            subject: `3D Art Quote Request from ${fullName}`,
+            html: `
+                <p><strong>Full Name:</strong> ${fullName}</p>
+                <p><strong>Email:</strong> ${emailAddress}</p>
+                <p><strong>Phone Number:</strong> ${phoneNumber}</p>
+                <p><strong>Service Type:</strong> ${serviceType}</p>
+                <p><strong>Project Description:</strong></p>
+                <p>${projectDescription}</p>
+            `
+        };
+
+        await transporter.sendMail(mailOptions);
+
+        req.flash('success', 'Thank you for your request! We’ll get back to you soon.');
+        res.redirect('/3dart');
+    } catch (err) {
+        console.error(err);
+        req.flash('error', 'Something went wrong. Please try again.');
+        res.redirect('/3dart');
+    }
+}));
 
 
 

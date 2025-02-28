@@ -113,3 +113,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     videos.forEach(video => videoObserver.observe(video));
 });
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const num1 = Math.floor(Math.random() * 10) + 1;
+    const num2 = Math.floor(Math.random() * 10) + 1;
+    document.getElementById("num1").innerText = num1;
+    document.getElementById("num2").innerText = num2;
+    document.getElementById("captchaCorrectAnswer").value = num1 + num2;
+  });

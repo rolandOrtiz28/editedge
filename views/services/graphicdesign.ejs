@@ -2,28 +2,59 @@
 <link rel="stylesheet" href="/stylesheet/graphicdesign.css">
 
 <div class="container-fluid digital-marketing-page">
-  <!-- Hero Section -->
-  <div class="hero-section">
-    <h1 class="highlight">Enhance Your Brand with <span class="glow-text ">Graphic Design</span></h1>
-    <p class="sub-text">Creative & professional designs tailored to make your brand stand out.</p>
-    <a href="/quotation" class="cta-button">Get Started</a>
+ 
+  <div class="container-fluid graphi-design-page">
+    <!-- Hero Section -->
+    <div class="hero-section">
+      <div class="row align-items-center">
+        <!-- Left Side: Service Description -->
+        <div class="col-md-6 d-flex flex-column align-items-center text-center">
+          <h1 class="highlight">Enhance Your Brand with <span class="glow-text ">Graphic Design</span></h1>
+          <p class="sub-text">Creative & professional designs tailored to make your brand stand out.</p>
+        </div>
+  
+        <!-- Right Side: Quotation Form -->
+        <div class="col-md-5 d-flex justify-content-center">
+          <div class="quote-box">
+            <h2 class="quote-title">Get a Fast Quote</h2>
+            <form action="/quotation/graphic-design" method="POST" class="quote-form">
+                <input type="hidden" name="serviceType" value="Graphic Design">
+  
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="emailAddress">Email Address</label>
+                    <input type="email" id="emailAddress" name="emailAddress" placeholder="Enter your email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="projectDescription">Project Description</label>
+                    <textarea id="projectDescription" name="projectDescription" placeholder="Briefly describe your project" class="form-control" rows="2" required></textarea>
+                </div>
+  
+                <div class="form-group captcha-container">
+                  <label for="captchaAnswer">(Captcha) What is <span id="num1"></span> + <span id="num2"></span>?</label>
+                  <input type="text" id="captchaAnswer" name="captchaAnswer" placeholder="Enter the answer" class="form-control" required>
+                  <input type="hidden" id="captchaCorrectAnswer" name="captchaCorrectAnswer">
+                </div>
+                <button type="submit" class="form-button">Get a Free Quote</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- Navigation Links -->
-  <div class="video-links text-center">
-    <a href="/Video-Editing" class="video-link">Video Editing</a>
-    <span>|</span>
-    <a href="/3Dart" class="video-link">3D Art</a>
-    <span>|</span>
-    <a href="/Web-Development" class="video-link">Web Development</a>
-    <span>|</span>
-    <a href="/Digital-Marketing" class="video-link">Degital Marketing</a>
-  </div>
 
   <!-- Service Offerings -->
   <div class="service-section">
     <div class="service-card">
-   f_auto,q_auto,w_800/
+
       <video autoplay loop muted playsinline  loading="lazy">
         <source src="/images/LogoDesign.webm" type="video/webm">
       </video>
@@ -79,11 +110,25 @@
     </div>
   </div>
 
-  <!-- New Gallery Section -->
+
   <!-- Image Slider Section -->
 <section class="image-slider-container">
   <div class="swiper mySwiper">
     <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="https://res.cloudinary.com/dowyujl8h/image/upload/f_auto,q_auto,w_800/v1740676694/Master_mum_xjvzrj.jpg" alt="Creative Branding">
+        <div class="slide-caption">Creative Branding</div>
+      </div>
+      <div class="swiper-slide">
+        <img src="https://res.cloudinary.com/dowyujl8h/image/upload/f_auto,q_auto,w_800/v1740676694/0223_jzpzmm.jpg" alt="Creative Branding">
+        <div class="slide-caption">Creative Branding</div>
+      </div>
+      <div class="swiper-slide">
+        <img src="https://res.cloudinary.com/dowyujl8h/image/upload/f_auto,q_auto,w_800/v1740676694/innovation_lw6lxx.jpg" alt="Creative Branding">
+        <div class="slide-caption">Creative Branding</div>
+      </div>
+      
+      
       <div class="swiper-slide">
         <img src="https://res.cloudinary.com/dowyujl8h/image/upload/f_auto,q_auto,w_800/v1738897659/2_uhscgt.png" alt="Creative Branding">
         <div class="slide-caption">Creative Branding</div>
@@ -91,6 +136,14 @@
       <div class="swiper-slide">
         <img src="https://res.cloudinary.com/dowyujl8h/image/upload/f_auto,q_auto,w_800/v1738898080/7_vwhf2k.png" alt="Minimalist Poster">
         <div class="slide-caption">Logo Design</div>
+      </div>
+      <div class="swiper-slide">
+        <img src="https://res.cloudinary.com/dowyujl8h/image/upload/f_auto,q_auto,w_800/v1740676695/Videography_v8pi4c.jpg" alt="Minimalist Poster">
+        <div class="slide-caption">Creative Branding</div>
+      </div>
+      <div class="swiper-slide">
+        <img src="https://res.cloudinary.com/dowyujl8h/image/upload/f_auto,q_auto,w_800/v1740676695/23_oswzew.jpg" alt="Minimalist Poster">
+        <div class="slide-caption">Creative Branding</div>
       </div>
       <div class="swiper-slide">
         <img src="https://res.cloudinary.com/dowyujl8h/image/upload/f_auto,q_auto,w_800/v1737104002/1_qqk0ur.png" alt="Digital Art">
@@ -104,10 +157,7 @@
         <img src="https://res.cloudinary.com/dowyujl8h/image/upload/f_auto,q_auto,w_800/v1737104496/4_zyxqs0.png" alt="Social Media Template">
         <div class="slide-caption">Logo Design</div>
       </div>
-      <div class="swiper-slide">
-        <img src="https://res.cloudinary.com/dowyujl8h/image/upload/f_auto,q_auto,w_800/v1738897690/photo_2025-02-03_22-49-32_bpn7gc.jpg" alt="Social Media Template">
-        <div class="slide-caption">Logo Design</div>
-      </div>
+    
      
     </div>
 
@@ -126,6 +176,8 @@
     <a href="/contact" class="cta-button">Get Started</a>
   </div>
 </div>
+
+
 
 <script src="/javascript/graphicdesign.js"></script>
 
