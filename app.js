@@ -17,6 +17,7 @@ const MongoDBStore = require("connect-mongo");
 const axios = require('axios');
 const ExpressError = require('./utils/ExpressError')
 const Subscriber = require('./models/Subscriber');
+const compression = require('compression');
 
 
 // Routes
@@ -27,6 +28,7 @@ const pricingRoute = require('./routes/Pricing');
 const adminRoute = require('./routes/Admin');
 const policiesRoute = require('./routes/Policies');
 const chatbotRoute = require('./routes/chatbot');
+
 
 
 // SECURITY
@@ -168,6 +170,7 @@ app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(methodOverride('_method'));
+app.use(compression());
 app.use(session(sessionConfig));
 app.use(passport.initialize());
 app.use(passport.session());

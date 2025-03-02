@@ -116,41 +116,7 @@ function initializeAnimations() {
     }
   );
 
-  // ✅ Optimize services-section animation
-  gsap.fromTo(
-    ".services-section .caption2",
-    { opacity: 0, scale: 0.8 },
-    {
-      opacity: 1,
-      scale: 1,
-      stagger: 0.3,
-      duration: 0.8,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: ".services-section",
-        start: "top 90%",
-        end: "bottom 60%",
-        scrub: true,
-        once: true,
-      },
-    }
-  );
-
-  // ✅ Optimize services-container animation
-  gsap.from(".services-container .glass", {
-    y: 20, /* ✅ Reduced movement to prevent flicker */
-    opacity: 0,
-    stagger: 0.2, /* ✅ Faster stagger for smoother reveal */
-    duration: 0.8, /* ✅ Slightly faster animation */
-    ease: "power3.out",
-    scrollTrigger: {
-      trigger: ".services-container",
-      start: "top 85%",
-      end: "top 60%",
-      scrub: true,
-      once: true,
-    },
-  });
+  
 
   // ✅ Optimize team-card animation
   gsap.from(".team-card", {

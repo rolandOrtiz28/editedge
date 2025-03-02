@@ -26,24 +26,25 @@
 
 
     <link rel="icon" type="image/svg+xml" href="/images/logo.svg" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-    <link href="https://api.mapbox.com/mapbox-gl-js/v3.9.1/mapbox-gl.css" rel="stylesheet">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="preconnect" href="https://api.mapbox.com/mapbox-gl-js/v3.9.1/mapbox-gl.css" rel="stylesheet">
     <script defer src="https://api.mapbox.com/mapbox-gl-js/v3.9.1/mapbox-gl.js"></script>  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js" defer></script>
     <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="/stylesheet/boilerplate.css">
-    <link href="https://cdn.jsdelivr.net/gh/yesiamrocks/cssanimation.io@1.0.3/cssanimation.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net/gh/yesiamrocks/cssanimation.io@1.0.3/cssanimation.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.12/marked.min.js"></script>
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+<link  rel="preload" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preconnect" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/loaders/GLTFLoader.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Righteous&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Righteous&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <div id="loader" class="loader">
@@ -109,11 +110,29 @@
 
 
 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let video = document.getElementById("heroVideo");
+
+        // ✅ Check if the video element exists
+        if (video) {
+            video.load(); // ✅ Ensure it starts loading when the page is ready
+        } else {
+            console.warn("⚠️ Video element not found!");
+        }
+    });
+</script>
 
 
-<script src="https://cdn.jsdelivr.net/npm/@hotwired/turbo@7.2.0/dist/turbo.es5-umd.js" defer></script>
-    <script async src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script async type="text/javascript" src="https://cdn.jsdelivr.net/gh/yesiamrocks/cssanimation.io@1.0.3/letteranimation.min.js"></script>
-    <script src="/javascript/boilerplate.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/@hotwired/turbo@7.2.0/dist/turbo.es5-umd.js"></script>
+
+<!-- ✅ Load Bootstrap asynchronously since it doesn't depend on the DOM -->
+<script async src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+<!-- ✅ Async for animations (no DOM dependency) -->
+<script async type="text/javascript" src="https://cdn.jsdelivr.net/gh/yesiamrocks/cssanimation.io@1.0.3/letteranimation.min.js"></script>
+
+<!-- ✅ Defer boilerplate.js because it interacts with the DOM -->
+<script defer src="/javascript/boilerplate.js"></script>
 </body>
 </html>

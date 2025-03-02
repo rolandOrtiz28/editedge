@@ -194,12 +194,47 @@ document.addEventListener("DOMContentLoaded", function () {
 //     });
 // }
 
-
+//       let eddieEyes = [];
+  
+//       // 🎯 Select the correct eye objects
+//       model.traverse((child) => {
+//           if (child.name === "1" || child.name === "2" || child.name === "3") {  
+//               console.log(`👀 Eye Tracking Enabled for: ${child.name}`);
+//               eddieEyes.push({ mesh: child, originalPosition: child.position.clone() }); // ✅ Store original position
+//           }
+//       });
+  
+//       if (eddieEyes.length === 0) {
+//           console.warn("⚠️ No eye mesh found! Skipping eye tracking.");
+//           return;
+//       }
+  
+//       // 🎯 Make Eyes Follow Cursor (Without Leaving the Head)
+//       document.addEventListener("mousemove", (event) => {
+//           const rect = chatbotToggle.getBoundingClientRect();
+//           const x = ((event.clientX - rect.left) / rect.width) * 2 - 1; // Normalize X (-1 to 1)
+//           const y = ((event.clientY - rect.top) / rect.height) * 2 - 1; // Normalize Y (-1 to 1)
+  
+//           const movementRange = 0.04; // ✅ **New Limit: Max movement range**
+  
+//           // ✅ Move eyes slightly within their original position range
+//           eddieEyes.forEach((eye) => {
+//               const newX = eye.originalPosition.x + x * movementRange;
+//               const newY = eye.originalPosition.y - y * movementRange;
+  
+//               // ✅ **Clamp values so eyes don’t leave the head**
+//               eye.mesh.position.x = Math.max(eye.originalPosition.x - movementRange, Math.min(newX, eye.originalPosition.x + movementRange));
+//               eye.mesh.position.y = Math.max(eye.originalPosition.y - movementRange, Math.min(newY, eye.originalPosition.y + movementRange));
+//           });
+//       });
+//   }
+  
 //     buttonLoader.load("/assets/chatbot_export.glb", function (gltf) {
 //       if (buttonModel) {
 //         console.warn("⚠️ Eddie is already loaded in the button. Skipping duplicate.");
 //         return;
 //     }
+
      
       
   
@@ -221,6 +256,11 @@ document.addEventListener("DOMContentLoaded", function () {
 //           }
 //       });
   
+//       buttonModel = gltf.scene;
+//       let eddieHead = null; 
+//       let mixer = null; // 🎥 Animation mixer
+  
+
 //       // ✅ Start Animation if Available
 //       if (gltf.animations.length > 0) {
 //         mixer = new THREE.AnimationMixer(buttonModel); // Create mixer
@@ -229,7 +269,7 @@ document.addEventListener("DOMContentLoaded", function () {
 //         gltf.animations.forEach((clip) => {
 //             const action = mixer.clipAction(clip);
 //             action.setLoop(THREE.LoopRepeat, 3); // ✅ Play 3 times
-//             action.setEffectiveTimeScale(0.3); // ✅ Slow down
+//             action.setEffectiveTimeScale(0.5); // ✅ Slow down
 //             action.setEffectiveWeight(1);
 //             action.clampWhenFinished = true;
 //             action.play();
@@ -258,6 +298,7 @@ document.addEventListener("DOMContentLoaded", function () {
       
 //           // ✅ Enable Eye Tracking after resetting pose
 //           enableEyeTracking(buttonModel);
+
 //       });
       
       
@@ -282,6 +323,26 @@ document.addEventListener("DOMContentLoaded", function () {
 //       buttonCamera.position.set(0, 0, 30);
 //       buttonCamera.updateProjectionMatrix();
   
+
+//       });     
+//     }
+//       // ✅ Adjust Scale & Position for Correct Visibility
+//       buttonModel.scale.set(4, 4, 4);
+//       buttonModel.position.set(0, 2.5, 2);
+  
+//       // ✅ Ensure Proper Lighting
+//       const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
+//       directionalLight.position.set(2, 5, 5);
+//       buttonScene.add(directionalLight);
+  
+//       buttonScene.add(buttonModel);
+  
+//       // ✅ Camera Fix: Adjust Field of View & Position
+//       buttonCamera.fov = 50;
+//       buttonCamera.position.set(0, 0, 30);
+//       buttonCamera.updateProjectionMatrix();
+  
+
 //       // 🎥 Update function to play animation smoothly
 //       function animateButton() {
 //           requestAnimationFrame(animateButton);
@@ -294,6 +355,7 @@ document.addEventListener("DOMContentLoaded", function () {
 //       }
 //       animateButton();
   
+
 //       // 🎯 **Make Eddie's Head Follow Cursor**
 //       document.addEventListener("mousemove", (event) => {
 //           const rect = chatbotToggle.getBoundingClientRect();
@@ -305,6 +367,7 @@ document.addEventListener("DOMContentLoaded", function () {
 //               eddieHead.rotation.x = -y * 0.5; // Up/Down rotation
 //           }
 //       });
+
 //   });
   
 
@@ -322,7 +385,6 @@ document.addEventListener("DOMContentLoaded", function () {
 //         }, 4000);
 //     }
 // });
-
 
 // function makeDraggable(model, camera, renderer, scene) {
 //     let isDragging = false;
@@ -373,6 +435,16 @@ document.addEventListener("DOMContentLoaded", function () {
 //         isDragging = false;
 //     });
 // }
+
+// document.addEventListener("DOMContentLoaded", function () {
+//     let hasEddieSpoken = sessionStorage.getItem("hasEddieSpoken") === "true";
+// if (!hasEddieSpoken) {
+//     sessionStorage.setItem("hasEddieSpoken", "true"); 
+//     setTimeout(() => {
+//         document.getElementById("speech-bubble").style.opacity = "1";
+//     }, 1000);
+
+
 
 // document.addEventListener("DOMContentLoaded", function () {
 //     let hasEddieSpoken = sessionStorage.getItem("hasEddieSpoken") === "true";
