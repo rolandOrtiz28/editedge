@@ -1,4 +1,4 @@
-#### THIS ALLOWS US TO DEPLOY THE SITE FROM A GIT REPO ####
+cl#### THIS ALLOWS US TO DEPLOY THE SITE FROM A GIT REPO ####
 deployment:
   tasks:
     - export DEPLOYPATH=/home/editcezo/repositories/editedge

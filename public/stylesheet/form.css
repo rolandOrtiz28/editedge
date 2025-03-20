@@ -17,9 +17,16 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 
 }
 
-.input i{
-	color: white;
-}
+.input {
+	display: flex;
+	align-items: center; /* Vertically center the icon and input */
+  }
+  
+  .input i {
+	color: #FF007F;
+	margin-bottom: 0; /* Remove the excessive margin */
+	margin-right: 1rem; /* Consistent spacing between icon and input */
+  }
 
 .section .section-center {
     display: flex;

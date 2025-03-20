@@ -17,7 +17,7 @@ router.get('/quotation', (req, res) => {
 
 router.post('/quotation/submit', catchAsync(async (req, res) => {
     try {
-        const { fullName, companyName, phoneNumber, emailAddress, serviceType, country, projectDescription } = req.body;
+        const { fullName, companyName, phoneNumber, emailAddress, serviceType, country, projectDescription, attachmentUrl, budget, specificRequirements, targetArea, businessTimeLine } = req.body;
 
         const newQuotation = new Quotation({
             fullName,
@@ -26,7 +26,12 @@ router.post('/quotation/submit', catchAsync(async (req, res) => {
             serviceType: Array.isArray(serviceType) ? serviceType : [serviceType],
             country,
             phoneNumber,
-            projectDescription
+            projectDescription,
+            attachmentUrl, 
+            budget, 
+            specificRequirements, 
+            targetArea, 
+            businessTimeLine
         });
 
         await newQuotation.save();

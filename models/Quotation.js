@@ -18,6 +18,8 @@ const QuotationSchema = new Schema({
     preferredCommunicationMethod: { type: String },
     submissionDate: { type: Date },
     attachmentUrl: { type: String },
+    targetArea: { type: String },
+    businessTimeLine: { type: Date },
 });
 
 module.exports = mongoose.model('Quotation', QuotationSchema);
