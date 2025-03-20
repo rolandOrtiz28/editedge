@@ -19,7 +19,7 @@ const QuotationSchema = new Schema({
     submissionDate: { type: Date },
     attachmentUrl: { type: String },
     targetArea: { type: String },
-    businessTimeLine: { type: Date },
+    businessTimeLine: { type: Number },
 });
 
 module.exports = mongoose.model('Quotation', QuotationSchema);
