@@ -54,6 +54,11 @@ router.post('/quotation/submit', catchAsync(async (req, res) => {
                 <p><strong>Company Name:</strong> ${companyName || 'N/A'}</p>
                 <p><strong>Email:</strong> ${emailAddress}</p>
                 <p><strong>Phone Number:</strong> ${phoneNumber || 'N/A'}</p>
+                <p><strong>Specific requirements:</strong> ${specificRequirements || 'N/A'}</p>
+                <p><strong>Link:</strong> ${attachmentUrl || 'N/A'}</p>
+                <p><strong>Estimated Budget:</strong> ${budget || 'N/A'}</p>
+                <p><strong>Target Area:</strong> ${targetArea || 'N/A'}</p>
+                <p><strong>Business Timeline:</strong> ${businessTimeLine || 'N/A'}</p>
                 <p><strong>Country:</strong> ${country}</p>
                 <p><strong>Service Type:</strong> ${Array.isArray(serviceType) ? serviceType.join(', ') : serviceType}</p>
                 <p><strong>Project Description:</strong></p>
